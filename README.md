@@ -3,9 +3,9 @@
 A barebones template to get started on a new project.
 
 ## How to configure and run
-`yarn install`
+run `yarn`
 
-`yarn init`
+run `yarn dev-server`
 
 # Routes
 `yarn add react-route`
