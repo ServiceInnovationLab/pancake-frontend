@@ -1,6 +1,6 @@
 {
-  "short_name": "FSS",
-  "name": "Family Services Search",
+  "short_name": "PBP",
+  "name": "Project Boilerplate",
   "icons": [
     {
       "src": "favicon.ico",
