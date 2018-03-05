@@ -3,6 +3,7 @@
 A barebones template to get started on a new project.
 
 ## How to configure and run
+
 `npm install`
 
 `npm start`
@@ -10,4 +11,3 @@ A barebones template to get started on a new project.
 # Run Tests
 
 `npm test`
-
