@@ -5,7 +5,6 @@ import TextField from '../Forms/TextField';
 import RadioGroup from '../Forms/RadioGroup';
 import CheckboxGroup from '../Forms/CheckboxGroup';
 import firstTimeApplication from '../../JSONFormData/FirstTimeAppication';
-// import i18n from './i18n';
 
 class Page1 extends React.Component {
   constructor(props) {
@@ -13,15 +12,6 @@ class Page1 extends React.Component {
     this.state = {
       lng: 'en'
     }
-    // this.onLanguageChanged = this.onLanguageChanged.bind(this)
-  }
-
-  componentDidMount() {
-    // i18n.on('languageChanged', this.onLanguageChanged)
-  }
-
-  componentWillUnmount() {
-    // i18n.off('languageChanged', this.onLanguageChanged)
   }
 
   onLanguageChanged(lng) {
