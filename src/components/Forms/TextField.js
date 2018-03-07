@@ -3,10 +3,6 @@ import '../../styles/TextField.css';
 
 class TextField extends React.Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   handleObj(obj){
     if(Object.keys(obj).length > 1) {
       return obj[this.props.lang];

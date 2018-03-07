@@ -37,7 +37,6 @@ class Page1 extends React.Component {
   }
 
   render() {
-    let lng = this.state.lng
     const { handleSubmit } = this.props;
 
     return (
