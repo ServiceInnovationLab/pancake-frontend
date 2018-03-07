@@ -19,14 +19,14 @@ class RadioGroup extends React.Component {
     return (
       <fieldset className="radio-group">
         <legend>
-          {this.handleObj(this.props.label).label}
+          {this.handleObj(this.props.label).text}
           {this.props.isRequired && <span className="aria-hidden">(required)</span>}
         </legend>
-        {this.props.instructions && <p>{this.handleObj(this.props.instructions).label}</p>}
+        {this.props.instructions && <p>{this.handleObj(this.props.instructions).text}</p>}
         <div>
           <div>
             <div>
-              {this.handleObj(this.props.options).label.map((item, key) => {
+              {this.handleObj(this.props.options).text.map((item, key) => {
                 return <label key={key}>
                   <input {...this.props.input} type="radio" value={item} />
                   <span>{item}</span>

@@ -19,10 +19,10 @@ class TextField extends React.Component {
     return (
       <div className="input-group">
         <label>
-          <span>{this.handleObj(this.props.label).label}</span>
+          <span>{this.handleObj(this.props.label).text}</span>
           {this.props.isRequired && <span className="aria-hidden">(required)</span>}
         </label>
-        {this.props.instructions && <p>{this.handleObj(this.props.instructions).label}</p>}
+        {this.props.instructions && <p>{this.handleObj(this.props.instructions).text}</p>}
         <div>
           <input type="text" {...this.props.input} />
           {this.props.touched && this.props.error && <span>{this.props.error}</span>}

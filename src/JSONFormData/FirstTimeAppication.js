@@ -1,12 +1,11 @@
 const firstTimeApplication = [
-  
   {
     "question": {
       "en": {
-        "label": "What is your address?"
+        "text": "What is your address?"
       },
       "ma": {
-        "label": "Ko wai tō wāhi noho?"
+        "text": "Ko wai tō wāhi noho?"
       }
     },
     "type": "text",
@@ -16,10 +15,10 @@ const firstTimeApplication = [
   {
     "question": {
       "en": {
-        "label": "What is your name?"
+        "text": "What is your name?"
       },
       "ma": {
-        "label": "Ko wai to ingoa?"
+        "text": "Ko wai to ingoa?"
       }
     },
     "type": "text",
@@ -29,25 +28,25 @@ const firstTimeApplication = [
   {
     "question": {
       "en": {
-        "label": "Only En: Did you live here at 1st July?"
+        "text": "Only En: Did you live here at 1st July?"
       }
     },
     "type": "radio",
     "instructions": {
       "en": {
-        "label": "Please use the name you use on the property title"
+        "text": "Please use the name you use on the property title"
       },
       "ma": {
-        "label": "Māori: Please use the name you use on the property title"
+        "text": "Māori: Please use the name you use on the property title"
       }
     },
     "name": "did_you_live_here",
     "options": {
       "en": {
-        "label": ['yes', 'no']
+        "text": ['yes', 'no']
       },
       "ma": {
-        "label": ['āe', 'kāore']
+        "text": ['āe', 'kāore']
       }
     },
     "isRequired": true
@@ -55,27 +54,27 @@ const firstTimeApplication = [
   {
     "question": {
       "en": {
-        "label": "Do you have a partner or joint homeowner who lives with you?"
+        "text": "Do you have a partner or joint homeowner who lives with you?"
       },
       "ma": {
-        "label": "Māori: Do you have a partner or joint homeowner who lives with you?)"
+        "text": "Māori: Do you have a partner or joint homeowner who lives with you?"
       }
     },
     "type": "radio",
     "instructions": {
       "en": {
-        "label": "'Partner' is a person you are married to/in a civil union, or de facto relationship with."
+        "text": "'Partner' is a person you are married to/in a civil union, or de facto relationship with."
       },
       "ma": {
-        "label": "Māori: 'Partner' is a person you are married to/in a civil union, or de facto relationship with."
+        "text": "Māori: 'Partner' is a person you are married to/in a civil union, or de facto relationship with."
       }
     },
     "options": {
       "en": {
-        "label": ['yes', 'no']
+        "text": ['yes', 'no']
       },
       "ma": {
-        "label": ['āe', 'kaore']
+        "text": ['āe', 'kāore']
       }
     },
     "name": "joint_homeowner",
@@ -84,30 +83,45 @@ const firstTimeApplication = [
   {
     "question": {
       "en": {
-        "label": "Income"
+        "text": "Income"
       },
       "ma": {
-        "label": "Māori: Income"
+        "text": "Māori: Income"
       }
     },
     "type": "checkbox",
     "instructions": {
       "en": {
-        "label": "Select any that you receive."
+        "text": "Select any that you receive."
       },
       "ma": {
-        "label": "Māori: Select any that you receive."
+        "text": "Māori: Select any that you receive."
       }
     },
-    "options": [
-      'NZ Superannuation',
-      'Jobseeker benefit',
-      'Sole parents',
-      'Supported living',
-      'Self employed',
-      'Wage or salary',
-      'Other'
-    ],
+    "options": {
+      "en": {
+        "text": [
+          'NZ Superannuation',
+          'Jobseeker benefit',
+          'Sole parents',
+          'Supported living',
+          'Self employed',
+          'Wage or salary',
+          'Other'
+        ]
+      },
+      "ma": {
+        "text": [
+          'Māori: NZ Superannuation',
+          'Māori: Jobseeker benefit',
+          'Māori: Sole parents',
+          'Māori: Supported living',
+          'Māori: Self employed',
+          'Māori: Wage or salary',
+          'Māori: Other'
+        ]
+      }
+    },
     "name": "income",
     "isRequired": true
   }
