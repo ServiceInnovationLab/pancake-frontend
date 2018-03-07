@@ -4,7 +4,7 @@ import validate from '../../helpers/validate';
 import TextField from '../Forms/TextField';
 import RadioGroup from '../Forms/RadioGroup';
 import CheckboxGroup from '../Forms/CheckboxGroup';
-import firstTimeApplication from '../../JSONFormData/FirstTimeAppication';
+import firstTimeApplication from '../../JSONFormData/FirstTimeApplication';
 
 class Page1 extends React.Component {
 
