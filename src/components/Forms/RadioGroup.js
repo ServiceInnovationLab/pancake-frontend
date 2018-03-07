@@ -1,29 +1,44 @@
 import React from 'react';
 import '../../styles/RadioGroup.css';
 
-const RadioGroup = props => {
-  return (
-    <fieldset className="radio-group">
-      <legend>
-        <span>{props.label}</span> &nbsp;
-        {props.isRequired && <span className="aria-hidden">(required)</span>}
-      </legend>
-      <p>{props.instructions}</p>
-      <div>
+class RadioGroup extends React.Component {
+
+  constructor(props) {
+    super(props);
+  }
+
+  handleObj(obj){
+    if(Object.keys(obj).length > 1) {
+      return obj[this.props.lang];
+    } else {
+      return obj['en']
+    }
+  }
+
+  render(){
+    return (
+      <fieldset className="radio-group">
+        <legend>
+          {this.handleObj(this.props.label).label}
+          {this.props.isRequired && <span className="aria-hidden">(required)</span>}
+        </legend>
+        {this.props.instructions && <p>{this.handleObj(this.props.instructions).label}</p>}
         <div>
           <div>
-            {props.options.map((item, key) => {
-              return <label key={key}>
-                <input {...props.input} type="radio" value={item} />
-                <span>{item}</span>
-              </label>
-            })}
-            {props.touched && props.error && <span>{props.error}</span>}
+            <div>
+              {this.handleObj(this.props.options).label.map((item, key) => {
+                return <label key={key}>
+                  <input {...this.props.input} type="radio" value={item} />
+                  <span>{item}</span>
+                </label>
+              })}
+              {this.props.touched && this.props.error && <span>{this.props.error}</span>}
+            </div>
           </div>
         </div>
-      </div>
-    </fieldset>
-  );
+      </fieldset>
+    );
+  }
 };
 
 export default RadioGroup;

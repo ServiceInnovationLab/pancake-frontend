@@ -4,9 +4,32 @@ import validate from '../../helpers/validate';
 import TextField from '../Forms/TextField';
 import RadioGroup from '../Forms/RadioGroup';
 import CheckboxGroup from '../Forms/CheckboxGroup';
-import firstTimeApplication from '../../JSONFormData/FirstTimeApplication';
+import firstTimeApplication from '../../JSONFormData/FirstTimeAppication';
+// import i18n from './i18n';
 
 class Page1 extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      lng: 'en'
+    }
+    // this.onLanguageChanged = this.onLanguageChanged.bind(this)
+  }
+
+  componentDidMount() {
+    // i18n.on('languageChanged', this.onLanguageChanged)
+  }
+
+  componentWillUnmount() {
+    // i18n.off('languageChanged', this.onLanguageChanged)
+  }
+
+  onLanguageChanged(lng) {
+    this.setState({
+      lng: lng
+    })
+  }
+
 
   handleFieldType(type) {
     switch(type) {
@@ -18,35 +41,42 @@ class Page1 extends React.Component {
         return TextField;
     }
   }
-  
+
+  handleLanguageChange(lang) {
+    this.setState({lng: lang})
+  }
+
   render() {
-    
+    let lng = this.state.lng
     const { handleSubmit } = this.props;
 
     return (
-      <form name="wizard" onSubmit={handleSubmit} className="container">
-      
-        <h1>Apply for a Rebate</h1>
-
-        {firstTimeApplication.map((field, key) => (
-          <Field
-            key={key}
-            label={field.question}
-            name={field.name}
-            instructions={field.instructions}
-            isRequired={true}
-            component={this.handleFieldType(field.type)}
-            options={field.options && field.options}
-          />
-        ))}
-
-        <div>
-          <button type="submit" className="next">
-            Next
-          </button>
-        </div>
-      </form>
-    );
+      <div>
+        <form name="wizard" onSubmit={handleSubmit} className="container">
+          <h1>Apply for a Rebate</h1>
+          <button onClick={()=>{this.handleLanguageChange('en')}}>English</button>
+          <button onClick={()=>{this.handleLanguageChange('ma')}}>Māori</button>
+          {firstTimeApplication.map((field, key) => (
+            <Field
+              key={key}
+              label={ field.question }
+              name={field.name}
+              instructions={field.instructions}
+              isRequired={true}
+              component={this.handleFieldType(field.type)}
+              options={field.options && field.options}
+              lang={this.state.lng}
+            />
+          ))}
+          
+          <div>
+            <button type="submit" className="next">
+              Next
+            </button>
+          </div>
+        </form>
+      </div>
+    )
   }
 }
 
