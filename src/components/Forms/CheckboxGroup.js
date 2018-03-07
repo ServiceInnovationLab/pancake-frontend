@@ -19,14 +19,14 @@ class CheckboxGroup extends React.Component {
     return (
       <fieldset className="checkbox-group">
         <legend>
-          <span>{this.handleObj(this.props.label).label}</span> &nbsp;
+          <span>{this.handleObj(this.props.label).text}</span> &nbsp;
           {this.props.isRequired && <span className="aria-hidden">(required)</span>}
         </legend>
-        {this.props.instructions && <p>{this.handleObj(this.props.instructions).label}</p>}
+        {this.props.instructions && <p>{this.handleObj(this.props.instructions).text}</p>}
         <div>
           <div>
             <div>
-              {this.props.options.map((item, key) => {
+              {this.handleObj(this.props.options).text.map((item, key) => {
                 return <label key={key}>
                   <input {...this.props.input} type="checkbox" value={item} />
                   <span>{item}</span>
