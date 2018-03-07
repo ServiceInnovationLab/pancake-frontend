@@ -28,7 +28,7 @@ class CheckboxGroup extends React.Component {
                   <span>{item}</span>
                 </label>
               })}
-              {this.props.touched && this.props.error && <span>{this.props.error}</span>}
+              {this.props.meta.touched && this.props.meta.error && <span className="error"><strong>Error: </strong>{this.props.meta.error}</span>}
             </div>
           </div>
         </div>

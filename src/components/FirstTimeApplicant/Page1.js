@@ -14,13 +14,6 @@ class Page1 extends React.Component {
     }
   }
 
-  onLanguageChanged(lng) {
-    this.setState({
-      lng: lng
-    })
-  }
-
-
   handleFieldType(type) {
     switch(type) {
       case 'radio':
@@ -48,13 +41,14 @@ class Page1 extends React.Component {
           {firstTimeApplication.map((field, key) => (
             <Field
               key={key}
-              label={ field.question }
+              label={field.question}
               name={field.name}
               instructions={field.instructions}
               isRequired={true}
               component={this.handleFieldType(field.type)}
               options={field.options && field.options}
               lang={this.state.lng}
+              id={field.name}
             />
           ))}
           
