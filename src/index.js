@@ -11,7 +11,7 @@ import { reducer as formReducer } from 'redux-form';
 const store = createStore(combineReducers({
   reducers,
   form: formReducer
-}), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+}), applyMiddleware(thunk));
 
 class App extends React.Component {
   render(){
