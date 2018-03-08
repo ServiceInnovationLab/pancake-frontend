@@ -6,7 +6,7 @@ import FirstTimeApplicant1 from './FirstTimeApplicant/Page1';
 import FirstTimeApplicant2 from './FirstTimeApplicant/Page2';
 import FirstTimeApplicant3 from './FirstTimeApplicant/Page3';
 
-class App extends Component {
+export class App extends Component {
   constructor(props) {
     super(props)
     this.nextPage = this.nextPage.bind(this)

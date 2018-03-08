@@ -5,6 +5,7 @@ import TextField from '../Forms/TextField';
 import RadioGroup from '../Forms/RadioGroup';
 import CheckboxGroup from '../Forms/CheckboxGroup';
 import firstTimeApplication from '../../JSONFormData/FirstTimeAppication';
+import '../../styles/Button.css';
 
 class Page1 extends React.Component {
   constructor(props) {
@@ -33,11 +34,16 @@ class Page1 extends React.Component {
     const { handleSubmit } = this.props;
 
     return (
-      <div>
-        <form name="wizard" onSubmit={handleSubmit} className="container">
-          <h1>Apply for a Rebate</h1>
-          <button onClick={()=>{this.handleLanguageChange('en')}}>English</button>
-          <button onClick={()=>{this.handleLanguageChange('ma')}}>Māori</button>
+      <div className="container">
+
+        <div className="btn-group">
+          <a onClick={()=>{this.handleLanguageChange('en')}} className={this.state.lng === 'en' ? 'btn active' : 'btn'}>English</a>
+          <a onClick={()=>{this.handleLanguageChange('ma')}} className={this.state.lng === 'ma' ? 'btn active' : 'btn'}>Māori</a>
+        </div>
+
+        <h1>Apply for a Rebate</h1>
+
+        <form name="wizard" onSubmit={handleSubmit}>
           {firstTimeApplication.map((field, key) => (
             <Field
               key={key}

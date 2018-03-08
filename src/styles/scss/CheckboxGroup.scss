@@ -1,17 +1,6 @@
 $input-border-color: #677a8e;
 $input-bg-color: #677a8e;
 
-@font-face {
-  font-family: 'icomoon';
-  src:  url('https://i.icomoon.io/public/temp/0ccf0bdbbe/UntitledProject/icomoon.eot?6wjyph');
-  src:  url('https://i.icomoon.io/public/temp/0ccf0bdbbe/UntitledProject/icomoon.eot?6wjyph#iefix') format('embedded-opentype'),
-    url('https://i.icomoon.io/public/temp/0ccf0bdbbe/UntitledProject/icomoon.ttf?6wjyph') format('truetype'),
-    url('https://i.icomoon.io/public/temp/0ccf0bdbbe/UntitledProject/icomoon.woff?6wjyph') format('woff'),
-    url('https://i.icomoon.io/public/temp/0ccf0bdbbe/UntitledProject/icomoon.svg?6wjyph#icomoon') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-
 .checkbox-group {
   input[type=checkbox] {
     position: absolute;
@@ -49,7 +38,7 @@ $input-bg-color: #677a8e;
     :checked + span::after {
       font-family: 'icomoon';
       font-size: 19px;
-      content: "\ea10";
+      content: "\f00c";
       position: absolute;
       left: 10px;
       top: 50%;

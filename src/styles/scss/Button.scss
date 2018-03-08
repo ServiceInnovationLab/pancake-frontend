@@ -1,0 +1,26 @@
+.btn,
+button
+{
+  display: inline-block;
+  border: 1px solid #677a8e;
+  border-radius: 18px;
+  color: #4f4b46;
+  margin: 10px 10px 10px 0;
+  min-width: auto;
+  font-size: 16px;
+  padding: 9px 20px;
+  line-height: 20px;
+
+  &:hover {  cursor: pointer; }
+
+  &.active {
+    background-color: #677a8e;
+    color: #fff;
+  }
+}
+
+.btn-group {
+  text-align: right;
+}
+
+
