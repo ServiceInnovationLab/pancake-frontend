@@ -1,11 +1,8 @@
-import reducers from '../reducers/index';
+import React from 'react';
+import renderer from 'react-test-renderer';
 import CheckboxGroup from '../components/Forms/CheckboxGroup';
 import TextField from '../components/Forms/TextField';
 import RadioGroup from '../components/Forms/RadioGroup';
-
-import React from 'react';
-import renderer from 'react-test-renderer';
-import { App } from '../components/App';
 
 describe('components', function() {
 
