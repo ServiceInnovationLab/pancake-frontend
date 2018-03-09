@@ -28,7 +28,7 @@ const firstTimeApplication = [
   {
     "question": {
       "en": {
-        "text": "Only En: Did you live here at 1st July?"
+        "text": "Did you live here at 1st July?"
       }
     },
     "type": "radio",
@@ -37,7 +37,7 @@ const firstTimeApplication = [
         "text": "Please use the name you use on the property title"
       },
       "ma": {
-        "text": "Māori: Please use the name you use on the property title"
+        "text": "Please use the name you use on the property title"
       }
     },
     "name": "did_you_live_here",
@@ -57,7 +57,7 @@ const firstTimeApplication = [
         "text": "Do you have a partner or joint homeowner who lives with you?"
       },
       "ma": {
-        "text": "Māori: Do you have a partner or joint homeowner who lives with you?"
+        "text": "Do you have a partner or joint homeowner who lives with you?"
       }
     },
     "type": "radio",
@@ -66,7 +66,7 @@ const firstTimeApplication = [
         "text": "'Partner' is a person you are married to/in a civil union, or de facto relationship with."
       },
       "ma": {
-        "text": "Māori: 'Partner' is a person you are married to/in a civil union, or de facto relationship with."
+        "text": "'Partner' is a person you are married to/in a civil union, or de facto relationship with."
       }
     },
     "options": {
@@ -86,7 +86,7 @@ const firstTimeApplication = [
         "text": "Income"
       },
       "ma": {
-        "text": "Māori: Income"
+        "text": "Income"
       }
     },
     "type": "checkbox",
@@ -95,32 +95,62 @@ const firstTimeApplication = [
         "text": "Select any that you receive."
       },
       "ma": {
-        "text": "Māori: Select any that you receive."
+        "text": "Select any that you receive."
       }
     },
     "options": {
       "en": {
-        "text": [
-          'NZ Superannuation',
-          'Jobseeker benefit',
-          'Sole parents',
-          'Supported living',
-          'Self employed',
-          'Wage or salary',
-          'Other'
+        "option": [
+          {
+            text: 'NZ Superannuation',
+            options: ['Single - Living alone', 'Single - Sharing']
+          },
+          {
+            text: 'Jobseeker benefit'
+          },
+          {
+            text: 'Sole parents'
+          },
+          {
+            text: 'Supported living'
+          },
+          {
+            text: 'Self employed'
+          },
+          {
+            text: 'Wage or salary'
+          },
+          {
+            text: 'Other'
+          }
         ]
       },
       "ma": {
-        "text": [
-          'Māori: NZ Superannuation',
-          'Māori: Jobseeker benefit',
-          'Māori: Sole parents',
-          'Māori: Supported living',
-          'Māori: Self employed',
-          'Māori: Wage or salary',
-          'Māori: Other'
+        "option": [
+          {
+            text: 'NZ Superannuation',
+            options: ['Single - Living alone', 'Single - Sharing']
+          },
+          {
+            text: 'Jobseeker benefit'
+          },
+          {
+            text: 'Sole parents'
+          },
+          {
+            text: 'Supported living'
+          },
+          {
+            text: 'Self employed'
+          },
+          {
+            text: 'Wage or salary'
+          },
+          {
+            text: 'Other'
+          }
         ]
-      }
+      },
     },
     "name": "income",
     "isRequired": true
