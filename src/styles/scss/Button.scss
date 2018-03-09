@@ -1,10 +1,14 @@
+$white: #fff;
+$active: #677a8e;
+$btn-text-color: #4f4b46;
+
 .btn,
 button
 {
   display: inline-block;
   border: 1px solid #677a8e;
   border-radius: 18px;
-  color: #4f4b46;
+  color: $btn-text-color;
   margin: 10px 10px 10px 0;
   min-width: auto;
   font-size: 16px;
@@ -14,8 +18,8 @@ button
   &:hover {  cursor: pointer; }
 
   &.active {
-    background-color: #677a8e;
-    color: #fff;
+    background-color: $active;
+    color: $white;
   }
 }
 

@@ -1,5 +1,6 @@
 $input-border-color: #677a8e;
 $input-bg-color: #677a8e;
+$white: #fff;
 
 @font-face {
 font-family: "FontAwesome";
@@ -60,7 +61,7 @@ font-style : normal;
       top: 50%;
       transform: translateY(-50%);
       opacity: 1;
-      color: #fff;
+      color: $white;
     }
   }
 }
