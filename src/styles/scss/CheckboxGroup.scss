@@ -1,13 +1,29 @@
 $input-border-color: #677a8e;
 $input-bg-color: #677a8e;
 
+@font-face {
+font-family: "FontAwesome";
+font-weight: normal;
+font-style : normal;
+  src: url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?v=4.3.0");
+  src: url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?#iefix&v=4.3.0") format("embedded-opentype"),
+    url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff2?v=4.3.0") format("woff2"),
+    url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff?v=4.3.0") format("woff"),
+    url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.ttf?v=4.3.0") format("truetype"),
+    url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular") format("svg");
+}
+
+
 .checkbox-group {
+  .radio-group {
+    margin: 0;
+  }
   input[type=checkbox] {
     position: absolute;
     left: -9999px;
   }
-
-  label {
+  
+  label:not(.checkbox-radio) {
     position: relative;
     cursor: pointer;
     display: flex;
@@ -36,11 +52,11 @@ $input-bg-color: #677a8e;
     }
 
     :checked + span::after {
-      font-family: 'icomoon';
-      font-size: 19px;
+      font-family: 'FontAwesome';
+      font-size: 25px;
       content: "\f00c";
       position: absolute;
-      left: 10px;
+      left: 8px;
       top: 50%;
       transform: translateY(-50%);
       opacity: 1;
