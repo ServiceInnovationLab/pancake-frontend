@@ -5,10 +5,10 @@ import '../../styles/FormValidation.css';
 class TextField extends React.Component {
 
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       error: false
-    }
+    };
   }
 
   handleObj(obj){
@@ -40,6 +40,6 @@ class TextField extends React.Component {
       </div>
     );
   }
-};
+}
 
 export default TextField;

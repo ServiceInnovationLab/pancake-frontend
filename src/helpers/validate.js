@@ -9,7 +9,7 @@ const validate = values => {
   if (!values.full_name) {
     errors.full_name = 'This is a required field, please provide an answer.';
   }
-  
+
   if (!values.did_you_live_here) {
     errors.did_you_live_here = 'This is a required field, please provide an answer.';
   }
@@ -21,8 +21,8 @@ const validate = values => {
   if (!values.income) {
     errors.income = 'This is a required field, please select all that apply.';
   }
-  
+
   return errors;
-}
+};
 
 export default validate;

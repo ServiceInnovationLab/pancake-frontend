@@ -9,25 +9,25 @@ import '../../styles/Button.css';
 
 class Page1 extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       lng: 'en'
-    }
+    };
   }
 
   handleFieldType(type) {
     switch(type) {
-      case 'radio':
-        return RadioGroup;
-      case 'checkbox':
-        return CheckboxGroup;
-      default:
-        return TextField;
+    case 'radio':
+      return RadioGroup;
+    case 'checkbox':
+      return CheckboxGroup;
+    default:
+      return TextField;
     }
   }
 
   handleLanguageChange(lang) {
-    this.setState({lng: lang})
+    this.setState({lng: lang});
   }
 
   render() {
@@ -37,8 +37,8 @@ class Page1 extends React.Component {
       <div className="container">
 
         <div className="btn-group">
-          <a onClick={()=>{this.handleLanguageChange('en')}} className={this.state.lng === 'en' ? 'btn active' : 'btn'}>English</a>
-          <a onClick={()=>{this.handleLanguageChange('ma')}} className={this.state.lng === 'ma' ? 'btn active' : 'btn'}>Māori</a>
+          <a onClick={()=>{this.handleLanguageChange('en');}} className={this.state.lng === 'en' ? 'btn active' : 'btn'}>English</a>
+          <a onClick={()=>{this.handleLanguageChange('ma');}} className={this.state.lng === 'ma' ? 'btn active' : 'btn'}>Māori</a>
         </div>
 
         <h1>Apply for a Rebate</h1>
@@ -57,7 +57,7 @@ class Page1 extends React.Component {
               id={field.name}
             />
           ))}
-          
+
           <div>
             <button type="submit" className="next">
               Next
@@ -65,7 +65,7 @@ class Page1 extends React.Component {
           </div>
         </form>
       </div>
-    )
+    );
   }
 }
 
