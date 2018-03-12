@@ -63,4 +63,11 @@ $white: #fff;
       padding: 8px 20px;
     }
   }
+
+  .checkbox-radio span {
+    @media (max-width: 320px) {
+      font-size: 15px;
+      padding: 10px 12px;
+    }
+  }
 }
