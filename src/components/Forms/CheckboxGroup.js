@@ -5,12 +5,12 @@ import { Field } from 'redux-form';
 class CheckboxGroup extends React.Component {
 
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       isSuperAnnuation: false,
       isWageOrSalary: false,
       isOther: false
-    }
+    };
   }
   handleObj(obj){
     if(obj === undefined || obj === null) {
@@ -27,17 +27,17 @@ class CheckboxGroup extends React.Component {
   handleChildren(e) {
     let isChecked = e.target.checked;
     switch(e.target.value) {
-      case 'NZ Superannuation':
-        this.setState({isSuperAnnuation: isChecked});
-        break;
-      case 'Wage or salary':
-        this.setState({isWageOrSalary: isChecked});
-        break;
-      case 'Other':
-        this.setState({isOther: isChecked});
-        break;
-      default:
-        null
+    case 'NZ Superannuation':
+      this.setState({isSuperAnnuation: isChecked});
+      break;
+    case 'Wage or salary':
+      this.setState({isWageOrSalary: isChecked});
+      break;
+    case 'Other':
+      this.setState({isOther: isChecked});
+      break;
+    default:
+      null;
     }
   }
 
@@ -60,13 +60,13 @@ class CheckboxGroup extends React.Component {
                   </label>
 
                   {/*Radio Group*/}
-                  {this.state.isSuperAnnuation && item.text === 'NZ Superannuation' && 
+                  {this.state.isSuperAnnuation && item.text === 'NZ Superannuation' &&
                     <div className="radio-group" style={this.state.isSuperAnnuation ? {marginBottom: '40px'} : {}}>
                       <div>
                         <div>
                           <div>
                             {item.options.map((child, child_key) => (
-                              <RadioGroupChildren name="radio_children" value={child} />            
+                              <RadioGroupChildren name="radio_children" value={child} />
                             ))}
                           </div>
                         </div>
@@ -74,13 +74,13 @@ class CheckboxGroup extends React.Component {
                     </div>
                   }
 
-                  {this.state.isWageOrSalary && item.text === 'Wage or salary' && 
+                  {this.state.isWageOrSalary && item.text === 'Wage or salary' &&
                     <SingleTextField placeholder="Enter your total wages" data={this.state.isWageOrSalary} />
                   }
 
-                  {this.state.isOther && item.text === 'Other' && 
+                  {this.state.isOther && item.text === 'Other' &&
                     <TextFieldGroup />
-                  }           
+                  }
 
                 </div>
                 })}

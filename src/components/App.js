@@ -8,19 +8,19 @@ import FirstTimeApplicant3 from './FirstTimeApplicant/Page3';
 
 export class App extends Component {
   constructor(props) {
-    super(props)
-    this.nextPage = this.nextPage.bind(this)
-    this.previousPage = this.previousPage.bind(this)
+    super(props);
+    this.nextPage = this.nextPage.bind(this);
+    this.previousPage = this.previousPage.bind(this);
     this.state = {
       page: 1
-    }
+    };
   }
   nextPage() {
-    this.setState({ page: this.state.page + 1 })
+    this.setState({ page: this.state.page + 1 });
   }
 
   previousPage() {
-    this.setState({ page: this.state.page - 1 })
+    this.setState({ page: this.state.page - 1 });
   }
 
   render() {
@@ -42,7 +42,7 @@ export class App extends Component {
           />
         )}
       </div>
-    )
+    );
   }
 }
 

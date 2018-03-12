@@ -1,106 +1,106 @@
 const firstTimeApplication = [
   {
-    "question": {
-      "en": {
-        "text": "What is your address?"
+    'question': {
+      'en': {
+        'text': 'What is your address?'
       },
-      "ma": {
-        "text": "Ko wai tō wāhi noho?"
+      'ma': {
+        'text': 'Ko wai tō wāhi noho?'
       }
     },
-    "type": "text",
-    "name": "address",
-    "isRequired": true
+    'type': 'text',
+    'name': 'address',
+    'isRequired': true
   },
   {
-    "question": {
-      "en": {
-        "text": "What is your name?"
+    'question': {
+      'en': {
+        'text': 'What is your name?'
       },
-      "ma": {
-        "text": "Ko wai to ingoa?"
+      'ma': {
+        'text': 'Ko wai to ingoa?'
       }
     },
-    "type": "text",
-    "name": "full_name",
-    "isRequired": true
+    'type': 'text',
+    'name': 'full_name',
+    'isRequired': true
   },
   {
-    "question": {
-      "en": {
-        "text": "Did you live here at 1st July?"
+    'question': {
+      'en': {
+        'text': 'Did you live here at 1st July?'
       }
     },
-    "type": "radio",
-    "instructions": {
-      "en": {
-        "text": "Please use the name you use on the property title"
+    'type': 'radio',
+    'instructions': {
+      'en': {
+        'text': 'Please use the name you use on the property title'
       },
-      "ma": {
-        "text": "Please use the name you use on the property title"
+      'ma': {
+        'text': 'Please use the name you use on the property title'
       }
     },
-    "name": "did_you_live_here",
-    "options": {
-      "en": {
-        "text": ['yes', 'no']
+    'name': 'did_you_live_here',
+    'options': {
+      'en': {
+        'text': ['yes', 'no']
       },
-      "ma": {
-        "text": ['āe', 'kāore']
+      'ma': {
+        'text': ['āe', 'kāore']
       }
     },
-    "isRequired": true
+    'isRequired': true
   },
   {
-    "question": {
-      "en": {
-        "text": "Do you have a partner or joint homeowner who lives with you?"
+    'question': {
+      'en': {
+        'text': 'Do you have a partner or joint homeowner who lives with you?'
       },
-      "ma": {
-        "text": "Do you have a partner or joint homeowner who lives with you?"
+      'ma': {
+        'text': 'Do you have a partner or joint homeowner who lives with you?'
       }
     },
-    "type": "radio",
-    "instructions": {
-      "en": {
-        "text": "'Partner' is a person you are married to/in a civil union, or de facto relationship with."
+    'type': 'radio',
+    'instructions': {
+      'en': {
+        'text': '\'Partner\' is a person you are married to/in a civil union, or de facto relationship with.'
       },
-      "ma": {
-        "text": "'Partner' is a person you are married to/in a civil union, or de facto relationship with."
+      'ma': {
+        'text': '\'Partner\' is a person you are married to/in a civil union, or de facto relationship with.'
       }
     },
-    "options": {
-      "en": {
-        "text": ['yes', 'no']
+    'options': {
+      'en': {
+        'text': ['yes', 'no']
       },
-      "ma": {
-        "text": ['āe', 'kāore']
+      'ma': {
+        'text': ['āe', 'kāore']
       }
     },
-    "name": "joint_homeowner",
-    "isRequired": true
+    'name': 'joint_homeowner',
+    'isRequired': true
   },
   {
-    "question": {
-      "en": {
-        "text": "Income"
+    'question': {
+      'en': {
+        'text': 'Income'
       },
-      "ma": {
-        "text": "Income"
+      'ma': {
+        'text': 'Income'
       }
     },
-    "type": "checkbox",
-    "instructions": {
-      "en": {
-        "text": "Select any that you receive."
+    'type': 'checkbox',
+    'instructions': {
+      'en': {
+        'text': 'Select any that you receive.'
       },
-      "ma": {
-        "text": "Select any that you receive."
+      'ma': {
+        'text': 'Select any that you receive.'
       }
     },
-    "options": {
-      "en": {
-        "option": [
+    'options': {
+      'en': {
+        'option': [
           {
             text: 'NZ Superannuation',
             options: ['Single - Living alone', 'Single - Sharing']
@@ -125,8 +125,8 @@ const firstTimeApplication = [
           }
         ]
       },
-      "ma": {
-        "option": [
+      'ma': {
+        'option': [
           {
             text: 'NZ Superannuation',
             options: ['Single - Living alone', 'Single - Sharing']
@@ -152,8 +152,8 @@ const firstTimeApplication = [
         ]
       },
     },
-    "name": "income",
-    "isRequired": true
+    'name': 'income',
+    'isRequired': true
   }
 ];
 

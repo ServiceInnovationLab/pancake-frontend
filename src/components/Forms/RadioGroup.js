@@ -41,6 +41,6 @@ class RadioGroup extends React.Component {
       </fieldset>
     );
   }
-};
+}
 
 export default RadioGroup;
