@@ -41,28 +41,29 @@ class Page1 extends React.Component {
           <a onClick={()=>{this.handleLanguageChange('ma');}} className={this.state.lng === 'ma' ? 'btn active' : 'btn'}>Māori</a>
         </div>
 
-        <h1>Apply for a Rebate</h1>
+        <h1>The Rates Rebate Scheme provides a discount to low-income homeowners on the cost of their rates.</h1>
+        <p>If you have a low income and pay the rates on your home, you could get a rebate or reduction of up to $620.</p>
 
         <form name="wizard" onSubmit={handleSubmit}>
-          {firstTimeApplication.map((field, key) => (
-            <Field
-              key={key}
-              label={field.question}
-              name={field.name}
-              instructions={field.instructions}
-              isRequired={true}
-              component={this.handleFieldType(field.type)}
-              options={field.options && field.options}
-              lang={this.state.lng}
-              id={field.name}
-            />
-          ))}
 
           <div>
+            <h2>First time applicant?</h2>
             <button type="submit" className="next">
-              Next
+              Apply Now
             </button>
+
+            {/* <h2>Received a rebate before?</h2>
+            <button type="submit" className="next">
+              Re-Apply Now
+            </button> */}
           </div>
+
+          <section className="speech-bubble">
+            <h3>What is a Rates Rebate?</h3>
+            <p>
+              Rates rebates are a subsidy that gives you a discount on the rates bill of your residential property. Anyone can receive a rebate for the property they live in, as long as they met the criteria.<br />
+              <a className="external-link"><span>Learn more about Rates rebates.</span></a></p>
+          </section>
         </form>
       </div>
     );

@@ -5,6 +5,7 @@ import '../styles/App.css';
 import FirstTimeApplicant1 from './FirstTimeApplicant/Page1';
 import FirstTimeApplicant2 from './FirstTimeApplicant/Page2';
 import FirstTimeApplicant3 from './FirstTimeApplicant/Page3';
+import Header from './Header';
 
 export class App extends Component {
   constructor(props) {
@@ -28,6 +29,7 @@ export class App extends Component {
     const { page } = this.state;
     return (
       <div>
+        <Header />
         {page === 1 && <FirstTimeApplicant1 onSubmit={this.nextPage} />}
         {page === 2 && (
           <FirstTimeApplicant2
