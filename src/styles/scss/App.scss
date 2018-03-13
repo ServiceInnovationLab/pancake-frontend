@@ -120,10 +120,11 @@ legend {
   color: #6cca7e;
   overflow: auto;
   padding: 0 5%;
+  position: relative;
   img {
     height: 55px;
     position: absolute;
-    top: 50%;
+    top: 25%;
   }
 }
 

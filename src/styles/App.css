@@ -91,11 +91,12 @@ legend {
   background-color: #dafdc5;
   color: #6cca7e;
   overflow: auto;
-  padding: 0 5%; }
+  padding: 0 5%;
+  position: relative; }
   .main-header img {
     height: 55px;
     position: absolute;
-    top: 50%; }
+    top: 25%; }
 
 .heading {
   font-size: 32px;
