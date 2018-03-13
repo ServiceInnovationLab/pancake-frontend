@@ -23,7 +23,7 @@ font-style : normal;
     position: absolute;
     left: -9999px;
   }
-  
+
   label:not(.checkbox-radio) {
     position: relative;
     cursor: pointer;
@@ -46,7 +46,7 @@ font-style : normal;
       left: 0;
       transform: translateY(-50%);
     }
-    
+
     :checked + span::before {
       background-color: $input-bg-color;
       border-color: $input-bg-color;
