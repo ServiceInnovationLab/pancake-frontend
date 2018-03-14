@@ -1,6 +1,5 @@
 import React from 'react';
 import '../../styles/CheckboxGroup.css';
-import { Field } from 'redux-form';
 
 class CheckboxGroup extends React.Component {
 
@@ -37,7 +36,7 @@ class CheckboxGroup extends React.Component {
       this.setState({isOther: isChecked});
       break;
     default:
-      null;
+      this.setState()
     }
   }
 

@@ -8,7 +8,7 @@ export {
 const Header = () => {
   return (
     <header className="main-header">
-      <img src={logo} alt="An vector image of a house" />
+      <img src={logo} alt="A house" />
       <p className="heading">Rates Rebates</p>
     </header>
   );
