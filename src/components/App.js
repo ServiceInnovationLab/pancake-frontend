@@ -2,47 +2,44 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import * as actionCreators from '../actions/index';
 import '../styles/App.css';
-import FirstTimeApplicant1 from './FirstTimeApplicant/Page1';
-import FirstTimeApplicant2 from './FirstTimeApplicant/Page2';
-import FirstTimeApplicant3 from './FirstTimeApplicant/Page3';
-import Header from './Header';
+import '../styles/Button.css';
+// import FirstTimeApplicant1 from './FirstTimeApplicant/Page1';
+// import FirstTimeApplicant2 from './FirstTimeApplicant/Page2';
+// import FirstTimeApplicant3 from './FirstTimeApplicant/Page3';
+// import Header from './Header';
+import {Link} from 'react-router-dom';
 
 export class App extends Component {
   constructor(props) {
     super(props);
-    this.nextPage = this.nextPage.bind(this);
-    this.previousPage = this.previousPage.bind(this);
-    this.state = {
-      page: 1
-    };
-  }
-  nextPage() {
-    this.setState({ page: this.state.page + 1 });
   }
 
-  previousPage() {
-    this.setState({ page: this.state.page - 1 });
+  handleLanguageChange = lang => {
+    this.setState({lng: lang});
   }
 
   render() {
-    const { onSubmit } = this.props;
-    const { page } = this.state;
     return (
       <div>
-        <Header />
-        {page === 1 && <FirstTimeApplicant1 onSubmit={this.nextPage} />}
-        {page === 2 && (
-          <FirstTimeApplicant2
-            previousPage={this.previousPage}
-            onSubmit={this.nextPage}
-          />
-        )}
-        {page === 3 && (
-          <FirstTimeApplicant3
-            previousPage={this.previousPage}
-            onSubmit={onSubmit}
-          />
-        )}
+        <div className="container">
+          <h1>The Rates Rebate Scheme provides a discount to low-income homeowners on the cost of their rates.</h1>
+          <p>If you have a low income and pay the rates on your home, you could get a rebate or reduction of up to $620.</p>
+
+            <div>
+              <h2>First time applicant?</h2>
+              <Link className="btn btn-primary" to={'apply'}>Apply now</Link>
+
+              <h2>Received a rebate before?</h2>
+              <Link className="btn btn-primary" to={'reapply'}>Re-apply now</Link>
+            </div>
+
+            <section className="speech-bubble">
+              <h3>What is a Rates Rebate?</h3>
+              <p>
+                Rates rebates are a subsidy that gives you a discount on the rates bill of your residential property. Anyone can receive a rebate for the property they live in, as long as they met the criteria.<br />
+                <a className="external-link"><span>Learn more about Rates rebates.</span></a></p>
+            </section>
+        </div>
       </div>
     );
   }
