@@ -50,7 +50,15 @@ const ReapplyFormData = [
         'text': 'What service centre would you like to sign at?'
       }
     },
-    'type': 'radio',
+    'type': 'select',
+    'options': {
+      'en': {
+        'text': ['Mt Maunganui Library', 'Option 2']
+      },
+      'ma': {
+        'text': ['Mt Maunganui Library', 'Option 2']
+      }
+    },
     'instructions': {
       'en': {
         'text': 'This is where you want to have your signature witnessed to finish submitting it.'
@@ -59,15 +67,7 @@ const ReapplyFormData = [
         'text': 'This is where you want to have your signature witnessed to finish submitting it.'
       }
     },
-    'name': 'did_you_live_here',
-    'options': {
-      'en': {
-        'text': ['yes', 'no']
-      },
-      'ma': {
-        'text': ['āe', 'kāore']
-      }
-    },
+    'name': 'service_centre',
     'isRequired': true
   }
 ];
