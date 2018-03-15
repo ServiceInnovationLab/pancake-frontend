@@ -5,6 +5,7 @@ import ReapplyFormData from '../../JSONFormData/ReapplyFormData';
 import TextField from '../Forms/TextField';
 import RadioGroup from '../Forms/RadioGroup';
 import CheckboxGroup from '../Forms/CheckboxGroup';
+import Select from '../Forms/Select';
 
 class Page1 extends React.Component {
 
@@ -32,6 +33,8 @@ class Page1 extends React.Component {
       return RadioGroup;
     case 'checkbox':
       return CheckboxGroup;
+    case 'select':
+      return Select;
     default:
       return TextField;
     }

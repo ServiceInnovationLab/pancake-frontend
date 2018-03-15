@@ -30,7 +30,7 @@ class RadioGroup extends React.Component {
                 return <label key={key}>
                   <input {...this.props.input} type="radio" value={item} />
                   <span>{item}</span>
-                </label>
+                </label>;
               })}
             </div>
             {this.props.meta !== undefined && this.props.meta.touched && this.props.meta.error &&
