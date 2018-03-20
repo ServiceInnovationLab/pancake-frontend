@@ -105,7 +105,7 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => (
   <div>
     <label>{label}</label>
     <div>
-      <input {...input} type={type} placeholder={label} style={{width: '100%', marginBottom: '0'}}/>
+      <input {...input} type={type} placeholder={label} style={{width: '100%', margin: '0'}}/>
       {touched && error && <span>{error}</span>}
     </div>
   </div>
@@ -113,7 +113,8 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => (
 
 const renderOtherIncomes = ({ fields, meta: { touched, error, submitFailed } }) => (
   <ul className="checkbox-list">
-    <li>
+    <li style={{marginBottom: '35px'}}>
+      <h4 style={{marginBottom: '10px'}}>Income #1</h4>
       <Field
         name={`${fields[0]}.firstName`}
         type="text"
@@ -123,7 +124,7 @@ const renderOtherIncomes = ({ fields, meta: { touched, error, submitFailed } }) 
     </li>
     {fields.map((income, index) => (
       <li key={index}>
-        <h4>Income #{index + 2}</h4>
+        <h4 style={{marginBottom: '10px'}}>Income #{index + 2}</h4>
         <Field
           name={`${income}.firstName`}
           type="text"
@@ -135,7 +136,7 @@ const renderOtherIncomes = ({ fields, meta: { touched, error, submitFailed } }) 
           title="Remove"
           onClick={() => fields.remove(index)}
           style={{marginBottom: '35px'}}
-        >Remove Income</button>
+        >Remove</button>
       </li>
     ))}
     <li>
@@ -144,6 +145,7 @@ const renderOtherIncomes = ({ fields, meta: { touched, error, submitFailed } }) 
     </li>
   </ul>
 );
+
 
 const RenderRadios = props => {
   return (
