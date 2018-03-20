@@ -44,13 +44,15 @@
     color: #fff; }
 
 .checkbox-list li {
-  list-style: none; }
-  .checkbox-list li:first-child {
-    margin-bottom: 35px; }
+  list-style: none;
+  margin-bottom: 30px; }
 .checkbox-list label {
   display: none !important; }
 .checkbox-list h4,
 .checkbox-list button {
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  display: inline-block; }
+.checkbox-list h4 {
+  margin-right: 20px; }
 
 /*# sourceMappingURL=CheckboxGroup.css.map */
