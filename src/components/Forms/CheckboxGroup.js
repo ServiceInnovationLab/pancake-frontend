@@ -1,5 +1,7 @@
 import React from 'react';
 import '../../styles/CheckboxGroup.css';
+import {Field, FieldArray} from "redux-form";
+import radioGroup from "../Forms/RadioGroup";
 
 class CheckboxGroup extends React.Component {
 
@@ -58,15 +60,12 @@ class CheckboxGroup extends React.Component {
                     <span>{item.text}</span>
                   </label>
 
-                  {/*Radio Group*/}
                   {this.state.isSuperAnnuation && item.text === 'NZ Superannuation' &&
                     <div className="radio-group" style={this.state.isSuperAnnuation ? {marginBottom: '40px'} : {}}>
                       <div>
                         <div>
                           <div>
-                            {item.options.map((child, child_key) => (
-                              <RadioGroupChildren name="radio_children" value={child} />
-                            ))}
+                            <Field name="super_annuation" component={RenderRadios} />
                           </div>
                         </div>
                       </div>
@@ -74,11 +73,16 @@ class CheckboxGroup extends React.Component {
                   }
 
                   {this.state.isWageOrSalary && item.text === 'Wage or salary' &&
-                    <SingleTextField placeholder="Enter your total wages" data={this.state.isWageOrSalary} />
+                    <Field
+                      name="total_wages"
+                      component={SingleTextField}
+                      data={this.state.isWageOrSalary}
+                      placeholder="Enter your total wages"
+                    />
                   }
 
                   {this.state.isOther && item.text === 'Other' &&
-                    <TextFieldGroup />
+                    <FieldArray name="other_income" component={renderOtherIncomes} />
                   }
 
                 </div>
@@ -91,67 +95,71 @@ class CheckboxGroup extends React.Component {
   }
 };
 
-const SingleTextField = props => {
-  return(
-    <input type="text" placeholder={props.placeholder} style={props.data ? {marginTop: '8px', width: '100%'} : {}} />
-  );
-};
+const renderField = ({ input, label, type, meta: { touched, error } }) => (
+  <div>
+    <label>{label}</label>
+    <div>
+      <input {...input} type={type} placeholder={label} />
+      {touched && error && <span>{error}</span>}
+    </div>
+  </div>
+);
 
-const RadioGroupChildren = props => {
-  return(
-    <label className="checkbox-radio">
-      <input type="radio" name={props.name} value={props.value} />
-      <span>{props.value}</span>
-    </label>
-  );
-};
+const renderOtherIncomes = ({ fields, meta: { touched, error, submitFailed } }) => (
+  <ul className="checkbox-list">
+    <li>
+      <Field
+        name={`${fields[0]}.firstName`}
+        type="text"
+        component={renderField}
+        label="Income #1"
+      />
+    </li>
+    {fields.map((income, index) => (
+      <li key={index}>
+        <h4>Income #{index + 2}</h4>
+        <div style={{float: 'left'}}>
+          <Field
+            name={`${income}.firstName`}
+            type="text"
+            component={renderField}
+            label={`Income #${index + 2}`}
+          />
+        </div>
+        <button
+          type="button"
+          title="Remove"
+          onClick={() => fields.remove(index)}
+        >Remove Income</button>
+      </li>
+    ))}
+    <li>
+      <button type="button" onClick={() => fields.push({})}>+ Add another</button>
+      {(touched || submitFailed) && error && <span>{error}</span>}
+    </li>
+  </ul>
+);
 
-class TextFieldGroup extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = { inputs: ['input-0'] };
-    }
-
-  render() {
-    return(
+const RenderRadios = props => {
+  return (
+    <fieldset className="radio-group">
       <div>
         <div>
-            {this.state.inputs.map((input, i) => {
-              i++;
-
-              let styles = {
-                marginTop: '8px',
-                marginBottom: '8px',
-                width: '100%'
-              };
-
-              return <div>
-                <p>Other income {i}</p>
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Where did this income come from?"
-                    key={input}
-                    style={styles} />
-                </div>
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Enter the total amount"
-                    key={input}
-                    style={styles} />
-                </div>
-              </div>
+          <div>
+            {['yes','no'].map((item, key) => {
+              return <label key={key} className="checkbox-radio">
+                <input {...props.input} type="radio" value={item} />
+                <span>{item}</span>
+              </label>;
             })}
+          </div>
+          {props.meta !== undefined && props.meta.touched && props.meta.error &&
+            <span className="error"><strong>Error: </strong>{props.meta.error}</span>
+          }
         </div>
-        <span className="btn" onClick={() => this.appendInput()}>+ Add another</span>
       </div>
-    );
-  }
+    </fieldset>
+  );
+};
 
-  appendInput() {
-    let newInput = `input-${this.state.inputs.length}`;
-    this.setState({ inputs: this.state.inputs.concat([newInput]) });
-  }
-}
 export default CheckboxGroup;

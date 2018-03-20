@@ -14,7 +14,6 @@ font-style : normal;
     url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular") format("svg");
 }
 
-
 .checkbox-group {
   .radio-group {
     margin: 0;
@@ -63,5 +62,14 @@ font-style : normal;
       opacity: 1;
       color: $white;
     }
+  }
+}
+
+.checkbox-list {
+  li {
+    list-style: none;
+  }
+  label {
+    display: none !important;
   }
 }
