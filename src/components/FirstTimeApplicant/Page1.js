@@ -1,7 +1,7 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field, FieldArray, reduxForm } from 'redux-form';
 import validate from '../../helpers/validate';
-import firstTimeApplication from '../../JSONFormData/FirstTimeAppication';
+import firstTimeApplication from "../../JSONFormData/FirstTimeAppication";
 import TextField from '../Forms/TextField';
 import RadioGroup from '../Forms/RadioGroup';
 import CheckboxGroup from '../Forms/CheckboxGroup';
@@ -42,7 +42,9 @@ class Page1 extends React.Component {
   }
 
   render() {
-    const { handleSubmit } = this.props;
+    
+    const { handleSubmit, pristine, reset, submitting } = this.props;
+
     return(
       <div className="container">
 
@@ -68,16 +70,21 @@ class Page1 extends React.Component {
             />
           ))}
 
+          {/*<FieldArray name="members" component={renderOtherIncomes} />*/}
           <div>
-            <button type="submit" className="btn btn-primary">
-              Submit application
+            <button type="submit" disabled={submitting}>Submit</button>
+            <button type="button" disabled={pristine || submitting} onClick={reset}>
+              Clear Values
             </button>
           </div>
+          
         </form>
       </div>
     )
   }
 };
+
+
 
 export default reduxForm({
   form: 'wizard',

@@ -18,9 +18,9 @@ const validate = values => {
     errors.joint_homeowner = 'This is a required field, please provide an answer.';
   }
 
-  if (!values.income) {
-    errors.income = 'This is a required field, please select all that apply.';
-  }
+  // if (!values.income) {
+  //   errors.income = 'This is a required field, please select all that apply.';
+  // }
 
   return errors;
 };

@@ -43,4 +43,9 @@
     opacity: 1;
     color: #fff; }
 
+.checkbox-list li {
+  list-style: none; }
+.checkbox-list label {
+  display: none !important; }
+
 /*# sourceMappingURL=CheckboxGroup.css.map */
