@@ -45,7 +45,12 @@
 
 .checkbox-list li {
   list-style: none; }
+  .checkbox-list li:first-child {
+    margin-bottom: 35px; }
 .checkbox-list label {
   display: none !important; }
+.checkbox-list h4,
+.checkbox-list button {
+  margin-bottom: 20px; }
 
 /*# sourceMappingURL=CheckboxGroup.css.map */
