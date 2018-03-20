@@ -1,3 +1,11 @@
+## Pancake Web.
+
+Javascript web client to the pancacke server. Presents form to apply for a Rates Rebate. To be used anywhere, but most commonly inside a City Council office.
+
+# Example deployment:
+
+https://github.com/ServiceInnovationLab/pancake-web
+
 ## Deployment
 
 To deploy to github pages, checkout the branch you want to deploy and then run
