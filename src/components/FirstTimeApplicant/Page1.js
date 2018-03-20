@@ -70,12 +70,8 @@ class Page1 extends React.Component {
             />
           ))}
 
-          {/*<FieldArray name="members" component={renderOtherIncomes} />*/}
           <div>
             <button type="submit" disabled={submitting}>Submit</button>
-            <button type="button" disabled={pristine || submitting} onClick={reset}>
-              Clear Values
-            </button>
           </div>
           
         </form>

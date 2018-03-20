@@ -95,11 +95,17 @@ class CheckboxGroup extends React.Component {
   }
 };
 
+const SingleTextField = props => {
+  return(
+    <input type="text" placeholder={props.placeholder} style={props.data ? {marginTop: '8px', width: '100%'} : {}} />
+  );
+};
+
 const renderField = ({ input, label, type, meta: { touched, error } }) => (
   <div>
     <label>{label}</label>
     <div>
-      <input {...input} type={type} placeholder={label} />
+      <input {...input} type={type} placeholder={label} style={{width: '100%', marginBottom: '0'}}/>
       {touched && error && <span>{error}</span>}
     </div>
   </div>
@@ -118,18 +124,17 @@ const renderOtherIncomes = ({ fields, meta: { touched, error, submitFailed } }) 
     {fields.map((income, index) => (
       <li key={index}>
         <h4>Income #{index + 2}</h4>
-        <div style={{float: 'left'}}>
-          <Field
-            name={`${income}.firstName`}
-            type="text"
-            component={renderField}
-            label={`Income #${index + 2}`}
-          />
-        </div>
+        <Field
+          name={`${income}.firstName`}
+          type="text"
+          component={renderField}
+          label={`Income #${index + 2}`}
+        />
         <button
           type="button"
           title="Remove"
           onClick={() => fields.remove(index)}
+          style={{marginBottom: '35px'}}
         >Remove Income</button>
       </li>
     ))}
