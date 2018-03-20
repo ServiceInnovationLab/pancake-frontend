@@ -49,7 +49,8 @@ input {
   position: relative;
   left: -2px;
 
-  &[type=text] {
+  &[type=text],
+  &[type=number] {
     border: 1px solid $input-border-color;
     padding-top: 0;
     padding-bottom: 0;

@@ -105,7 +105,7 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => (
   <div>
     <label>{label}</label>
     <div>
-      <input {...input} type={type} placeholder={label} style={{width: '100%', margin: '0'}}/>
+      <input {...input} type={type} placeholder={label} style={{width: '100%', marginBottom: '10px', marginTop: '0'}}/>
       {touched && error && <span>{error}</span>}
     </div>
   </div>
@@ -116,20 +116,32 @@ const renderOtherIncomes = ({ fields, meta: { touched, error, submitFailed } }) 
     <li style={{marginBottom: '35px'}}>
       <h4 style={{marginBottom: '10px'}}>Income #1</h4>
       <Field
-        name={`${fields[0]}.firstName`}
+        name={`${fields[0]}.income_from`}
         type="text"
         component={renderField}
-        label="Income #1"
+        label={`Where did this income come from?`}
+      />
+      <Field
+        name={`${fields[0]}.total_amount`}
+        type="number"
+        component={renderField}
+        label={`Enter the total amount`}
       />
     </li>
     {fields.map((income, index) => (
       <li key={index}>
-        <h4 style={{marginBottom: '10px'}}>Income #{index + 2}</h4>
+        <h4 style={{marginBottom: '10px'}}>Other income #{index + 2}</h4>
         <Field
-          name={`${income}.firstName`}
+          name={`${income}.income_from`}
           type="text"
           component={renderField}
-          label={`Income #${index + 2}`}
+          label={`Where did this income come from?`}
+        />
+        <Field
+          name={`${income}.total_amount`}
+          type="number"
+          component={renderField}
+          label={`Enter the total amount`}
         />
         <button
           type="button"
