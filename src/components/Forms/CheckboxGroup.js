@@ -131,6 +131,11 @@ const renderOtherIncomes = ({ fields, meta: { touched, error, submitFailed } }) 
     {fields.map((income, index) => (
       <li key={index}>
         <h4>Other income #{index + 2}</h4>
+        <button
+          type="button"
+          title="Remove"
+          onClick={() => fields.remove(index)}
+        >Remove</button>
         <Field
           name={`${income}.income_from`}
           type="text"
@@ -143,11 +148,6 @@ const renderOtherIncomes = ({ fields, meta: { touched, error, submitFailed } }) 
           component={renderField}
           label={`Enter the total amount`}
         />
-        <button
-          type="button"
-          title="Remove"
-          onClick={() => fields.remove(index)}
-        >Remove</button>
       </li>
     ))}
     <li>

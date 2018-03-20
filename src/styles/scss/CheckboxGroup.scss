@@ -66,10 +66,15 @@ font-style : normal;
 }
 
 .checkbox-list {
-  li { list-style: none;
-    &:first-child { margin-bottom: 35px; }
+  li {
+    list-style: none;
+    margin-bottom: 30px;
   }
   label { display: none !important; }
   h4,
-  button { margin-bottom: 20px; }
+  button {
+    margin-bottom: 20px;
+    display: inline-block;
+  }
+  h4 {margin-right: 20px;}
 }
