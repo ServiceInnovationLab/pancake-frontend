@@ -135,7 +135,7 @@ const renderOtherIncomes = ({ fields, meta: { touched, error, submitFailed } }) 
           type="button"
           title="Remove"
           onClick={() => fields.remove(index)}
-          style={{marginBottom: '35px'}}
+          style={{marginBottom: '15px'}}
         >Remove</button>
       </li>
     ))}
