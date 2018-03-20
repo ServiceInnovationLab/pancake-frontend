@@ -113,8 +113,8 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => (
 
 const renderOtherIncomes = ({ fields, meta: { touched, error, submitFailed } }) => (
   <ul className="checkbox-list">
-    <li style={{marginBottom: '35px'}}>
-      <h4 style={{marginBottom: '10px'}}>Income #1</h4>
+    <li>
+      <h4>Income #1</h4>
       <Field
         name={`${fields[0]}.income_from`}
         type="text"
@@ -130,7 +130,7 @@ const renderOtherIncomes = ({ fields, meta: { touched, error, submitFailed } }) 
     </li>
     {fields.map((income, index) => (
       <li key={index}>
-        <h4 style={{marginBottom: '10px'}}>Other income #{index + 2}</h4>
+        <h4>Other income #{index + 2}</h4>
         <Field
           name={`${income}.income_from`}
           type="text"
@@ -147,7 +147,6 @@ const renderOtherIncomes = ({ fields, meta: { touched, error, submitFailed } }) 
           type="button"
           title="Remove"
           onClick={() => fields.remove(index)}
-          style={{marginBottom: '15px'}}
         >Remove</button>
       </li>
     ))}
