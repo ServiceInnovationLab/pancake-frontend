@@ -36,13 +36,13 @@ class Page1 extends React.Component {
       return TextField;
     }
   }
-  
+
   handleLanguageChange = lang => {
     this.setState({lng: lang});
   }
 
   render() {
-    
+
     const { handleSubmit, submitting } = this.props;
 
     return(
@@ -73,7 +73,7 @@ class Page1 extends React.Component {
           <div>
             <button type="submit" disabled={submitting}>Submit</button>
           </div>
-          
+
         </form>
       </div>
     )
