@@ -10,6 +10,7 @@ import reducers from './reducers/index';
 import { HashRouter, Route } from 'react-router-dom';
 import { reducer as formReducer } from 'redux-form';
 import Header from './components/Header';
+import Footer from './components/Footer';
 
 
 const store = createStore(combineReducers({
@@ -24,9 +25,12 @@ class App extends React.Component {
       <HashRouter>
         <div>
           <Header />
-          <Route exact path="/" component={AppCon} />
-          <Route path="/apply" component={FirstTimeApplicant} />
-          <Route exact path="/reapply" component={Reapply} />
+          <main>
+            <Route exact path="/" component={AppCon} />
+            <Route path="/apply" component={FirstTimeApplicant} />
+            <Route exact path="/reapply" component={Reapply} />
+          </main>
+          <Footer />
         </div>
       </HashRouter>
     );

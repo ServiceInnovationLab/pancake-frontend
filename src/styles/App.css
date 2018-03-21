@@ -15,8 +15,26 @@ body {
   margin: 0;
   font-family: 'Fira Sans', sans-serif; }
 
+main {
+  overflow: auto;
+  padding-bottom: 180px; }
+
+#footer {
+  position: relative;
+  margin-top: -140px;
+  height: 180px;
+  clear: both;
+  background-color: #dafdc5; }
+
+body:before {
+  content: "";
+  height: 100%;
+  float: left;
+  width: 0;
+  margin-top: -32767px; }
+
 .container {
-  margin: 5%;
+  margin: 0 5%;
   position: relative; }
 
 form {
@@ -92,7 +110,8 @@ legend {
   color: #6cca7e;
   overflow: auto;
   padding: 0 5%;
-  position: relative; }
+  position: relative;
+  margin-bottom: 20px; }
   .main-header img {
     height: 55px;
     position: absolute;
