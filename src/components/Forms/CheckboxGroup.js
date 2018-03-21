@@ -37,7 +37,7 @@ class CheckboxGroup extends React.Component {
       this.setState({isOther: isChecked});
       break;
     default:
-      this.setState()
+      this.setState();
     }
   }
 
@@ -112,24 +112,9 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => (
 
 const renderOtherIncomes = ({ fields, meta: { touched, error, submitFailed } }) => (
   <ul className="checkbox-list">
-    <li>
-      <h4>Other income #1</h4>
-      <Field
-        name={`${fields[0]}.income_from`}
-        type="text"
-        component={renderField}
-        label={`Where did this income come from?`}
-      />
-      <Field
-        name={`${fields[0]}.total_amount`}
-        type="number"
-        component={renderField}
-        label={`Enter the total amount`}
-      />
-    </li>
     {fields.map((income, index) => (
       <li key={index}>
-        <h4>Other income #{index + 2}</h4>
+        <h4>Other income #{index + 1}</h4>
         <button
           type="button"
           title="Remove"
@@ -150,7 +135,7 @@ const renderOtherIncomes = ({ fields, meta: { touched, error, submitFailed } }) 
       </li>
     ))}
     <li>
-      <button type="button" onClick={() => fields.push({})}>+ Add another</button>
+      <button type="button" onClick={() => fields.push({})}>+ Add Income</button>
       {(touched || submitFailed) && error && <span>{error}</span>}
     </li>
   </ul>
