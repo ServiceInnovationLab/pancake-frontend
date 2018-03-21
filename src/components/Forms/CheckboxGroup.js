@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../styles/CheckboxGroup.css';
-import {Field, FieldArray} from "redux-form";
+import {Field, FieldArray} from 'redux-form';
 
 class CheckboxGroup extends React.Component {
 
