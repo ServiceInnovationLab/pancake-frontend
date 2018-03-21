@@ -1,4 +1,126 @@
+@font-face {
+  font-family: "FontAwesome";
+  font-weight: normal;
+  font-style: normal;
+  src: url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?v=4.3.0");
+  src: url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?#iefix&v=4.3.0") format("embedded-opentype"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff2?v=4.3.0") format("woff2"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff?v=4.3.0") format("woff"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.ttf?v=4.3.0") format("truetype"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular") format("svg"); }
+*, :after, :before {
+  box-sizing: inherit; }
+
+html {
+  box-sizing: border-box; }
+
 body {
-  color: #333; }
+  color: #4f4b46;
+  margin: 0;
+  font-family: 'Fira Sans', sans-serif; }
+
+main {
+  overflow: auto;
+  padding-bottom: 180px; }
+
+#footer {
+  position: relative;
+  margin-top: -140px;
+  height: 180px;
+  clear: both;
+  background-color: #dafdc5; }
+
+body:before {
+  content: "";
+  height: 100%;
+  float: left;
+  width: 0;
+  margin-top: -32767px; }
+
+.container {
+  margin: 0 5%;
+  position: relative; }
+
+form {
+  line-height: 1.5; }
+  form > input {
+    flex: 1 0 auto; }
+
+input {
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 16px;
+  display: inline-block;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  padding: 10px 20px;
+  position: relative;
+  left: -2px; }
+  input[type=text], input[type=number] {
+    border: 1px solid #677a8e;
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: 42px;
+    height: 42px; }
+
+fieldset {
+  margin: 30px 0;
+  border: none;
+  padding: 0; }
+  fieldset > p {
+    font-size: 16px;
+    margin-top: 5px;
+    font-weight: 400; }
+
+legend {
+  font-size: 18px;
+  font-weight: 500;
+  padding: 0;
+  font-weight: 500; }
+
+.aria-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px; }
+
+.speech-bubble {
+  background-color: #eee;
+  padding: 10px;
+  box-sizing: inherit; }
+
+.external-link {
+  font-family: 'FontAwesome';
+  position: relative; }
+  .external-link::after {
+    font-size: 16px;
+    content: "\f08e";
+    position: absolute;
+    right: -30px;
+    top: 60%;
+    transform: translateY(-50%);
+    opacity: 1;
+    color: #b2b2b2; }
+  .external-link span {
+    font-family: 'Fira Sans', sans-serif; }
+
+.main-header {
+  background-color: #dafdc5;
+  color: #6cca7e;
+  overflow: auto;
+  padding: 0 5%;
+  position: relative;
+  margin-bottom: 20px; }
+  .main-header img {
+    height: 55px;
+    position: absolute;
+    top: 25%; }
+
+.heading {
+  font-size: 32px;
+  font-weight: 800;
+  display: inline-block;
+  margin-left: 80px; }
 
 /*# sourceMappingURL=App.css.map */

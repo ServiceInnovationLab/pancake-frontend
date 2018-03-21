@@ -1,0 +1,58 @@
+@font-face {
+  font-family: "FontAwesome";
+  font-weight: normal;
+  font-style: normal;
+  src: url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?v=4.3.0");
+  src: url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?#iefix&v=4.3.0") format("embedded-opentype"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff2?v=4.3.0") format("woff2"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff?v=4.3.0") format("woff"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.ttf?v=4.3.0") format("truetype"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular") format("svg"); }
+.checkbox-group .radio-group {
+  margin: 0; }
+.checkbox-group input[type=checkbox] {
+  position: absolute;
+  left: -9999px; }
+.checkbox-group label:not(.checkbox-radio) {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding-left: 52px;
+  margin-bottom: 15px;
+  min-height: 40px;
+  font-size: 16px; }
+  .checkbox-group label:not(.checkbox-radio) span::before {
+    content: "";
+    border: 1px solid #677a8e;
+    background: transparent;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%); }
+  .checkbox-group label:not(.checkbox-radio) :checked + span::before {
+    background-color: #677a8e;
+    border-color: #677a8e; }
+  .checkbox-group label:not(.checkbox-radio) :checked + span::after {
+    font-family: 'FontAwesome';
+    font-size: 25px;
+    content: "\f00c";
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 1;
+    color: #fff; }
+
+.checkbox-list li {
+  list-style: none;
+  margin-bottom: 30px; }
+.checkbox-list label {
+  display: none !important; }
+.checkbox-list h4,
+.checkbox-list button {
+  margin-bottom: 20px;
+  display: inline-block; }
+.checkbox-list h4 {
+  margin-right: 20px; }
+
+/*# sourceMappingURL=CheckboxGroup.css.map */

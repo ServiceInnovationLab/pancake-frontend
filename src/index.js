@@ -1,22 +1,36 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './styles/index.css';
 import AppCon from './container/app-container';
-import { createStore, applyMiddleware } from 'redux';
+import FirstTimeApplicant from './components/FirstTimeApplicant/Landing';
+import Reapply from './components/Reapply/Page1';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import reducers from './reducers/index';
 import { HashRouter, Route } from 'react-router-dom';
+import { reducer as formReducer } from 'redux-form';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
-const store = createStore(reducers, applyMiddleware(thunk));
+
+const store = createStore(combineReducers({
+  reducers,
+  form: formReducer
+// }), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+}), applyMiddleware(thunk));
 
 class App extends React.Component {
   render(){
     return (
       <HashRouter>
         <div>
-          <h1>Project Boilerplate</h1>
-          <Route exact path="/" component={AppCon} />
+          <Header />
+          <main>
+            <Route exact path="/" component={AppCon} />
+            <Route path="/apply" component={FirstTimeApplicant} />
+            <Route exact path="/reapply" component={Reapply} />
+          </main>
+          <Footer />
         </div>
       </HashRouter>
     );
@@ -24,3 +38,5 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
+
+// page 1 (App - has links to First time Applicant and ReApply pages)
