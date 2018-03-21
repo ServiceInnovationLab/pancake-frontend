@@ -1,7 +1,6 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { reduxForm } from 'redux-form';
 import validate from '../../helpers/validate';
-import firstTimeApplication from '../../JSONFormData/FirstTimeAppication';
 import TextField from '../Forms/TextField';
 import RadioGroup from '../Forms/RadioGroup';
 import CheckboxGroup from '../Forms/CheckboxGroup';
@@ -42,7 +41,6 @@ class Page2 extends React.Component {
   }
 
   render() {
-    const { handleSubmit } = this.props;
     return(
       <div className="container">
 
@@ -62,7 +60,7 @@ class Page2 extends React.Component {
         <p>Once you have signed the form, your local rates team will process your application and be in touch to let you know if your application was succesful.</p>
         <p>Your application has been sent to the email address you gave us, and you can download it here too</p>
 
-        <a href="#">Download my application</a>
+        <a href="download">Download my application</a>
 
         <h2>If you can't make it to the service centre</h2>
 

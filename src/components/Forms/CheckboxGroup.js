@@ -1,7 +1,6 @@
 import React from 'react';
 import '../../styles/CheckboxGroup.css';
 import {Field, FieldArray} from "redux-form";
-import radioGroup from "../Forms/RadioGroup";
 
 class CheckboxGroup extends React.Component {
 
@@ -54,8 +53,8 @@ class CheckboxGroup extends React.Component {
           <div>
             <div>
               {this.props.options && this.handleObj(this.props.options).option.map((item, key) => {
-                return <div>
-                  <label key={key}>
+                return <div key={key}>
+                  <label>
                     <input {...this.props.input} type="checkbox" value={item.text} onChange={e => {this.handleChildren(e)}} />
                     <span>{item.text}</span>
                   </label>
@@ -114,7 +113,7 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => (
 const renderOtherIncomes = ({ fields, meta: { touched, error, submitFailed } }) => (
   <ul className="checkbox-list">
     <li>
-      <h4>Income #1</h4>
+      <h4>Other income #1</h4>
       <Field
         name={`${fields[0]}.income_from`}
         type="text"

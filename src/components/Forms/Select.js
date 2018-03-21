@@ -23,10 +23,12 @@ class Select extends React.Component {
             {this.props.isRequired && <span className="aria-hidden">(required)</span>}
           </legend>
           {this.props.instructions && <p>{this.handleObj(this.props.instructions).text}</p>}
-          <select>
-            <option>-- Select --</option>
-            {this.handleObj(this.props.options).text.map((item, key) => <option key={key}>{item}</option>)}
-          </select>
+          <div className="select-container">
+            <select {...this.props.input}>
+              <option>-- Select --</option>
+              {this.handleObj(this.props.options).text.map((item, key) => <option key={key} value={item}>{item}</option>)}
+            </select>
+          </div>
         </fieldset>
       </div>
     );

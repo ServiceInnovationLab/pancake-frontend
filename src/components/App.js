@@ -3,16 +3,9 @@ import {connect} from 'react-redux';
 import * as actionCreators from '../actions/index';
 import '../styles/App.css';
 import '../styles/Button.css';
-// import FirstTimeApplicant1 from './FirstTimeApplicant/Page1';
-// import FirstTimeApplicant2 from './FirstTimeApplicant/Page2';
-// import FirstTimeApplicant3 from './FirstTimeApplicant/Page3';
-// import Header from './Header';
 import {Link} from 'react-router-dom';
 
 export class App extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   handleLanguageChange = lang => {
     this.setState({lng: lang});

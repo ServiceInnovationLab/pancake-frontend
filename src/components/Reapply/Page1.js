@@ -6,6 +6,7 @@ import TextField from '../Forms/TextField';
 import RadioGroup from '../Forms/RadioGroup';
 import CheckboxGroup from '../Forms/CheckboxGroup';
 import Select from '../Forms/Select';
+import '../../styles/Select.css';
 
 class Page1 extends React.Component {
 
@@ -56,7 +57,7 @@ class Page1 extends React.Component {
 
         <h1>Re-apply for a Rebate</h1>
 
-        <form name="wizard" onSubmit={handleSubmit}>
+        <form name="wizard-reapply" onSubmit={handleSubmit((values) => console.log(values))}>
           {ReapplyFormData.map((field, key) => (
             <Field
               key={key}
@@ -70,9 +71,11 @@ class Page1 extends React.Component {
               id={field.name}
             />
           ))}
-
+          <Field
+            name="isUnableToVisit"
+            component={checkBox}
+          />
           <div>
-
             <button type="submit" className="btn-primary">
               Send application
             </button>
@@ -83,8 +86,27 @@ class Page1 extends React.Component {
   }
 };
 
+const checkBox = props => {
+  return(
+    <fieldset className="checkbox-group">
+      <div>
+        <div>
+          <div>
+            <div>
+              <label>
+                <input type="checkbox" {...props.input} />
+                <span>I can't make it to the service centre and want to get my<br/>signature witnessed by a Justice of Peace somewhere else.</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  );
+}
+
 export default reduxForm({
-  form: 'wizard',
+  form: 'wizard-reapply',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
   validate
