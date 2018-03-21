@@ -51,6 +51,7 @@ const ReapplyFormData = [
       }
     },
     'type': 'select',
+    'name': 'service_center',
     'options': {
       'en': {
         'text': ['Mt Maunganui Library', 'Option 2']
@@ -67,7 +68,6 @@ const ReapplyFormData = [
         'text': 'This is where you want to have your signature witnessed to finish submitting it.'
       }
     },
-    'name': 'service_centre',
     'isRequired': true
   }
 ];

@@ -1,4 +1,8 @@
-class Landing extends Component {
+import React from 'react'
+import Page1 from './Page1';
+import Page2 from './Page2';
+
+class Landing extends React.Component {
   constructor(props) {
     super(props)
     this.nextPage = this.nextPage.bind(this)
@@ -24,13 +28,7 @@ class Landing extends Component {
         {page === 2 && (
           <Page2
             previousPage={this.previousPage}
-            onSubmit={this.nextPage}
-          />
-        )}
-        {page === 3 && (
-          <Page3
-            previousPage={this.previousPage}
-            onSubmit={onSubmit}
+            onSubmit={this.onSubmit}
           />
         )}
       </div>
