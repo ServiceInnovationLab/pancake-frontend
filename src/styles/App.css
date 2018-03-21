@@ -53,7 +53,7 @@ input {
   padding: 10px 20px;
   position: relative;
   left: -2px; }
-  input[type=text], input[type=number] {
+  input[type=text], input[type=number], input[type=search] {
     border: 1px solid #677a8e;
     padding-top: 0;
     padding-bottom: 0;

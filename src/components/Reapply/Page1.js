@@ -7,6 +7,7 @@ import RadioGroup from '../Forms/RadioGroup';
 import CheckboxGroup from '../Forms/CheckboxGroup';
 import Select from '../Forms/Select';
 import '../../styles/Select.css';
+import AddressFinder from '../Forms/AddressFinder';
 
 class Page1 extends React.Component {
 
@@ -49,7 +50,6 @@ class Page1 extends React.Component {
     const { handleSubmit } = this.props;
     return(
       <div className="container">
-
         <div className="btn-group">
           <a onClick={()=>{this.handleLanguageChange('en');}} className={this.state.lng === 'en' ? 'btn active' : 'btn'}>English</a>
           <a onClick={()=>{this.handleLanguageChange('ma');}} className={this.state.lng === 'ma' ? 'btn active' : 'btn'}>Māori</a>
@@ -58,6 +58,16 @@ class Page1 extends React.Component {
         <h1>Re-apply for a Rebate</h1>
 
         <form name="wizard-reapply" onSubmit={handleSubmit((values) => console.log(values))}>
+          <Field
+            data={this.props}
+            component={AddressFinder}
+            type="search"
+            name="address"
+            placeholder="Enter a Location"
+            className="address-finder-input"
+            id="address_field"
+            isRequired={true}
+          />
           {ReapplyFormData.map((field, key) => (
             <Field
               key={key}

@@ -5,6 +5,7 @@ import firstTimeApplication from "../../JSONFormData/FirstTimeApplication";
 import TextField from '../Forms/TextField';
 import RadioGroup from '../Forms/RadioGroup';
 import CheckboxGroup from '../Forms/CheckboxGroup';
+import AddressFinder from '../Forms/AddressFinder';
 
 class Page1 extends React.Component {
 
@@ -56,6 +57,16 @@ class Page1 extends React.Component {
         <h1>Apply for a Rebate</h1>
 
         <form name="wizard" onSubmit={handleSubmit((values) => console.log(values))}>
+          <Field
+            data={this.props}
+            component={AddressFinder}
+            type="search"
+            name="address"
+            placeholder="Enter a Location"
+            className="address-finder-input"
+            id="address_field"
+            isRequired={true}
+          />
           {firstTimeApplication.map((field, key) => (
             <Field
               key={key}
