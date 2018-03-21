@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import validate from '../../helpers/validate';
-import firstTimeApplication from "../../JSONFormData/FirstTimeAppication";
+import firstTimeApplication from "../../JSONFormData/FirstTimeApplication";
 import TextField from '../Forms/TextField';
 import RadioGroup from '../Forms/RadioGroup';
 import CheckboxGroup from '../Forms/CheckboxGroup';
