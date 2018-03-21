@@ -2,19 +2,6 @@ const ReapplyFormData = [
   {
     'question': {
       'en': {
-        'text': 'What is your address?'
-      },
-      'ma': {
-        'text': 'Ko wai tō wāhi noho?'
-      }
-    },
-    'type': 'text',
-    'name': 'address',
-    'isRequired': true
-  },
-  {
-    'question': {
-      'en': {
         'text': 'Has your situation changed since you last applied?'
       },
       'ma': {
@@ -51,7 +38,7 @@ const ReapplyFormData = [
       }
     },
     'type': 'select',
-    'name': 'service_center',
+    'name': 'chosen_service_centre',
     'options': {
       'en': {
         'text': ['Mt Maunganui Library', 'Option 2']

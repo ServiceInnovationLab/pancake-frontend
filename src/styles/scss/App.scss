@@ -71,7 +71,8 @@ input {
   left: -2px;
 
   &[type=text],
-  &[type=number] {
+  &[type=number],
+  &[type=search] {
     border: 1px solid $input-border-color;
     padding-top: 0;
     padding-bottom: 0;
