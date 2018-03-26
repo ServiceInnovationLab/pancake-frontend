@@ -129,13 +129,12 @@ import { scroller } from 'react-scroll';
 let SelectingFormValuesForm = props => {
   const {
     hasSuperAnnuationValue,
-    hasWageOrSalaryValue, 
+    hasWageOrSalaryValue,
     hasOtherValue,
     handleSubmit,
-    pristine,
     submitting
   } = props;
-  console.log(props)
+  // console.log(props)
   return (
     <form className="container" onSubmit={handleSubmit(values => console.log(values))}>
 
@@ -186,7 +185,7 @@ let SelectingFormValuesForm = props => {
         hasValue={hasSuperAnnuationValue}
         options={['Single - Living alone', 'Single - Sharing']}
       />
-      
+
       <Field
         name="hasJobSeekerBenefitChecked"
         component={RenderCheckbox}
@@ -243,8 +242,8 @@ let SelectingFormValuesForm = props => {
       </div>
 
     </form>
-  )
-}
+  );
+};
 
 const RenderTextField = fields => {
   return <div className="input-group">
@@ -259,7 +258,7 @@ const RenderTextField = fields => {
         <span className="error"><strong>Error: </strong>{fields.meta.error}</span>
       }
     </div>
-  </div>
+  </div>;
 };
 
 const RenderRadio = fields => {
@@ -285,7 +284,7 @@ const RenderRadio = fields => {
     {fields.meta !== undefined && fields.meta.touched && fields.meta.error &&
       <span className="error"><strong>Error: </strong>{fields.meta.error}</span>
     }
-  </fieldset>
+  </fieldset>;
 };
 
 
@@ -302,10 +301,10 @@ const RenderCheckbox = props => {
           isRequired={true}
           options={props.options}
           component={RenderRadioCheckbox}
-          />
+        />
       </div>
     )}
-    {props.hasValue && props.hasTextField && 
+    {props.hasValue && props.hasTextField &&
       <Field
         name={props.nestedFieldName}
         isRequired={true}
@@ -315,7 +314,7 @@ const RenderCheckbox = props => {
     {props.hasValue && props.hasChildren &&
       <FieldArray name="otherIncome" component={renderOtherIncome} />
     }
-  </fieldset>
+  </fieldset>;
 };
 
 const RenderRadioCheckbox = fields => {
@@ -336,7 +335,7 @@ const RenderRadioCheckbox = fields => {
     {fields.meta !== undefined && fields.meta.touched && fields.meta.error &&
       <span className="error"><strong>Error: </strong>{fields.meta.error}</span>
     }
-  </div>
+  </div>;
 };
 
 const RenderRadioTextField = fields => {
@@ -348,12 +347,12 @@ const RenderRadioTextField = fields => {
         type="number"
         style={{width: '100%', margin: '0'}}
       />
-        
+
       {fields.meta !== undefined && fields.meta.touched && fields.meta.error &&
         <span className="error"><strong>Error: </strong>{fields.meta.error}</span>
       }
     </div>
-  </div>
+  </div>;
 };
 
 
@@ -434,14 +433,14 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => (
       </div>
     </label>
   </div>
-)
+);
 
-const renderOtherIncome = ({ fields, meta: { error, submitFailed, valid } }) => (
-  
+const renderOtherIncome = ({ fields, meta: { error, submitFailed } }) => (
+
   <ul style={{listStyle: 'none', paddingLeft: '20px'}}>
     {fields.map((income, index) => (
       <li key={index} style={{marginBottom: '45px'}}>
-        
+
         <h4>Other income #{index + 1} </h4>
         <button
           type="button"
@@ -471,6 +470,6 @@ const renderOtherIncome = ({ fields, meta: { error, submitFailed, valid } }) => 
       {submitFailed && error && <span>ERRRRROOOOORRRRRR</span>}
     </li>
   </ul>
-)
+);
 
 export default SelectingFormValuesForm;
