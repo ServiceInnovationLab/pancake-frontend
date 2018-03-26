@@ -4,12 +4,16 @@
   font-style: normal;
   src: url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?v=4.3.0");
   src: url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?#iefix&v=4.3.0") format("embedded-opentype"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff2?v=4.3.0") format("woff2"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff?v=4.3.0") format("woff"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.ttf?v=4.3.0") format("truetype"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular") format("svg"); }
+.checkbox-group h4 {
+  display: inline-block;
+  margin-right: 15px;
+  vertical-align: sub; }
 .checkbox-group .radio-group {
   margin: 0; }
 .checkbox-group input[type=checkbox] {
   position: absolute;
   left: -9999px; }
-.checkbox-group label:not(.checkbox-radio) {
+.checkbox-group > label:not(.checkbox-radio) {
   position: relative;
   cursor: pointer;
   display: flex;
@@ -17,27 +21,38 @@
   padding-left: 52px;
   margin-bottom: 15px;
   min-height: 40px;
-  font-size: 16px; }
-  .checkbox-group label:not(.checkbox-radio) span::before {
+  font-size: 16px;
+  background-color: #efefef;
+  padding: 13px;
+  border-radius: 21px; }
+  .checkbox-group > label:not(.checkbox-radio):hover {
+    background-color: #e5e5e5; }
+  @media (min-width: 768px) {
+    .checkbox-group > label:not(.checkbox-radio) {
+      width: 366px; } }
+  .checkbox-group > label:not(.checkbox-radio) span {
+    margin-left: 40px;
+    font-weight: 500; }
+  .checkbox-group > label:not(.checkbox-radio) span::before {
     content: "";
     border: 1px solid #677a8e;
-    background: transparent;
-    width: 40px;
-    height: 40px;
-    border-radius: 5px;
+    background: #677a8e;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
     position: absolute;
     top: 50%;
-    left: 0;
+    left: 10px;
     transform: translateY(-50%); }
-  .checkbox-group label:not(.checkbox-radio) :checked + span::before {
+  .checkbox-group > label:not(.checkbox-radio) :checked + span::before {
     background-color: #677a8e;
     border-color: #677a8e; }
-  .checkbox-group label:not(.checkbox-radio) :checked + span::after {
+  .checkbox-group > label:not(.checkbox-radio) :checked + span::after {
     font-family: 'FontAwesome';
-    font-size: 25px;
+    font-size: 21px;
     content: "\f00c";
     position: absolute;
-    left: 8px;
+    left: 15px;
     top: 50%;
     transform: translateY(-50%);
     opacity: 1;

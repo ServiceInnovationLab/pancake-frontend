@@ -2,6 +2,19 @@ const firstTimeApplication = [
   {
     'question': {
       'en': {
+        'text': 'What is your address?'
+      },
+      'ma': {
+        'text': 'Ko wai tō wāhi noho?'
+      }
+    },
+    'type': 'text',
+    'name': 'address',
+    'isRequired': true
+  },
+  {
+    'question': {
+      'en': {
         'text': 'What is your name?'
       },
       'ma': {

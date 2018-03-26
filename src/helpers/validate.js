@@ -2,26 +2,35 @@ const validate = values => {
 
   const errors = {};
 
+
   if (!values.address) {
-    errors.address = 'This is a required field, please provide an answer.';
+    errors.address = 'This is a required field, please enter your address.';
   }
 
-  if (!values.full_name) {
-    errors.full_name = 'This is a required field, please provide an answer.';
+  if (!values.fullName) {
+    errors.fullName = 'This is a required field, please enter your full name.';
   }
 
-  if (!values.did_you_live_here) {
-    errors.did_you_live_here = 'This is a required field, please provide an answer.';
+  if (!values.hasLivedHere) {
+    errors.hasLivedHere = 'This is a required field, please provide an answer.';
   }
 
-  if (!values.joint_homeowner) {
-    errors.joint_homeowner = 'This is a required field, please provide an answer.';
+  if (!values.isJointOwner) {
+    errors.isJointOwner = 'This is a required field, please select one.';
+  }
+
+  if (!values.hasSuperAnnuationNestedValue) {
+    errors.hasSuperAnnuationNestedValue  = 'This is a required field, please select one.';
+  }
+
+  if (!values.hasWageOrSalaryNestedValue) {
+    errors.hasWageOrSalaryNestedValue  = 'This is a required field, please provide an answer.';
   }
 
   // if (!values.income) {
   //   errors.income = 'This is a required field, please select all that apply.';
   // }
-
+  console.log(errors)
   return errors;
 };
 

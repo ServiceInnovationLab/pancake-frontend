@@ -8,8 +8,10 @@ export {
 const Header = () => {
   return (
     <header className="main-header">
-      <img src={logo} alt="A house" />
-      <p className="heading">Rates Rebates</p>
+      <div className="container">
+        <img src={logo} alt="A house" />
+        <p className="heading">Rates Rebates</p>
+      </div>
     </header>
   );
 };
