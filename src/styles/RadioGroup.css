@@ -8,7 +8,7 @@
     justify-content: center;
     flex-flow: column;
     position: relative;
-    margin-top: .5em;
+    margin-bottom: .8em;
     box-sizing: inherit; }
   .radio-group label {
     display: inline-block;
@@ -46,6 +46,23 @@
   @media (max-width: 320px) {
     .radio-group .checkbox-radio span {
       font-size: 15px;
-      padding: 10px 12px; } }
+      padding: 12px 9px; } }
+  @media (max-width: 375px) {
+    .radio-group .checkbox-radio span {
+      font-size: 16px;
+      padding: 12px 5px; } }
+  @media (max-width: 425px) {
+    .radio-group .checkbox-radio span {
+      font-size: 16px;
+      padding: 12px 17px; } }
+
+@media (max-width: 375px) {
+  .checkbox-group ul {
+    padding-left: 0; } }
+@media (min-width: 376px) {
+  .checkbox-group ul {
+    padding-left: 20px; } }
+.checkbox-group ul input {
+  margin-top: 0; }
 
 /*# sourceMappingURL=RadioGroup.css.map */

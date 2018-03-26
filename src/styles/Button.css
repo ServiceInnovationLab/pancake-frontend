@@ -31,10 +31,18 @@ button {
   .btn-primary:hover {
     background: #68bd78; }
 
+.btn-disabled {
+  background: #F1F1F1;
+  border-color: #F1F1F1;
+  color: #b9b9b9; }
+
 .btn-sm {
   min-width: auto; }
 
 .btn-group {
   text-align: right; }
+
+.btn-danger {
+  background: red; }
 
 /*# sourceMappingURL=Button.css.map */
