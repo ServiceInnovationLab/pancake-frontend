@@ -1,9 +1,6 @@
 import React from 'react';
 import { reduxForm } from 'redux-form';
 import validate from '../../helpers/validate';
-import TextField from '../Forms/TextField';
-import RadioGroup from '../Forms/RadioGroup';
-import CheckboxGroup from '../Forms/CheckboxGroup';
 
 class Page2 extends React.Component {
 
@@ -23,17 +20,6 @@ class Page2 extends React.Component {
 
   previousPage = () => {
     this.setState({ page: this.state.page - 1 });
-  }
-
-  handleFieldType = type => {
-    switch(type) {
-    case 'radio':
-      return RadioGroup;
-    case 'checkbox':
-      return CheckboxGroup;
-    default:
-      return TextField;
-    }
   }
   
   handleLanguageChange = lang => {
@@ -74,7 +60,6 @@ class Page2 extends React.Component {
           <dd>Mon-Fri 9am-5pm<br />Saturday 9:30am-4pm<br />Sunday Closed</dd>
           <dt>Phone</dt>
           <dd>07-577 7177</dd>
-
         </dl>
       </div>
     )
