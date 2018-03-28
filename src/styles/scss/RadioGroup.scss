@@ -65,29 +65,15 @@ $white: #fff;
   }
 
   .checkbox-radio span {
-    @media (max-width: 320px) {
-      font-size: 15px;
-      padding: 12px 9px;
-    }
-    @media (max-width: 375px) {
-      font-size: 16px;
-      padding: 12px 5px;
-    }
-    @media (max-width: 425px) {
+    font-size: 15px;
+    padding: 12px 9px;
+    @media (min-width: 375px) {
       font-size: 16px;
       padding: 12px 17px;
     }
-  }
-}
-
-.checkbox-group ul {
-  @media (max-width: 375px) {
-    padding-left: 0;
-  }
-  @media (min-width: 376px) {
-    padding-left: 20px;
-  }
-  input {
-    margin-top: 0;
+    @media (min-width: 425px) {
+      font-size: 16px;
+      padding: 12px 29px;
+    }
   }
 }

@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import AppCon from './container/app-container';
 import FirstTimeApplicant from './components/FirstTimeApplicant/Landing';
-import Reapply from './components/Reapply/Page1';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
@@ -16,8 +15,8 @@ import Footer from './components/Footer';
 const store = createStore(combineReducers({
   reducers,
   form: formReducer
-}), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-// }), applyMiddleware(thunk));
+// }), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+}), applyMiddleware(thunk));
 
 class App extends React.Component {
   render(){
@@ -28,7 +27,6 @@ class App extends React.Component {
           <main>
             <Route exact path="/" component={AppCon} />
             <Route path="/apply" component={FirstTimeApplicant} />
-            <Route exact path="/reapply" component={Reapply} />
           </main>
           <Footer />
         </div>

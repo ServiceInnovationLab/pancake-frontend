@@ -21,9 +21,6 @@ export class App extends Component {
             <div>
               <h2>First time applicant?</h2>
               <Link className="btn btn-primary" to={'apply'}>Apply now</Link>
-
-              <h2>Received a rebate before?</h2>
-              <Link className="btn btn-primary" to={'reapply'}>Re-apply now</Link>
             </div>
 
             <section className="speech-bubble">

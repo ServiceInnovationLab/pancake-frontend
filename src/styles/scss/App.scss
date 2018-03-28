@@ -34,7 +34,8 @@ main {
   margin-top: -140px;
   height: 180px;
   clear: both;
-  background-color: #dafdc5;
+  background-color: #000;
+  line-height: 180px;
 }
 
 body:before {
@@ -68,7 +69,7 @@ input {
   font-family: 'Fira Sans', sans-serif;
   font-size: 16px;
   display: inline-block;
-  margin-top: 20px;
+  margin-top: 10px;
   margin-bottom: 30px;
   border: 2px solid transparent;
   border-radius: 5px;
@@ -172,6 +173,8 @@ legend {
     position: absolute;
     top: 25%;
   }
+  a { color: #6cca7e; }
+  p { margin-top: 40px; }
 }
 
 .heading {
