@@ -6,14 +6,41 @@ const firstTimeApplication = [
   {
     'label': {
       'en': {
-        'text': 'What is your name?'
+        'text': 'What is your full name?'
       },
       'mi': {
         'text': 'Ko wai tō ingoa?'
       }
     },
+    'instructions': {
+      'en': {
+        'text': 'Your name must be on the title for this property on the Rating Information Database (RID) at your local council.'
+      },
+      'mi': {
+        'text': 'Your name must be on the title for this property on the Rating Information Database (RID) at your local council.'
+      }
+    },
     'isRequired': true,
-    'component': RenderTextField
+    'component': RenderTextField,
+    'hasExtraInfo': true,
+    'extraInfo': {
+      'label': {
+        'en': {
+          'text': 'What if my name isn’t on the RID?'
+        },
+        'mi': {
+          'text': 'What if my name isn’t on the RID?'
+        }
+      },
+      'content': {
+        'en': {
+          'text': 'If your name isn’t on the RID because you are a retirement village resident or an owner-occupiers you will need to fill in an additional declaration form.'
+        },
+        'mi': {
+          'text': 'If your name isn’t on the RID because you are a retirement village resident or an owner-occupiers you will need to fill in an additional declaration form.'
+        }
+      }
+    }
   },
   {
     'label': {

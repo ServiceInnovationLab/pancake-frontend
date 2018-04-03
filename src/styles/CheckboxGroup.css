@@ -11,9 +11,6 @@
   margin-bottom: 0; }
 .checkbox-group .radio-group {
   margin: 0; }
-.checkbox-group input[type=checkbox] {
-  position: absolute;
-  left: -9999px; }
 .checkbox-group > label:not(.checkbox-radio) {
   position: relative;
   cursor: pointer;
@@ -58,6 +55,70 @@
     transform: translateY(-50%);
     opacity: 1;
     color: #fff; }
+
+.checkbox-square .radio-group {
+  margin: 0; }
+.checkbox-square input[type=checkbox] {
+  position: absolute;
+  left: -9999px; }
+.checkbox-square > label:not(.checkbox-radio) {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding-left: 52px;
+  margin-bottom: 15px;
+  min-height: 40px;
+  font-size: 16px;
+  padding: 13px;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000; }
+  .checkbox-square > label:not(.checkbox-radio) span {
+    margin-left: 40px;
+    font-weight: 500; }
+  .checkbox-square > label:not(.checkbox-radio) :not(:checked) + span::after {
+    font-family: 'FontAwesome';
+    font-size: 21px;
+    content: "\f067";
+    position: absolute;
+    left: 17px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 1;
+    color: #000; }
+  .checkbox-square > label:not(.checkbox-radio) span::before {
+    content: "";
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%); }
+  .checkbox-square > label:not(.checkbox-radio) :checked + span::before {
+    font-family: 'FontAwesome';
+    font-size: 21px;
+    content: "\f068";
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 1;
+    color: #000; }
+  .checkbox-square > label:not(.checkbox-radio) :checked + span::after {
+    font-family: 'FontAwesome';
+    font-size: 21px;
+    content: "\f068";
+    position: absolute;
+    left: 17px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 1;
+    color: #000; }
+
+.checkbox-group input[type=checkbox],
+.checkbox-square input[type=checkbox] {
+  position: absolute;
+  left: -9999px; }
 
 .checkbox-list li {
   list-style: none;

@@ -5,11 +5,13 @@ import validate from '../../helpers/validate';
 import { scrollToFirstError } from '../../components/Forms/FormScroll';
 import LanguageToggle from '../../components/Forms/LanguageToggle';
 import { underscorize, camelCaser } from '../../helpers/strings';
+// import { RenderCheckbox } from '../Forms/RenderCheckbox';
 import '../../styles/TextField.css';
 import '../../styles/RadioGroup.css';
 import '../../styles/CheckboxGroup.css';
 import '../../styles/FormValidation.css';
 import firstTimeApplication from '../../JSONFormData/FirstTimeApplication';
+import knownOffence from '../../JSONFormData/KnownOffenceData';
 
 class SelectingFormValuesForm extends React.Component {
   constructor(props) {
@@ -34,12 +36,54 @@ class SelectingFormValuesForm extends React.Component {
     this.setState({lng: lang});
   }
 
+  options = () => {
+    return [
+      {
+        'options': {
+          'en': {
+            'text': ['Single - Living alone', 'Single - Sharing']
+          },
+          'mi': {
+            'text': ['Single - Living alone', 'Single - Sharing']
+          }
+        }
+      }
+    ]
+  }
   render() {
     let lang = this.state.lng;
     return (
       <Fragment>
         <LanguageToggle handler={this.handleLanguageChange} langState={this.state.lng} />
         <form className="container" onSubmit={this.props.handleSubmit(values => console.log(values))}>
+          <h1>What you will need to do to apply for a rebate</h1>
+          <ul>
+            <li>Fill out this form,</li>
+            <li>Provide evidence of income for the previous tax year,</li>
+            <li>Make a declaration in front of an authorised witness (you can do this by visiting your local council service centre).</li>
+          </ul>
+          {knownOffence.map((field, key) => {
+            let label = field.label[lang].text;
+            return <Field
+              key={key}
+              label={label}
+              name={field.isNested ? `has${camelCaser(label)}Checked` : underscorize(field.label['en'].text)}
+              isRequired={field.isRequired}
+              component={field.component}
+              instructions={field.instructions && field.instructions[lang].text}
+              options={field.options && field.options[lang].text}
+              hasValue={this.props[`has${camelCaser(label)}Value`]}
+              hasHeader={field.hasHeader}
+              hasTextField={field.hasTextField && field.hasTextField}
+              hasChildren={field.hasChildren}
+              hasAddressFinder={field.hasAddressFinder}
+              hasPlainTextField={field.hasPlainTextField}
+              theme="square"
+              text={field.text[lang].text}
+            />
+          })}
+          <h2>Apply for a rebate</h2>
+          <p>This is for the 2017/2018 rating year</p>
           {firstTimeApplication.map((field, key) => {
             let label = field.label[lang].text;
             return (
@@ -56,6 +100,9 @@ class SelectingFormValuesForm extends React.Component {
                 hasTextField={field.hasTextField && field.hasTextField}
                 hasChildren={field.hasChildren}
                 hasAddressFinder={field.hasAddressFinder}
+                hasExtraInfo={field.hasExtraInfo}
+                extraInfoLabel={field.extraInfo ? field.extraInfo.label[lang].text : null}
+                extraInfoContent={field.extraInfo ? '' : ''}
               />
             );
           })}
@@ -86,6 +133,7 @@ SelectingFormValuesForm = connect(state => {
   const hasPartnerValue = selector(state, 'hasPartnerChecked');
   const hasSupportedLivingValue = selector(state, 'hasSupportedLivingChecked');
   const hasSelfEmployedValue = selector(state, 'hasSelfEmployedChecked');
+  const hasOffensenoticeValue= selector(state, 'hasOffensenoticeChecked');
 
   return {
     hasSuperAnnuationValue,
@@ -96,6 +144,7 @@ SelectingFormValuesForm = connect(state => {
     hasSupportedLivingValue,
     hasSelfEmployedValue,
     hasOtherValue,
+    hasOffensenoticeValue,
     validate
   };
 

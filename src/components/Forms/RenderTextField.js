@@ -1,10 +1,15 @@
 import React from 'react';
 import AddressFinder from '../Forms/AddressFinder';
 import '../../styles/AddressFinder.css';
+import { RenderCheckbox } from '../../components/Forms/RenderCheckbox';
+import { Field, reduxForm, formValueSelector } from 'redux-form';
+
 
 const RenderTextField = props => {
   return <div className="input-group">
     <label>
+      {/* {props.extraInfo && <h1>{console.log(props.extraInfoLabel)}</h1>} */}
+      {console.log(props.extraInfoLabel)}
       <span>{props.label}</span>
       {props.isRequired && <span className="aria-hidden">(required)</span>}
     </label>
@@ -15,7 +20,11 @@ const RenderTextField = props => {
         <span className="error"><strong>Error: </strong>{props.meta.error}</span>
       }
     </div>
-  </div>
+    {console.log('this props', props)}
+    {props.extraInfoLabel &&
+      <div>{props.extraInfoLabel}</div>
+    }
+  </div>;
 };
 
 export default RenderTextField;

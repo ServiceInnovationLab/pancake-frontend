@@ -18,13 +18,14 @@ const validate = values => {
     errors.do_you_have_a_partner_or_joint_homeowner_who_lives_with_you = 'This is a required field, please select one.';
   }
 
-  if (!values.hasSuperAnnuationNestedValue) {
-    errors.hasSuperAnnuationNestedValue  = 'This is a required field, please select one.';
+  if (!values.hasSuperAnnuationChecked) {
+    errors.hasSuperAnnuationValue  = 'This is a required field, please select one.';
   }
 
   if (!values.hasWageOrSalaryNestedValue) {
     errors.hasWageOrSalaryNestedValue  = 'This is a required field, please provide an answer.';
   }
+
 
   return errors;
 };
