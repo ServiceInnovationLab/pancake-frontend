@@ -1,5 +1,6 @@
 $input-border-color: #677a8e;
 $input-bg-color: #677a8e;
+$checkbox-icon: #4f4b46;
 $white: #fff;
 
 @font-face {
@@ -26,10 +27,10 @@ font-style : normal;
     margin: 0;
   }
 
-  input[type=checkbox] {
-    position: absolute;
-    left: -9999px;
-  }
+  // input[type=checkbox] {
+  //   position: absolute;
+  //   left: -9999px;
+  // }
 
   > label:not(.checkbox-radio) {
     position: relative;
@@ -55,7 +56,7 @@ font-style : normal;
       margin-left: 40px;
       font-weight: 500;
     }
-    
+
     span::before {
       content: "";
       border: 1px solid $input-bg-color;
@@ -87,6 +88,97 @@ font-style : normal;
     }
 
   }
+}
+
+.checkbox-square {
+
+  .radio-group {
+    margin: 0;
+  }
+
+  input[type=checkbox] {
+    position: absolute;
+    left: -9999px;
+  }
+
+  > label:not(.checkbox-radio) {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding-left: 52px;
+    margin-bottom: 15px;
+    min-height: 40px;
+    font-size: 16px;
+    padding: 13px;
+    // border-radius: 5px;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+
+    span {
+      margin-left: 40px;
+      font-weight: 500;
+    }
+
+    :not(:checked) + span::after {
+      font-family: 'FontAwesome';
+      font-size: 21px;
+      content: "\f067";
+      position: absolute;
+      left: 17px;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 1;
+      color: #000;
+    }
+    span::before {
+      content: "";
+      // border: 1px solid $input-bg-color;
+      width: 30px;
+      height: 30px;
+      // border-radius: 5px;
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+    }
+
+    :checked + span::before {
+      // background-color: $input-bg-color;
+      // border-color: $input-bg-color;
+      font-family: 'FontAwesome';
+      font-size: 21px;
+      content: "\f068";
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 1;
+      color: #000;
+    }
+
+    :checked + span::after {
+      font-family: 'FontAwesome';
+      font-size: 21px;
+      content: "\f068";
+      position: absolute;
+      left: 17px;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 1;
+      color: #000;
+    }
+
+  }
+}
+
+.checkbox-group,
+.checkbox-square {
+  input[type=checkbox] {
+    position: absolute;
+    left: -9999px;
+  }
+
 }
 
 .checkbox-list {
