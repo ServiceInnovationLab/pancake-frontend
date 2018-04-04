@@ -10,8 +10,7 @@ export const RenderCheckbox = props => {
   return <Fragment>
     {props.hasHeader &&
       <fieldset className="checkbox-group">
-        <legend>Income</legend>
-        <p>Select any you receive</p>
+        <legend>Add income</legend>
       </fieldset>}
     <fieldset className={props.theme === 'square' ? 'checkbox-square' : 'checkbox-group'}>
       <label>
@@ -36,10 +35,9 @@ export const RenderCheckbox = props => {
           component={RenderCheckboxTextField}
         />
       }
-      {props.hasValue && props.hasChildren && !props.hasPlainTextField &&
+      {props.isNested &&
         <FieldArray name="otherIncome" component={renderOtherIncome} />
       }
-      {/* {console.log(props)} */}
       {props.hasValue && props.hasChildren && props.hasPlainTextField && !props.hasExtraInfo &&
         <ol className="terms">
           <li>Every person commits an offence who
