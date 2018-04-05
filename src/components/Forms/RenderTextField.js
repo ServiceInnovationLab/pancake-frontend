@@ -10,7 +10,7 @@ const RenderTextField = props => {
     <label>
       {/* {props.extraInfo && <h1>{console.log(props.extraInfoLabel)}</h1>} */}
       {console.log(props.extraInfoLabel)}
-      <span>{props.label}</span>
+      <span>{props.extraInfoLabel ? props.extraInfoLabel : props.label}</span>
       {props.isRequired && <span className="aria-hidden">(required)</span>}
     </label>
     {props.instructions && <p>{props.instructions}</p>}
@@ -20,10 +20,6 @@ const RenderTextField = props => {
         <span className="error"><strong>Error: </strong>{props.meta.error}</span>
       }
     </div>
-    {console.log('this props', props)}
-    {props.extraInfoLabel &&
-      <div>{props.extraInfoLabel}</div>
-    }
   </div>;
 };
 
