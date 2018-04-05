@@ -16,7 +16,7 @@ class AddressFinder extends React.Component {
   }
   render() {
     return (
-     <input id="address_field" type="search" name="address" className="address-finder-input" />
+     <input id="address_field" type="search" name="what_is_your_address" className="address-finder-input" />
     );
   }
 }

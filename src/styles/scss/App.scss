@@ -70,7 +70,7 @@ input {
   font-size: 16px;
   display: inline-block;
   margin-top: 10px;
-  margin-bottom: 30px;
+  // margin-bottom: 30px;
   border: 2px solid transparent;
   border-radius: 5px;
   padding: 8px 20px;
@@ -182,4 +182,13 @@ legend {
   font-weight: 800;
   display: inline-block;
   margin-left: 80px;
+}
+
+.accordian {
+  border-top: 1px solid #ffbf6b;
+  border-bottom: 1px solid #ffbf6b;
+  background: #fff7ed;
+  cursor: pointer;
+  padding: 15px;
+  margin-top: 30px;
 }

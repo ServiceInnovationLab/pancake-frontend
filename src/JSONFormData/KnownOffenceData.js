@@ -6,7 +6,7 @@ const knownOffence = [
   {
     'label': {
       'en': {
-        'text': 'OffenseNotice'
+        'text': 'It is an offence to knowingly make a false statement in your application'
       },
       'mi': {
         'text': 'OffenseNotice'
