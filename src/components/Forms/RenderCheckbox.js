@@ -97,7 +97,7 @@ const RenderCheckboxTextField = fields => {
   </div>;
 };
 
-const renderOtherIncome = ({ fields, meta: { error, submitFailed, valid } }) => (
+const renderOtherIncome = ({ fields, meta: { error, submitFailed } }) => (
 
   <ul className="nested-list">
     {fields.map((income, index) => (
