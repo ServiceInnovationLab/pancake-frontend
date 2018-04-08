@@ -147,11 +147,30 @@ legend {
   margin-left: 80px; }
 
 .accordian {
-  border-top: 1px solid #ffbf6b;
-  border-bottom: 1px solid #ffbf6b;
-  background: #fff7ed;
+  border-top: 1px solid #cecece;
+  border-bottom: 1px solid #cecece;
+  font-weight: 700;
+  background: #e8e8e8;
   cursor: pointer;
+  padding: 8px;
+  padding-left: 40px;
+  margin: 30px 0 !important;
+  position: relative; }
+  .accordian:after {
+    font-family: FontAwesome;
+    font-size: 16px;
+    content: "\F067";
+    position: absolute;
+    left: 15px;
+    top: 19px;
+    transform: translateY(-50%);
+    opacity: 1;
+    color: #4f4b46; }
+
+.accordian + div {
+  background-color: #e8e8e8;
+  margin-top: -30px;
   padding: 15px;
-  margin-top: 30px; }
+  padding-left: 40px; }
 
 /*# sourceMappingURL=App.css.map */
