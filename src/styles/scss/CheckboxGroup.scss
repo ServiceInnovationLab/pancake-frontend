@@ -2,7 +2,7 @@ $input-border-color: #677a8e;
 $input-bg-color: #677a8e;
 $checkbox-icon: #4f4b46;
 $white: #fff;
-$label-not-radio-color: $label-not-radio-color;
+$label-not-radio-color: #efefef;
 $black: #000;
 
 @font-face {
@@ -169,6 +169,7 @@ font-style : normal;
   h4 {margin-right: 20px;}
 }
 .nested-list {
+  list-style: none;
   padding-left: 0;
   li {
     list-style: none;
