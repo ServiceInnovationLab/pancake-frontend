@@ -9,7 +9,7 @@ class Page2 extends React.Component {
     super(props);
     this.state = {
       lng: 'en',
-      page: 1
+      page: 2
     };
     this.nextPage = this.nextPage.bind(this);
     this.previousPage = this.previousPage.bind(this);
@@ -28,7 +28,7 @@ class Page2 extends React.Component {
   }
 
   render() {
-    return(
+    return (
       <div className="container">
 
         <LanguageToggle handler={this.handleLanguageChange} langState={this.state.lng} />
