@@ -1,14 +1,21 @@
 .terms {
-  list-style:none;
+  list-style: none;
   counter-reset: section;
 }
 .terms ol {
-  list-style:none;
-  padding-left:0;
+  list-style: none;
+  padding-left: 0;
+  > li {
+    counter-increment: clause;
+    &::before {
+      content: counter(clause, lower-alpha) ". ";
+    }
+  }
+  ol { counter-reset:clause; }
 }
 
-.terms li {padding-left:3rem; margin:.5rem 0; line-height:1.25; position:relative;
-  &::before {position:absolute; width:2rem; text-align:right; left:0;}
+.terms li {padding-left: 3rem; margin: .5rem 0; line-height: 1.25; position: relative;
+  &::before {position: absolute; width: 2rem; text-align: right; left: 0;}
 }
 
 .terms > li {
@@ -26,14 +33,4 @@
   &::before {
     content: counter(clause, lower-alpha) ". ";
   }
-}
-
-.terms ol {
-  > li {
-    counter-increment:clause;
-    &::before {
-      content: counter(clause, lower-alpha) ". ";
-    }
-  }
-  ol { counter-reset:clause; }
 }
