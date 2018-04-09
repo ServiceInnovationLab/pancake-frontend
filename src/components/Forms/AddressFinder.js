@@ -12,11 +12,11 @@ class AddressFinder extends React.Component {
           {manual_style:true}
         );
       }
-    }
+    };
   }
   render() {
     return (
-     <input id="address_field" type="search" name="address" className="address-finder-input" />
+      <input id="address_field" type="search" name="address" className="address-finder-input" />
     );
   }
 }
