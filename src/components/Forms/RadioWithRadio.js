@@ -17,6 +17,7 @@ export default class RadioWithRadio extends React.Component {
       this.setState({showYes: false});
       this.setState({showNo: true});
     }
+    this.setState({showYes: item === 'yes' ? true : false});
   }
 
   toggle() {

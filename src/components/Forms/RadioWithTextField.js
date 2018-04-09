@@ -3,26 +3,18 @@ import React from 'react';
 export default class RadioWithTextField extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      showYes: false,
-      showNo: false
-    };
+    this.state = { showYes: false };
   }
 
   toggle(item) {
-    if(item === 'yes') {
-      this.setState({showYes: true});
-      this.setState({showNo: false});
-    } else {
-      this.setState({showYes: false});
-      this.setState({showNo: true});
-    }
+    this.setState({showYes: item === 'yes' ? true : false});
   }
 
   render() {
     let showYes = {
       display: this.state.showYes ? 'block' : 'none'
     };
+
     return (
       <div>
         <fieldset className="radio-group">
