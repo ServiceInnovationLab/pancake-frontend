@@ -24,14 +24,16 @@
 .terms > li > ol > li {
   counter-increment: clause;
   &::before {
-    content: counter(clause, lower-alpha) '. ';
+    content: counter(clause, lower-alpha) ". ";
   }
 }
 
-.terms ol ol {counter-reset:clause;}
-.terms ol > li {
-  counter-increment:clause;
-  &::before {
-    content: counter(clause, lower-alpha) '. ';
+.terms ol {
+  > li {
+    counter-increment:clause;
+    &::before {
+      content: counter(clause, lower-alpha) ". ";
+    }
   }
+  ol { counter-reset:clause; }
 }
