@@ -36,5 +36,3 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
-
-// page 1 (App - has links to First time Applicant and ReApply pages)
