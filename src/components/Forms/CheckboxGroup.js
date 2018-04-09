@@ -55,7 +55,7 @@ class CheckboxGroup extends React.Component {
               {this.props.options && this.handleObj(this.props.options).option.map((item, key) => {
                 return <div key={key}>
                   <label>
-                    <input {...this.props.input} type="checkbox" value={item.text} onChange={e => {this.handleChildren(e)}} />
+                    <input {...this.props.input} type="checkbox" value={item.text} onChange={e => {this.handleChildren(e);}} />
                     <span>{item.text}</span>
                   </label>
 
@@ -84,15 +84,15 @@ class CheckboxGroup extends React.Component {
                     <FieldArray name="other_income" component={renderOtherIncomes} />
                   }
 
-                </div>
-                })}
+                </div>;
+              })}
             </div>
           </div>
         </div>
       </fieldset>
     );
   }
-};
+}
 
 const SingleTextField = props => {
   return(
@@ -124,13 +124,13 @@ const renderOtherIncomes = ({ fields, meta: { touched, error, submitFailed } }) 
           name={`${income}.income_from`}
           type="text"
           component={renderField}
-          label={`Where did this income come from?`}
+          label={'Where did this income come from?'}
         />
         <Field
           name={`${income}.total_amount`}
           type="number"
           component={renderField}
-          label={`Enter the total amount`}
+          label={'Enter the total amount'}
         />
       </li>
     ))}
