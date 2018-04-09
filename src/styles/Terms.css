@@ -5,6 +5,12 @@
 .terms ol {
   list-style: none;
   padding-left: 0; }
+  .terms ol > li {
+    counter-increment: clause; }
+    .terms ol > li::before {
+      content: counter(clause,lower-alpha) ". "; }
+  .terms ol ol {
+    counter-reset: clause; }
 
 .terms li {
   padding-left: 3rem;
@@ -28,14 +34,6 @@
 .terms > li > ol > li {
   counter-increment: clause; }
   .terms > li > ol > li::before {
-    content: counter(clause,lower-alpha) ". "; }
-
-.terms ol ol {
-  counter-reset: clause; }
-
-.terms ol > li {
-  counter-increment: clause; }
-  .terms ol > li::before {
     content: counter(clause,lower-alpha) ". "; }
 
 /*# sourceMappingURL=Terms.css.map */
