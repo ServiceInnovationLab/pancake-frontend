@@ -2,10 +2,6 @@ const validate = values => {
 
   const errors = {};
 
-  // if (!values.what_is_your_address) {
-  //   errors.what_is_your_address = 'This is a required field, please enter your address.';
-  // }
-
   if (!values.what_is_your_full_name) {
     errors.what_is_your_full_name = 'This is a required field, please enter your full name.';
   }

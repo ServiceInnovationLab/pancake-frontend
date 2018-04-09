@@ -11,11 +11,11 @@ export default class RadioWithRadio extends React.Component {
 
   toggleSub(item) {
     if(item === 'yes') {
-      this.setState({yes: true});
-      this.setState({no: false});
+      this.setState({showYes: true});
+      this.setState({showNo: false});
     } else {
-      this.setState({yes: false});
-      this.setState({no: true});
+      this.setState({showYes: false});
+      this.setState({showNo: true});
     }
   }
 
