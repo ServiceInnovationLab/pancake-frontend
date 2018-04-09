@@ -1,7 +1,8 @@
-const validate = values => {
+const validate = () => {
   let x = document.getElementsByTagName('input');
   let arrayOfInputNames = [];
-  for (var i = 0; i < x.length; i++) {
+
+  for(let i in x) {
     arrayOfInputNames.push(x[i].name);
   }
   const errors = {};
