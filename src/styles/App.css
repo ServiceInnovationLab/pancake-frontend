@@ -24,7 +24,8 @@ main {
   margin-top: -140px;
   height: 180px;
   clear: both;
-  background-color: #dafdc5; }
+  background-color: #000;
+  line-height: 180px; }
 
 body:before {
   content: "";
@@ -36,6 +37,12 @@ body:before {
 .container {
   margin: 0 5%;
   position: relative; }
+  @media (min-width: 1024px) {
+    .container {
+      margin: 0 15%; } }
+  @media (min-width: 1440px) {
+    .container {
+      margin: 0 20%; } }
 
 form {
   line-height: 1.5; }
@@ -46,28 +53,42 @@ input {
   font-family: 'Fira Sans', sans-serif;
   font-size: 16px;
   display: inline-block;
-  margin-top: 20px;
+  margin-top: 10px;
   margin-bottom: 30px;
   border: 2px solid transparent;
   border-radius: 5px;
-  padding: 10px 20px;
+  padding: 8px 20px;
   position: relative;
   left: -2px; }
-  input[type=text], input[type=number] {
+  input[type=text], input[type=number], input[type=search] {
     border: 1px solid #677a8e;
     padding-top: 0;
     padding-bottom: 0;
     line-height: 42px;
-    height: 42px; }
+    height: 42px;
+    width: 100%; }
+
+.nested div {
+  width: 100%; }
+.nested > label {
+  padding-left: 0 !important; }
+.nested input {
+  margin: 0; }
+
+.nested-button {
+  display: inline-block; }
 
 fieldset {
-  margin: 30px 0;
+  margin: 0;
   border: none;
   padding: 0; }
   fieldset > p {
     font-size: 16px;
     margin-top: 5px;
     font-weight: 400; }
+
+.nested-field {
+  margin-bottom: 25px; }
 
 legend {
   font-size: 18px;
@@ -109,13 +130,16 @@ legend {
   background-color: #dafdc5;
   color: #6cca7e;
   overflow: auto;
-  padding: 0 5%;
   position: relative;
   margin-bottom: 20px; }
   .main-header img {
     height: 55px;
     position: absolute;
     top: 25%; }
+  .main-header a {
+    color: #6cca7e; }
+  .main-header p {
+    margin-top: 40px; }
 
 .heading {
   font-size: 32px;

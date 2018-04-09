@@ -1,28 +1,28 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import CheckboxGroup from '../components/Forms/CheckboxGroup';
-import TextField from '../components/Forms/TextField';
-import RadioGroup from '../components/Forms/RadioGroup';
+import RenderCheckbox from '../components/Forms/RenderCheckbox';
+import RenderTextField from '../components/Forms/RenderTextField';
+import RenderRadio from '../components/Forms/RenderRadio';
 
 describe('components', function() {
 
-  describe('<CheckboxGroup />', function() {
+  describe('<RenderCheckbox />', function() {
     it('renders correctly', function() {
-      let tree = renderer.create(<CheckboxGroup />).toJSON();
+      let tree = renderer.create(<RenderCheckbox />).toJSON();
       expect(tree).toMatchSnapshot();
     });
   });
 
-  describe('<RadioGroup />', function() {
+  describe('<RenderRadio />', function() {
     it('renders correctly', function() {
-      let tree = renderer.create(<RadioGroup />).toJSON();
+      let tree = renderer.create(<RenderRadio />).toJSON();
       expect(tree).toMatchSnapshot();
     });
   });
 
-  describe('<TextField />', function() {
+  describe('<RenderTextField />', function() {
     it('renders correctly', function() {
-      let tree = renderer.create(<TextField />).toJSON();
+      let tree = renderer.create(<RenderTextField />).toJSON();
       expect(tree).toMatchSnapshot();
     });
   });

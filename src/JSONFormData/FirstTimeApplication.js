@@ -1,159 +1,187 @@
+import RenderTextField from '../components/Forms/RenderTextField';
+import RenderRadio from '../components/Forms/RenderRadio';
+import RenderCheckbox from '../components/Forms/RenderCheckbox';
+
 const firstTimeApplication = [
   {
-    'question': {
-      'en': {
-        'text': 'What is your address?'
-      },
-      'ma': {
-        'text': 'Ko wai tō wāhi noho?'
-      }
-    },
-    'type': 'text',
-    'name': 'address',
-    'isRequired': true
-  },
-  {
-    'question': {
+    'label': {
       'en': {
         'text': 'What is your name?'
       },
-      'ma': {
-        'text': 'Ko wai to ingoa?'
+      'mi': {
+        'text': 'Ko wai tō ingoa?'
       }
     },
-    'type': 'text',
-    'name': 'full_name',
-    'isRequired': true
+    'isRequired': true,
+    'component': RenderTextField
   },
   {
-    'question': {
+    'label': {
       'en': {
+        'text': 'What is your address?'
+      },
+      'mi': {
+        'text': 'Ko wai tō wāhi noho?'
+      }
+    },
+    'instructions': {
+      'en': {
+        'text': 'Please use the name you use on the property title'
+      },
+      'mi': {
+        'text': 'Please use the name you use on the property title'
+      }
+    },
+    'isRequired': true,
+    'component': RenderTextField,
+    'hasAddressFinder': true
+  },
+  {
+    'label': {
+      'en': {
+        'text': 'Did you live here at 1st July?'
+      },
+      'mi': {
         'text': 'Did you live here at 1st July?'
       }
     },
-    'type': 'radio',
     'instructions': {
       'en': {
         'text': 'Please use the name you use on the property title'
       },
-      'ma': {
+      'mi': {
         'text': 'Please use the name you use on the property title'
       }
     },
-    'name': 'did_you_live_here',
     'options': {
       'en': {
-        'text': ['yes', 'no']
+        'text': ['yes','no']
       },
-      'ma': {
-        'text': ['āe', 'kāore']
+      'mi': {
+        'text': ['ae', 'kaore']
       }
     },
-    'isRequired': true
+    'isRequired': true,
+    'component': RenderRadio
   },
   {
-    'question': {
+    'label': {
       'en': {
         'text': 'Do you have a partner or joint homeowner who lives with you?'
       },
-      'ma': {
+      'mi': {
         'text': 'Do you have a partner or joint homeowner who lives with you?'
       }
     },
-    'type': 'radio',
     'instructions': {
       'en': {
         'text': '\'Partner\' is a person you are married to/in a civil union, or de facto relationship with.'
       },
-      'ma': {
+      'mi': {
         'text': '\'Partner\' is a person you are married to/in a civil union, or de facto relationship with.'
       }
     },
     'options': {
       'en': {
-        'text': ['yes', 'no']
+        'text': ['yes','no']
       },
-      'ma': {
-        'text': ['āe', 'kāore']
+      'mi': {
+        'text': ['ae', 'kaore']
       }
     },
-    'name': 'joint_homeowner',
-    'isRequired': true
+    'isRequired': true,
+    'component': RenderRadio
   },
   {
-    'question': {
+    'label': {
       'en': {
-        'text': 'Income'
+        'text': 'Super Annuation'
       },
-      'ma': {
-        'text': 'Income'
-      }
-    },
-    'type': 'checkbox',
-    'instructions': {
-      'en': {
-        'text': 'Select any that you receive.'
-      },
-      'ma': {
-        'text': 'Select any that you receive.'
+      'mi': {
+        'text': 'Super Annuation'
       }
     },
     'options': {
       'en': {
-        'option': [
-          {
-            text: 'NZ Superannuation',
-            options: ['Single - Living alone', 'Single - Sharing']
-          },
-          {
-            text: 'Jobseeker benefit'
-          },
-          {
-            text: 'Sole parents'
-          },
-          {
-            text: 'Supported living'
-          },
-          {
-            text: 'Self employed'
-          },
-          {
-            text: 'Wage or salary'
-          },
-          {
-            text: 'Other'
-          }
-        ]
+        'text': ['Single - Living alone', 'Single - Sharing']
       },
-      'ma': {
-        'option': [
-          {
-            text: 'NZ Superannuation',
-            options: ['Single - Living alone', 'Single - Sharing']
-          },
-          {
-            text: 'Jobseeker benefit'
-          },
-          {
-            text: 'Sole parents'
-          },
-          {
-            text: 'Supported living'
-          },
-          {
-            text: 'Self employed'
-          },
-          {
-            text: 'Wage or salary'
-          },
-          {
-            text: 'Other'
-          }
-        ]
-      },
+      'mi': {
+        'text': ['Single - Living alone', 'Single - Sharing']
+      }
     },
-    'name': 'income',
-    'isRequired': true
+    'isRequired': true,
+    'component': RenderCheckbox,
+    'hasHeader': true,
+    'isNested': true
+  },
+  {
+    'label': {
+      'en': {
+        'text': 'Sole Parents'
+      },
+      'mi': {
+        'text': 'Sole Parents'
+      }
+    },
+    'isRequired': true,
+    'component': RenderCheckbox,
+    'hasHeader': false
+  },
+  {
+    'label': {
+      'en': {
+        'text': 'Supported Living'
+      },
+      'mi': {
+        'text': 'Supported Living'
+      }
+    },
+    'isRequired': true,
+    'component': RenderCheckbox,
+    'hasHeader': false
+  },
+  {
+    'label': {
+      'en': {
+        'text': 'Self Employed'
+      },
+      'mi': {
+        'text': 'Self Employed'
+      }
+    },
+    'isRequired': true,
+    'component': RenderCheckbox,
+    'hasHeader': false
+  },
+  {
+    'label': {
+      'en': {
+        'text': 'Wage or Salary'
+      },
+      'mi': {
+        'text': 'Wage or Salary'
+      }
+    },
+    'isRequired': true,
+    'component': RenderCheckbox,
+    'hasHeader': false,
+    'hasTextField': true,
+    'isNested': true
+  },
+  {
+    'label': {
+      'en': {
+        'text': 'Other'
+      },
+      'mi': {
+        'text': 'Other'
+      }
+    },
+    'isRequired': true,
+    'component': RenderCheckbox,
+    'hasHeader': false,
+    'isNested': true,
+    'hasChildren': true
   }
 ];
 
