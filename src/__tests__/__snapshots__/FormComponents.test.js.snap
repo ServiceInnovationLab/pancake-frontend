@@ -1,35 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`components <CheckboxGroup /> renders correctly 1`] = `
+exports[`components <RenderCheckbox /> renders correctly 1`] = `
 <fieldset
   className="checkbox-group"
 >
-  <legend>
-    <span />
-      
-  </legend>
-  <div>
-    <div>
-      <div />
-    </div>
-  </div>
+  <label>
+    <input
+      type="checkbox"
+    />
+  </label>
 </fieldset>
 `;
 
-exports[`components <RadioGroup /> renders correctly 1`] = `
+exports[`components <RenderRadio /> renders correctly 1`] = `
 <fieldset
   className="radio-group"
 >
-  <legend />
+  <p />
   <div>
-    <div>
-      <div />
-    </div>
+    <div />
   </div>
 </fieldset>
 `;
 
-exports[`components <TextField /> renders correctly 1`] = `
+exports[`components <RenderTextField /> renders correctly 1`] = `
 <div
   className="input-group"
 >

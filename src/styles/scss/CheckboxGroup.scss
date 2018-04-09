@@ -15,15 +15,23 @@ font-style : normal;
 }
 
 .checkbox-group {
+  h4 {
+    display: inline-block;
+    margin-right: 15px;
+    vertical-align: sub;
+    margin-bottom: 0;
+  }
+
   .radio-group {
     margin: 0;
   }
+
   input[type=checkbox] {
     position: absolute;
     left: -9999px;
   }
 
-  label:not(.checkbox-radio) {
+  > label:not(.checkbox-radio) {
     position: relative;
     cursor: pointer;
     display: flex;
@@ -32,17 +40,32 @@ font-style : normal;
     margin-bottom: 15px;
     min-height: 40px;
     font-size: 16px;
+    background-color: #efefef;
+    padding: 13px;
+    border-radius: 21px;
+    &:hover {
+      background-color: darken(#efefef, 4%);
+    }
 
+    @media(min-width: 768px) {
+      width: 366px;
+    }
+
+    span {
+      margin-left: 40px;
+      font-weight: 500;
+    }
+    
     span::before {
       content: "";
-      border: 1px solid $input-border-color;
-      background: transparent;
-      width: 40px;
-      height: 40px;
-      border-radius: 5px;
+      border: 1px solid $input-bg-color;
+      background: $input-bg-color;
+      width: 30px;
+      height: 30px;
+      border-radius: 15px;
       position: absolute;
       top: 50%;
-      left: 0;
+      left: 10px;
       transform: translateY(-50%);
     }
 
@@ -53,15 +76,16 @@ font-style : normal;
 
     :checked + span::after {
       font-family: 'FontAwesome';
-      font-size: 25px;
+      font-size: 21px;
       content: "\f00c";
       position: absolute;
-      left: 8px;
+      left: 15px;
       top: 50%;
       transform: translateY(-50%);
       opacity: 1;
       color: $white;
     }
+
   }
 }
 
@@ -77,4 +101,11 @@ font-style : normal;
     display: inline-block;
   }
   h4 {margin-right: 20px;}
+}
+
+.nested-list {
+  padding-left: 0;
+  li {
+    list-style: none;
+  }
 }
