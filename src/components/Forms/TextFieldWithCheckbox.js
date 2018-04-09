@@ -1,5 +1,7 @@
 import React from 'react';
 import AddressFinder from '../Forms/AddressFinder';
+import ErrorMessage from '../../components/Forms/Error';
+
 export default class TextFieldWithCheckbox extends React.Component {
   constructor(props) {
     super(props);
@@ -31,9 +33,7 @@ export default class TextFieldWithCheckbox extends React.Component {
             <input type="checkbox" onClick={this.toggle.bind(this)} /> {this.props.checkboxLabel}
           </label>
           <div style={ shown }>{this.props.checkboxText}</div>
-          {this.props.meta !== undefined && this.props.meta.touched && this.props.meta.error &&
-          <span className="error"><strong>Error: </strong>{this.props.meta.error}</span>
-          }
+          <ErrorMessage fields={this.props.meta} />
         </fieldset>
       </div>
     );

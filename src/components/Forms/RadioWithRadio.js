@@ -1,4 +1,5 @@
 import React from 'react';
+import ErrorMessage from '../../components/Forms/Error';
 
 export default class RadioWithRadio extends React.Component {
   constructor(props) {
@@ -80,9 +81,7 @@ export default class RadioWithRadio extends React.Component {
               <p style={ sub }>A council officer will contact you about further information you will need to provide before processing your application.</p>
             </div>}
           </div>
-          {this.props.meta !== undefined && this.props.meta.touched && this.props.meta.error &&
-            <span className="error"><strong>Error: </strong>{this.props.meta.error}</span>
-          }
+          <ErrorMessage fields={this.props.meta} />
         </fieldset>
       </div>
     );

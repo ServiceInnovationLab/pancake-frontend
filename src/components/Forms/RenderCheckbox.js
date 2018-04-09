@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { Field, FieldArray } from 'redux-form';
+import ErrorMessage from '../../components/Forms/Error';
 import { camelCaser } from '../../helpers/strings';
 import '../../styles/Terms.css';
 
@@ -51,9 +52,7 @@ export const RenderCheckbox = props => {
 exceeding 12 months or to a fine not exceeding $500, or to both.</li>
         </ol>
       }
-      {props.meta !== undefined && props.meta.touched && props.meta.error &&
-        <span className="error"><strong>Error: </strong>{props.meta.error}</span>
-      }
+      <ErrorMessage fields={props.meta} />
     </fieldset>
   </Fragment>;
 };
@@ -74,9 +73,7 @@ const RenderCheckboxRadio = fields => {
         </label>;
       })}
     </div>
-    {fields.meta !== undefined && fields.meta.touched && fields.meta.error &&
-      <span className="error"><strong>Error: </strong>{fields.meta.error}</span>
-    }
+    <ErrorMessage/>
   </div>;
 };
 
@@ -90,9 +87,7 @@ const RenderCheckboxTextField = fields => {
         style={{width: '100%', margin: '0'}}
       />
 
-      {fields.meta !== undefined && fields.meta.touched && fields.meta.error &&
-        <span className="error"><strong>Error: </strong>{fields.meta.error}</span>
-      }
+      <ErrorMessage fields={fields} />
     </div>
   </div>;
 };
