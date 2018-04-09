@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Field, reduxForm, formValueSelector } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import validate from '../../helpers/validate';
 import { scrollToFirstError } from '../../components/Forms/FormScroll';
 import LanguageToggle from '../../components/Forms/LanguageToggle';
@@ -123,7 +123,6 @@ SelectingFormValuesForm = reduxForm({
   form: 'selectingFormValues'
 })(SelectingFormValuesForm);
 
-const selector = formValueSelector('selectingFormValues');
 SelectingFormValuesForm = connect(state => {
   return {
     validate
