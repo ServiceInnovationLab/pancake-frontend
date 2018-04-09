@@ -5,6 +5,9 @@ const validate = values => {
   if (!values.what_is_your_full_name) {
     errors.what_is_your_full_name = 'This is a required field, please enter your full name.';
   }
+  if (!values.what_is_your_address) {
+    errors.what_is_your_address = 'This is a required field, please enter your address.';
+  }
 
   if (!values.did_you_live_here_at_1_july_2017) {
     errors.did_you_live_here_at_1_july_2017 = 'This is a required field, please provide an answer.';
