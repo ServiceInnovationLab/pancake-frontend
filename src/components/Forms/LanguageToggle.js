@@ -34,7 +34,7 @@ const LangBtn = props => {
     <a
       onClick={props.handler}
       className={props.state === props.langAbbr ? 'btn active' : 'btn'}
-      >{props.langName}</a>
+    >{props.langName}</a>
   );
 };
 
