@@ -7,7 +7,7 @@ export default class TextFieldWithCheckbox extends React.Component {
     super(props);
     this.state = {
       show: false
-    }
+    };
   }
 
   toggle() {

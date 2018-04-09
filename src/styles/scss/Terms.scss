@@ -1,25 +1,33 @@
 .terms {
   list-style: none;
   counter-reset: section;
-}
-.terms ol {
-  list-style: none;
-  padding-left: 0;
-  > li {
-    counter-increment: clause;
-    &::before {
-      content: counter(clause, lower-alpha) ". ";
+  ol {
+    list-style: none;
+    padding-left: 0;
+
+    > li {
+      padding-left: 3rem;
+      margin: .5rem 0;
+      line-height: 1.25;
+      position: relative;
+      counter-increment: clause;
+      &::before {
+        content: counter(clause, lower-alpha) ". ";
+        position: absolute;
+        width: 2rem;
+        text-align: right;
+        left: 0;
+      }
     }
+
+    ol { counter-reset:clause; }
   }
-  ol { counter-reset:clause; }
 }
 
-.terms li {padding-left: 3rem; margin: .5rem 0; line-height: 1.25; position: relative;
-  &::before {position: absolute; width: 2rem; text-align: right; left: 0;}
-}
 
 .terms > li {
   counter-increment: section;
+
   &::before {
     content: counter(section) ' ';
   }
@@ -30,6 +38,7 @@
 }
 .terms > li > ol > li {
   counter-increment: clause;
+
   &::before {
     content: counter(clause, lower-alpha) ". ";
   }
