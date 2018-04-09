@@ -9,7 +9,7 @@ export const scrollToFirstError = errors => {
       break;
     }
   }
-}
+};
 
 const getErrorFieldNames = (obj, name = '') => {
   const errorArr = [];
@@ -26,8 +26,8 @@ const getErrorFieldNames = (obj, name = '') => {
     return null;
   }).filter(o => o));
   return flatten(errorArr);
-}
+};
 
 const flatten = arr => {
   return arr.reduce((flat, toFlatten) => flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten), []);
-}
+};

@@ -10,9 +10,9 @@ const RenderCheckbox = props => {
   return <Fragment>
     {props.hasHeader && 
       <fieldset className="checkbox-group">
-      <legend>Income</legend>
-      <p>Select any you receive</p>
-    </fieldset>}
+        <legend>Income</legend>
+        <p>Select any you receive</p>
+      </fieldset>}
     <fieldset className="checkbox-group">
       <label>
         <input {...props.input} type="checkbox" />
@@ -25,7 +25,7 @@ const RenderCheckbox = props => {
             isRequired={true}
             options={props.options}
             component={RenderCheckboxRadio}
-            />
+          />
         </div>
       )}
       
@@ -40,7 +40,7 @@ const RenderCheckbox = props => {
         <FieldArray name="otherIncome" component={renderOtherIncome} />
       }
     </fieldset>
-  </Fragment>
+  </Fragment>;
 };
 
 const RenderCheckboxRadio = fields => {
@@ -61,7 +61,7 @@ const RenderCheckboxRadio = fields => {
     {fields.meta !== undefined && fields.meta.touched && fields.meta.error &&
       <span className="error"><strong>Error: </strong>{fields.meta.error}</span>
     }
-  </div>
+  </div>;
 };
 
 const RenderCheckboxTextField = fields => {
@@ -78,7 +78,7 @@ const RenderCheckboxTextField = fields => {
         <span className="error"><strong>Error: </strong>{fields.meta.error}</span>
       }
     </div>
-  </div>
+  </div>;
 };
 
 const renderOtherIncome = ({ fields, meta: { error, submitFailed, valid } }) => (
