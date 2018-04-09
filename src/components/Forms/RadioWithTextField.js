@@ -1,4 +1,5 @@
 import React from 'react';
+import ErrorMessage from '../../components/Forms/Error';
 
 export default class RadioWithTextField extends React.Component {
   constructor(props) {
@@ -38,9 +39,7 @@ export default class RadioWithTextField extends React.Component {
               <input type="number" placeholder={this.props.placeholder} />
             </div>}
           </div>
-          {this.props.meta !== undefined && this.props.meta.touched && this.props.meta.error &&
-            <span className="error"><strong>Error: </strong>{this.props.meta.error}</span>
-          }
+          <ErrorMessage fields={this.props.meta} />
         </fieldset>
       </div>
     );

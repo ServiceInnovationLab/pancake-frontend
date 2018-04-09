@@ -1,4 +1,5 @@
 import React from 'react';
+import ErrorMessage from '../../components/Forms/Error';
 
 export default class TextBoxWithAccordian extends React.Component {
   constructor(props) {
@@ -29,9 +30,7 @@ export default class TextBoxWithAccordian extends React.Component {
           <div style={ shown } dangerouslySetInnerHTML={ { __html: this.props.accordianText } }></div>
         </div>
         }
-        {this.props.meta !== undefined && this.props.meta.touched && this.props.meta.error &&
-          <span className="error"><strong>Error: </strong>{this.props.meta.error}</span>
-        }
+        <ErrorMessage fields={this.props.meta} />
       </fieldset>
     );
   }
