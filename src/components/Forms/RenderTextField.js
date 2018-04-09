@@ -1,6 +1,5 @@
 import React from 'react';
 import AddressFinder from '../Forms/AddressFinder';
-import '../../styles/AddressFinder.css';
 
 const RenderTextField = props => {
   return <div className="input-group">
