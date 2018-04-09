@@ -5,7 +5,6 @@ import validate from '../../helpers/validate';
 import { scrollToFirstError } from '../../components/Forms/FormScroll';
 import LanguageToggle from '../../components/Forms/LanguageToggle';
 import { underscorize, camelCaser } from '../../helpers/strings';
-// import { RenderCheckbox } from '../Forms/RenderCheckbox';
 import '../../styles/TextField.css';
 import '../../styles/RadioGroup.css';
 import '../../styles/CheckboxGroup.css';
@@ -38,9 +37,9 @@ class SelectingFormValuesForm extends React.Component {
   }
 
   toggle() {
-		this.setState({
-			shown: !this.state.shown
-		});
+    this.setState({
+      shown: !this.state.shown
+    });
   }
 
   options = () => {
@@ -59,13 +58,12 @@ class SelectingFormValuesForm extends React.Component {
   }
   render() {
     let shown = {
-			display: this.state.shown ? "block" : "none"
+      display: this.state.shown ? "block" : "none"
     };
     let lang = this.state.lng;
     return (
       <Fragment>
         <LanguageToggle handler={this.handleLanguageChange} langState={this.state.lng} />
-        {/* <form className="container" onSubmit={this.props.handleSubmit(values => console.log(values))}> */}
         <form className="container" onSubmit={this.props.handleSubmit}>
           <h1>What you will need to do to apply for a rebate</h1>
           <ul>
@@ -114,21 +112,6 @@ exceeding 12 months or to a fine not exceeding $500, or to both.</li>
                 textFieldLabel={field.textFieldLabel && field.textFieldLabel[lang].text}
                 placeholder={field.placeholder && field.placeholder[lang].text}
                 hasAddressFinder={field.hasAddressFinder}
-                // key={key}
-                // label={label}
-                // name={field.isNested ? `has${camelCaser(label)}Checked` : underscorize(field.label['en'].text)}
-                // isRequired={field.isRequired}
-                // component={field.component}
-                // instructions={field.instructions && field.instructions[lang].text}
-                // options={field.options && field.options[lang].text}
-                // hasValue={this.props[`has${camelCaser(label)}Value`]}
-                // hasHeader={field.hasHeader}
-                // hasTextField={field.hasTextField && field.hasTextField}
-                // hasChildren={field.hasChildren}
-                // hasAddressFinder={field.hasAddressFinder}
-                // hasExtraInfo={field.hasExtraInfo}
-                // extraInfoLabel={field.extraInfo ? field.extraInfo.label[lang].text : null}
-                // extraInfoContent={field.extraInfo ? '' : ''}
               />
             );
           })}
@@ -157,28 +140,7 @@ SelectingFormValuesForm = reduxForm({
 
 const selector = formValueSelector('selectingFormValues');
 SelectingFormValuesForm = connect(state => {
-//   const hasSuperAnnuationValue = selector(state, 'hasSuperAnnuationChecked');
-//   const hasTestValue = selector(state, 'hasTestChecked');
-//   const hasWageOrSalaryValue = selector(state, 'hasWageOrSalaryChecked');
-//   const hasLivedHereValue = selector(state, 'hasLivedHereChecked');
-//   const hasJobSeekerBenefitValue = selector(state, 'hasJobSeekerBenefitChecked');
-//   const hasOtherValue = selector(state, 'hasOtherChecked');
-//   const hasPartnerValue = selector(state, 'hasPartnerChecked');
-//   const hasSupportedLivingValue = selector(state, 'hasSupportedLivingChecked');
-//   const hasSelfEmployedValue = selector(state, 'hasSelfEmployedChecked');
-//   const hasOffensenoticeValue= selector(state, 'hasOffensenoticeChecked');
-
   return {
-//     hasTestValue,
-//     hasSuperAnnuationValue,
-//     hasWageOrSalaryValue,
-//     hasLivedHereValue,
-//     hasPartnerValue,
-//     hasJobSeekerBenefitValue,
-//     hasSupportedLivingValue,
-//     hasSelfEmployedValue,
-//     hasOtherValue,
-//     hasOffensenoticeValue,
     validate
   };
 
