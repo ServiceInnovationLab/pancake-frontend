@@ -10,7 +10,6 @@ import '../../styles/RadioGroup.css';
 import '../../styles/CheckboxGroup.css';
 import '../../styles/FormValidation.css';
 import firstTimeApplication from '../../JSONFormData/FirstTimeApplication';
-import knownOffence from '../../JSONFormData/KnownOffenceData';
 
 class SelectingFormValuesForm extends React.Component {
   constructor(props) {
@@ -42,20 +41,6 @@ class SelectingFormValuesForm extends React.Component {
     });
   }
 
-  options = () => {
-    return [
-      {
-        'options': {
-          'en': {
-            'text': ['Single - Living alone', 'Single - Sharing']
-          },
-          'mi': {
-            'text': ['Single - Living alone', 'Single - Sharing']
-          }
-        }
-      }
-    ]
-  }
   render() {
     let shown = {
       display: this.state.shown ? "block" : "none"
