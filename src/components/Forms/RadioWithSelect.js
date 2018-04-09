@@ -5,24 +5,24 @@ export default class RadioWithSelect extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      yes: false,
-      no: false
+      showYes: false,
+      showNo: false
     };
   }
 
   toggle(item) {
     if(item === 'yes') {
-      this.setState({yes: true});
-      this.setState({no: false});
+      this.setState({showYes: true});
+      this.setState({showNo: false});
     } else {
-      this.setState({yes: false});
-      this.setState({no: true});
+      this.setState({showYes: false});
+      this.setState({showNo: true});
     }
   }
 
   render() {
     let showYes = {
-      display: this.state.yes ? 'block' : 'none'
+      display: this.state.showYes ? 'block' : 'none'
     };
 
     return (
