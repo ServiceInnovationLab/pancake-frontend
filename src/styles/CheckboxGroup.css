@@ -1,140 +1,61 @@
-@font-face {
-  font-family: "FontAwesome";
-  font-weight: normal;
-  font-style: normal;
-  src: url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?v=4.3.0");
-  src: url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?#iefix&v=4.3.0") format("embedded-opentype"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff2?v=4.3.0") format("woff2"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff?v=4.3.0") format("woff"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.ttf?v=4.3.0") format("truetype"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular") format("svg"); }
-.checkbox-group h4 {
-  display: inline-block;
-  margin-right: 15px;
-  vertical-align: sub;
-  margin-bottom: 0; }
-.checkbox-group .radio-group {
-  margin: 0; }
-.checkbox-group > label:not(.checkbox-radio) {
-  position: relative;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  padding-left: 52px;
-  margin-bottom: 15px;
-  min-height: 40px;
-  font-size: 16px;
-  background-color: #efefef;
-  padding: 13px;
-  border-radius: 21px; }
-  .checkbox-group > label:not(.checkbox-radio):hover {
-    background-color: #e5e5e5; }
-  @media (min-width: 768px) {
-    .checkbox-group > label:not(.checkbox-radio) {
-      width: 366px; } }
-  .checkbox-group > label:not(.checkbox-radio) span {
-    margin-left: 40px;
-    font-weight: 500; }
-  .checkbox-group > label:not(.checkbox-radio) span::before {
-    content: "";
-    border: 1px solid #677a8e;
-    background: #677a8e;
-    width: 30px;
-    height: 30px;
-    border-radius: 15px;
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%); }
-  .checkbox-group > label:not(.checkbox-radio) :checked + span::before {
-    background-color: #677a8e;
-    border-color: #677a8e; }
-  .checkbox-group > label:not(.checkbox-radio) :checked + span::after {
-    font-family: 'FontAwesome';
-    font-size: 21px;
-    content: "\f00c";
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    opacity: 1;
-    color: #fff; }
+/*
+Error: Undefined variable: "$label-not-radio-color".
+        on line 5 of src/styles/scss/CheckboxGroup.scss
 
-.checkbox-square .radio-group {
-  margin: 0; }
-.checkbox-square input[type=checkbox] {
-  position: absolute;
-  left: -9999px; }
-.checkbox-square > label:not(.checkbox-radio) {
-  position: relative;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  padding-left: 52px;
-  margin-bottom: 15px;
-  min-height: 40px;
-  font-size: 16px;
-  padding: 13px;
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #000; }
-  .checkbox-square > label:not(.checkbox-radio) span {
-    margin-left: 40px;
-    font-weight: 500; }
-  .checkbox-square > label:not(.checkbox-radio) :not(:checked) + span::after {
-    font-family: 'FontAwesome';
-    font-size: 21px;
-    content: "\f067";
-    position: absolute;
-    left: 17px;
-    top: 50%;
-    transform: translateY(-50%);
-    opacity: 1;
-    color: #000; }
-  .checkbox-square > label:not(.checkbox-radio) span::before {
-    content: "";
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%); }
-  .checkbox-square > label:not(.checkbox-radio) :checked + span::before {
-    font-family: 'FontAwesome';
-    font-size: 21px;
-    content: "\f068";
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    opacity: 1;
-    color: #000; }
-  .checkbox-square > label:not(.checkbox-radio) :checked + span::after {
-    font-family: 'FontAwesome';
-    font-size: 21px;
-    content: "\f068";
-    position: absolute;
-    left: 17px;
-    top: 50%;
-    transform: translateY(-50%);
-    opacity: 1;
-    color: #000; }
+1: $input-border-color: #677a8e;
+2: $input-bg-color: #677a8e;
+3: $checkbox-icon: #4f4b46;
+4: $white: #fff;
+5: $label-not-radio-color: $label-not-radio-color;
+6: $black: #000;
+7: 
+8: @font-face {
+9: font-family: "FontAwesome";
+10: font-weight: normal;
 
-.checkbox-group input[type=checkbox],
-.checkbox-square input[type=checkbox] {
-  position: absolute;
-  left: -9999px; }
-
-.checkbox-list li {
-  list-style: none;
-  margin-bottom: 30px; }
-.checkbox-list label {
-  display: none !important; }
-.checkbox-list h4,
-.checkbox-list button {
-  margin-bottom: 20px;
-  display: inline-block; }
-.checkbox-list h4 {
-  margin-right: 20px; }
-
-.nested-list {
-  padding-left: 0; }
-  .nested-list li {
-    list-style: none; }
-
-/*# sourceMappingURL=CheckboxGroup.css.map */
+Backtrace:
+src/styles/scss/CheckboxGroup.scss:5
+/Users/danaiti/.rvm/gems/ruby-2.3.1/gems/sass-3.5.5/lib/sass/script/tree/variable.rb:49:in `_perform'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/gems/sass-3.5.5/lib/sass/script/tree/node.rb:50:in `perform'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:482:in `visit_variable'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/gems/sass-3.5.5/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/gems/sass-3.5.5/lib/sass/stack.rb:79:in `block in with_base'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/gems/sass-3.5.5/lib/sass/stack.rb:135:in `with_frame'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/gems/sass-3.5.5/lib/sass/stack.rb:79:in `with_base'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:162:in `visit'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/gems/sass-3.5.5/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/gems/sass-3.5.5/lib/sass/tree/visitors/base.rb:52:in `map'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/gems/sass-3.5.5/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:171:in `block in visit_children'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:183:in `with_environment'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:170:in `visit_children'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/gems/sass-3.5.5/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:190:in `visit_root'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/gems/sass-3.5.5/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:161:in `visit'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:10:in `visit'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/gems/sass-3.5.5/lib/sass/tree/root_node.rb:36:in `css_tree'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/gems/sass-3.5.5/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/gems/sass-3.5.5/lib/sass/engine.rb:389:in `_render_with_sourcemap'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/gems/sass-3.5.5/lib/sass/engine.rb:307:in `render_with_sourcemap'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/gems/sass-3.5.5/lib/sass/plugin/compiler.rb:462:in `update_stylesheet'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/gems/sass-3.5.5/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/gems/sass-3.5.5/lib/sass/plugin/compiler.rb:209:in `each'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/gems/sass-3.5.5/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/gems/sass-3.5.5/lib/sass/plugin/compiler.rb:294:in `watch'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/gems/sass-3.5.5/lib/sass/plugin.rb:109:in `method_missing'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/gems/sass-3.5.5/lib/sass/exec/sass_scss.rb:360:in `watch_or_update'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/gems/sass-3.5.5/lib/sass/exec/sass_scss.rb:51:in `process_result'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/gems/sass-3.5.5/lib/sass/exec/base.rb:52:in `parse'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/gems/sass-3.5.5/lib/sass/exec/base.rb:19:in `parse!'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/gems/sass-3.5.5/bin/sass:13:in `<top (required)>'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/bin/sass:23:in `load'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/bin/sass:23:in `<main>'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/bin/ruby_executable_hooks:15:in `eval'
+/Users/danaiti/.rvm/gems/ruby-2.3.1/bin/ruby_executable_hooks:15:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Undefined variable: \"$label-not-radio-color\".\A         on line 5 of src/styles/scss/CheckboxGroup.scss\A \A 1: $input-border-color: #677a8e;\A 2: $input-bg-color: #677a8e;\A 3: $checkbox-icon: #4f4b46;\A 4: $white: #fff;\A 5: $label-not-radio-color: $label-not-radio-color;\A 6: $black: #000;\A 7: \A 8: @font-face {\A 9: font-family: \"FontAwesome\";\A 10: font-weight: normal;"; }
