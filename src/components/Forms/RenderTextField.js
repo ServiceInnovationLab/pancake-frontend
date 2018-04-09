@@ -15,7 +15,7 @@ const RenderTextField = props => {
         <span className="error"><strong>Error: </strong>{props.meta.error}</span>
       }
     </div>
-  </div>
+  </div>;
 };
 
 export default RenderTextField;
