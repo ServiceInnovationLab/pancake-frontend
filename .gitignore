@@ -22,3 +22,5 @@ yarn-error.log*
 .sass-cache
 
 /src/styles/App.css.map
+/src/styles/*.css.map
+*.css.map
