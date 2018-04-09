@@ -1,5 +1,6 @@
 $address-finder-row-bg-color: #e8e8e8;
 $address-finder-row-border-color: #cecece;
+$address-finder-text-color: #4f4b46;
 
 .address_finder_container {
   position: relative;
@@ -27,7 +28,7 @@ $address-finder-row-border-color: #cecece;
 
 .af_hover {
   background-color: $address-finder-row-bg-color;
-  color: white;
+  color: $address-finder-text-color;
 }
 
 .af_footer {
