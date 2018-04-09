@@ -23,7 +23,7 @@ const RenderRadio = fields => {
     {fields.meta !== undefined && fields.meta.touched && fields.meta.error &&
       <span className="error"><strong>Error: </strong>{fields.meta.error}</span>
     }
-  </fieldset>
+  </fieldset>;
 };
 
 export default RenderRadio;
