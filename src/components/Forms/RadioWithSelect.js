@@ -4,7 +4,8 @@ import { Field, FieldArray } from 'redux-form';
 export default class RadioWithSelect extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { showYes: false };
+    this.state = { showYes: false
+    };
   }
 
   toggle(item) {
