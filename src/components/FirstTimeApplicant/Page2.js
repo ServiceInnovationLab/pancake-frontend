@@ -1,6 +1,7 @@
 import React from 'react';
 import { reduxForm } from 'redux-form';
 import validate from '../../helpers/validate';
+import LanguageToggle from '../../components/Forms/LanguageToggle';
 
 class Page2 extends React.Component {
 
@@ -30,10 +31,7 @@ class Page2 extends React.Component {
     return(
       <div className="container">
 
-        <div className="btn-group">
-          <a onClick={()=>{this.handleLanguageChange('en');}} className={this.state.lng === 'en' ? 'btn active' : 'btn'}>English</a>
-          <a onClick={()=>{this.handleLanguageChange('ma');}} className={this.state.lng === 'ma' ? 'btn active' : 'btn'}>Māori</a>
-        </div>
+        <LanguageToggle handler={this.handleLanguageChange} langState={this.state.lng} />
 
         <h2>What to do next</h2>
 
