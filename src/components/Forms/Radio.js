@@ -26,42 +26,35 @@ class Radio extends React.Component {
   render() {
     let prop = this.props.props;
     return (
-      <div>
+      <Fragment>
         <div>
-          <div>
-            {prop.options && prop.options.map((item, key) => {
-              return <label key={key}>
-                <input {...prop.input} type="radio" value={item} onClick={()=>{this.toggleSub(item);}} />
-                <span>{item}</span>
-              </label>;
-            })}
-          </div>
+          {prop.options && prop.options.map((item, key) => {
+            return <label key={key}>
+              <input {...prop.input} type="radio" value={item} onClick={()=>{this.toggleSub(item);}} />
+              <span>{item}</span>
+            </label>;
+          })}
         </div>
         {this.props.fieldType === 'radio' &&
-          <div>
-            <FieldState
-              showYes={this.stateType('showYes')}
-              showNo={this.stateType('showNo')}
-              prop={prop}
-              showSub={this.stateType('sub')}
-            />
-          </div>
+          <FieldRadio
+            showYes={this.stateType('showYes')}
+            showNo={this.stateType('showNo')}
+            prop={prop}
+            showSub={this.stateType('sub')}
+          />
         }
         {this.props.fieldType === 'text' &&
-          <div>
-            {this.stateType('showYes') && <div style={ this.stateType('showYes') }>
-              {prop.instructionsSecondary && <label style={{marginTop: '35px'}}>{prop.textFieldLabel}</label>}
-              <p>{prop.instructionsSecondary}</p>
-              <input type="number" name={`${prop.input.name}_sub_field`} placeholder={prop.placeholder} />
-            </div>}
-          </div>
+          <FieldText
+            showYes={this.stateType('showYes')}
+            prop={prop}
+          />
         }
-      </div>
+      </Fragment>
     );
   }
 }
 
-const FieldState = props => {
+const FieldRadio = props => {
   return (
     <Fragment>
       {<div style={ props.showYes }>{props.prop.optionsText[0]}</div>}
@@ -70,6 +63,18 @@ const FieldState = props => {
         <p style={ props.showSub }>A council officer will contact you about further information you will need to provide before processing your application.</p>
       </div>}
     </Fragment>
+  );
+};
+
+const FieldText = props => {
+  return (
+    <div>
+      {props.showYes && <div style={ props.showYes }>
+        {props.prop.instructionsSecondary && <label style={{marginTop: '35px'}}>{props.prop.textFieldLabel}</label>}
+        <p>{props.prop.instructionsSecondary}</p>
+        <input type="number" name={`${props.prop.input.name}_sub_field`} placeholder={props.prop.placeholder} />
+      </div>}
+    </div>
   );
 };
 
