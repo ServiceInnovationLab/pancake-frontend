@@ -1,5 +1,6 @@
 import React from 'react';
 import ErrorMessage from '../../components/Forms/Error';
+import Accordian from '../../components/Forms/Accordian';
 
 export default class RadioWithRadio extends React.Component {
   constructor(props) {
@@ -56,7 +57,7 @@ export default class RadioWithRadio extends React.Component {
           {this.props.instructions && <p>{this.props.instructions}</p>}
           {!this.props.instructions && <p></p>}
 
-          <div onClick={this.toggle.bind(this)} className="accordion">{this.props.accordianLabel}</div>
+          <Accordian label={this.props.accordianLabel} text={this.props.accordianText} />
           <div style={ shown }>{this.props.accordianText}</div>
           <div>
             <div>
@@ -72,10 +73,9 @@ export default class RadioWithRadio extends React.Component {
               <fieldset  style={{marginTop: '35px'}}>
                 <legend style={{marginBottom: '15px'}}>{this.props.optionsText[1]}</legend>
                 <div>
-                  <div>
-                    <label><input type="radio" name="test1" onClick={this.sub.bind(this)} /><span>Yes</span></label>
-                    <label><input type="radio" name="test1" onClick={this.sub.bind(this)} /><span>No</span></label>
-                  </div>
+                  {['Yes', 'No'].map(item=>{
+                    <label><input type="radio" name="test1" onClick={this.sub.bind(this)} /><span>{item}</span></label>;
+                  })}
                 </div>
               </fieldset>
               <p style={ sub }>A council officer will contact you about further information you will need to provide before processing your application.</p>
