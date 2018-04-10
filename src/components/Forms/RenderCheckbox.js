@@ -3,6 +3,7 @@ import { Field, FieldArray } from 'redux-form';
 import ErrorMessage from '../../components/Forms/Error';
 import { camelCaser } from '../../helpers/strings';
 import '../../styles/Terms.css';
+import RemoveButton from './RemoveButton';
 
 export const RenderCheckbox = props => {
 
@@ -99,12 +100,7 @@ const renderOtherIncome = ({ fields, meta: { error, submitFailed } }) => (
       <li key={index} style={{marginBottom: '15px'}}>
 
         <h4>Other income #{index + 1} </h4>
-        <button
-          type="button"
-          title="Remove income"
-          className="nested-button"
-          onClick={() => fields.remove(index)}
-        >Remove income</button>
+        <RemoveButton fields={fields} index={index} />
         <Field
           name={`${income}.incomeFrom`}
           type="text"
