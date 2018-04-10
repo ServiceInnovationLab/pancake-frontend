@@ -11,19 +11,3 @@ exports[`components <RenderRadio /> renders correctly 1`] = `
   <div />
 </fieldset>
 `;
-
-exports[`components <RenderTextField /> renders correctly 1`] = `
-<div
-  className="input-group"
->
-  <label>
-    <span />
-  </label>
-  <div>
-    <input
-      type="text"
-    />
-    <div />
-  </div>
-</div>
-`;

@@ -14,9 +14,6 @@ const validate = values => {
     }
 
     // Custom errors
-    if(!values.what_is_your_full_name) {
-      errors.what_is_your_full_name = 'This is a required field, please enter your full name';
-    }
   });
   return errors;
 };

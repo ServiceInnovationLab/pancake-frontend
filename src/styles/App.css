@@ -156,7 +156,7 @@ legend {
   padding-left: 40px;
   margin: 30px 0 !important;
   position: relative; }
-  .accordian:after {
+  .accordian::after {
     font-family: FontAwesome;
     font-size: 16px;
     content: "\F067";
@@ -166,11 +166,10 @@ legend {
     transform: translateY(-50%);
     opacity: 1;
     color: #4f4b46; }
-
-.accordian + div {
-  background-color: #e8e8e8;
-  margin-top: -30px;
-  padding: 15px;
-  padding-left: 40px; }
+  .accordian + div {
+    background-color: #e8e8e8;
+    margin-top: -30px;
+    padding: 15px;
+    padding-left: 40px; }
 
 /*# sourceMappingURL=App.css.map */
