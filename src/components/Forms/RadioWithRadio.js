@@ -66,8 +66,8 @@ export default class RadioWithRadio extends React.Component {
               <fieldset  style={{marginTop: '35px'}}>
                 <legend style={{marginBottom: '15px'}}>{this.props.optionsText[1]}</legend>
                 <div>
-                  {['Yes', 'No'].map(item=>{
-                    return <label><input type="radio" name="test1" onClick={this.sub.bind(this)} /><span>{item}</span></label>;
+                  {['Yes', 'No'].map((item, key)=>{
+                    return <label key={key}><input type="radio" name="test1" onClick={this.sub.bind(this)} /><span>{item}</span></label>;
                   })}
                 </div>
               </fieldset>
