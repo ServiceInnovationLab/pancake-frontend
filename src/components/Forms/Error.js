@@ -1,10 +1,13 @@
 import React from 'react';
 
-const Error = fields => {
+const Error = props => {
+  const {fields} = props;
   return (
     <div>
-      {fields.fields && fields.fields.error && 
-        <span className="error"><strong>Error: </strong>{fields.fields.error}</span>
+      {fields && fields.touched && fields.error &&
+        <div>
+          <span className="error"><strong>Error: </strong>{fields.error}</span>
+        </div>
       }
     </div>
   );

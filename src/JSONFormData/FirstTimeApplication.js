@@ -5,7 +5,8 @@ import RadioWithRadio from '../components/Forms/RadioWithRadio';
 import RadioWithTextField from '../components/Forms/RadioWithTextField';
 import RadioWithSelect from '../components/Forms/RadioWithSelect';
 
-const firstTimeApplication = [
+
+var firstTimeApplication = [
   {
     'component': TextBoxWithAccordian,
     'label': {
