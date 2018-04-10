@@ -23,12 +23,6 @@ class Radio extends React.Component {
     this.setState({showYes: item === 'yes' ? true : false});
   }
 
-  sub() {
-    this.setState({
-      sub: !this.state.sub
-    });
-  }
-
   render() {
     let prop = this.props.props;
     return (
@@ -49,11 +43,7 @@ class Radio extends React.Component {
             {<div style={ this.stateType('showNo') }>
               <fieldset  style={{marginTop: '35px'}}>
                 <legend style={{marginBottom: '15px'}}>{prop.optionsText[1]}</legend>
-                <div>
-                  {['Yes', 'No'].map((item, key)=>{
-                    return <label key={key}><input type="radio" name={`${prop.input.name}_sub_field`} onClick={this.sub.bind(this)} /><span>{item}</span></label>;
-                  })}
-                </div>
+                <RadioChild name={prop.input.name}/>
               </fieldset>
               <p style={ this.stateType('sub') }>A council officer will contact you about further information you will need to provide before processing your application.</p>
             </div>}
@@ -68,6 +58,23 @@ class Radio extends React.Component {
             </div>}
           </div>
         }
+      </div>
+    );
+  }
+}
+
+class RadioChild extends React.Component {
+  sub() {
+    this.setState({
+      sub: !this.state.sub
+    });
+  }
+  render() {
+    return (
+      <div>
+        {['Yes', 'No'].map((item, key)=>{
+          return <label key={key}><input type="radio" name={`${this.props.name}_sub_field`} onClick={this.sub.bind(this)} /><span>{item}</span></label>;
+        })}
       </div>
     );
   }
