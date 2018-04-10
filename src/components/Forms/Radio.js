@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 
 class Radio extends React.Component {
   constructor(props) {
@@ -39,14 +39,17 @@ class Radio extends React.Component {
         </div>
         {this.props.fieldType === 'radio' &&
           <div>
-            {<div style={ this.stateType('showYes') }>{prop.optionsText[0]}</div>}
+            {/* {<div style={ this.stateType('showYes') }>{prop.optionsText[0]}</div>}
             {<div style={ this.stateType('showNo') }>
-              <fieldset  style={{marginTop: '35px'}}>
-                <legend style={{marginBottom: '15px'}}>{prop.optionsText[1]}</legend>
-                <RadioChild name={prop.input.name}/>
-              </fieldset>
+              <FieldSet prop={prop}/>
               <p style={ this.stateType('sub') }>A council officer will contact you about further information you will need to provide before processing your application.</p>
-            </div>}
+            </div>} */}
+            <FieldState
+              showYes={this.stateType('showYes')}
+              showNo={this.stateType('showNo')}
+              prop={prop}
+              showSub={this.stateType('sub')}
+            />
           </div>
         }
         {this.props.fieldType === 'text' &&
@@ -63,7 +66,34 @@ class Radio extends React.Component {
   }
 }
 
+const FieldState = props => {
+  return (
+    <Fragment>
+      {<div style={ props.showYes }>{props.prop.optionsText[0]}</div>}
+      {<div style={ props.showNo }>
+        <FieldSet prop={props.prop}/>
+        <p style={ props.showSub }>A council officer will contact you about further information you will need to provide before processing your application.</p>
+      </div>}
+    </Fragment>
+  );
+};
+
+const FieldSet = props => {
+  return (
+    <fieldset style={{marginTop: '35px'}}>
+      <legend style={{marginBottom: '15px'}}>{props.prop.optionsText[1]}</legend>
+      <RadioChild name={props.prop.input.name}/>
+    </fieldset>
+  );
+};
+
 class RadioChild extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      sub: false
+    };
+  }
   sub() {
     this.setState({
       sub: !this.state.sub
