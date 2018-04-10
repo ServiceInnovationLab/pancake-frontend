@@ -62,7 +62,7 @@ export default class RadioWithRadio extends React.Component {
             <div>
               {this.props.options && this.props.options.map((item, key) => {
                 return <label key={key}>
-                  <input {...this.props.input} type="radio" value={item} onClick={()=>{this.toggleSub(item)}} />
+                  <input {...this.props.input} type="radio" value={item} onClick={()=>{this.toggleSub(item);}} />
                   <span>{item}</span>
                 </label>;
               })}
