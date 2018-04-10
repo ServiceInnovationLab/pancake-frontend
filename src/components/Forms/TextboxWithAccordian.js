@@ -1,5 +1,6 @@
 import React from 'react';
 import ErrorMessage from '../../components/Forms/Error';
+import Accordian from '../../components/Forms/Accordian';
 
 export default class TextBoxWithAccordian extends React.Component {
   constructor(props) {
@@ -14,9 +15,6 @@ export default class TextBoxWithAccordian extends React.Component {
   }
 
   render() {
-    let shown = {
-      display: this.state.shown ? 'block' : 'none'
-    };
     return (
       <fieldset className="radio-group">
         <legend>
@@ -26,8 +24,7 @@ export default class TextBoxWithAccordian extends React.Component {
         {!this.props.instructions && <p></p>}
         <input type="text" {...this.props.input} />
         {this.props.accordianText && <div>
-          <div onClick={this.toggle.bind(this)} className="accordian">{this.props.accordianLabel}</div>
-          <div style={ shown } dangerouslySetInnerHTML={ { __html: this.props.accordianText } }></div>
+          <Accordian label={this.props.accordianLabel} text={this.props.accordianText} />
         </div>
         }
         <ErrorMessage fields={this.props.meta} />
