@@ -39,27 +39,25 @@ export default class TextFieldWithCheckbox extends React.Component {
       display: this.state.shown ? 'block' : 'none'
     };
     return (
-      <div>
-        <fieldset className="radio-group">
-          <legend>{this.props.label}</legend>
-          <div>
-            {this.props.hasAddressFinder && 
-              <input
-                id="address_field"
-                type="search"
-                className="address-finder-input"
-                autoComplete="off"
-                autoCorrect="off"
-                onFocus={()=>this.loadWidget()} {...this.props.input}
-              />}
-          </div>
-          <label style={{fontWeight: 'normal', fontSize: '16px'}}>
-            <input type="checkbox" onClick={this.toggle.bind(this)} /> {this.props.checkboxLabel}
-          </label>
-          <div style={ shown }>{this.props.checkboxText}</div>
-          <ErrorMessage fields={this.props.meta} />
-        </fieldset>
-      </div>
+      <fieldset className="radio-group">
+        <legend>{this.props.label}</legend>
+        <div>
+          {this.props.hasAddressFinder && 
+            <input
+              id="address_field"
+              type="search"
+              className="address-finder-input"
+              autoComplete="off"
+              autoCorrect="off"
+              onFocus={()=>this.loadWidget()} {...this.props.input}
+            />}
+        </div>
+        <label style={{fontWeight: 'normal', fontSize: '16px'}}>
+          <input type="checkbox" onClick={this.toggle.bind(this)} /> {this.props.checkboxLabel}
+        </label>
+        <div style={ shown }>{this.props.checkboxText}</div>
+        <ErrorMessage fields={this.props.meta} />
+      </fieldset>
     );
   }
 }
