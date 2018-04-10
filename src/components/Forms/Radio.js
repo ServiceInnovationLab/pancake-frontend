@@ -43,12 +43,7 @@ class Radio extends React.Component {
             showSub={this.stateType('sub')}
           />
         }
-        {this.props.fieldType === 'text' &&
-          <FieldText
-            showYes={this.stateType('showYes')}
-            prop={prop}
-          />
-        }
+        {this.props.fieldType === 'text' && <FieldText showYes={this.stateType('showYes')} prop={prop} /> }
       </Fragment>
     );
   }
