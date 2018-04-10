@@ -34,20 +34,14 @@ export default class RadioWithRadio extends React.Component {
     });
   }
 
+  stateType(type) {
+    let data = {
+      display: this.state[type] ? 'block' : 'none'
+    };
+    return data;
+  }
+  
   render() {
-    let shown = {
-      display: this.state.shown ? 'block' : 'none'
-    };
-    let showYes = {
-      display: this.state.yes ? 'block' : 'none'
-    };
-    let showNo = {
-      display: this.state.no ? 'block' : 'none'
-    };
-    let sub = {
-      display: this.state.sub ? 'block' : 'none'
-    };
-
     return (
       <div>
         <fieldset className="radio-group">
@@ -58,7 +52,7 @@ export default class RadioWithRadio extends React.Component {
           {!this.props.instructions && <p></p>}
 
           <Accordian label={this.props.accordianLabel} text={this.props.accordianText} />
-          <div style={ shown }>{this.props.accordianText}</div>
+          <div style={ this.stateType('shown') }>{this.props.accordianText}</div>
           <div>
             <div>
               {this.props.options && this.props.options.map((item, key) => {
@@ -68,17 +62,17 @@ export default class RadioWithRadio extends React.Component {
                 </label>;
               })}
             </div>
-            {showYes && <div style={ showYes }>{this.props.optionsText[0]}</div>}
-            {showNo && <div style={ showNo }>
+            {<div style={ this.stateType('showYes') }>{this.props.optionsText[0]}</div>}
+            {<div style={ this.stateType('showNo') }>
               <fieldset  style={{marginTop: '35px'}}>
                 <legend style={{marginBottom: '15px'}}>{this.props.optionsText[1]}</legend>
                 <div>
                   {['Yes', 'No'].map(item=>{
-                    <label><input type="radio" name="test1" onClick={this.sub.bind(this)} /><span>{item}</span></label>;
+                    return <label><input type="radio" name="test1" onClick={this.sub.bind(this)} /><span>{item}</span></label>;
                   })}
                 </div>
               </fieldset>
-              <p style={ sub }>A council officer will contact you about further information you will need to provide before processing your application.</p>
+              <p style={ this.stateType('sub') }>A council officer will contact you about further information you will need to provide before processing your application.</p>
             </div>}
           </div>
           <ErrorMessage fields={this.props.meta} />
