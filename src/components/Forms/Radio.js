@@ -39,11 +39,6 @@ class Radio extends React.Component {
         </div>
         {this.props.fieldType === 'radio' &&
           <div>
-            {/* {<div style={ this.stateType('showYes') }>{prop.optionsText[0]}</div>}
-            {<div style={ this.stateType('showNo') }>
-              <FieldSet prop={prop}/>
-              <p style={ this.stateType('sub') }>A council officer will contact you about further information you will need to provide before processing your application.</p>
-            </div>} */}
             <FieldState
               showYes={this.stateType('showYes')}
               showNo={this.stateType('showNo')}
