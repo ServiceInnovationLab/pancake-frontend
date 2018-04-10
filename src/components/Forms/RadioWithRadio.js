@@ -40,7 +40,7 @@ export default class RadioWithRadio extends React.Component {
     };
     return data;
   }
-  
+
   render() {
     return (
       <div>
@@ -52,7 +52,6 @@ export default class RadioWithRadio extends React.Component {
           {!this.props.instructions && <p></p>}
 
           <Accordian label={this.props.accordianLabel} text={this.props.accordianText} />
-          <div style={ this.stateType('shown') }>{this.props.accordianText}</div>
           <div>
             <div>
               {this.props.options && this.props.options.map((item, key) => {

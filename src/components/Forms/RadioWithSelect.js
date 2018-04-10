@@ -1,5 +1,6 @@
 import React from 'react';
 import { Field, FieldArray } from 'redux-form';
+import RemoveButton from './RemoveButton';
 
 export default class RadioWithSelect extends React.Component {
   constructor(props) {
@@ -43,12 +44,7 @@ const renderOtherIncome = ({ fields, meta: { error, submitFailed } }) => (
       <li key={index} style={{marginBottom: '15px'}}>
 
         <h4>Other income #{index + 1} </h4>
-        <button
-          type="button"
-          title="Remove income"
-          className="nested-button"
-          onClick={() => fields.remove(index)}
-        >Remove income</button>
+        <RemoveButton fields={fields} index={index} />
         <div>
           <select>
             <option>Wage or salary</option>
