@@ -30,30 +30,44 @@ class Radio extends React.Component {
   }
 
   render() {
+    let prop = this.props.props;
     return (
       <div>
         <div>
           <div>
-            {this.props.props.options && this.props.props.options.map((item, key) => {
+            {prop.options && prop.options.map((item, key) => {
               return <label key={key}>
-                <input {...this.props.props.input} type="radio" value={item} onClick={()=>{this.toggleSub(item);}} />
+                <input {...prop.input} type="radio" value={item} onClick={()=>{this.toggleSub(item);}} />
                 <span>{item}</span>
               </label>;
             })}
           </div>
         </div>
-        {<div style={ this.stateType('showYes') }>{this.props.props.optionsText[0]}</div>}
-        {<div style={ this.stateType('showNo') }>
-          <fieldset  style={{marginTop: '35px'}}>
-            <legend style={{marginBottom: '15px'}}>{this.props.props.optionsText[1]}</legend>
-            <div>
-              {['Yes', 'No'].map((item, key)=>{
-                return <label key={key}><input type="radio" name="test1" onClick={this.sub.bind(this)} /><span>{item}</span></label>;
-              })}
-            </div>
-          </fieldset>
-          <p style={ this.stateType('sub') }>A council officer will contact you about further information you will need to provide before processing your application.</p>
-        </div>}
+        {this.props.fieldType === 'radio' &&
+          <div>
+            {<div style={ this.stateType('showYes') }>{prop.optionsText[0]}</div>}
+            {<div style={ this.stateType('showNo') }>
+              <fieldset  style={{marginTop: '35px'}}>
+                <legend style={{marginBottom: '15px'}}>{prop.optionsText[1]}</legend>
+                <div>
+                  {['Yes', 'No'].map((item, key)=>{
+                    return <label key={key}><input type="radio" name={`${prop.input.name}_sub_field`} onClick={this.sub.bind(this)} /><span>{item}</span></label>;
+                  })}
+                </div>
+              </fieldset>
+              <p style={ this.stateType('sub') }>A council officer will contact you about further information you will need to provide before processing your application.</p>
+            </div>}
+          </div>
+        }
+        {this.props.fieldType === 'text' &&
+          <div>
+            {this.stateType('showYes') && <div style={ this.stateType('showYes') }>
+              {prop.instructionsSecondary && <label style={{marginTop: '35px'}}>{prop.textFieldLabel}</label>}
+              <p>{prop.instructionsSecondary}</p>
+              <input type="number" name={`${prop.input.name}_sub_field`} placeholder={prop.placeholder} />
+            </div>}
+          </div>
+        }
       </div>
     );
   }
