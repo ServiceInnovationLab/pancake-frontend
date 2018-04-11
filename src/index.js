@@ -25,7 +25,7 @@ class App extends React.Component {
         <div>
           <Header />
           <main>
-            <Route exact path="/" component={AppCon} />
+            <Route exact={true} path="/" component={AppCon} />
             <Route path="/apply" component={FirstTimeApplicant} />
           </main>
           <Footer />
