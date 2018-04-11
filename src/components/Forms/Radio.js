@@ -30,7 +30,7 @@ class Radio extends React.Component {
         <div>
           {prop.options && prop.options.map((item, key) => {
             return <label key={key}>
-              <input {...prop.input} type="radio" value={item} onClick={()=>{this.toggleSub(item);}} />
+              <input {...prop.input} type="radio" value={item} onClick={()=>{ this.toggleSub(item); }} />
               <span>{item}</span>
             </label>;
           })}
@@ -97,7 +97,7 @@ class RadioChild extends React.Component {
   render() {
     return (
       <div>
-        {['Yes', 'No'].map((item, key)=>{
+        {[ 'Yes', 'No' ].map((item, key)=>{
           return <label key={key}><input type="radio" name={`${this.props.name}_sub_field`} onClick={this.sub.bind(this)} /><span>{item}</span></label>;
         })}
       </div>
