@@ -6,7 +6,8 @@ const RemoveButton = props => {
     title="Remove income"
     className="nested-button"
     onClick={() => props.fields.remove(props.index)}
-  >Remove income</button>;
+  >Remove income
+  </button>;
 };
 
 export default RemoveButton;
