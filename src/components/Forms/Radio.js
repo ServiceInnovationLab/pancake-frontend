@@ -52,10 +52,10 @@ class Radio extends React.Component {
 const FieldRadio = props => {
   return (
     <Fragment>
-      {<div style={ props.showYes }>{props.prop.optionsText[0]}</div>}
-      {<div style={ props.showNo }>
+      {<div style={props.showYes}>{props.prop.optionsText[0]}</div>}
+      {<div style={props.showNo}>
         <FieldSet prop={props.prop}/>
-        <p style={ props.showSub }>A council officer will contact you about further information you will need to provide before processing your application.</p>
+        <p style={props.showSub}>A council officer will contact you about further information you will need to provide before processing your application.</p>
       </div>}
     </Fragment>
   );
@@ -64,7 +64,7 @@ const FieldRadio = props => {
 const FieldText = props => {
   return (
     <div>
-      {props.showYes && <div style={ props.showYes }>
+      {props.showYes && <div style={props.showYes}>
         {props.prop.instructionsSecondary && <label style={{marginTop: '35px'}}>{props.prop.textFieldLabel}</label>}
         <p>{props.prop.instructionsSecondary}</p>
         <input type="number" name={`${props.prop.input.name}_sub_field`} placeholder={props.prop.placeholder} />
