@@ -15,8 +15,8 @@ import Footer from './components/Footer';
 const store = createStore(combineReducers({
   reducers,
   form: formReducer
-// }), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-}), applyMiddleware(thunk));
+}), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+// }), applyMiddleware(thunk));
 
 class App extends React.Component {
   render(){
@@ -36,5 +36,3 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
-
-// page 1 (App - has links to First time Applicant and ReApply pages)

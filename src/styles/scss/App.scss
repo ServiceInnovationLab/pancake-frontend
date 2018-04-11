@@ -13,13 +13,20 @@
   }
 
 $input-border-color: #677a8e;
+$font-color-primary: #4f4b46;
+$accordian-bg: #e8e8e8;
+$accordian-border-color: #cecece;
+$btn-primary-color: #6cca7e;
+$header-primary-color: #dafdc5;
+$icon-primary-color: #b2b2b2;
+$speech-bubble-bg-color: #eee;
 
 *, :after, :before { box-sizing: inherit; }
 
 html { box-sizing: border-box; }
 
 body {
-  color: #4f4b46;
+  color: $font-color-primary;
   margin: 0;
   font-family: 'Fira Sans', sans-serif;
 }
@@ -70,7 +77,6 @@ input {
   font-size: 16px;
   display: inline-block;
   margin-top: 10px;
-  margin-bottom: 30px;
   border: 2px solid transparent;
   border-radius: 5px;
   padding: 8px 20px;
@@ -138,7 +144,7 @@ legend {
 }
 
 .speech-bubble {
-  background-color: #eee;
+  background-color: $speech-bubble-bg-color;
   padding: 10px;
   box-sizing: inherit;
 }
@@ -163,8 +169,8 @@ legend {
 }
 
 .main-header {
-  background-color: #dafdc5;
-  color: #6cca7e;
+  background-color: $header-primary-color;
+  color: $btn-primary-color;
   overflow: auto;
   position: relative;
   margin-bottom: 20px;
@@ -173,7 +179,7 @@ legend {
     position: absolute;
     top: 25%;
   }
-  a { color: #6cca7e; }
+  a { color: $btn-primary-color; }
   p { margin-top: 40px; }
 }
 
@@ -182,4 +188,34 @@ legend {
   font-weight: 800;
   display: inline-block;
   margin-left: 80px;
+}
+
+.accordian {
+  border-top: 1px solid $accordian-border-color;
+  border-bottom: 1px solid $accordian-border-color;
+  font-weight: 700;
+  background: $accordian-bg;
+  cursor: pointer;
+  padding: 8px;
+  padding-left: 40px;
+  margin: 30px 0 !important;
+  position: relative;
+  &::after {
+    font-family: FontAwesome;
+    font-size: 16px;
+    content: "\F067";
+    position: absolute;
+    left: 15px;
+    top: 19px;
+    transform: translateY(-50%);
+    opacity: 1;
+    color: $font-color-primary;
+  }
+  
+  + div {
+    background-color: $accordian-bg;
+    margin-top: -30px;
+    padding: 15px;
+    padding-left: 40px;
+  }
 }
