@@ -25,7 +25,7 @@ export default class RadioWithSelect extends React.Component {
             {this.props.label}
           </legend>}
 
-          {showYes && <div style={ showYes }>
+          {showYes && <div style={showYes}>
             <label>{this.props.textFieldLabel}</label>
             <p>{this.props.instructions}</p>
             <input type="number" placeholder={this.props.placeholder} />

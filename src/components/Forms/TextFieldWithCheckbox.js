@@ -55,7 +55,7 @@ export default class TextFieldWithCheckbox extends React.Component {
         <label style={{fontWeight: 'normal', fontSize: '16px'}}>
           <input type="checkbox" onClick={this.toggle.bind(this)} /> {this.props.checkboxLabel}
         </label>
-        <div style={ shown }>{this.props.checkboxText}</div>
+        <div style={shown}>{this.props.checkboxText}</div>
         <ErrorMessage fields={this.props.meta} />
       </fieldset>
     );
