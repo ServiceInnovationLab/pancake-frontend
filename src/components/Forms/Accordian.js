@@ -18,7 +18,7 @@ class Accordian extends React.Component {
     return (
       <Fragment>
         <div onClick={this.toggle.bind(this)} className="accordian">{this.props.label}</div>
-        <div style={ shown } dangerouslySetInnerHTML={ { __html: this.props.text } }></div>
+        <div style={shown} dangerouslySetInnerHTML={{ __html: this.props.text }}></div>
       </Fragment>
     );
   }
