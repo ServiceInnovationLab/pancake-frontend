@@ -30,7 +30,7 @@ class Radio extends React.Component {
         <div>
           {prop.options && prop.options.map((item, key) => {
             return <label key={key}>
-              <input {...prop.input} type="radio" value={item} onClick={()=>{this.toggleSub(item);}} />
+              <input {...prop.input} type="radio" value={item} onClick={()=>{ this.toggleSub(item); }} />
               <span>{item}</span>
             </label>;
           })}
