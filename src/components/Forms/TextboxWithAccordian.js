@@ -20,7 +20,7 @@ export default class TextBoxWithAccordian extends React.Component {
         <legend>
           {this.props.label}
         </legend>
-        {this.props.instructions && <p dangerouslySetInnerHTML={ { __html: this.props.instructions } }></p>}
+        {this.props.instructions && <p dangerouslySetInnerHTML={{ __html: this.props.instructions }}></p>}
         {!this.props.instructions && <p></p>}
         <input type="text" {...this.props.input} />
         {this.props.accordianText && <div>
