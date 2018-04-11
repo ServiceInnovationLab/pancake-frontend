@@ -1,6 +1,6 @@
-## Pancake Web.
+## Pancake frontend 
 
-Javascript web client to the pancacke server. Presents form to apply for a Rates Rebate. To be used anywhere, but most commonly inside a City Council office.
+Javascript reactjs web client to the pancacke backend. Presents form to apply for a Rates Rebate. To be used anywhere, but most commonly inside a City Council office.
 
 # Example deployment:
 
