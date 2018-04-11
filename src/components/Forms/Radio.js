@@ -97,7 +97,7 @@ class RadioChild extends React.Component {
   render() {
     return (
       <div>
-        {['Yes', 'No'].map((item, key)=>{
+        {[ 'Yes', 'No' ].map((item, key)=>{
           return <label key={key}><input type="radio" name={`${this.props.name}_sub_field`} onClick={this.sub.bind(this)} /><span>{item}</span></label>;
         })}
       </div>
