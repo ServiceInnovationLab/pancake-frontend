@@ -1,4 +1,5 @@
 import React from 'react';
+import ErrorMessage from '../../components/Forms/Error';
 
 const RenderRadio = fields => {
   const {label, isRequired, instructions, options, input} = fields;
@@ -20,10 +21,8 @@ const RenderRadio = fields => {
         })}
       </div>
     </div>
-    {fields.meta !== undefined && fields.meta.touched && fields.meta.error &&
-      <span className="error"><strong>Error: </strong>{fields.meta.error}</span>
-    }
-  </fieldset>
+    <ErrorMessage fields={fields} />
+  </fieldset>;
 };
 
 export default RenderRadio;

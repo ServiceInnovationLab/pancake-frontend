@@ -1,17 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`components <RenderCheckbox /> renders correctly 1`] = `
-<fieldset
-  className="checkbox-group"
->
-  <label>
-    <input
-      type="checkbox"
-    />
-  </label>
-</fieldset>
-`;
-
 exports[`components <RenderRadio /> renders correctly 1`] = `
 <fieldset
   className="radio-group"
@@ -20,20 +8,6 @@ exports[`components <RenderRadio /> renders correctly 1`] = `
   <div>
     <div />
   </div>
+  <div />
 </fieldset>
-`;
-
-exports[`components <RenderTextField /> renders correctly 1`] = `
-<div
-  className="input-group"
->
-  <label>
-    <span />
-  </label>
-  <div>
-    <input
-      type="text"
-    />
-  </div>
-</div>
 `;

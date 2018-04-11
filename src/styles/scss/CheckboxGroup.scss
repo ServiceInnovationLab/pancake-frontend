@@ -1,6 +1,9 @@
 $input-border-color: #677a8e;
 $input-bg-color: #677a8e;
+$checkbox-icon: #4f4b46;
 $white: #fff;
+$label-not-radio-color: #efefef;
+$black: #000;
 
 @font-face {
 font-family: "FontAwesome";
@@ -13,7 +16,6 @@ font-style : normal;
     url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.ttf?v=4.3.0") format("truetype"),
     url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular") format("svg");
 }
-
 .checkbox-group {
   h4 {
     display: inline-block;
@@ -21,16 +23,9 @@ font-style : normal;
     vertical-align: sub;
     margin-bottom: 0;
   }
-
   .radio-group {
     margin: 0;
   }
-
-  input[type=checkbox] {
-    position: absolute;
-    left: -9999px;
-  }
-
   > label:not(.checkbox-radio) {
     position: relative;
     cursor: pointer;
@@ -40,22 +35,19 @@ font-style : normal;
     margin-bottom: 15px;
     min-height: 40px;
     font-size: 16px;
-    background-color: #efefef;
+    background-color: $label-not-radio-color;
     padding: 13px;
     border-radius: 21px;
     &:hover {
-      background-color: darken(#efefef, 4%);
+      background-color: darken($label-not-radio-color, 4%);
     }
-
     @media(min-width: 768px) {
       width: 366px;
     }
-
     span {
       margin-left: 40px;
       font-weight: 500;
     }
-    
     span::before {
       content: "";
       border: 1px solid $input-bg-color;
@@ -68,12 +60,10 @@ font-style : normal;
       left: 10px;
       transform: translateY(-50%);
     }
-
     :checked + span::before {
       background-color: $input-bg-color;
       border-color: $input-bg-color;
     }
-
     :checked + span::after {
       font-family: 'FontAwesome';
       font-size: 21px;
@@ -85,10 +75,86 @@ font-style : normal;
       opacity: 1;
       color: $white;
     }
-
   }
 }
 
+.checkbox-square {
+  .radio-group {
+    margin: 0;
+  }
+  input[type=checkbox] {
+    position: absolute;
+    left: -9999px;
+  }
+  > label:not(.checkbox-radio) {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding-left: 52px;
+    margin-bottom: 15px;
+    min-height: 40px;
+    font-size: 16px;
+    padding: 13px;
+    border-top: 1px solid $black;
+    border-bottom: 1px solid $black;
+    span {
+      margin-left: 40px;
+      font-weight: 500;
+    }
+    :not(:checked) + span::after {
+      font-family: 'FontAwesome';
+      font-size: 21px;
+      content: "\f067";
+      position: absolute;
+      left: 17px;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 1;
+      color: $black;
+    }
+    span::before {
+      content: "";
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+    }
+
+    :checked + span::before {
+      font-family: 'FontAwesome';
+      font-size: 21px;
+      content: "\f068";
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 1;
+      color: $black;
+    }
+
+    :checked + span::after {
+      font-family: 'FontAwesome';
+      font-size: 21px;
+      content: "\f068";
+      position: absolute;
+      left: 17px;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 1;
+      color: $black;
+    }
+  }
+}
+.checkbox-group,
+.checkbox-square {
+  input[type=checkbox] {
+    position: absolute;
+    left: -9999px;
+  }
+}
 .checkbox-list {
   li {
     list-style: none;
@@ -102,8 +168,8 @@ font-style : normal;
   }
   h4 {margin-right: 20px;}
 }
-
 .nested-list {
+  list-style: none;
   padding-left: 0;
   li {
     list-style: none;

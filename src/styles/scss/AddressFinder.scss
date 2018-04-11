@@ -1,3 +1,7 @@
+$address-finder-row-bg-color: #e8e8e8;
+$address-finder-row-border-color: #cecece;
+$address-finder-text-color: #4f4b46;
+
 .address_finder_container {
   position: relative;
 }
@@ -11,7 +15,7 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  border: solid 1px #35a744;
+  border: solid 1px $address-finder-row-border-color;
   background: white;
   box-sizing: border-box;
 }
@@ -19,12 +23,12 @@
 .af_item {
   cursor: pointer;
   padding: 10px;
-  border-bottom: 1px solid #35a744;
+  border-bottom: 1px solid $address-finder-row-border-color;
 }
 
 .af_hover {
-  background-color: green;
-  color: white;
+  background-color: $address-finder-row-bg-color;
+  color: $address-finder-text-color;
 }
 
 .af_footer {
