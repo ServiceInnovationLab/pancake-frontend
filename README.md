@@ -7,7 +7,7 @@ Javascript web client to the pancacke server. Presents form to apply for a Rates
 
 # Example deployment:
 
-https://github.com/ServiceInnovationLab/pancake-frontend
+https://serviceinnovationlab.github.io/pancake-frontend/
 
 ## Deployment
 
