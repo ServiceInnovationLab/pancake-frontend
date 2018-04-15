@@ -1,10 +1,13 @@
+[![Build Status](https://travis-ci.org/ServiceInnovationLab/pancake-frontend.svg?branch=master)](https://travis-ci.org/ServiceInnovationLab/pancake-frontend)
+[![Waffle.io - Columns and their card count](https://badge.waffle.io/ServiceInnovationLab/pancake-frontend.png?columns=all)](https://waffle.io/ServiceInnovationLab/pancake-frontend?utm_source=badge)
+
 ## Pancake Web.
 
-Javascript web client to the pancacke server. Presents form to apply for a Rates Rebate. To be used anywhere, but most commonly inside a City Council office.
+Javascript web client to the pancake server. Presents form to apply for a Rates Rebate. To be used anywhere, but most commonly inside a City Council office.
 
 # Example deployment:
 
-https://github.com/ServiceInnovationLab/pancake-frontend
+https://serviceinnovationlab.github.io/pancake-frontend/
 
 ## Deployment
 
