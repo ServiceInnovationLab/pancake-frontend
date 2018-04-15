@@ -3,7 +3,7 @@
 
 ## Pancake Web.
 
-Javascript web client to the pancacke server. Presents form to apply for a Rates Rebate. To be used anywhere, but most commonly inside a City Council office.
+Javascript web client to the pancake server. Presents form to apply for a Rates Rebate. To be used anywhere, but most commonly inside a City Council office.
 
 # Example deployment:
 
