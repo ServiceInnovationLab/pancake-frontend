@@ -1,6 +1,6 @@
 import React from 'react';
 import Page1 from './Page1';
-import Page2 from './Page2';
+// import Page2 from './Page2';
 
 class Landing extends React.Component {
   constructor(props) {
@@ -24,10 +24,10 @@ class Landing extends React.Component {
     const { page } = this.state;
     return (
       <div>
-        {page === 1 && <Page1 onSubmit={this.nextPage} />}
-        {page === 2 && (
-          <Page2
-            previousPage={this.previousPage}
+        {/* {page === 1 && <Page1 onSubmit={this.nextPage} />} */}
+        {page === 1 && (
+          <Page1
+            // previousPage={this.previousPage}
             onSubmit={onSubmit}
           />
         )}

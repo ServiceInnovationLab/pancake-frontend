@@ -10,6 +10,7 @@ import '../../styles/RadioGroup.css';
 import '../../styles/CheckboxGroup.css';
 import '../../styles/FormValidation.css';
 import firstTimeApplication from '../../JSONFormData/FirstTimeApplication';
+import axios from 'axios';
 
 class SelectingFormValuesForm extends React.Component {
   constructor(props) {
@@ -40,7 +41,27 @@ class SelectingFormValuesForm extends React.Component {
       shown: !this.state.shown
     });
   }
-
+  handleSubmit(e){
+    axios.post('https://pancakenz-staging.herokuapp.com/api/v1/rebate_forms', {
+      "data": {
+        "type": "rebate-forms",
+        "attributes": {
+          "valuation_id": "abc",
+          "fields": {
+            "name": "bob"
+          }
+        }
+      },
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+  )
+    .then(res => {
+      console.log(res);
+      console.log(res.data);
+    })
+  }
   render() {
     let shown = {
       display: this.state.shown ? "block" : "none"
@@ -49,7 +70,7 @@ class SelectingFormValuesForm extends React.Component {
     return (
       <Fragment>
         <LanguageToggle handler={this.handleLanguageChange} langState={this.state.lng} />
-        <form className="container" onSubmit={this.props.handleSubmit}>
+        <form className="container" onSubmit={this.handleSubmit()}>
           <h1>What you will need to do to apply for a rebate</h1>
           <ul>
             <li>Fill out this form,</li>
