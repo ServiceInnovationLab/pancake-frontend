@@ -18,7 +18,7 @@ export class App extends Component {
           <h1>The Rates Rebate Scheme provides a discount to low-income<br/> homeowners on the cost of their rates.</h1>
           <p>If you are a low-income homeowner you could get a discount or partial refund of up to $620 on your property rates.</p>
 
-          <Link className="btn btn-primary" to={'apply'}>Apply now</Link>
+          <Link className="btn btn-primary" to='/apply'>Apply now</Link>
         </section>
 
         <section>

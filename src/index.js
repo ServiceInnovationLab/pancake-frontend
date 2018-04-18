@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import AppCon from './container/app-container';
 import FirstTimeApplicant from './components/FirstTimeApplicant/Landing';
+import Page2 from './components/FirstTimeApplicant/Page2';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import reducers from './reducers/index';
-import { HashRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import { reducer as formReducer } from 'redux-form';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -21,16 +22,17 @@ const store = createStore(combineReducers({
 class App extends React.Component {
   render(){
     return (
-      <HashRouter>
+      <BrowserRouter>
         <div>
           <Header />
           <main>
             <Route exact={true} path="/" component={AppCon} />
             <Route path="/apply" component={FirstTimeApplicant} />
+            <Route path="/page2" component={Page2} />
           </main>
           <Footer />
         </div>
-      </HashRouter>
+      </BrowserRouter>
     );
   }
 }
