@@ -63,9 +63,10 @@ class SelectingFormValuesForm extends React.Component {
       }
     };
 
+    console.log('da', config.API_ORIGIN)
     axios
       .post(`${config.API_ORIGIN}/api/v1/rebate_forms`, { data })
-      .then(res => window.location.href = '/page2')
+      .then(res => window.location.href = '#/page2')
       .catch(err => console.log('Error occured', err));
   }
 

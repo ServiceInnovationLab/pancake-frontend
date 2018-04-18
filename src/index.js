@@ -7,7 +7,7 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import reducers from './reducers/index';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { HashRouter, Route } from 'react-router-dom';
 import { reducer as formReducer } from 'redux-form';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -22,7 +22,7 @@ const store = createStore(combineReducers({
 class App extends React.Component {
   render(){
     return (
-      <BrowserRouter>
+      <HashRouter>
         <div>
           <Header />
           <main>
@@ -32,7 +32,7 @@ class App extends React.Component {
           </main>
           <Footer />
         </div>
-      </BrowserRouter>
+      </HashRouter>
     );
   }
 }
