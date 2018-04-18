@@ -9,7 +9,7 @@ export const camelCaser = string => {
       splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
     }
     return splitStr.join(''); 
-  } else {
-    return 'Unknown value';
-  }
+  } 
+  return 'Unknown value';
+  
 };
