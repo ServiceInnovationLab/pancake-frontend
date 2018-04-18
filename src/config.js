@@ -6,7 +6,7 @@ const staging = {
   API_ORIGIN: 'https://pancakenz-staging.herokuapp.com',
 };
 
-const config = process.env.REACT_APP_STAGE === 'staging'
+const config = window.location.origin === 'https://serviceinnovationlab.github.io'
   ? staging
   : dev;
 
