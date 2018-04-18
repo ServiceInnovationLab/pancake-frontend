@@ -11,6 +11,7 @@ import '../../styles/CheckboxGroup.css';
 import '../../styles/FormValidation.css';
 import firstTimeApplication from '../../JSONFormData/FirstTimeApplication';
 import axios from 'axios';
+import config from '../../config';
 
 class SelectingFormValuesForm extends React.Component {
   constructor(props) {
@@ -63,7 +64,7 @@ class SelectingFormValuesForm extends React.Component {
     };
 
     axios
-      .post(`http://localhost:3001/api/v1/rebate_forms`, { data })
+      .post(`${config.API_ORIGIN}/api/v1/rebate_forms`, { data })
       .then(res => window.location.href = '/page2')
       .catch(err => console.log('Error occured', err));
   }
