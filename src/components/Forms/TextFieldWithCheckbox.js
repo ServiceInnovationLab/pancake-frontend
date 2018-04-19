@@ -44,10 +44,9 @@ export default class TextFieldWithCheckbox extends React.Component {
         <legend>{this.props.label}</legend>
         <div>
           {this.props.hasAddressFinder && 
-            <Field hasAddressFinder={true} input={this.props.input} value={this.state.address} />
-          }
-           
-          {!this.props.hasAddressFinder && <Field hasAddressFinder={false} />}
+            <input {...this.props.input} value={this.state.address} id="address_field" type="search"
+              onChange={e => this.setState({address: e.target.value})}/>}
+          {!this.props.hasAddressFinder && <Field hasAddressFinder={false} input={this.props.input} />}
         </div>
         <label style={{fontWeight: 'normal', fontSize: '16px'}}>
           <input type="checkbox" onClick={this.toggle.bind(this)} /> {this.props.checkboxLabel}
@@ -62,13 +61,7 @@ export default class TextFieldWithCheckbox extends React.Component {
 const Field = props => {
   return (
     <Fragment>
-      {props.hasAddressFinder && 
-      <input {...props.input}
-        value={props.value}
-        id="address_field"
-        type="search"
-      />}
-      {!props.hasAddressFinder && <input {...props.input} type="text" />}
+      {!props.hasAddressFinder && <input {...props.input} type={props.type} />}
     </Fragment>
   );
 };
