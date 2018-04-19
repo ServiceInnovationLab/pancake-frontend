@@ -66,7 +66,7 @@ class SelectingFormValuesForm extends React.Component {
     axios
       .post(`${config.API_ORIGIN}/api/v1/rebate_forms`, { data })
       .then(res => window.location.href = '#/page2')
-      .catch(err => console.log('Error occured', err));
+      .catch(err => console.log('Error occurred: Check origin has been enabled correctly on the server', err));
   }
 
   render() {
