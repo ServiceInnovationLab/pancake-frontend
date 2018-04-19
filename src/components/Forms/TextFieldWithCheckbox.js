@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import ErrorMessage from '../../components/Forms/Error';
 import '../../styles/AddressFinder.css';
 
@@ -44,18 +44,10 @@ export default class TextFieldWithCheckbox extends React.Component {
         <legend>{this.props.label}</legend>
         <div>
           {this.props.hasAddressFinder && 
-            <input
-              {...this.props.input}
-              value={this.state.address}
-              id="address_field"
-              type="search"
-              onChange={e => this.setState({address: e.target.value})}
-            />}
+            <Field hasAddressFinder={true} input={this.props.input} value={this.state.address} />
+          }
            
-          {!this.props.hasAddressFinder && 
-            <input
-              type="text"
-              {...this.props.input} />}
+          {!this.props.hasAddressFinder && <Field hasAddressFinder={false} />}
         </div>
         <label style={{fontWeight: 'normal', fontSize: '16px'}}>
           <input type="checkbox" onClick={this.toggle.bind(this)} /> {this.props.checkboxLabel}
@@ -66,3 +58,17 @@ export default class TextFieldWithCheckbox extends React.Component {
     );
   }
 }
+
+const Field = props => {
+  return (
+    <Fragment>
+      {props.hasAddressFinder && 
+      <input {...props.input}
+        value={props.value}
+        id="address_field"
+        type="search"
+      />}
+      {!props.hasAddressFinder && <input {...props.input} type="text" />}
+    </Fragment>
+  );
+};
