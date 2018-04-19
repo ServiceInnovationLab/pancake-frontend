@@ -168,7 +168,9 @@ SelectingFormValuesForm = reduxForm({
 })(SelectingFormValuesForm);
 
 SelectingFormValuesForm = connect(state => {
-  return { validate };
+  return { 
+    validate
+  };
 
 })(SelectingFormValuesForm);
 

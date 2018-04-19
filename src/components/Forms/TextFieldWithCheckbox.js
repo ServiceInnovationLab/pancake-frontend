@@ -6,51 +6,56 @@ export default class TextFieldWithCheckbox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      show: false
+      show: false,
+      address: ''
     };
   }
 
   toggle() {
     this.setState({
-      shown: !this.state.shown
+      shown: !this.state.shown,
     });
   }
+  componentWillUpdate() {
+    let address_field = document.getElementById('address_field');
+    if(window.AddressFinder){
+      let widget = new window.AddressFinder.Widget(
+        address_field,
+        'ADDRESSFINDER_DEMO_KEY',
+        'NZ',
+        {manual_style:true}
+      );
 
-  componentDidMount() {
-    document.addEventListener('DOMContentLoaded', this.loadWidget());
-  }
-
-  loadWidget() {
-    window.onload = function(){
-      if(window.AddressFinder.Widget) {
-        let address_field = document.getElementById('address_field') || document.getElementById('what_is_your_address');
-        new window.AddressFinder.Widget(
-          address_field,
-          'ADDRESSFINDER_DEMO_KEY',
-          'NZ',
-          {manual_style:true}
-        );
-      }
-    };
+      widget.on('result:select', (value) => {
+        this.setState({address: value});
+        document.getElementById('address_field').focus();
+      });
+    }
   }
 
   render() {
     let shown = {
       display: this.state.shown ? 'block' : 'none'
     };
+    delete this.props.input.value;
+
     return (
       <fieldset className="radio-group">
         <legend>{this.props.label}</legend>
         <div>
           {this.props.hasAddressFinder && 
             <input
+              {...this.props.input}
+              value={this.state.address}
               id="address_field"
               type="search"
-              className="address-finder-input"
-              autoComplete="off"
-              autoCorrect="off"
-              onFocus={()=>this.loadWidget()} {...this.props.input}
+              onChange={e => this.setState({address: e.target.value})}
             />}
+           
+          {!this.props.hasAddressFinder && 
+            <input
+              type="text"
+              {...this.props.input} />}
         </div>
         <label style={{fontWeight: 'normal', fontSize: '16px'}}>
           <input type="checkbox" onClick={this.toggle.bind(this)} /> {this.props.checkboxLabel}
