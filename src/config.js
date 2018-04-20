@@ -3,7 +3,7 @@ const dev = {
 };
 
 const staging = {
-  API_ORIGIN: 'https://pancakenz-staging.herokuapp.com',
+  API_ORIGIN: 'https://pancakenz-staging.herokuapp.com'
 };
 
 const config = window.location.origin === 'https://serviceinnovationlab.github.io'
