@@ -45,7 +45,8 @@ export default class TextFieldWithCheckbox extends React.Component {
         <div>
           {this.props.hasAddressFinder && 
             <input {...this.props.input} value={this.state.address} id="address_field" type="search"
-              onChange={e => this.setState({address: e.target.value})}/>}
+              onChange={e => this.setState({address: e.target.value})}
+            />}
           {!this.props.hasAddressFinder && <Field hasAddressFinder={false} input={this.props.input} />}
         </div>
         <label style={{fontWeight: 'normal', fontSize: '16px'}}>
