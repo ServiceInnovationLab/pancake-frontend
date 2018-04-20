@@ -13,7 +13,7 @@ export default class TextFieldWithCheckbox extends React.Component {
 
   toggle() {
     this.setState({
-      shown: !this.state.shown,
+      shown: !this.state.shown
     });
   }
   componentWillUpdate() {
