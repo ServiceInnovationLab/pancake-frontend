@@ -9,6 +9,7 @@ import '../../styles/TextField.css';
 import '../../styles/RadioGroup.css';
 import '../../styles/CheckboxGroup.css';
 import '../../styles/FormValidation.css';
+import '../../styles/SignaturePad.css';
 import firstTimeApplication from '../../JSONFormData/FirstTimeApplication';
 import axios from 'axios';
 import config from '../../config';
@@ -83,8 +84,10 @@ class SelectingFormValuesForm extends React.Component {
     //   .catch(err => console.log('Error occurred: Check origin has been enabled correctly on the server', err));
   }
 
-  
+
   render() {
+    let signature_pad = document.querySelector('#signature-pad');
+    console.log(signature_pad)
     let shown = {
       display: this.state.shown
         ? "block"
@@ -168,7 +171,7 @@ class SelectingFormValuesForm extends React.Component {
             <SignaturePad
               clearButton="true"
               ref={ref => this.signaturePad = ref}
-              style={{border: '1px solid black'}}
+              style={{border: '1px solid black', height: 0, width: 0}}
             />
           </div>
           <div>
@@ -189,7 +192,7 @@ SelectingFormValuesForm = reduxForm({
 })(SelectingFormValuesForm);
 
 SelectingFormValuesForm = connect(state => {
-  return { 
+  return {
     validate
   };
 
