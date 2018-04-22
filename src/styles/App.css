@@ -172,4 +172,7 @@ legend {
     padding: 15px;
     padding-left: 40px; }
 
+canvas {
+  border: 1px solid black; }
+
 /*# sourceMappingURL=App.css.map */

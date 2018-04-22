@@ -12,6 +12,7 @@ import '../../styles/FormValidation.css';
 import firstTimeApplication from '../../JSONFormData/FirstTimeApplication';
 import axios from 'axios';
 import config from '../../config';
+import SignaturePad from 'react-signature-pad';
 
 class SelectingFormValuesForm extends React.Component {
   constructor(props) {
@@ -19,7 +20,8 @@ class SelectingFormValuesForm extends React.Component {
     this.state = {
       lng: 'en',
       page: 1,
-      shown: false
+      shown: false,
+      signature: ''
     };
     this.nextPage = this
       .nextPage
@@ -62,13 +64,26 @@ class SelectingFormValuesForm extends React.Component {
         "fields": values
       }
     };
+    let signatures = {
+      "signature_type_id": 1,
+      "rebate_form_id": 1,
+      "image": this.signaturePad.toDataURL()
+    };
+
+    // console.log(this.signaturePad.toDataURL())
+    console.log(signatures)
 
     axios
       .post(`${config.API_ORIGIN}/api/v1/rebate_forms`, { data })
       .then(res => window.location.href = '#/page2')
       .catch(err => console.log('Error occurred: Check origin has been enabled correctly on the server', err));
+    // axios
+    //   .post(`${config.API_ORIGIN}/api/v1/signatures`, { signatures })
+    //   .then(res => window.location.href = '#/page2')
+    //   .catch(err => console.log('Error occurred: Check origin has been enabled correctly on the server', err));
   }
 
+  
   render() {
     let shown = {
       display: this.state.shown
@@ -149,7 +164,13 @@ class SelectingFormValuesForm extends React.Component {
             <p>This is indicative only and may differ from the final rebate once the
               application is processed fully.</p>
           </div>
-
+          <div>
+            <SignaturePad
+              clearButton="true"
+              ref={ref => this.signaturePad = ref}
+              style={{border: '1px solid black'}}
+            />
+          </div>
           <div>
             <button type="submit" disabled={this.props.submitting} className="btn-primary">
               Send Application
