@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import AppCon from './container/app-container';
 import FirstTimeApplicant from './components/FirstTimeApplicant/Landing';
 import Page2 from './components/FirstTimeApplicant/Page2';
+import Page3 from './components/FirstTimeApplicant/Page3';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
@@ -29,6 +30,7 @@ class App extends React.Component {
             <Route exact={true} path="/" component={AppCon} />
             <Route path="/apply" component={FirstTimeApplicant} />
             <Route path="/page2" component={Page2} />
+            <Route path="/page3" component={Page3} />
           </main>
           <Footer />
         </div>

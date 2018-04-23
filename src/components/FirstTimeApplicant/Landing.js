@@ -1,5 +1,6 @@
 import React from 'react';
 import Page1 from './Page1';
+import Eligibility from './Eligibility';
 
 class Landing extends React.Component {
   constructor(props) {
@@ -30,7 +31,7 @@ class Landing extends React.Component {
     const {page} = this.state;
     return (
       <div>
-        {page === 1 && (<Page1/>)}
+        {page === 1 && (<Eligibility/>)}
       </div>
     );
   }
