@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import {connect} from 'react-redux';
 import * as actionCreators from '../actions/index';
-import '../styles/App.css';
-import '../styles/Button.css';
+// import '../styles/App.css';
+// import '../styles/Button.css';
 import {Link} from 'react-router-dom';
 
 export class App extends Component {
@@ -40,16 +40,18 @@ export class App extends Component {
       //   </section>
       // </div>
       <Fragment>
-        <div className="container">
-          <h1>If you are a low-income homeowner you could get a discount or partial refund of up to $620 on your property rates with a rates rebate.</h1>
-          <h2>Find out if you could get a rebate</h2>
+        <div></div>
+        {/* <div className="container autocomplete-form">
+          <h1 className="heading-primary">If you are a low-income homeowner you could get a discount or partial refund of up to $620 on your property rates with a rates rebate.</h1>
+          <hr/>
+          <h2 className="heading-secondary">Find out if you could get a rebate</h2>
           <p>Enter your details here to check the eligibility before you apply</p>
 
-          <div>
-            I live at <span><input type="text" /></span><br/>
-            My rates are <span>$2,222.45</span>
-            I earn <span>$34,000</span> a year,
-            and have <span>0</span> dependants.
+          <div className="primary-quote">
+            I live at <span><input type="text" value="123 Example Street, Tauranga."/></span><br/>
+            My rates are <span>$<input type="text" value="0" className="input-integer" /></span><br/>
+            I earn <span>$<input type="text" value="0" /></span> a year,<br/>
+            and have <span><input type="text" value="0" className="input-integer" /></span> dependants.
           </div>
 
           <div>
@@ -64,7 +66,7 @@ export class App extends Component {
           </div>
 
           <button className="btn-primary">Apply now</button>
-        </div>
+        </div> */}
       </Fragment>
     );
   }

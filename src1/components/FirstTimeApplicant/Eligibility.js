@@ -5,6 +5,7 @@ import validate from '../../helpers/validate';
 import {scrollToFirstError} from '../../components/Forms/FormScroll';
 import LanguageToggle from '../../components/Forms/LanguageToggle';
 import {underscorize, camelCaser} from '../../helpers/strings';
+import '../../styles/App.css';
 import '../../styles/TextField.css';
 import '../../styles/RadioGroup.css';
 import '../../styles/CheckboxGroup.css';

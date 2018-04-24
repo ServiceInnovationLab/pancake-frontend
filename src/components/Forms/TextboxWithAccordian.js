@@ -14,15 +14,23 @@ export default class TextBoxWithAccordian extends React.Component {
     });
   }
 
+  getValue() {
+    if(this.props.input.name === this.props.values[this.props.input.name]) {
+      return this.props.values['this.props.input.name'];
+    } else {
+      return this.props.input.value;
+    }
+  }
+
   render() {
     return (
       <fieldset className="radio-group">
         <legend>
           {this.props.label}
         </legend>
+        <input type="text" {...this.props.input} value={this.getValue()} />
         {this.props.instructions && <p dangerouslySetInnerHTML={{ __html: this.props.instructions }}></p>}
         {!this.props.instructions && <p></p>}
-        <input type="text" {...this.props.input} />
         {this.props.accordianText && <div>
           <Accordian label={this.props.accordianLabel} text={this.props.accordianText} />
         </div>
