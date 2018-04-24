@@ -1,9 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AppCon from './container/app-container';
-import FirstTimeApplicant from './components/FirstTimeApplicant/Landing';
-import Page2 from './components/FirstTimeApplicant/Page2';
-import Page3 from './components/FirstTimeApplicant/Page3';
+import WizardForm from './components/FirstTimeApplicant/WizardForm';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
@@ -12,13 +9,14 @@ import { HashRouter, Route } from 'react-router-dom';
 import { reducer as formReducer } from 'redux-form';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import './styles/App.css';
 
 
 const store = createStore(combineReducers({
   reducers,
   form: formReducer
-// }), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-}), applyMiddleware(thunk));
+}), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+// }), applyMiddleware(thunk));
 
 class App extends React.Component {
   render(){
@@ -27,10 +25,13 @@ class App extends React.Component {
         <div>
           <Header />
           <main>
-            <Route exact={true} path="/" component={AppCon} />
-            <Route path="/apply" component={FirstTimeApplicant} />
-            <Route path="/page2" component={Page2} />
-            <Route path="/page3" component={Page3} />
+            <Route exact={true} path="/" component={WizardForm} />
+            {/* <Route path="/apply" component={WizardFormSecondPage} store={store} /> */}
+            {/* <Route path="/apply" render={()=><WizardFormSecondPage store={store}/>} /> */}
+            {/* <Route path="/complete" component={WizardFormThirdPage} /> */}
+            {/* <Route path="/apply" component={WizardForm} /> */}
+            {/* <Route path="/page2" component={Page2} />
+            <Route path="/page3" component={Page3} /> */}
           </main>
           <Footer />
         </div>

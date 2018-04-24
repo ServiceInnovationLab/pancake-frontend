@@ -97,7 +97,8 @@ class SelectingFormValuesForm extends React.Component {
     const {handleSubmit} = this.props;
     return (
       <Fragment>
-        <LanguageToggle handler={this.handleLanguageChange} langState={this.state.lng}/>
+        <h1>What you will need to do to apply for a rebate</h1>
+        {/* <LanguageToggle handler={this.handleLanguageChange} langState={this.state.lng}/>
         <form className="container" onSubmit={handleSubmit(this.saveFormData)}>
           <h1>What you will need to do to apply for a rebate</h1>
           <ul>
@@ -179,7 +180,7 @@ class SelectingFormValuesForm extends React.Component {
               Send Application
             </button>
           </div>
-        </form>
+        </form> */}
 
       </Fragment>
     );
