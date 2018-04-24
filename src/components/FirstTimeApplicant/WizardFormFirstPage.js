@@ -1,6 +1,5 @@
 import React from 'react';
-import {Field, reduxForm, getFormValues} from 'redux-form';
-import {connect} from 'react-redux';
+import {Field, reduxForm} from 'redux-form';
 import validate from '../../helpers/validate';
 import renderField from './renderField';
 
