@@ -50,7 +50,7 @@ var firstTimeApplication = [
         'text': 'What is your address?'
       },
       'mi': {
-        'text': 'What is your address?'
+        'text': 'What is your address? Change me'
       }
     },
     'instructions': {
