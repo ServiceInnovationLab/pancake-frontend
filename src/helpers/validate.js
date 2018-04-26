@@ -7,7 +7,6 @@ const validate = values => {
   }
 
   const errors = {};
-
   arrayOfInputNames.forEach(item=>{
     if(!values[item]) {
       errors[item] = 'This is a required field, please provide an answer';
