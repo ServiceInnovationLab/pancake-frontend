@@ -260,4 +260,7 @@ p {
     padding: 15px;
     padding-left: 40px; }
 
+canvas {
+  border: 1px solid #000; }
+
 /*# sourceMappingURL=App.css.map */

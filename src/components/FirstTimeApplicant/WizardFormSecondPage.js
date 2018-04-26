@@ -59,21 +59,12 @@ import config from '../../config';
           "fields": values
         }
       };
-
-      // let signatures = {
-      //   "signature_type_id": 1,
-      //   "rebate_form_id": 1,
-      //   "image": this.signaturePad.toDataURL()
-      // };
   
       axios
         .post(`${config.API_ORIGIN}/api/v1/rebate_forms`, { data })
         .then(res => res)
         .catch(err => console.log('Error occurred: Check origin has been enabled correctly on the server', err));
-      // axios
-      //   .post(`${config.API_ORIGIN}/api/v1/signatures`, { signatures })
-      //   .then(res => window.location.href = '#/page2')
-      //   .catch(err => console.log('Error occurred: Check origin has been enabled correctly on the server', err));
+
     }
     goHome() {
       return window.location = '#/';
@@ -86,7 +77,6 @@ import config from '../../config';
       return (
         <Fragment>
           <div className="container">
-          {/* {console.log('pr', this.previousPage())} */}
             <a onClick={()=>{window.location.reload()}} style={{'color': '#aaa', 'marginTop': '15px','marginBottom': '60px', 'display': 'inline-block'}}>
             &larr; Home
             </a>
@@ -95,6 +85,7 @@ import config from '../../config';
             <form onSubmit={handleSubmit(this.saveFormData)} className="container form-inner">
               {firstTimeApplication.map((field, key) => {
                 let label = field.label['en'].text;
+                let form_values = '';
                 return (<Field
                   key={key}
                   label={label}
@@ -103,7 +94,7 @@ import config from '../../config';
                   component={field.component}
                   instructions={field.instructions && field.instructions['en'].text}
                   instructionsSecondary={field.instructionsSecondary && field.instructionsSecondary['en'].text}
-                  values={this.props.formState.form.wizard.values}
+                  values={form_values && form_values}
                   accordianLabel={field.accordianLabel && field.accordianLabel['en'].text}
                   accordianText={field.accordianText && field.accordianText['en'].text}
                   checkboxLabel={field.checkboxLabel && field.checkboxLabel['en'].text}

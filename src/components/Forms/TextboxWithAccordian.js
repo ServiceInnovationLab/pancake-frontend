@@ -1,6 +1,7 @@
 import React from 'react';
 import ErrorMessage from '../../components/Forms/Error';
 import Accordian from '../../components/Forms/Accordian';
+import {underscorize} from '../../helpers/strings';
 
 export default class TextBoxWithAccordian extends React.Component {
   constructor(props) {
@@ -23,12 +24,13 @@ export default class TextBoxWithAccordian extends React.Component {
   }
 
   render() {
+    let prepopulatedValue = this.props.prepopulatedValue ? this.props.prepopulatedValue[underscorize(this.props.label)] : null;
     return (
       <fieldset className="radio-group">
         <legend>
           {this.props.label}
         </legend>
-        <input type="text" {...this.props.input} value={this.getValue()} />
+        <input type="text" {...this.props.input} value={prepopulatedValue ? prepopulatedValue : this.getValue()} />
         {this.props.instructions && <p dangerouslySetInnerHTML={{ __html: this.props.instructions }}></p>}
         {!this.props.instructions && <p></p>}
         {this.props.accordianText && <div>

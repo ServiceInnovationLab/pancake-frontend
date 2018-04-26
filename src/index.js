@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import WizardForm from './components/FirstTimeApplicant/WizardForm';
-import { createStore, applyMiddleware, combineReducers } from 'redux';
+import Sign from './components/FirstTimeApplicant/Sign';
+// import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
+// import thunk from 'redux-thunk';
 import reducers from './reducers/index';
 import { HashRouter, Route } from 'react-router-dom';
 import { reducer as formReducer } from 'redux-form';
@@ -26,6 +28,7 @@ class App extends React.Component {
           <Header />
           <main>
             <Route exact={true} path="/" component={WizardForm} />
+            <Route path="/:id" component={Sign}/>
             {/* <Route path="/apply" component={WizardFormSecondPage} store={store} /> */}
             {/* <Route path="/apply" render={()=><WizardFormSecondPage store={store}/>} /> */}
             {/* <Route path="/complete" component={WizardFormThirdPage} /> */}

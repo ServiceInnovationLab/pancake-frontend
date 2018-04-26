@@ -2,6 +2,10 @@ import React from 'react';
 import {Field, reduxForm} from 'redux-form';
 import validate from '../../helpers/validate';
 import renderField from './renderField';
+import {scrollToFirstError} from '../../components/Forms/FormScroll';
+import ReactAutocomplete from 'react-autocomplete';
+import jsonQuery from 'json-query';
+import RatesRebatesTable from './rates-rebates';
 
 class WizardFormFirstPage extends React.Component {
   constructor(props) {
@@ -11,7 +15,9 @@ class WizardFormFirstPage extends React.Component {
       page: 1,
       shown: false,
       complete: false,
-      signature: ''
+      signature: '',
+      value: '',
+      values: ''
     };
     this.nextPage = this
       .nextPage
@@ -19,7 +25,6 @@ class WizardFormFirstPage extends React.Component {
     this.previousPage = this
       .previousPage
       .bind(this);
-
   }
 
   nextPage = values => {
@@ -33,8 +38,25 @@ class WizardFormFirstPage extends React.Component {
       page: this.state.page - 1
     });
   }
+
+  getValues(e){
+    this.setState({ value: e.target.value });
+  }
+
+  getSelect(value){
+    let json = JSON.stringify(RatesRebatesTable).replace(/\s(?=\w+":)/g, "");
+    this.setState({ value })
+    let getByLocation = jsonQuery(`data[*Location=${value}]`, {
+      data: JSON.parse(json)
+    })
+    this.setState({values: getByLocation.value})
+    // console.log('in getSelect()', getByLocation.value)
+  }
+
+
   render(){
     const {handleSubmit} = this.props;
+    // debugger;
     return (
       <div className="container autocomplete-form">
 
@@ -56,9 +78,35 @@ class WizardFormFirstPage extends React.Component {
           <section>
             <div className="arrow-box primary">
               <div>
+                {console.log(this.state.values)}
+
+
                 I live at
-                <span><Field name="what_is_your_address" type="text" component={renderField} label="what_is_your_address"/></span><br/>
+                <span>
+                <ReactAutocomplete
+                  items={JSON.parse(JSON.stringify(RatesRebatesTable.data).replace(/\s(?=\w+":)/g, ""))}
+                  shouldItemRender={(item, value) => item['Location'].toLowerCase().indexOf(value.toLowerCase()) > -1}
+                  getItemValue={item => item['Location']}
+                  renderItem={(item, highlighted) =>
+                    <div
+                      key={item.id}
+                      style={{ backgroundColor: highlighted ? '#eee' : 'transparent'}}
+                    >
+                      {item['Location']}
+                    </div>
+                  }
+                  value={this.state.value}
+                  onChange={e => this.getValues()}
+                  onSelect={value => this.getSelect(value)}
+                />
+                  </span>
+                  {/* <Field type="hidden" name="what_is_your_address" value={this.state.value} component={renderField}
+                  label="what_is_your_address"/> */}
+                  <span>
+                  <Field name="what_is_your_address" type="text" component={renderField} label="what_is_your_address"/>
+                  </span><br/>
                 My rates are
+                {console.log(this.state.values)}
                 <span><Field
                   name="my_rates"
                   type="text"
@@ -83,7 +131,7 @@ class WizardFormFirstPage extends React.Component {
                 dependants.
               </div>
             </div>
-  
+            {/* {console.log('validate',reduxForm({onSubmitSuccess}))} */}
             <div className="arrow-box secondary">
               <p className="heading-paragraph">You are eligible for <span>$620</span></p>
               <p className="heading-paragraph">Assuming you meet the criteria</p>
@@ -123,4 +171,5 @@ export default reduxForm({
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
   validate,
+  onSubmitFail: (errors) => scrollToFirstError(errors),
 })(WizardFormFirstPage);
