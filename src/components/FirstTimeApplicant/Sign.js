@@ -57,7 +57,7 @@ class Sign extends React.Component {
   }
 
   submitApplicant = e => {
-    console.log(e)
+    // console.log(e)
     const applicant_sig = this
       .signaturePad
       .toDataURL();
@@ -105,8 +105,8 @@ class Sign extends React.Component {
 
           {Object
             .keys(this.state.fields)
-            .map(item => {
-              return <div style={{
+            .map((item, key) => {
+              return <div key={key} style={{
                 marginBottom: '50px'
               }}>
                 <h3>{removeUnderscore(item)}?</h3>
@@ -132,10 +132,10 @@ class Sign extends React.Component {
             <SignaturePad clearButton="true" ref={ref => this.signaturePad = ref}/>
             <h3>Witness</h3>
             <p>Declared at {new Date().toLocaleString()} before me</p>
-            <div style={{margin: '30px 0'}}>
+            {/* <div style={{margin: '30px 0'}}>
               <label>Witness Name</label>
               <input onChange={e=>this.setState({witness_name: e.target.value})} type="text" name="witness_name" />
-            </div>
+            </div> */}
             <SignaturePad clearButton="true" ref={ref => this.signaturePad2 = ref}/>
             <Submit/> {this.state.complete && <Foot/>}
           </form>

@@ -260,13 +260,12 @@ main {
 }
 
 // templates
-#footer {
+.footer {
   position: relative;
   margin-top: -140px;
   height: 200px;
   clear: both;
   background-color: #000;
-  // line-height: 180px;
   padding-top: 50px;
   padding-bottom: 20px;
   p {
