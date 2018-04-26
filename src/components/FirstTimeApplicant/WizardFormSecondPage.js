@@ -70,17 +70,13 @@ import config from '../../config';
       return window.location = '#/';
     }
     render() {
-      const {
-        handleSubmit,
-        formState
-      } = this.props
+      const { handleSubmit, formState } = this.props
       return (
         <Fragment>
           <div className="container">
             <a onClick={()=>{window.location.reload()}} style={{'color': '#aaa', 'marginTop': '15px','marginBottom': '60px', 'display': 'inline-block'}}>
             &larr; Home
             </a>
-            
             <Head/>
             <form onSubmit={handleSubmit(this.saveFormData)} className="container form-inner">
               {firstTimeApplication.map((field, key) => {
