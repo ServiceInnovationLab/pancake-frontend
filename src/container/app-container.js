@@ -7,9 +7,9 @@ class AppCon extends Component {
 
   render() {
     return (
-      <main>
-        <App />
-      </main>
+      // <main>
+      <App />
+      // </main>
     );
   }
 }
