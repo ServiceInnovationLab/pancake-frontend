@@ -52,16 +52,15 @@ import SignaturePad from 'react-signature-pad';
         .then(res => console.log(res))
         .catch(err => console.log('Error occurred: Check origin has been enabled correctly on the server', err));
     }
-    postSignatures = () => {
-      const data1 = this.signaturePad.toDataURL();
-
+    submitApplicant = () => {
+      const applicant_sig = this.signaturePad.toDataURL();
       let data = {
           "type": "signaturess",
           "attributes": {
             "valuation_id": "123",
             "token": this.props.match.params.id,
             "type": "applicant",
-            "image": data1.split(',')[1]
+            "image": applicant_sig.split(',')[1]
           }
       };
 
@@ -70,6 +69,27 @@ import SignaturePad from 'react-signature-pad';
         .then(res => res)
         .catch(err => console.log('Error occurred: Check origin has been enabled correctly on the server', err));
       
+        this.submitWitness()
+    }
+    submitWitness = () => {
+      const witness_sig = this.signaturePad2.toDataURL();
+
+      let data = {
+          "type": "signaturess",
+          "attributes": {
+            "valuation_id": "123",
+            "token": this.props.match.params.id,
+            "type": "witness",
+            "image": witness_sig.split(',')[1]
+          }
+      };
+
+      axios
+        .post(`${config.API_ORIGIN}/api/v1/signatures`, { data })
+        .then(res => res)
+        .catch(err => console.log('Error occurred: Check origin has been enabled correctly on the server', err));
+
+      this.setState({complete: true});
     }
 
     render() {
@@ -85,7 +105,8 @@ import SignaturePad from 'react-signature-pad';
             &larr; Home
             </a>
             <Head/> */}
-            <form onSubmit={handleSubmit(this.postSignatures)} className="container form-inner">
+            {/* <form className="container form-inner"> */}
+            <form onSubmit={handleSubmit(this.submitApplicant)} className="container form-inner">
               {/* {firstTimeApplication.map((field, key) => {
                 let label = field.label['en'].text;
                 let name = underscorize(field.label['en'].text);
@@ -160,19 +181,7 @@ const Head = () => {
 const Foot = () => {
   return (
     <div>
-      <h2 className="heading-secondary">Step 3: Get your application witnessed</h2>
-
-      <h3>You are almost there!</h3>
-
-      <h4>Your application form has been digitally sent to your local council - now you have to have your signed declaration witnessed for your rebate to be processed.</h4>
-
-      <p>To do this you can visit one of your local council’s service centres during opening hours and let the staff at the service desk know you are there to sign your rates rebates application.</p>
-
-      <p>The only thing you need to bring with you is your proof of income.</p>
-
-      <p>A copy of your answers to the application has been sent to your email, so if you can't make it to the service centre, you can print out a copy of your application and get your declaration witnessed and signed by an authorised witness such as a JP or Minister for Religion.</p>
-      
-      <a className="btn btn-primary">Find my nearest service centre</a>
+      <h2 className="heading-secondary">Signatures Accepted</h2>
     </div>
   );
 }
