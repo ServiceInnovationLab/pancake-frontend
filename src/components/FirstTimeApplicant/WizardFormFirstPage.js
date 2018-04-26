@@ -83,7 +83,7 @@ class WizardFormFirstPage extends React.Component {
 
                 I live at
                 <span>
-                <ReactAutocomplete
+                {/* <ReactAutocomplete
                   items={JSON.parse(JSON.stringify(RatesRebatesTable.data).replace(/\s(?=\w+":)/g, ""))}
                   shouldItemRender={(item, value) => item['Location'].toLowerCase().indexOf(value.toLowerCase()) > -1}
                   getItemValue={item => item['Location']}
@@ -98,7 +98,7 @@ class WizardFormFirstPage extends React.Component {
                   value={this.state.value}
                   onChange={e => this.getValues()}
                   onSelect={value => this.getSelect(value)}
-                />
+                /> */}
                   </span>
                   {/* <Field type="hidden" name="what_is_your_address" value={this.state.value} component={renderField}
                   label="what_is_your_address"/> */}

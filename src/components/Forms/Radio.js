@@ -38,9 +38,9 @@ class Radio extends React.Component {
         <div>
           {prop.options && prop.options.map((item, key) => {
 
-            let checked = value && item === 'yes' ? 'checked' : '';
+            // let checked = value && item === 'yes' ? 'checked' : '';
             return <label key={key}>
-              <input {...prop.input} type="radio" checked={checked} value={item} onClick={()=>{
+              <input {...prop.input} type="radio" value={item} onClick={()=>{
                 this.toggleSub(item); 
               }}
               />
