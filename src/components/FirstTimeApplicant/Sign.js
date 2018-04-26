@@ -45,11 +45,14 @@ import SignaturePad from 'react-signature-pad';
       });
     }
 
+    componentDidMount() {
+     this.getData()
+    }
     getData = () => {
       // set state for fields and display data
       axios
-        .get(`${config.API_ORIGIN}/api/v1/${this.props.match.params.id}`)
-        .then(res => console.log(res))
+        .get(`${config.API_ORIGIN}/api/v1/rebate_forms/${this.props.match.params.id}`)
+        .then(res => this.setState({fields: res.data.data.attributes.fields}))
         .catch(err => console.log('Error occurred: Check origin has been enabled correctly on the server', err));
     }
     submitApplicant = () => {
@@ -100,7 +103,17 @@ import SignaturePad from 'react-signature-pad';
       return (
         <Fragment>
           <div className="container">
-          <h2>{this.props.match.params.id}</h2>
+          <h2>Sign here</h2>
+          {delete this.state.fields['i_earn']}
+          {delete this.state.fields['my_rates']}
+          
+          {Object.keys(this.state.fields).map(item => {
+            return <div style={{marginBottom: '50px'}}>
+              <h3>{item.charAt(0).toUpperCase() + item.slice(1).split('_').join(' ')}?</h3>
+              <p>{this.state.fields[item]}</p>
+            </div>
+          })}
+
             {/* <a onClick={()=>{window.location.reload()}} style={{'color': '#aaa', 'marginTop': '15px','marginBottom': '60px', 'display': 'inline-block'}}>
             &larr; Home
             </a>
@@ -132,12 +145,12 @@ import SignaturePad from 'react-signature-pad';
                   hasAddressFinder={field.hasAddressFinder}/>);
               })}
               <Calculated/> */}
-              <h3>Applicant</h3>
+              <h3>Applicant Signature</h3>
               <SignaturePad
                 clearButton="true"
                 ref={ref => this.signaturePad = ref}
               />
-              <h3>Witness</h3>
+              <h3>Witness Signature</h3>
               <SignaturePad
                 clearButton="true"
                 ref={ref => this.signaturePad2 = ref}
