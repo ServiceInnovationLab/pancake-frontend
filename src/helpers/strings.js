@@ -15,5 +15,5 @@ export const camelCaser = string => {
 };
 
 export const removeUnderscore = string => {
-  return string.charAt(0).toUpperCase() + string.slice(1).split('_').join(' ')
+  return string.charAt(0).toUpperCase() + string.slice(1).split('_').join(' ');
 };
