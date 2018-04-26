@@ -11,10 +11,9 @@ import '../../styles/CheckboxGroup.css';
 import '../../styles/FormValidation.css';
 import axios from 'axios';
 import config from '../../config';
-// import SignaturePad from 'react-signature-pad';
+import SignaturePad from 'react-signature-pad';
 
-
-  class WizardFormSecondPage extends React.Component {
+  class Sign extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -23,7 +22,8 @@ import config from '../../config';
         shown: false,
         complete: false,
         signature: '',
-        stage: ''
+        stage: '',
+        fields: []
       };
       this.nextPage = this
         .nextPage
@@ -31,9 +31,6 @@ import config from '../../config';
       this.previousPage = this
         .previousPage
         .bind(this);
-      this.saveFormData = this
-        .saveFormData
-        .bind(this)
     }
 
     nextPage = () => {
@@ -48,24 +45,26 @@ import config from '../../config';
       });
     }
 
-    saveFormData() {
-      this.setState({complete: true});
-      let values = this.props.formState.form.wizard.values;
-      delete values.address
+    postSignatures = () => {
+      const data1 = this.signaturePad.toDataURL();
+
       let data = {
-        "type": "rebate-forms",
-        "attributes": {
-          "valuation_id": "123",
-          "fields": values
-        }
+          "type": "signaturess",
+          "attributes": {
+            "valuation_id": "123",
+            "token": this.props.match.params.id,
+            "type": "applicant",
+            "image": data1.split(',')[1]
+          }
       };
-  
+
       axios
-        .post(`${config.API_ORIGIN}/api/v1/rebate_forms`, { data })
+        .post(`${config.API_ORIGIN}/api/v1/signatures`, { data })
         .then(res => res)
         .catch(err => console.log('Error occurred: Check origin has been enabled correctly on the server', err));
-
+      
     }
+
     goHome() {
       return window.location = '#/';
     }
@@ -80,13 +79,14 @@ import config from '../../config';
             <a onClick={()=>{window.location.reload()}} style={{'color': '#aaa', 'marginTop': '15px','marginBottom': '60px', 'display': 'inline-block'}}>
             &larr; Home
             </a>
-            
             <Head/>
-            <form onSubmit={handleSubmit(this.saveFormData)} className="container form-inner">
+            <form onSubmit={handleSubmit(this.postSignatures)} className="container form-inner">
               {firstTimeApplication.map((field, key) => {
                 let label = field.label['en'].text;
+                let name = underscorize(field.label['en'].text);
                 let form_values = '';
                 return (<Field
+                  prepopulatedValue={this.state.fields}
                   key={key}
                   label={label}
                   address={formState.address}
@@ -106,6 +106,16 @@ import config from '../../config';
                   hasAddressFinder={field.hasAddressFinder}/>);
               })}
               <Calculated/>
+              <h3>Applicant</h3>
+              <SignaturePad
+                clearButton="true"
+                ref={ref => this.signaturePad = ref}
+              />
+              <h3>Witness</h3>
+              <SignaturePad
+                clearButton="true"
+                ref={ref => this.signaturePad2 = ref}
+              />
               <Submit/>
               {this.state.complete && <Foot/>}
             </form>
@@ -180,17 +190,17 @@ const Submit = () => {
   );
 }
 
-WizardFormSecondPage = reduxForm({
+Sign = reduxForm({
   form: 'wizard',
-  onSubmitFail: (errors) => scrollToFirstError(errors),
-})(WizardFormSecondPage)
+  // onSubmitFail: (errors) => scrollToFirstError(errors),
+})(Sign)
 
 
-WizardFormSecondPage = connect(state => {
+Sign = connect(state => {
 return {
     formState: state,
-    validate
+    // validate
   }
-})(WizardFormSecondPage)
+})(Sign)
 
-export default WizardFormSecondPage
+export default Sign
