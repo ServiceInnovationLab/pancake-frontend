@@ -2,10 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import WizardForm from './components/FirstTimeApplicant/WizardForm';
 import Sign from './components/FirstTimeApplicant/Sign';
-// import { createStore, applyMiddleware, combineReducers } from 'redux';
-import { createStore, combineReducers } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-// import thunk from 'redux-thunk';
+import thunk from 'redux-thunk';
 import reducers from './reducers/index';
 import { HashRouter, Route } from 'react-router-dom';
 import { reducer as formReducer } from 'redux-form';
@@ -17,8 +16,8 @@ import './styles/App.css';
 const store = createStore(combineReducers({
   reducers,
   form: formReducer
-}), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-// }), applyMiddleware(thunk));
+// }), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+}), applyMiddleware(thunk));
 
 class App extends React.Component {
   render(){
