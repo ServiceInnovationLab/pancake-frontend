@@ -45,6 +45,13 @@ import SignaturePad from 'react-signature-pad';
       });
     }
 
+    getData = () => {
+      // set state for fields and display data
+      axios
+        .get(`${config.API_ORIGIN}/api/v1/${this.props.match.params.id}`)
+        .then(res => console.log(res))
+        .catch(err => console.log('Error occurred: Check origin has been enabled correctly on the server', err));
+    }
     postSignatures = () => {
       const data1 = this.signaturePad.toDataURL();
 
@@ -65,9 +72,6 @@ import SignaturePad from 'react-signature-pad';
       
     }
 
-    goHome() {
-      return window.location = '#/';
-    }
     render() {
       const {
         handleSubmit,
@@ -76,12 +80,13 @@ import SignaturePad from 'react-signature-pad';
       return (
         <Fragment>
           <div className="container">
-            <a onClick={()=>{window.location.reload()}} style={{'color': '#aaa', 'marginTop': '15px','marginBottom': '60px', 'display': 'inline-block'}}>
+          <h2>{this.props.match.params.id}</h2>
+            {/* <a onClick={()=>{window.location.reload()}} style={{'color': '#aaa', 'marginTop': '15px','marginBottom': '60px', 'display': 'inline-block'}}>
             &larr; Home
             </a>
-            <Head/>
+            <Head/> */}
             <form onSubmit={handleSubmit(this.postSignatures)} className="container form-inner">
-              {firstTimeApplication.map((field, key) => {
+              {/* {firstTimeApplication.map((field, key) => {
                 let label = field.label['en'].text;
                 let name = underscorize(field.label['en'].text);
                 let form_values = '';
@@ -105,7 +110,7 @@ import SignaturePad from 'react-signature-pad';
                   placeholder={field.placeholder && field.placeholder['en'].text}
                   hasAddressFinder={field.hasAddressFinder}/>);
               })}
-              <Calculated/>
+              <Calculated/> */}
               <h3>Applicant</h3>
               <SignaturePad
                 clearButton="true"
