@@ -31,14 +31,12 @@ class Radio extends React.Component {
 
   render() {
     let prop = this.props.props;
-    let value = prop.values[`${prop.input.name}`];
 
     return (
       <Fragment>
         <div>
           {prop.options && prop.options.map((item, key) => {
 
-            // let checked = value && item === 'yes' ? 'checked' : '';
             return <label key={key}>
               <input {...prop.input} type="radio" value={item} onClick={()=>{
                 this.toggleSub(item); 
