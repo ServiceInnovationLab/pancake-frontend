@@ -1,11 +1,8 @@
 import React, {Fragment} from 'react';
-import {Field, reduxForm} from 'redux-form';
+import {reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
-import validate from '../../helpers/validate'
-import {underscorize, removeUnderscore} from '../../helpers/strings';
-import {scrollToFirstError} from '../../components/Forms/FormScroll';
-import firstTimeApplication from '../../JSONFormData/FirstTimeApplication';
-import '../../styles/TextField.css';
+// import validate from '../../helpers/validate'
+import {removeUnderscore} from '../../helpers/strings';
 import '../../styles/RadioGroup.css';
 import '../../styles/CheckboxGroup.css';
 import '../../styles/FormValidation.css';
@@ -98,7 +95,7 @@ class Sign extends React.Component {
     };
   }
   render() {
-    const {handleSubmit, formState} = this.props
+    const {handleSubmit} = this.props
     return (
       <Fragment>
         <div className="container">
