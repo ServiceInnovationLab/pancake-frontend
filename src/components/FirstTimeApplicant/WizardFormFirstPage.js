@@ -3,7 +3,7 @@ import {Field, reduxForm} from 'redux-form';
 import validate from '../../helpers/validate';
 import renderField from './renderField';
 import {scrollToFirstError} from '../../components/Forms/FormScroll';
-import ReactAutocomplete from 'react-autocomplete';
+// import ReactAutocomplete from 'react-autocomplete';
 import jsonQuery from 'json-query';
 import RatesRebatesTable from './rates-rebates';
 
@@ -50,7 +50,6 @@ class WizardFormFirstPage extends React.Component {
       data: JSON.parse(json)
     })
     this.setState({values: getByLocation.value})
-    // console.log('in getSelect()', getByLocation.value)
   }
 
 
@@ -78,7 +77,6 @@ class WizardFormFirstPage extends React.Component {
           <section>
             <div className="arrow-box primary">
               <div>
-                {console.log(this.state.values)}
 
 
                 I live at
@@ -106,7 +104,6 @@ class WizardFormFirstPage extends React.Component {
                   <Field name="what_is_your_address" type="text" component={renderField} label="what_is_your_address"/>
                   </span><br/>
                 My rates are
-                {console.log(this.state.values)}
                 <span><Field
                   name="my_rates"
                   type="text"
