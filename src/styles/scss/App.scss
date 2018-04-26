@@ -144,6 +144,7 @@ legend {
     background-color: $light-green;
     font-size: 24px;
     font-weight: bold;
+    padding: 40px 50px;
     &::before {
       content: "";
       position: absolute;
@@ -208,7 +209,8 @@ legend {
     margin-top: -4px;
     border-bottom: 2px solid $green;
     position: relative;
-    top: -10px;
+    top: 0;
+    // height: 20px;
     .int {
       width: 50px;
     }
@@ -232,6 +234,7 @@ legend {
     border-radius: 0;
     background: transparent;
     padding: 0;
+    height: 20px;
   }
 }
 
@@ -349,4 +352,20 @@ p {
 
 canvas {
   border: 1px solid #000;
+}
+
+.address-autocomplete {
+  position: relative;
+}
+.address-autocomplete input + div {
+  z-index: 1
+}
+
+.address-autocomplete input,
+.calculate-field input {
+  text-align: center;
+}
+
+.calculate-field {
+  margin: 20px 0;
 }
