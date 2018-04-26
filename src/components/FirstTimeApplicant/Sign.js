@@ -12,6 +12,7 @@ import '../../styles/FormValidation.css';
 import axios from 'axios';
 import config from '../../config';
 import SignaturePad from 'react-signature-pad';
+import Accordian from '../Forms/Accordian';
 
 class Sign extends React.Component {
   constructor(props) {
@@ -120,7 +121,12 @@ class Sign extends React.Component {
           <form
             onSubmit={handleSubmit(this.submitApplicant)}
             className="container form-inner">
-
+            <Accordian
+              label="It is an offence to knowingly make a false statement in your application"
+              text="Section 14 of the Rates Rebate Act 1973<br/>14. Offences <ul><li>(1) Every person commits an offence who
+              for the purpose of obtaining any rates rebate under this Act, for himself or for any other person, makes any statement or declaration knowing it to be false in any particular, or wilfully misleads or attempts to mislead any person concerned in the administration of this Act or any other person whatsoever; or </li><li>(b) refuses or fails to comply with any requirement under section 11, or refuses or fails to answer any question put to him pursuant to that section, or knowingly gives any false or misleading answer to any such question.</li><li>(2) Every person who commits an offence against this Act is liable on conviction before a District Court Judge to imprisonment for a term not
+              exceeding 12 months or to a fine not exceeding $500, or to both.</li></ul>"
+            />
             <h3>Applicant</h3>
             <p>I <b>{this.state.fields['what_is_your_full_name']}</b> of <b>{this.state.fields['what_is_your_address']}</b>, solemnly and sincerely
               declare that I believe the information I have given on this form is true and
