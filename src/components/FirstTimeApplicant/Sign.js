@@ -46,8 +46,9 @@ import SignaturePad from 'react-signature-pad';
     }
 
     componentDidMount() {
-     this.getData()
+     this.getData();
     }
+
     getData = () => {
       // set state for fields and display data
       axios
@@ -55,46 +56,39 @@ import SignaturePad from 'react-signature-pad';
         .then(res => this.setState({fields: res.data.data.attributes.fields}))
         .catch(err => console.log('Error occurred: Check origin has been enabled correctly on the server', err));
     }
+
     submitApplicant = () => {
       const applicant_sig = this.signaturePad.toDataURL();
-      let data = {
-          "type": "signaturess",
-          "attributes": {
-            "valuation_id": "123",
-            "token": this.props.match.params.id,
-            "type": "applicant",
-            "image": applicant_sig.split(',')[1]
-          }
-      };
-
-      axios
-        .post(`${config.API_ORIGIN}/api/v1/signatures`, { data })
-        .then(res => res)
-        .catch(err => console.log('Error occurred: Check origin has been enabled correctly on the server', err));
-      
-        this.submitWitness()
+      let data = this.getPayload(applicant_sig, 'applicant');
+      this.postSignature(data);
+      this.submitWitness();
     }
+
     submitWitness = () => {
       const witness_sig = this.signaturePad2.toDataURL();
-
-      let data = {
-          "type": "signaturess",
-          "attributes": {
-            "valuation_id": "123",
-            "token": this.props.match.params.id,
-            "type": "witness",
-            "image": witness_sig.split(',')[1]
-          }
-      };
-
-      axios
-        .post(`${config.API_ORIGIN}/api/v1/signatures`, { data })
-        .then(res => res)
-        .catch(err => console.log('Error occurred: Check origin has been enabled correctly on the server', err));
-
+      let data = this.getPayload(witness_sig, 'witness');
+      this.postSignature(data);
       this.setState({complete: true});
     }
 
+    postSignature = data => {
+      axios
+        .post(`${config.API_ORIGIN}/api/v1/signatures`, { data })
+        .then(res => res)
+        .catch(err => console.log('Error occurred: Check origin has been enabled correctly on the server', err));
+    }
+
+    getPayload = (signature, type) => {
+      return {
+        "type": "signaturess",
+        "attributes": {
+          "valuation_id": "123",
+          "token": this.props.match.params.id,
+          "type": type,
+          "image": signature.split(',')[1]
+        }
+    };
+    }
     render() {
       const {
         handleSubmit,
