@@ -82,6 +82,10 @@ class Sign extends React.Component {
       .catch(err => console.log('Error occurred: Check origin has been enabled correctly on the server', err));
   }
 
+  getDate = () => {
+    let currentdate = new Date();
+    return (currentdate.getMonth() + 1)
+  }
   getPayload = (signature, type) => {
     return {
       "type": "signaturess",
@@ -117,9 +121,15 @@ class Sign extends React.Component {
             onSubmit={handleSubmit(this.submitApplicant)}
             className="container form-inner">
 
-            <h3>Applicant Signature</h3>
+            <h3>Applicant</h3>
+            <p>I <b>{this.state.fields['what_is_your_full_name']}</b> of <b>{this.state.fields['what_is_your_address']}</b>, solemnly and sincerely
+              declare that I believe the information I have given on this form is true and
+              correct, and I make this solemn declaration conscientiously believing the same
+              to be true and by virtue of the Oaths and Declarations Act 1957.
+            </p>
             <SignaturePad clearButton="true" ref={ref => this.signaturePad = ref}/>
-            <h3>Witness Signature</h3>
+            <h3>Witness</h3>
+            <p>Declared at {new Date().toLocaleString()} before me [Insert name of witness]</p>
             <SignaturePad clearButton="true" ref={ref => this.signaturePad2 = ref}/>
             <Submit/> {this.state.complete && <Foot/>}
           </form>
