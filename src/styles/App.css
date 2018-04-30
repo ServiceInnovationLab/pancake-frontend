@@ -103,7 +103,8 @@ legend {
   .arrow-box.primary {
     background-color: #f3faec;
     font-size: 24px;
-    font-weight: bold; }
+    font-weight: bold;
+    padding: 40px 50px; }
     .arrow-box.primary::before {
       content: "";
       position: absolute;
@@ -156,7 +157,7 @@ legend {
     margin-top: -4px;
     border-bottom: 2px solid #6dca7f;
     position: relative;
-    top: -10px; }
+    top: 0; }
     .arrow-box span > div .int {
       width: 50px; }
   .arrow-box p {
@@ -173,7 +174,8 @@ legend {
     border: 2px solid transparent;
     border-radius: 0;
     background: transparent;
-    padding: 0; }
+    padding: 0;
+    height: 20px; }
 
 .aria-hidden {
   border: 0;
@@ -262,5 +264,18 @@ p {
 
 canvas {
   border: 1px solid #000; }
+
+.address-autocomplete {
+  position: relative; }
+
+.address-autocomplete input + div {
+  z-index: 1; }
+
+.address-autocomplete input,
+.calculate-field input {
+  text-align: center; }
+
+.calculate-field {
+  margin: 20px 0; }
 
 /*# sourceMappingURL=App.css.map */

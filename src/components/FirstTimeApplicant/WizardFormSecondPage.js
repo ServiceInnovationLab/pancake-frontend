@@ -79,6 +79,7 @@ import config from '../../config';
             <Head/>
             <form onSubmit={handleSubmit(this.saveFormData)} className="container form-inner">
               {firstTimeApplication.map((field, key) => {
+                // console.log(formState.address)
                 let label = field.label['en'].text;
                 let form_values = '';
                 return (<Field
@@ -100,7 +101,6 @@ import config from '../../config';
                   placeholder={field.placeholder && field.placeholder['en'].text}
                   hasAddressFinder={field.hasAddressFinder}/>);
               })}
-              <Calculated/>
               <Submit/>
               {this.state.complete && <Foot/>}
             </form>
@@ -157,14 +157,6 @@ const Foot = () => {
   );
 }
 
-const Calculated = () => {
-  return (
-    <Fragment>
-      <h2>We have calculated that your entitlement is $620</h2>
-      <p>This will be applied to your rates account once your application has been fully proccessed.</p>
-    </Fragment>
-  );
-}
 const Submit = () => {
   return (
     <div>
