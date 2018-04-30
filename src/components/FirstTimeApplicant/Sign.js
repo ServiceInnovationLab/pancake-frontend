@@ -22,7 +22,9 @@ class Sign extends React.Component {
       signature: '',
       stage: '',
       fields: [],
-      witness_name: ''
+      witness_name: '',
+      applicant_role: '',
+      witness_role: ''
     };
     this.nextPage = this
       .nextPage
@@ -56,23 +58,28 @@ class Sign extends React.Component {
       .catch(err => console.log('Error occurred: Check origin has been enabled correctly on the server', err));
   }
 
-  submitApplicant = e => {
-    // console.log(e)
-    const applicant_sig = this
-      .signaturePad
-      .toDataURL();
-    let data = this.getPayload(applicant_sig, 'applicant');
-    this.postSignature(data);
-    this.submitWitness();
+  submitSignature = () => {
+    ['applicant', 'witness'].forEach(item => {
+      let getData = this.getData(item);
+      let getPayload = this.getPayload(getData);
+      this.postSignature(getPayload);
+      this.setState({complete: true});
+    })
   }
 
-  submitWitness = () => {
-    const witness_sig = this
-      .signaturePad2
-      .toDataURL();
-    let data = this.getPayload(witness_sig, 'witness');
-    this.postSignature(data);
-    this.setState({complete: true});
+  getData = sign_type => {
+    let data = sign_type === 'witness' ? {
+      "signature": this['signaturePad2'].toDataURL(),
+      "role": this.state.witness_role,
+      "name": this.state.witness_name,
+      "type": sign_type
+    } : {
+      "signature": this['signaturePad'].toDataURL(),
+      "role": this.state.applicant_role,
+      "name": this.state.fields.what_is_your_full_name,
+      "type": sign_type
+    };
+    return data;
   }
 
   postSignature = data => {
@@ -83,14 +90,17 @@ class Sign extends React.Component {
   }
 
 
-  getPayload = (signature, type) => {
+  getPayload = data => {
+    const {type, name, role } = data;
     return {
       "type": "signaturess",
       "attributes": {
         "valuation_id": "123",
         "token": this.props.match.params.id,
-        "type": type,
-        "image": signature.split(',')[1]
+        type,
+        name,
+        role,
+        "image": data.signature.split(',')[1]
       }
     };
   }
@@ -115,7 +125,7 @@ class Sign extends React.Component {
             })}
 
           <form
-            onSubmit={handleSubmit(this.submitApplicant)}
+            onSubmit={handleSubmit(this.submitSignature)}
             className="container form-inner">
             <Accordian
               label="It is an offence to knowingly make a false statement in your application"
@@ -132,10 +142,12 @@ class Sign extends React.Component {
             <SignaturePad clearButton="true" ref={ref => this.signaturePad = ref}/>
             <h3>Witness</h3>
             <p>Declared at {new Date().toLocaleString()} before me</p>
-            {/* <div style={{margin: '30px 0'}}>
+            <div style={{margin: '30px 0'}}>
               <label>Witness Name</label>
               <input onChange={e=>this.setState({witness_name: e.target.value})} type="text" name="witness_name" />
-            </div> */}
+              <label>Role</label>
+              <input onChange={e=>this.setState({witness_role: e.target.value})} type="text" name="witness_role" />
+            </div>
             <SignaturePad clearButton="true" ref={ref => this.signaturePad2 = ref}/>
             <Submit/> {this.state.complete && <Foot/>}
           </form>
