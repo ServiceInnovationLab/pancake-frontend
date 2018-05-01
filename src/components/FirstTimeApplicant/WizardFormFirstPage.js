@@ -6,6 +6,7 @@ import {scrollToFirstError} from '../../components/Forms/FormScroll';
 import axios from 'axios';
 import config from '../../config';
 import Select from 'react-select';
+import selectField from './Select';
 let isLoadingExternally = false;
 
 class WizardFormFirstPage extends React.Component {
@@ -139,6 +140,11 @@ handleRatesPayers(selectedOption) {
 
 
                 I live at
+                <Field
+                  name="bla"
+                  type="text"
+                  component={selectField}
+                />
                 <Select
                   name="what_is_your_addresss"
                   value={this.state.selectedOption}
