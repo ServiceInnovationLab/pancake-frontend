@@ -40,7 +40,7 @@ class selectField extends React.Component {
             type={type}
             className={className}
             onChange={e => this.handleChange(e)}
-            value={this.state.selectedAddress ? this.state.selectedAddress : ''}
+            value={this.state.selectedAddress ? this.state.selectedAddress : this.state.value}
           />
           {this.state.showList &&
             <ul>
