@@ -3,9 +3,8 @@ import {Field, reduxForm} from 'redux-form';
 import validate from '../../helpers/validate';
 import renderField from './renderField';
 import {scrollToFirstError} from '../../components/Forms/FormScroll';
-// import ReactAutocomplete from 'react-autocomplete';
-import jsonQuery from 'json-query';
-import RatesRebatesTable from './rates-rebates';
+import axios from 'axios';
+import config from '../../config';
 
 class WizardFormFirstPage extends React.Component {
   constructor(props) {
@@ -39,18 +38,18 @@ class WizardFormFirstPage extends React.Component {
     });
   }
 
+  fetchProperties() {
+    axios
+    .get(`${config.API_ORIGIN}/api/v1/properties?q=main`)
+    .then(res => console.log(res))
+    .catch(err => console.log('Error occurred: Check origin has been enabled correctly on the server', err));
+  }
+
   getValues(e){
     this.setState({ value: e.target.value });
   }
 
-  getSelect(value){
-    let json = JSON.stringify(RatesRebatesTable).replace(/\s(?=\w+":)/g, "");
-    this.setState({ value })
-    let getByLocation = jsonQuery(`data[*Location=${value}]`, {
-      data: JSON.parse(json)
-    })
-    this.setState({values: getByLocation.value})
-  }
+
 
 
   render(){
@@ -67,7 +66,7 @@ class WizardFormFirstPage extends React.Component {
               <span>If you are a low-income homeowner you could get a discount or partial
                 refund of up to $620 on your property rates with a rates rebate.</span>
             </h2>
-  
+
             <hr/>
             <h2 className="heading-secondary">Tirohia mehemea ka taea e koe te utu whakahokia<br/>
               <span>Find out if you could get a rebate</span>
@@ -101,7 +100,7 @@ class WizardFormFirstPage extends React.Component {
                   {/* <Field type="hidden" name="what_is_your_address" value={this.state.value} component={renderField}
                   label="what_is_your_address"/> */}
                   <span>
-                  <Field name="what_is_your_address" type="text" component={renderField} label="what_is_your_address"/>
+                  <Field name="what_is_your_address" onChange={this.fetchProperties} type="text" component={renderField} label="what_is_your_address"/>
                   </span><br/>
                 My rates are
                 <span><Field
@@ -133,8 +132,8 @@ class WizardFormFirstPage extends React.Component {
               <p className="heading-paragraph">You are eligible for <span>$620</span></p>
               <p className="heading-paragraph">Assuming you meet the criteria</p>
             </div>
-  
-            
+
+
           </section>
           <div className="layout">
             <button type="submit" className="btn-primary">Apply now</button>
@@ -153,10 +152,10 @@ class WizardFormFirstPage extends React.Component {
         than someone with no dependants.</p>
             </div>
       </section>
-  
-  
-  
-          
+
+
+
+
         </form>
       </div>
     );
