@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import {Field, reduxForm} from 'redux-form';
 import validate from '../../helpers/validate';
 import renderField from './renderField';
@@ -21,13 +21,22 @@ class WizardFormFirstPage extends React.Component {
       values: '',
       properties: [],
       selectedOption: '',
-      test: ''
+      included: [],
+      rate_payers: [],
+      selectedRatesPayer: '',
+      clearable: true
     };
     this.nextPage = this
       .nextPage
       .bind(this);
     this.previousPage = this
       .previousPage
+      .bind(this);
+    this.handleChange = this
+      .handleChange
+      .bind(this);
+    this.handleRatesPayers = this
+      .handleRatesPayers
       .bind(this);
   }
 
@@ -43,13 +52,6 @@ class WizardFormFirstPage extends React.Component {
     });
   }
 
-  fetchProperties() {
-    axios
-    .get(`${config.API_ORIGIN}/api/v1/properties?q=main`)
-    .then(res => console.log(res))
-    .catch(err => console.log('Error occurred: Check origin has been enabled correctly on the server', err));
-  }
-
   getValues(e){
     this.setState({ value: e.target.value });
   }
@@ -59,22 +61,22 @@ class WizardFormFirstPage extends React.Component {
     axios
     .get(`${config.API_ORIGIN}/api/v1/properties?q=`)
         .then(res => {
+          console.log('stuff', res)
             let newArr = [];
             res.data.data.forEach(item => {
-              const {valuation_id, town_city, location, suburb} = item.attributes;
-
+              const {id, valuation_id, town_city, location, suburb} = item.attributes;
               let address = `${location}, ${suburb}, ${town_city}`;
               newArr.push({
+                rates_payers: item.relationships.rates_payers.data,
                 value: address,
                 label: address,
-                valuation_id,
-                rates: 0,
-                rates_payers: 0
+                valuation_id
               })
-            })
-
+            });
+            // console.log(newArr)
             this.setState({
-                properties: newArr
+                properties: newArr,
+                included: res.data.included
             }, () => {
                 isLoadingExternally = false;
             })
@@ -82,8 +84,31 @@ class WizardFormFirstPage extends React.Component {
 }
 
 handleChange(selectedOption) {
-  this.setState({selectedOption: selectedOption.value});
-    console.log(selectedOption.value)
+  if (selectedOption) {
+    const selectedRatePayerIds = selectedOption.rates_payers.map(i => i.id);
+    let ratePayers = this.state.included.filter(i => selectedRatePayerIds.includes(i.id));
+    ratePayers = ratePayers.map(p => {
+      return {
+        id: p.id,
+        fullName: `${p.attributes.first_names} ${p.attributes.surname}`,
+        type: p.type
+      }
+    });
+    this.setState({ratePayers, selectedOption: selectedOption.value});
+    document.getElementById('what_is_your_address') && document.getElementById('what_is_your_address').setAttribute('value', this.state.selectedOption ? selectedOption.value : null);
+    console.log('rate payersssss',selectedOption);
+  } else {
+    this.setState({selectedOption: null})
+  }
+}
+
+handleRatesPayers(selectedOption) {
+  if(selectedOption) {
+    this.setState({selectedRatesPayer: selectedOption.fullName})
+
+  } else {
+    this.setState({selectedRatesPayer: null});
+  }
 }
 
 
@@ -114,41 +139,42 @@ handleChange(selectedOption) {
 
 
                 I live at
-                <span>
                 <Select
-                  name="form-field-name"
-                  value={this.state.value}
+                  name="what_is_your_addresss"
+                  value={this.state.selectedOption}
                   onChange={this.handleChange}
                   clearable={this.state.clearable}
                   searchable={this.state.searchable}
-                  labelKey={'label'}
-                  valueKey={'value'}
                   isLoading={isLoadingExternally}
                   options={this.state.properties}
-            />
-                {/* <ReactAutocomplete
-                  items={JSON.parse(JSON.stringify(RatesRebatesTable.data).replace(/\s(?=\w+":)/g, ""))}
-                  shouldItemRender={(item, value) => item['Location'].toLowerCase().indexOf(value.toLowerCase()) > -1}
-                  getItemValue={item => item['Location']}
-                  renderItem={(item, highlighted) =>
-                    <div
-                      key={item.id}
-                      style={{ backgroundColor: highlighted ? '#eee' : 'transparent'}}
-                    >
-                      {item['Location']}
-                    </div>
-                  }
-                  value={this.state.value}
-                  onChange={e => this.getValues()}
-                  onSelect={value => this.getSelect(value)}
-                /> */}
-                  </span>
+                />
+
+                {this.state.selectedOption &&
+                  <Fragment>
+                    <div>Who are you?</div>
+                    <Select
+                      name="what_is_your_name"
+                      value={this.state.selectedRatesPayer}
+                      onChange={this.handleRatesPayers}
+                      clearable={this.state.clearable}
+                      searchable={this.state.searchable}
+                      labelKey={'fullName'}
+                      valueKey={'fullName'}
+                      isLoading={isLoadingExternally}
+                      options={this.state.ratePayers}
+                    />
+                    {/* <Field component={Select} /> */}
+                    <Field type="text" name="what_is_your_address" id="what_is_your_address" component={renderField} />
+                  </Fragment>
+                }
+                {console.log('staaate', this.state)}
+                {/* <div>Your rates are</div> */}
                   {/* <Field type="hidden" name="what_is_your_address" value={this.state.value} component={renderField}
                   label="what_is_your_address"/> */}
-                  <span>
-                  <Field name="what_is_your_address" onChange={this.fetchProperties} type="text" component={renderField} label="what_is_your_address"/>
-                  </span><br/>
-                My rates are
+
+                  {/* <Field name="what_is_your_address" onChange={this.fetchProperties} type="text" component={renderField} label="what_is_your_address"/> */}
+                  <br/>
+                {/* My rates are
                 <span><Field
                   name="my_rates"
                   type="text"
@@ -170,7 +196,7 @@ handleChange(selectedOption) {
                   component={renderField}
                   label="do_you_have_dependants"
                   className="int"/></span>
-                dependants.
+                dependants. */}
               </div>
             </div>
             {/* {console.log('validate',reduxForm({onSubmitSuccess}))} */}
@@ -210,6 +236,8 @@ handleChange(selectedOption) {
 
 export default reduxForm({
   form: 'wizard',
+  keepDirtyOnReinitialize: true,
+  enableReinitialize: true,
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
   validate,
