@@ -27,7 +27,10 @@ class selectField extends React.Component {
 
   handleClick(e) {
     console.log(e.target.innerHTML)
-    this.setState({selectedAddress: e.target.innerHTML})
+    this.setState({
+      selectedAddress: e.target.innerHTML,
+      showList: false
+    });
   }
   render() {
     const {input, label, touched, error, type, className } = this.props;
@@ -44,9 +47,10 @@ class selectField extends React.Component {
           />
           {this.state.showList &&
             <ul>
-              {this.state.addresses.map((x, i) => (
-                <li key={i} onClick={e=>this.handleClick(e)}>{x.attributes.location}</li>
-              ))}
+              {this.state.addresses.map((x, i) => {
+                const {location, suburb, town_city} = x.attributes;
+                return <li key={i} onClick={e=>this.handleClick(e)}>{`${location}, ${suburb}, ${town_city}`}</li>
+              })}
             </ul>
           }
         </div>
