@@ -5,6 +5,8 @@ import renderField from './renderField';
 import {scrollToFirstError} from '../../components/Forms/FormScroll';
 import axios from 'axios';
 import config from '../../config';
+import Select from 'react-select';
+let isLoadingExternally = false;
 
 class WizardFormFirstPage extends React.Component {
   constructor(props) {
@@ -16,7 +18,10 @@ class WizardFormFirstPage extends React.Component {
       complete: false,
       signature: '',
       value: '',
-      values: ''
+      values: '',
+      properties: [],
+      selectedOption: '',
+      test: ''
     };
     this.nextPage = this
       .nextPage
@@ -49,7 +54,37 @@ class WizardFormFirstPage extends React.Component {
     this.setState({ value: e.target.value });
   }
 
+  componentDidMount() {
+    isLoadingExternally = true;
+    axios
+    .get(`${config.API_ORIGIN}/api/v1/properties?q=`)
+        .then(res => {
+            let newArr = [];
+            res.data.data.forEach(item => {
+              const {valuation_id, town_city, location, suburb} = item.attributes;
 
+              let address = `${location}, ${suburb}, ${town_city}`;
+              newArr.push({
+                value: address,
+                label: address,
+                valuation_id,
+                rates: 0,
+                rates_payers: 0
+              })
+            })
+
+            this.setState({
+                properties: newArr
+            }, () => {
+                isLoadingExternally = false;
+            })
+        })
+}
+
+handleChange(selectedOption) {
+  this.setState({selectedOption: selectedOption.value});
+    console.log(selectedOption.value)
+}
 
 
   render(){
@@ -80,6 +115,17 @@ class WizardFormFirstPage extends React.Component {
 
                 I live at
                 <span>
+                <Select
+                  name="form-field-name"
+                  value={this.state.value}
+                  onChange={this.handleChange}
+                  clearable={this.state.clearable}
+                  searchable={this.state.searchable}
+                  labelKey={'label'}
+                  valueKey={'value'}
+                  isLoading={isLoadingExternally}
+                  options={this.state.properties}
+            />
                 {/* <ReactAutocomplete
                   items={JSON.parse(JSON.stringify(RatesRebatesTable.data).replace(/\s(?=\w+":)/g, ""))}
                   shouldItemRender={(item, value) => item['Location'].toLowerCase().indexOf(value.toLowerCase()) > -1}
