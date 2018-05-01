@@ -6,7 +6,6 @@ import {scrollToFirstError} from '../../components/Forms/FormScroll';
 import axios from 'axios';
 import config from '../../config';
 import Select from 'react-select';
-import selectField from './Select';
 let isLoadingExternally = false;
 
 class WizardFormFirstPage extends React.Component {
@@ -62,7 +61,6 @@ class WizardFormFirstPage extends React.Component {
     axios
     .get(`${config.API_ORIGIN}/api/v1/properties?q=`)
         .then(res => {
-          console.log('stuff', res)
             let newArr = [];
             res.data.data.forEach(item => {
               const {id, valuation_id, town_city, location, suburb} = item.attributes;
@@ -74,7 +72,6 @@ class WizardFormFirstPage extends React.Component {
                 valuation_id
               })
             });
-            // console.log(newArr)
             this.setState({
                 properties: newArr,
                 included: res.data.included
@@ -96,8 +93,7 @@ handleChange(selectedOption) {
       }
     });
     this.setState({ratePayers, selectedOption: selectedOption.value});
-    document.getElementById('what_is_your_address') && document.getElementById('what_is_your_address').setAttribute('value', this.state.selectedOption ? selectedOption.value : null);
-    console.log('rate payersssss',selectedOption);
+    this.props.change('what_is_your_address', selectedOption.value);
   } else {
     this.setState({selectedOption: null})
   }
@@ -106,7 +102,7 @@ handleChange(selectedOption) {
 handleRatesPayers(selectedOption) {
   if(selectedOption) {
     this.setState({selectedRatesPayer: selectedOption.fullName})
-
+    this.props.change('what_is_your_full_name', selectedOption.fullName);
   } else {
     this.setState({selectedRatesPayer: null});
   }
@@ -115,7 +111,6 @@ handleRatesPayers(selectedOption) {
 
   render(){
     const {handleSubmit} = this.props;
-    // debugger;
     return (
       <div className="container autocomplete-form">
 
@@ -138,15 +133,9 @@ handleRatesPayers(selectedOption) {
             <div className="arrow-box primary">
               <div>
 
-
                 I live at
-                <Field
-                  name="bla"
-                  type="text"
-                  component={selectField}
-                />
                 <Select
-                  name="what_is_your_addresss"
+                  name="what_is_your_address"
                   value={this.state.selectedOption}
                   onChange={this.handleChange}
                   clearable={this.state.clearable}
@@ -159,7 +148,7 @@ handleRatesPayers(selectedOption) {
                   <Fragment>
                     <div>Who are you?</div>
                     <Select
-                      name="what_is_your_name"
+                      name="what_is_your_full_name"
                       value={this.state.selectedRatesPayer}
                       onChange={this.handleRatesPayers}
                       clearable={this.state.clearable}
@@ -169,15 +158,15 @@ handleRatesPayers(selectedOption) {
                       isLoading={isLoadingExternally}
                       options={this.state.ratePayers}
                     />
-                    {/* <Field component={Select} /> */}
-                    <Field type="text" name="what_is_your_address" id="what_is_your_address" component={renderField} />
                   </Fragment>
                 }
-                {console.log('staaate', this.state)}
-                {/* <div>Your rates are</div> */}
-                  {/* <Field type="hidden" name="what_is_your_address" value={this.state.value} component={renderField}
-                  label="what_is_your_address"/> */}
 
+            <div>how man dependents do you have</div>
+            <Field
+              name="do_you_have_dependants"
+              type="text"
+              component={renderField}
+            />
                   {/* <Field name="what_is_your_address" onChange={this.fetchProperties} type="text" component={renderField} label="what_is_your_address"/> */}
                   <br/>
                 {/* My rates are
@@ -242,8 +231,6 @@ handleRatesPayers(selectedOption) {
 
 export default reduxForm({
   form: 'wizard',
-  keepDirtyOnReinitialize: true,
-  enableReinitialize: true,
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
   validate,
