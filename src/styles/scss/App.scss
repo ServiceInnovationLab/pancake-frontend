@@ -136,7 +136,7 @@ legend {
 // arrow-boxes
 
 .arrow-box {
-  padding: 5px 50px;
+  padding: 5px 50px 30px;
   position: relative;
   margin-bottom: 30px;
   text-align: center;
@@ -202,17 +202,17 @@ legend {
     display: none;
   }
 
-  span > div {
-    display: inline-block;
-    margin: 0 10px;
-    margin-top: -4px;
-    border-bottom: 2px solid $green;
-    position: relative;
-    top: -10px;
-    .int {
-      width: 50px;
-    }
-  }
+  // span > div {
+  //   display: inline-block;
+  //   margin: 0 10px;
+  //   margin-top: -4px;
+  //   border-bottom: 2px solid $green;
+  //   position: relative;
+  //   top: -10px;
+  //   .int {
+  //     width: 50px;
+  //   }
+  // }
 
   p {
     line-height: 40px;
@@ -223,16 +223,16 @@ legend {
     color: $deep-grey2;
   }
 
-  input {
-    font-family: 'Fira Sans', sans-serif;
-    font-size: inherit;
-    color: $green;
-    display: inline-block;
-    border: 2px solid transparent;
-    border-radius: 0;
-    background: transparent;
-    padding: 0;
-  }
+  // input {
+  //   font-family: 'Fira Sans', sans-serif;
+  //   font-size: inherit;
+  //   color: $green;
+  //   display: inline-block;
+  //   border: 2px solid transparent;
+  //   border-radius: 0;
+  //   background: transparent;
+  //   padding: 0;
+  // }
 }
 
 
@@ -362,9 +362,24 @@ canvas {
 
 .calc-layout {
   display: inline-block;
+  input {
+    text-align: center;
+  }
 }
 
-input[name=your_rates_are] {
+// input[name=your_rates_are] {
+//   text-align: center;
+//   font-weight: bold;
+// }
+
+.autocomplete-form {
   text-align: center;
-  font-weight: bold;
 }
+
+.Select {
+  display: inline-block;
+}
+
+// .Select-value {
+//   padding-top: 12px;
+// }

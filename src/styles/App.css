@@ -96,7 +96,7 @@ legend {
   font-weight: 500; }
 
 .arrow-box {
-  padding: 5px 50px;
+  padding: 5px 50px 30px;
   position: relative;
   margin-bottom: 30px;
   text-align: center; }
@@ -150,30 +150,12 @@ legend {
   position: relative; }
   .arrow-box label {
     display: none; }
-  .arrow-box span > div {
-    display: inline-block;
-    margin: 0 10px;
-    margin-top: -4px;
-    border-bottom: 2px solid #6dca7f;
-    position: relative;
-    top: -10px; }
-    .arrow-box span > div .int {
-      width: 50px; }
   .arrow-box p {
     line-height: 40px;
     font-size: 27px;
     font-weight: 700;
     margin-bottom: 30px;
     color: #6b6b6b; }
-  .arrow-box input {
-    font-family: 'Fira Sans', sans-serif;
-    font-size: inherit;
-    color: #6dca7f;
-    display: inline-block;
-    border: 2px solid transparent;
-    border-radius: 0;
-    background: transparent;
-    padding: 0; }
 
 .aria-hidden {
   border: 0;
@@ -272,9 +254,13 @@ canvas {
 
 .calc-layout {
   display: inline-block; }
+  .calc-layout input {
+    text-align: center; }
 
-input[name=your_rates_are] {
-  text-align: center;
-  font-weight: bold; }
+.autocomplete-form {
+  text-align: center; }
+
+.Select {
+  display: inline-block; }
 
 /*# sourceMappingURL=App.css.map */
