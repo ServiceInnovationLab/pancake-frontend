@@ -54,10 +54,11 @@ import config from '../../config';
       let data = {
         "type": "rebate-forms",
         "attributes": {
-          "valuation_id": "123",
+          "valuation_id": values.valuationId,
           "fields": values
         }
       };
+      console.log('val', values)
 
       axios
         .post(`${config.API_ORIGIN}/api/v1/rebate_forms`, { data })

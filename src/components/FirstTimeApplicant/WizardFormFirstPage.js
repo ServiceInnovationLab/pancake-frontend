@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, {Fragment} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import validate from '../../helpers/validate';
 import renderField from './renderField';
@@ -20,7 +20,7 @@ class WizardFormFirstPage extends React.Component {
       value: '',
       values: '',
       properties: [],
-      selectedOption: '',
+      selectedLocation: '',
       included: [],
       rate_payers: [],
       selectedRatesPayer: '',
@@ -34,6 +34,9 @@ class WizardFormFirstPage extends React.Component {
       .bind(this);
     this.handleChange = this
       .handleChange
+      .bind(this);
+    this.handleSelectLocation = this
+      .handleSelectLocation
       .bind(this);
     this.handleRatesPayers = this
       .handleRatesPayers
@@ -52,67 +55,98 @@ class WizardFormFirstPage extends React.Component {
     });
   }
 
-  getValues(e){
-    this.setState({ value: e.target.value });
+  getValues(e) {
+    this.setState({value: e.target.value});
   }
 
-  componentDidMount() {
-    isLoadingExternally = true;
+  handleChange(inputText) {
+    console.log('eeeeeeeeeee',);
+    this.setState({isLoadingExternally: true})
     axios
-    .get(`${config.API_ORIGIN}/api/v1/properties?q=`)
-        .then(res => {
-            let newArr = [];
-            res.data.data.forEach(item => {
-              const {id, valuation_id, town_city, location, suburb} = item.attributes;
-              let address = `${location}, ${suburb}, ${town_city}`;
-              newArr.push({
-                rates_payers: item.relationships.rates_payers.data,
-                value: address,
-                label: address,
-                valuation_id
-              })
+      .get(`${config.API_ORIGIN}/api/v1/properties?q=${inputText}`)
+      .then(res => {
+        if (res && res.data && res.data.data.length) {
+          //const valuationId = res.data.data[0].attributes.valuation_id;
+          const properties = res
+            .data
+            .data
+            .map(i => {
+              return {
+                id: i.id,
+                location: i.attributes.location,
+                valuationId: i.attributes.valuation_id
+              }
             });
-            console.log('axios', res)
-            this.setState({
-                properties: newArr,
-                included: res.data.included
-            }, () => {
-                isLoadingExternally = false;
+          this.setState({
+            properties
+          }, () => this.setState({isLoadingExternally: false}));
+        }
+      })
+      .catch(err => console.log('err fetching properties', err));
+    //   let newArr = [];   res     .data     .data     .forEach(item => {
+    // const {id, valuation_id, town_city, location, suburb} = item.attributes;
+    //  let address = `${location}, ${suburb}, ${town_city}`;
+    // newArr.push({rates_payers: item.relationships.rates_payers.data, rates_bills:
+    // item.relationships.rates_bills.data, value: address, label: address,
+    // valuation_id})     });   console.log('axios', res)   this.setState({
+    // properties: newArr,     included: res.data.included   }, () => {
+    // isLoadingExternally = false;   }) })
+  }
+
+  handleSelectLocation(selectedOption) {
+
+    if (selectedOption) {
+      axios
+        .get(`${config.API_ORIGIN}/api/v1/properties/${selectedOption.id}`)
+        .then(res => {
+          if (res && res.data && res.data.included.length) {
+            const includedRatePayers = res.data.included.filter(i => i.type === 'rates_payers').map(p => {
+              return {
+                id: p.id,
+                fullName: `${p.attributes.first_names} ${p.attributes.surname}`,
+                type: p.type
+              }
             })
+
+
+              const includedRatesBills = res.data.included.filter(i => i.type === 'rates_bills').map(p => {
+                return {
+                  id: p.id,
+                  fullName: `${p.attributes.first_names} ${p.attributes.surname}`,
+                  type: p.type,
+                  totalRates: p.attributes.total_rates
+                }
+              })
+            this.setState({includedRatePayers, includedRatesBills, selectedLocation: selectedOption});
+            this.props.change('what_is_your_address', selectedOption.location);
+          }
         })
-
-}
-
-handleChange(selectedOption) {
-  if (selectedOption) {
-    const selectedRatePayerIds = selectedOption.rates_payers.map(i => i.id);
-    let ratePayers = this.state.included.filter(i => selectedRatePayerIds.includes(i.id));
-    ratePayers = ratePayers.map(p => {
-      return {
-        id: p.id,
-        fullName: `${p.attributes.first_names} ${p.attributes.surname}`,
-        type: p.type
-      }
-    });
-    this.setState({ratePayers, selectedOption: selectedOption.value});
-    this.props.change('what_is_your_address', selectedOption.value);
-  } else {
-    this.setState({selectedOption: null})
+        .catch(err => console.log('err fetching included properties', err));
+    } else {
+      this.setState({selectedLocation: null})
+    }
   }
-}
 
-handleRatesPayers(selectedOption) {
-  if(selectedOption) {
-    this.setState({selectedRatesPayer: selectedOption.fullName})
-    this.props.change('what_is_your_full_name', selectedOption.fullName);
-  } else {
-    this.setState({selectedRatesPayer: null});
+  handleRatesPayers(selectedOption) {
+    if (selectedOption) {
+      this.setState({selectedRatesPayer: selectedOption.fullName})
+      this
+        .props
+        .change('what_is_your_full_name', selectedOption.fullName);
+      this
+        .props
+        .change('your_rates_are', this.state.includedRatesBills[0].totalRates);
+        this
+        .props
+        .change('valuation_id', );
+    } else {
+      this.setState({selectedRatesPayer: null});
+    }
   }
-}
 
-
-  render(){
+  render() {
     const {handleSubmit} = this.props;
+    console.log('propertiesssss', this.state.included)
     return (
       <div className="container autocomplete-form">
 
@@ -138,54 +172,42 @@ handleRatesPayers(selectedOption) {
                 I live at
                 <Select
                   name="what_is_your_address"
-                  value={this.state.selectedOption}
-                  onChange={this.handleChange}
+                  value={this.state.selectedLocation}
+                  onChange={this.handleSelectLocation}
+                  onInputChange={this.handleChange}
                   clearable={this.state.clearable}
                   searchable={this.state.searchable}
-                  isLoading={isLoadingExternally}
+                  isLoading={this.state.isLoadingExternally}
                   options={this.state.properties}
-                />
+                  labelKey={'location'}
+                  valueKey={'id'}/>
 
-                {this.state.selectedOption &&
-                  <Fragment>
-                    <div>Who are you?</div>
-                    <Select
-                      name="what_is_your_full_name"
-                      value={this.state.selectedRatesPayer}
-                      onChange={this.handleRatesPayers}
-                      clearable={this.state.clearable}
-                      searchable={this.state.searchable}
-                      labelKey={'fullName'}
-                      valueKey={'fullName'}
-                      isLoading={isLoadingExternally}
-                      options={this.state.ratePayers}
-                    />
-                  </Fragment>
+                  {this.state.selectedLocation && <Fragment>
+                  <div>Who are you?</div>
+                  <Select
+                    name="what_is_your_full_name"
+                    value={this.state.selectedRatesPayer}
+                    onChange={this.handleRatesPayers}
+                    clearable={this.state.clearable}
+                    searchable={this.state.searchable}
+                    labelKey={'fullName'}
+                    valueKey={'fullName'}
+                    isLoading={this.state.isLoadingExternally}
+                    options={this.state.includedRatePayers}/>
+                </Fragment>
+}
 
+                <Field name="valuation_id" type="hidden" component={renderField}/>
+                {this.state.selectedRatesPayer && <Fragment>
+                  <div>Your rates are: </div>
+                  <Field name="your_rates_are" type="text" component={renderField}/>
+                  <div>How many dependents do you have?</div>
+                  <Field name="do_you_have_dependants" type="text" component={renderField}/>
+                </Fragment>
+}
 
-                }
-                {this.state.selectedRatesPayer &&
-                  <Fragment>
-                    <div>Your rates are</div>
-                  <Field
-                    name="your_rates_are"
-                    type="text"
-                    component={renderField}
-                  />
-                  <div>how man dependents do you have</div>
-                  <Field
-                    name="do_you_have_dependants"
-                    type="text"
-                    component={renderField}
-                  />
-                  </Fragment>
-                }
-
-
-
-                  {/* <Field name="what_is_your_address" onChange={this.fetchProperties} type="text" component={renderField} label="what_is_your_address"/> */}
-                  <br/>
-                {/* My rates are
+                {/* <Field name="what_is_your_address" onChange={this.fetchProperties} type="text" component={renderField} label="what_is_your_address"/> */}
+                <br/> {/* My rates are
                 <span><Field
                   name="my_rates"
                   type="text"
@@ -212,32 +234,30 @@ handleRatesPayers(selectedOption) {
             </div>
             {/* {console.log('validate',reduxForm({onSubmitSuccess}))} */}
             <div className="arrow-box secondary">
-              <p className="heading-paragraph">You are eligible for <span>$620</span></p>
+              <p className="heading-paragraph">You are eligible for
+                <span>$620</span>
+              </p>
               <p className="heading-paragraph">Assuming you meet the criteria</p>
             </div>
-
 
           </section>
           <div className="layout">
             <button type="submit" className="btn-primary">Apply now</button>
           </div>
-      <section>
-      <div className="arrow-box quote">
-      <h3>What is a Rates Rebate?</h3>
-      <p>Rates rebates are a subsidy that gives you a discount on the rates bill of
-        your residential property.</p>
-      <p>Any homeowner may receive a rebate for the property they live in, as long as
-        they meet the criteria. This is calculated by your property rates, your income
-        for the last tax year, and the number of dependants you have. If you have
-        dependants, the upper threshold of your income can be $500 more for each
-        dependant in your care. For example, if you have 2 children, the top limit of
-        how much you could earn to be entitled to the full rebate would be $1000 more
-        than someone with no dependants.</p>
+          <section>
+            <div className="arrow-box quote">
+              <h3>What is a Rates Rebate?</h3>
+              <p>Rates rebates are a subsidy that gives you a discount on the rates bill of
+                your residential property.</p>
+              <p>Any homeowner may receive a rebate for the property they live in, as long as
+                they meet the criteria. This is calculated by your property rates, your income
+                for the last tax year, and the number of dependants you have. If you have
+                dependants, the upper threshold of your income can be $500 more for each
+                dependant in your care. For example, if you have 2 children, the top limit of
+                how much you could earn to be entitled to the full rebate would be $1000 more
+                than someone with no dependants.</p>
             </div>
-      </section>
-
-
-
+          </section>
 
         </form>
       </div>
@@ -250,5 +270,5 @@ export default reduxForm({
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
   validate,
-  onSubmitFail: (errors) => scrollToFirstError(errors),
+  onSubmitFail: (errors) => scrollToFirstError(errors)
 })(WizardFormFirstPage);
