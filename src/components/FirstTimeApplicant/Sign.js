@@ -124,9 +124,7 @@ class Sign extends React.Component {
               </div>
             })}
 
-          <form
-            onSubmit={handleSubmit(this.submitSignature)}
-            className="container form-inner">
+          <form onSubmit={handleSubmit(this.submitSignature)} className="container form-inner">
             <Accordian
               label="It is an offence to knowingly make a false statement in your application"
               text="Section 14 of the Rates Rebate Act 1973<br/>14. Offences <ul><li>(1) Every person commits an offence who
@@ -144,9 +142,15 @@ class Sign extends React.Component {
             <p>Declared at {new Date().toLocaleString()} before me</p>
             <div style={{margin: '30px 0'}}>
               <label>Witness Name</label>
-              <input onChange={e=>this.setState({witness_name: e.target.value})} type="text" name="witness_name" />
+              <signatureExtraInfo
+                onChange={e=>this.setState({witness_name: e.target.value})}
+                name="witness_name"
+              />
               <label>Role</label>
-              <input onChange={e=>this.setState({witness_role: e.target.value})} type="text" name="witness_role" />
+              <signatureExtraInfo
+                onChange={e=>this.setState({witness_role: e.target.value})}
+                name="witness_role"
+              />
             </div>
             <SignaturePad clearButton="true" ref={ref => this.signaturePad2 = ref}/>
             <Submit/> {this.state.complete && <Foot/>}
@@ -155,6 +159,10 @@ class Sign extends React.Component {
       </Fragment>
     )
   }
+}
+
+const signatureExtraInfo = props => {
+  return <input type="text" name={props.name} />
 }
 
 const Submit = () => {

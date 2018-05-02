@@ -1,13 +1,11 @@
 import React, {Fragment} from 'react';
 import {Field, reduxForm} from 'redux-form';
-import validate from '../../helpers/validate';
 import renderField from './renderField';
 import {scrollToFirstError} from '../../components/Forms/FormScroll';
 import axios from 'axios';
 import config from '../../config';
 import Select from 'react-select';
 import Accordian from '../Forms/Accordian';
-let isLoadingExternally = false;
 
 class WizardFormFirstPage extends React.Component {
   constructor(props) {
@@ -194,8 +192,8 @@ class WizardFormFirstPage extends React.Component {
                     valueKey={'fullName'}
                     isLoading={this.state.isLoadingExternally}
                     options={this.state.includedRatePayers}/>
-                </Fragment>
-}
+                  </Fragment>
+                  }
 
                 <Field name="valuation_id" type="hidden" component={renderField}/>
                 {this.state.selectedRatesPayer && <Fragment>
@@ -204,7 +202,7 @@ class WizardFormFirstPage extends React.Component {
                   <div>How many dependents do you have?</div>
                   <Field name="do_you_have_dependants" type="text" component={renderField}/>
                 </Fragment>
-}
+                }
 
               </div>
             </div>
