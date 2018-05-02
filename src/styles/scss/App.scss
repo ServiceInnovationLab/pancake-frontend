@@ -201,7 +201,7 @@ legend {
   label {
     display: none;
   }
-  
+
   span > div {
     display: inline-block;
     margin: 0 10px;
@@ -349,4 +349,20 @@ p {
 
 canvas {
   border: 1px solid #000;
+}
+
+.Select-input > input {
+  width: 80% !important;
+  display: inline-block;
+}
+
+.Select-placeholder {
+  display: none !important;
+}
+
+// .Select-menu-outer {
+//   display: none !important;
+// }
+.calc-layout {
+  display: inline-block;
 }
