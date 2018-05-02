@@ -157,7 +157,9 @@ class WizardFormFirstPage extends React.Component {
             <div className="arrow-box primary">
               <div>
 
-                I live at
+
+                <div className="calc-layout">
+                <span>I live at</span>
                 <Select
                   name="what_is_your_address"
                   value={this.state.selectedLocation}
@@ -169,6 +171,7 @@ class WizardFormFirstPage extends React.Component {
                   options={this.state.properties}
                   labelKey={'location'}
                   valueKey={'id'}/>
+                </div>
 
                   {this.state.selectedLocation && <Fragment>
                   <div>Who are you?</div>
