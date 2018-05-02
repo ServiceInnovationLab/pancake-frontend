@@ -29,6 +29,18 @@ to run a development server:
 npm start
 ```
 
+To configure which server to send and recieve data, look in config.js
+```
+const dev = {
+  API_ORIGIN: 'http://127.0.0.1:3000'
+};
+```
+
+and also ensure that server is in `Content-Security-Policy` in the top of `public/index.html`
+```
+<meta http-equiv="Content-Security-Policy" content="font-src https://maxcdn.bootstrapcdn.com https://fonts.googleapis.com https://fonts.gstatic.com; connect-src 'self' http://127.0.0.1:3000 https://pancakenz.herokuapp.com/api/v1/rebate_forms https://pancakenz-staging.herokuapp.com ws://localhost:3000 https://api.addressfinder.io...... " />
+```
+
 
 ## Table of Contents
 
