@@ -6,6 +6,7 @@ import {scrollToFirstError} from '../../components/Forms/FormScroll';
 import axios from 'axios';
 import config from '../../config';
 import Select from 'react-select';
+import Accordian from '../Forms/Accordian';
 let isLoadingExternally = false;
 
 class WizardFormFirstPage extends React.Component {
@@ -140,14 +141,22 @@ class WizardFormFirstPage extends React.Component {
 
         <form onSubmit={handleSubmit}>
           <section>
-            <h2 className="heading-primary">Mena he kaipupuri whenua iti koe, ka taea e koe
+            <h2 className="heading-primary">If you are a low-income homeowner you could get a discount or partial
+                refund of up to $620 on your property rates with a rates rebate.<br/>
+              <span>Mena he kaipupuri whenua iti koe, ka taea e koe
               te whakahekenga i te utu me te utu reti ki te $620 i runga i to reiti nama me te
-              reiti reiti.<br/>
-              <span>If you are a low-income homeowner you could get a discount or partial
-                refund of up to $620 on your property rates with a rates rebate.</span>
+              reiti reiti.</span>
             </h2>
-
-            <hr/>
+            <Accordian
+              label="<strong>What is a rates rebate?</strong> <br/><span style='font-weight: normal'>He aha te utu whakahokia?</span>"
+              text="<p>Rates rebates are a subsidy that gives you a discount on the rates bill of your residential property.</p><p>Any homeowner may receive a rebate for the property they live in, as long as
+                they meet the criteria. This is calculated by your property rates, your income
+                for the last tax year, and the number of dependants you have. If you have
+                dependants, the upper threshold of your income can be $500 more for each
+                dependant in your care. For example, if you have 2 children, the top limit of
+                how much you could earn to be entitled to the full rebate would be $1000 more
+                than someone with no dependants.</p>"
+            />
             <h2 className="heading-secondary">Tirohia mehemea ka taea e koe te utu whakahokia<br/>
               <span>Find out if you could get a rebate</span>
             </h2>
