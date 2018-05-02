@@ -1,5 +1,5 @@
 const dev = {
-  API_ORIGIN: 'http://localhost:3001'
+  API_ORIGIN: 'https://pancakenz-staging.herokuapp.com'//http://localhost:3001'
 };
 
 const staging = {

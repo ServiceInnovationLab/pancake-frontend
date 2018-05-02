@@ -2,11 +2,14 @@ import React, {Fragment} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import validate from '../../helpers/validate';
 import renderField from './renderField';
+import RenderRadio from '../../components/Forms/RenderRadio';
+import {underscorize, camelCaser} from '../../helpers/strings';
 import {scrollToFirstError} from '../../components/Forms/FormScroll';
 import axios from 'axios';
 import config from '../../config';
 import Select from 'react-select';
 let isLoadingExternally = false;
+
 
 class WizardFormFirstPage extends React.Component {
   constructor(props) {
@@ -24,6 +27,8 @@ class WizardFormFirstPage extends React.Component {
       included: [],
       rate_payers: [],
       selectedRatesPayer: '',
+      rates: null,
+      dependants: null,
       clearable: true
     };
     this.nextPage = this
@@ -40,6 +45,9 @@ class WizardFormFirstPage extends React.Component {
       .bind(this);
     this.handleRatesPayers = this
       .handleRatesPayers
+      .bind(this);
+    this.handleDependants = this
+      .handleDependants
       .bind(this);
   }
 
@@ -133,7 +141,46 @@ class WizardFormFirstPage extends React.Component {
     }
   }
 
-  render() {
+
+handleDependants(value) {
+  if(value) {
+    this.setState({dependants: value})
+  } else {
+    this.setState({dependants: null});
+  }
+}
+
+
+
+  render(){
+    const earnLessThan = {
+      'label': {
+        'en': {
+          'text': 'You earn less than '
+        },
+        'mi': {
+          'text': 'You earn less than '
+        }
+      },
+      'instructions': {
+        'en': {
+          'text': ''
+        },
+        'mi': {
+          'text': ''
+        }
+      },
+      'options': {
+        'en': {
+          'text': [ 'yes','no' ]
+        },
+        'mi': {
+          'text': [ 'ae', 'kaore' ]
+        }
+      },
+      'isRequired': true,
+      'component': RenderRadio
+    };
     const {handleSubmit} = this.props;
     return (
       <div className="container autocomplete-form">
@@ -151,7 +198,9 @@ class WizardFormFirstPage extends React.Component {
             <h2 className="heading-secondary">Tirohia mehemea ka taea e koe te utu whakahokia<br/>
               <span>Find out if you could get a rebate</span>
             </h2>
-            <p>Use our online calculator</p>
+            <p>Use our online calculator.<br />In your calculation, please include
+            all homeowners who live at the address <b>and</b> their partners
+            </p>
           </section>
           <section>
             <div className="arrow-box primary">
@@ -159,7 +208,7 @@ class WizardFormFirstPage extends React.Component {
 
 
                 <div className="calc-layout">
-                <span>I live at</span>
+                <span>You live at</span>
                 <Select
                   name="what_is_your_address"
                   value={this.state.selectedLocation}
@@ -193,16 +242,33 @@ class WizardFormFirstPage extends React.Component {
                   <div>Your rates are: </div>
                   <Field name="your_rates_are" type="text" component={renderField}/>
                   <div>How many dependents do you have?</div>
-                  <Field name="do_you_have_dependants" type="text" component={renderField}/>
+                  <Field name="do_you_have_dependants" type="text" onChange={this.handleDependants} component={renderField}/>
                 </Fragment>
 }
+
+                {this.state.dependants && <Field
+                      label={earnLessThan.label['en'].text}
+                      name={earnLessThan.isNested ? `has${camelCaser(earnLessThan.label['en'].text)}Checked` : underscorize(earnLessThan.label['en'].text)}
+                      component={earnLessThan.component}
+                      instructions={earnLessThan.instructions && earnLessThan.instructions['en'].text}
+                      instructionsSecondary={earnLessThan.instructionsSecondary && earnLessThan.instructionsSecondary['en'].text}
+//values={form_values && form_values}
+                      accordianLabel={earnLessThan.accordianLabel && earnLessThan.accordianLabel['en'].text}
+                      accordianText={earnLessThan.accordianText && earnLessThan.accordianText['en'].text}
+                      checkboxLabel={earnLessThan.checkboxLabel && earnLessThan.checkboxLabel['en'].text}
+                      checkboxText={earnLessThan.checkboxText && earnLessThan.checkboxText['en'].text}
+                      options={earnLessThan.options && earnLessThan.options['en'].text}
+                      optionsText={earnLessThan.optionsText && earnLessThan.optionsText['en'].text}
+                      textearnLessThanLabel={earnLessThan.textFieldLabel && earnLessThan.textFieldLabel['en'].text}
+                      placeholder={earnLessThan.placeholder && earnLessThan.placeholder['en'].text}
+                      hasAddressFinder={earnLessThan.hasAddressFinder}/>
+                }
+
 
               </div>
             </div>
             <div className="arrow-box secondary">
-              <p className="heading-paragraph">You are eligible for
-                <span>$620</span>
-              </p>
+              <p className="heading-paragraph">You are eligible for <span>...</span></p>
               <p className="heading-paragraph">Assuming you meet the criteria</p>
             </div>
 
