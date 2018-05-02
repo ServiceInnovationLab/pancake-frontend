@@ -86,7 +86,6 @@ import config from '../../config';
                 return (<Field
                   key={key}
                   label={label}
-                  address={formState.address}
                   name={field.isNested ? `has${camelCaser(label)}Checked` : underscorize(field.label['en'].text)}
                   component={field.component}
                   instructions={field.instructions && field.instructions['en'].text}

@@ -72,6 +72,7 @@ class WizardFormFirstPage extends React.Component {
                 valuation_id
               })
             });
+            console.log('axios', res)
             this.setState({
                 properties: newArr,
                 included: res.data.included
@@ -79,6 +80,7 @@ class WizardFormFirstPage extends React.Component {
                 isLoadingExternally = false;
             })
         })
+
 }
 
 handleChange(selectedOption) {
@@ -159,14 +161,28 @@ handleRatesPayers(selectedOption) {
                       options={this.state.ratePayers}
                     />
                   </Fragment>
+
+
+                }
+                {this.state.selectedRatesPayer &&
+                  <Fragment>
+                    <div>Your rates are</div>
+                  <Field
+                    name="your_rates_are"
+                    type="text"
+                    component={renderField}
+                  />
+                  <div>how man dependents do you have</div>
+                  <Field
+                    name="do_you_have_dependants"
+                    type="text"
+                    component={renderField}
+                  />
+                  </Fragment>
                 }
 
-            <div>how man dependents do you have</div>
-            <Field
-              name="do_you_have_dependants"
-              type="text"
-              component={renderField}
-            />
+
+
                   {/* <Field name="what_is_your_address" onChange={this.fetchProperties} type="text" component={renderField} label="what_is_your_address"/> */}
                   <br/>
                 {/* My rates are
