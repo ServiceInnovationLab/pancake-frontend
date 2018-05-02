@@ -54,7 +54,7 @@ import config from '../../config';
       let data = {
         "type": "rebate-forms",
         "attributes": {
-          "valuation_id": values.valuationId,
+          "valuation_id": values.valuation_id,
           "fields": values
         }
       };

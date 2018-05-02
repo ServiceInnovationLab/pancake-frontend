@@ -60,7 +60,6 @@ class WizardFormFirstPage extends React.Component {
   }
 
   handleChange(inputText) {
-    console.log('eeeeeeeeeee',);
     this.setState({isLoadingExternally: true})
     axios
       .get(`${config.API_ORIGIN}/api/v1/properties?q=${inputText}`)
@@ -83,15 +82,7 @@ class WizardFormFirstPage extends React.Component {
         }
       })
       .catch(err => console.log('err fetching properties', err));
-    //   let newArr = [];   res     .data     .data     .forEach(item => {
-    // const {id, valuation_id, town_city, location, suburb} = item.attributes;
-    //  let address = `${location}, ${suburb}, ${town_city}`;
-    // newArr.push({rates_payers: item.relationships.rates_payers.data, rates_bills:
-    // item.relationships.rates_bills.data, value: address, label: address,
-    // valuation_id})     });   console.log('axios', res)   this.setState({
-    // properties: newArr,     included: res.data.included   }, () => {
-    // isLoadingExternally = false;   }) })
-  }
+    }
 
   handleSelectLocation(selectedOption) {
 
@@ -107,16 +98,14 @@ class WizardFormFirstPage extends React.Component {
                 type: p.type
               }
             })
-
-
-              const includedRatesBills = res.data.included.filter(i => i.type === 'rates_bills').map(p => {
-                return {
-                  id: p.id,
-                  fullName: `${p.attributes.first_names} ${p.attributes.surname}`,
-                  type: p.type,
-                  totalRates: p.attributes.total_rates
-                }
-              })
+            const includedRatesBills = res.data.included.filter(i => i.type === 'rates_bills').map(p => {
+              return {
+                id: p.id,
+                fullName: `${p.attributes.first_names} ${p.attributes.surname}`,
+                type: p.type,
+                totalRates: p.attributes.total_rates
+              }
+            })
             this.setState({includedRatePayers, includedRatesBills, selectedLocation: selectedOption});
             this.props.change('what_is_your_address', selectedOption.location);
           }
@@ -138,7 +127,7 @@ class WizardFormFirstPage extends React.Component {
         .change('your_rates_are', this.state.includedRatesBills[0].totalRates);
         this
         .props
-        .change('valuation_id', );
+        .change('valuation_id', this.state.selectedLocation.valuationId);
     } else {
       this.setState({selectedRatesPayer: null});
     }
@@ -146,7 +135,6 @@ class WizardFormFirstPage extends React.Component {
 
   render() {
     const {handleSubmit} = this.props;
-    console.log('propertiesssss', this.state.included)
     return (
       <div className="container autocomplete-form">
 
@@ -206,33 +194,8 @@ class WizardFormFirstPage extends React.Component {
                 </Fragment>
 }
 
-                {/* <Field name="what_is_your_address" onChange={this.fetchProperties} type="text" component={renderField} label="what_is_your_address"/> */}
-                <br/> {/* My rates are
-                <span><Field
-                  name="my_rates"
-                  type="text"
-                  component={renderField}
-                  label="rates"
-                /></span><br/>
-                I earn
-                <span><Field
-                  name="i_earn"
-                  type="text"
-                  component={renderField}
-                  label="i_earn"
-                /></span>
-                a year,<br/>
-                and have
-                <span><Field
-                  name="do_you_have_dependants"
-                  type="text"
-                  component={renderField}
-                  label="do_you_have_dependants"
-                  className="int"/></span>
-                dependants. */}
               </div>
             </div>
-            {/* {console.log('validate',reduxForm({onSubmitSuccess}))} */}
             <div className="arrow-box secondary">
               <p className="heading-paragraph">You are eligible for
                 <span>$620</span>
@@ -269,6 +232,6 @@ export default reduxForm({
   form: 'wizard',
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
-  validate,
+  // validate,
   onSubmitFail: (errors) => scrollToFirstError(errors)
 })(WizardFormFirstPage);

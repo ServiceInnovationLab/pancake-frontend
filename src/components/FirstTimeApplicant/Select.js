@@ -26,7 +26,6 @@ class selectField extends React.Component {
   }
 
   handleClick(e) {
-    console.log(e.target.innerHTML)
     this.setState({
       selectedAddress: e.target.innerHTML,
       showList: false
