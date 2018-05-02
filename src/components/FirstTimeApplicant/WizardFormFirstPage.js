@@ -168,19 +168,19 @@ class WizardFormFirstPage extends React.Component {
 
 
                 <div className="calc-layout">
-                <span>I live at</span>
-                <Select
-                  name="what_is_your_address"
-                  value={this.state.selectedLocation}
-                  onChange={this.handleSelectLocation}
-                  onInputChange={this.handleChange}
-                  clearable={this.state.clearable}
-                  searchable={this.state.searchable}
-                  isLoading={this.state.isLoadingExternally}
-                  options={this.state.properties}
-                  labelKey={'location'}
-                  valueKey={'id'}/>
-                </div>
+                  <span>I live at</span>
+                  <Select
+                    name="what_is_your_address"
+                    value={this.state.selectedLocation}
+                    onChange={this.handleSelectLocation}
+                    onInputChange={this.handleChange}
+                    clearable={this.state.clearable}
+                    searchable={this.state.searchable}
+                    isLoading={this.state.isLoadingExternally}
+                    options={this.state.properties}
+                    labelKey={'location'}
+                    valueKey={'id'}/>
+                  </div>
 
                   {this.state.selectedLocation && <Fragment>
                   <div>Who are you?</div>
