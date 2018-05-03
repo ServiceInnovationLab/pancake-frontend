@@ -25,7 +25,8 @@ class WizardFormFirstPage extends React.Component {
       rate_payers: [],
       selectedRatesPayer: '',
       clearable: true,
-      isEligible: false
+      isEligible: false,
+      dependants: 0
     };
     this.nextPage = this
       .nextPage
@@ -41,6 +42,9 @@ class WizardFormFirstPage extends React.Component {
       .bind(this);
     this.handleRatesPayers = this
       .handleRatesPayers
+      .bind(this);
+    this.handleDependants = this
+      .handleDependants
       .bind(this);
   }
 
@@ -134,6 +138,16 @@ class WizardFormFirstPage extends React.Component {
     }
   }
 
+  handleDependants(e) {
+    this.setState({dependants: e.target.value});
+  }
+
+  componentWillReceiveProps() {
+    if(this.state.selectedLocation !== ''
+      && this.state.selectedRatesPayer !== ''
+      && this.state.dependants >= 0)
+    { this.setState({isEligible: true}); }
+  }
   render() {
     const {handleSubmit} = this.props;
     return (
@@ -148,7 +162,7 @@ class WizardFormFirstPage extends React.Component {
               reiti reiti.</span>
             </h2>
             <Accordian
-              label="<strong>What is a rates rebate?</strong> <br/><span style='font-weight: normal'>He aha te utu whakahokia?</span>"
+              label="<strong>What is a rates rebate?</strong> <br/><span>He aha te utu whakahokia?</span>"
               text="<p>Rates rebates are a subsidy that gives you a discount on the rates bill of your residential property.</p><p>Any homeowner may receive a rebate for the property they live in, as long as
                 they meet the criteria. This is calculated by your property rates, your income
                 for the last tax year, and the number of dependants you have. If you have
@@ -203,7 +217,7 @@ class WizardFormFirstPage extends React.Component {
                   <div>Your rates are: </div>
                   <Field name="your_rates_are" type="text" component={renderField}/>
                   <div>How many dependents do you have?</div>
-                  <Field name="do_you_have_dependants" type="text" component={renderField}/>
+                  <Field name="do_you_have_dependants" onChange={(e) => this.handleDependants(e)} type="text" component={renderField}/>
                 </Fragment>
                 }
 
