@@ -54,11 +54,12 @@ import config from '../../config';
       let data = {
         "type": "rebate-forms",
         "attributes": {
-          "valuation_id": "123",
+          "valuation_id": values.valuation_id,
           "fields": values
         }
       };
-  
+      console.log('val', values)
+
       axios
         .post(`${config.API_ORIGIN}/api/v1/rebate_forms`, { data })
         .then(res => res)
@@ -70,6 +71,8 @@ import config from '../../config';
     }
     render() {
       const { handleSubmit, formState } = this.props
+
+      console.log('form stateeeee', formState)
       return (
         <Fragment>
           <div className="container">
@@ -84,7 +87,6 @@ import config from '../../config';
                 return (<Field
                   key={key}
                   label={label}
-                  address={formState.address}
                   name={field.isNested ? `has${camelCaser(label)}Checked` : underscorize(field.label['en'].text)}
                   component={field.component}
                   instructions={field.instructions && field.instructions['en'].text}
@@ -151,7 +153,7 @@ const Foot = () => {
       <p>The only thing you need to bring with you is your proof of income.</p>
 
       <p>A copy of your answers to the application has been sent to your email, so if you can't make it to the service centre, you can print out a copy of your application and get your declaration witnessed and signed by an authorised witness such as a JP or Minister for Religion.</p>
-      
+
       <a className="btn btn-primary">Find my nearest service centre</a>
     </div>
   );

@@ -263,4 +263,18 @@ p {
 canvas {
   border: 1px solid #000; }
 
+.Select-input > input {
+  width: 80% !important;
+  display: inline-block; }
+
+.Select-placeholder {
+  display: none !important; }
+
+.calc-layout {
+  display: inline-block; }
+
+input[name=your_rates_are] {
+  text-align: center;
+  font-weight: bold; }
+
 /*# sourceMappingURL=App.css.map */

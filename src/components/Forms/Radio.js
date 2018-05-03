@@ -4,7 +4,9 @@ class Radio extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      hideButtons: false
+    };
   }
 
   stateType(type) {
@@ -29,22 +31,28 @@ class Radio extends React.Component {
     }
   }
 
+  componentDidMount() {
+    this.props.props.input.name === 'do_you_have_dependants' && this.option1.click();
+    this.setState({hideButtons: true});
+  }
+
   render() {
     let prop = this.props.props;
 
     return (
       <Fragment>
         <div>
-          {prop.options && prop.options.map((item, key) => {
-
-            return <label key={key}>
-              <input {...prop.input} type="radio" value={item} onClick={()=>{
-                this.toggleSub(item); 
-              }}
-              />
-              <span>{item}</span>
-            </label>;
-          })}
+          {this.props.props.input.name === 'do_you_have_dependants' && this.state.hideButtons ? '' :
+            prop.options && prop.options.map((item, key) => {
+              return <label key={key}>
+                <input {...prop.input} ref={i => this[`option${key+1}`] = i} type="radio" value={item} onClick={()=>{
+                  this.toggleSub(item);
+                }}
+                />
+                <span>{item}</span>
+              </label>;
+            })
+          }
         </div>
         {this.props.fieldType === 'radio' &&
           <FieldRadio
@@ -54,7 +62,7 @@ class Radio extends React.Component {
             showSub={this.stateType('sub')}
           />
         }
-        {this.props.fieldType === 'text' && <FieldText showYes={this.stateType('showYes')} prop={prop} /> }
+        {this.props.fieldType === 'text' && <FieldText showYes={this.stateType('showYes')} prop={prop} submittedValue={this.props.submittedValue} /> }
       </Fragment>
     );
   }
@@ -73,15 +81,12 @@ const FieldRadio = props => {
 };
 
 const FieldText = props => {
-  // console.log('fieldText', `${props.prop.input.name}`);
-  let field = `${props.prop.input.name}`;
-  let value = `${props.prop.values[field]}`;
   return (
     <div>
       {props.showYes && <div style={props.showYes}>
         {props.prop.instructionsSecondary && <label style={{marginTop: '35px'}}>{props.prop.textFieldLabel}</label>}
         <p>{props.prop.instructionsSecondary}</p>
-        <input type="number" name={`${props.prop.input.name}`} defaultValue={value ? value : ''} placeholder={props.prop.placeholder} />
+        <input type="number" id={props.prop.input.name} name={`${props.prop.input.name}`} defaultValue={(props.submittedValue) ? (props.submittedValue) : ''} placeholder={props.prop.placeholder} />
       </div>}
     </div>
   );

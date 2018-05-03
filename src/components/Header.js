@@ -8,7 +8,7 @@ const Header = () => {
     <header className="main-header">
       <div className="container">
         <Link to='/'><img src="footer-logo-govt.png" srcSet="home@2x.png 2x,home.png 1x" height="51" alt="Rates Rebates" />
-          <p className="heading">Rates Rebates</p>
+          <p className="heading" style={{fontSize: '26px'}}>Rates Rebates <span style={{fontWeight: 'normal'}}>Utu Whakahokia</span></p>
         </Link>
       </div>
     </header>
