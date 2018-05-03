@@ -143,11 +143,11 @@ class WizardFormFirstPage extends React.Component {
 
   handleDependants(e) {
     this.setState({dependants: e.target.value});
+    this.handleIncome()
   }
 
   handleIncome() {
-    if(value) {
-      this.setState({isLoadingExternally: true});
+    this.setState({isLoadingExternally: true});
     // var openFiscaRequest = JSON.parse(JSON.stringify(OpenFiscaData));
     // we should put the year in config...
       OpenFiscaData.persons.Tui.dependants = this.state.dependants;
@@ -174,9 +174,6 @@ class WizardFormFirstPage extends React.Component {
           }
         })
         .catch(err => console.log('err fetching properties', err));
-    } else {
-      this.setState({dependants: null});
-    }
   }
   componentWillReceiveProps() {
     if(this.state.selectedLocation !== ''
@@ -284,17 +281,23 @@ class WizardFormFirstPage extends React.Component {
                   <Field name="do_you_have_dependants" onChange={(e) => this.handleDependants(e)} type="text" component={renderField}/>
                 </Fragment>
                 }
-                {this.state.dependants && <Field
-                  label={earnLessThan.label['en'].text}
-                  name={earnLessThan.isNested ? `has${camelCaser(earnLessThan.label['en'].text)}Checked` : underscorize(earnLessThan.label['en'].text)}
-                  component={earnLessThan.component}
-                  checkboxLabel={earnLessThan.checkboxLabel && earnLessThan.checkboxLabel['en'].text}
-                  checkboxText={earnLessThan.checkboxText && earnLessThan.checkboxText['en'].text}
-                  options={earnLessThan.options && earnLessThan.options['en'].text}
-                  optionsText={earnLessThan.optionsText && earnLessThan.optionsText['en'].text}
-                  textearnLessThanLabel={earnLessThan.textFieldLabel && earnLessThan.textFieldLabel['en'].text}
-                />
-                }
+                <Field
+                label={earnLessThan.label['en'].text}
+                name={earnLessThan.isNested ? `has${camelCaser(earnLessThan.label['en'].text)}Checked` : underscorize(earnLessThan.label['en'].text)}
+                component={earnLessThan.component}
+                instructions={earnLessThan.instructions && earnLessThan.instructions['en'].text}
+                instructionsSecondary={earnLessThan.instructionsSecondary && earnLessThan.instructionsSecondary['en'].text}
+//values={form_values && form_values}
+                accordianLabel={earnLessThan.accordianLabel && earnLessThan.accordianLabel['en'].text}
+                accordianText={earnLessThan.accordianText && earnLessThan.accordianText['en'].text}
+                checkboxLabel={earnLessThan.checkboxLabel && earnLessThan.checkboxLabel['en'].text}
+                checkboxText={earnLessThan.checkboxText && earnLessThan.checkboxText['en'].text}
+                options={earnLessThan.options && earnLessThan.options['en'].text}
+                optionsText={earnLessThan.optionsText && earnLessThan.optionsText['en'].text}
+                textearnLessThanLabel={earnLessThan.textFieldLabel && earnLessThan.textFieldLabel['en'].text}
+                placeholder={earnLessThan.placeholder && earnLessThan.placeholder['en'].text}
+                hasAddressFinder={earnLessThan.hasAddressFinder}/>
+                
 
               </div>
             </div>
