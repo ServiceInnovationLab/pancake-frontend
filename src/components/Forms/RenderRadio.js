@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import ErrorMessage from '../../components/Forms/Error';
 
 const RenderRadio = fields => {
@@ -10,13 +10,13 @@ const RenderRadio = fields => {
       {isRequired && <span className="aria-hidden">(required)</span>}
     </legend>}
     {instructions && <p>{instructions}</p>}
-    {!instructions && <p></p>}
+    {!instructions && <Fragment></Fragment>}
     <div>
       <div>
         {options && options.map((item, key) => {
           return <label key={key}>
             <input {...input} type="radio" value={item} />
-            <span>{item}</span>
+            <span style={{border: '1px solid black'}}>{item}</span>
           </label>;
         })}
       </div>
