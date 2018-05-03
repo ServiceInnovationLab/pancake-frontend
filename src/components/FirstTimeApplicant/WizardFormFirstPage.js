@@ -9,7 +9,6 @@ import config from '../../config';
 import Select from 'react-select';
 import Accordian from '../Forms/Accordian';
 import 'react-select/dist/react-select.css';
-import OpenFiscaData from '../../JSONFormData/OpenFiscaObject';
 
 class WizardFormFirstPage extends React.Component {
   constructor(props) {
