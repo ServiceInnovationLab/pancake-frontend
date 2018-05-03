@@ -18,9 +18,9 @@ export default class TextBoxWithAccordian extends React.Component {
   getValue() {
     if(this.props.input.name === this.props.values[this.props.input.name]) {
       return this.props.values['this.props.input.name'];
-    } else {
-      return this.props.input.value;
-    }
+    } 
+    return this.props.input.value;
+    
   }
 
   render() {
