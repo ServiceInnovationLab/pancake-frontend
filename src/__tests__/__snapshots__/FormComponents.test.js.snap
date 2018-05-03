@@ -4,7 +4,6 @@ exports[`components <RenderRadio /> renders correctly 1`] = `
 <fieldset
   className="radio-group"
 >
-  <p />
   <div>
     <div />
   </div>
