@@ -4,10 +4,10 @@ var openFiscaObject = {
   'persons': {
     'Tui': {
       'salary': {
-        '2017': ''
+        '2017': null
       },
       'dependants': {
-        '2017': ''
+        '2017': null
       }
     }
   },
@@ -16,9 +16,6 @@ var openFiscaObject = {
       'owners': [
         'Tui'
       ],
-      'rates_rebate': {
-        '2017': null
-      },
       'rates' : {
         '2017': null
       },

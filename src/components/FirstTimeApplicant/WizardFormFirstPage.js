@@ -29,7 +29,8 @@ class WizardFormFirstPage extends React.Component {
       rate_payers: [],
       selectedRatesPayer: '',
       clearable: true,
-      isEligible: false
+      isEligible: false,
+      openFiscaObject: null
     };
     this.nextPage = this
       .nextPage
@@ -98,27 +99,9 @@ class WizardFormFirstPage extends React.Component {
       axios
         .get(`${config.API_ORIGIN}/api/v1/properties/${selectedOption.id}`)
         .then(res => {
-          if (res && res.data && res.data.included.length) {
-            const includedRatePayers = res.data.included.filter(i => i.type === 'rates_payers').map(p => {
-              return {
-                id: p.id,
-                fullName: `${p.attributes.first_names} ${p.attributes.surname}`,
-                type: p.type
-              }
-            })
-            const includedRatesBills = res.data.included.filter(i => i.type === 'rates_bills').map(p => {
-              return {
-                id: p.id,
-                fullName: `${p.attributes.first_names} ${p.attributes.surname}`,
-                type: p.type,
-                totalRates: p.attributes.total_rates
-              }
-            })
-            this.setState({includedRatePayers, includedRatesBills, selectedLocation: selectedOption});
-            this.props.change('what_is_your_address', selectedOption.location);
-          }
+          if (res && res.data) this.setState({openFiscaObject:res.data});
         })
-        .catch(err => console.log('err fetching included properties', err));
+        .catch(err => console.log('err fetching rates calculation', err));
     } else {
       this.setState({selectedLocation: null})
     }
@@ -145,14 +128,15 @@ class WizardFormFirstPage extends React.Component {
 handleDependants(value) {
   if(value) {
     this.setState({dependants: value,isLoadingExternally: true});
-    var openFiscaRequest = JSON.parse(JSON.stringify(OpenFiscaData));
-    openFiscaRequest.persons.Tui.dependants = this.state.dependants;
-    openFiscaRequest.properties.property_1.rates = 0 //rates bill...//this.state.includedRatesBills[0].totalRates;
+   // var openFiscaRequest = JSON.parse(JSON.stringify(OpenFiscaData));
+   // we should put the year in config...
+    OpenFiscaData.persons.Tui.dependants = this.state.dependants;
+    OpenFiscaData.properties.property_1.rates['2017'] = 0 //rates bill...//this.state.includedRatesBills[0].totalRates;
     axios
-      .post(`${config.OPENFISCA_ORIGIN}`,openFiscaRequest)
+      .post(`${config.OPENFISCA_ORIGIN}`,OpenFiscaData)
       .then(res => {
         console.log(res.data);
-        if (res && res.data && res.data.data.length) {
+        if (res && res.data) {
           //const valuationId = res.data.data[0].attributes.valuation_id;
           const properties = res
             .data
@@ -181,10 +165,10 @@ handleDependants(value) {
     const earnLessThan = {
       'label': {
         'en': {
-          'text': 'Do you earn less than ?'
+          'text': 'Do you earn less than '//+this.state.openFiscaObject.properties.property_1.minimum_income_for_no_rebate
         },
         'mi': {
-          'text': 'Do you earn less than ?'
+          'text': 'Do you earn less than '//+this.state.openFiscaObject.properties.property_1.minimum_income_for_no_rebate
         }
       },
       'instructions': {
@@ -280,7 +264,7 @@ handleDependants(value) {
                 </Fragment>
                 }
 
-                {this.state.dependants && <Field
+                {this.state.openFiscaObject && earnLessThan && <Field
                       label={earnLessThan.label['en'].text}
                       name={earnLessThan.isNested ? `has${camelCaser(earnLessThan.label['en'].text)}Checked` : underscorize(earnLessThan.label['en'].text)}
                       component={earnLessThan.component}
@@ -297,6 +281,8 @@ handleDependants(value) {
                       placeholder={earnLessThan.placeholder && earnLessThan.placeholder['en'].text}
                       hasAddressFinder={earnLessThan.hasAddressFinder}/>
                 }
+
+
 
 
               </div>
