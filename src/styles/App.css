@@ -151,8 +151,10 @@ legend {
 
 .arrow-box {
   position: relative; }
-  .arrow-box label {
+  .arrow-box > label {
     display: none; }
+  .arrow-box .radio-group {
+    margin: 0; }
   .arrow-box p {
     line-height: 40px;
     font-size: 27px;

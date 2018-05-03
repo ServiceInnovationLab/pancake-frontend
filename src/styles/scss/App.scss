@@ -200,8 +200,12 @@ legend {
 
 .arrow-box {
   position: relative;
-  label {
+  > label {
     display: none;
+  }
+
+  .radio-group {
+    margin: 0;
   }
 
   // span > div {

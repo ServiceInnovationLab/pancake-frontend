@@ -29,7 +29,14 @@ class WizardFormFirstPage extends React.Component {
       selectedRatesPayer: '',
       clearable: true,
       isEligible: false,
-      dependants: 0
+      dependants: null,
+      openFiscaObject: null,
+      minimum_income_for_no_rebate: null,
+      maximum_income_for_full_rebate: null,
+      show_income: false,
+      earns_less_than: null,
+      earns_between: null,
+      earns_more_than: null
     };
     this.nextPage = this
       .nextPage
@@ -48,6 +55,21 @@ class WizardFormFirstPage extends React.Component {
       .bind(this);
     this.handleDependants = this
       .handleDependants
+      .bind(this);
+    this.handleIncome1 = this
+      .handleIncome1
+      .bind(this);
+    this.handleIncome2 = this
+      .handleIncome2
+      .bind(this);
+    this.handleIncome3 = this
+      .handleIncome3
+      .bind(this);
+    this.showIncome = this
+      .showIncome
+      .bind(this);
+    this.showEligibility = this
+      .showEligibility
       .bind(this);
   }
 
@@ -73,16 +95,11 @@ class WizardFormFirstPage extends React.Component {
       .get(`${config.API_ORIGIN}/api/v1/properties?q=${inputText}`)
       .then(res => {
         if (res && res.data && res.data.data.length) {
-          //const valuationId = res.data.data[0].attributes.valuation_id;
           const properties = res
             .data
             .data
             .map(i => {
-              return {
-                id: i.id,
-                location: i.attributes.location,
-                valuationId: i.attributes.valuation_id
-              }
+              return {id: i.id, location: i.attributes.location, valuationId: i.attributes.valuation_id}
             });
           this.setState({
             properties
@@ -90,7 +107,7 @@ class WizardFormFirstPage extends React.Component {
         }
       })
       .catch(err => console.log('err fetching properties', err));
-    }
+  }
 
   handleSelectLocation(selectedOption) {
 
@@ -99,23 +116,24 @@ class WizardFormFirstPage extends React.Component {
         .get(`${config.API_ORIGIN}/api/v1/properties/${selectedOption.id}`)
         .then(res => {
           if (res && res.data && res.data.included.length) {
-            const includedRatePayers = res.data.included.filter(i => i.type === 'rates_payers').map(p => {
-              return {
-                id: p.id,
-                fullName: `${p.attributes.first_names} ${p.attributes.surname}`,
-                type: p.type
-              }
-            })
-            const includedRatesBills = res.data.included.filter(i => i.type === 'rates_bills').map(p => {
-              return {
-                id: p.id,
-                fullName: `${p.attributes.first_names} ${p.attributes.surname}`,
-                type: p.type,
-                totalRates: p.attributes.total_rates
-              }
-            })
+            const includedRatePayers = res
+              .data
+              .included
+              .filter(i => i.type === 'rates_payers')
+              .map(p => {
+                return {id: p.id, fullName: `${p.attributes.first_names} ${p.attributes.surname}`, type: p.type}
+              })
+            const includedRatesBills = res
+              .data
+              .included
+              .filter(i => i.type === 'rates_bills')
+              .map(p => {
+                return {id: p.id, fullName: `${p.attributes.first_names} ${p.attributes.surname}`, type: p.type, totalRates: p.attributes.total_rates}
+              })
             this.setState({includedRatePayers, includedRatesBills, selectedLocation: selectedOption});
-            this.props.change('what_is_your_address', selectedOption.location);
+            this
+              .props
+              .change('what_is_your_address', selectedOption.location);
           }
         })
         .catch(err => console.log('err fetching included properties', err));
@@ -133,7 +151,7 @@ class WizardFormFirstPage extends React.Component {
       this
         .props
         .change('your_rates_are', this.state.includedRatesBills[0].totalRates);
-        this
+      this
         .props
         .change('valuation_id', this.state.selectedLocation.valuationId);
     } else {
@@ -141,55 +159,94 @@ class WizardFormFirstPage extends React.Component {
     }
   }
 
-  handleDependants(e) {
-    this.setState({dependants: e.target.value});
-    this.handleIncome()
+  handleDependants(value) {
+    let data = {
+      'persons': {
+        'Tui': {
+          'salary': {
+            '2017': null
+          },
+          'dependants': {
+            '2017': this.state.dependants
+          }
+        }
+      },
+      'properties': {
+        'property_1': {
+          'owners': ['Tui'],
+          'rates': {
+            '2017': this.state.includedRatesBills[0].totalRates
+          },
+          'maximum_income_for_full_rebate': {
+            '2017': null
+          },
+          'minimum_income_for_no_rebate': {
+            '2017': null
+          }
+        }
+      }
+    };
+
+    if (value) {
+      this.setState({dependants: value});
+      axios
+        .post(`${config.OPENFISCA_ORIGIN}`, data)
+        .then(res => this.setState({
+          minimum_income_for_no_rebate: res
+            .data
+            .properties
+            .property_1
+            .minimum_income_for_no_rebate['2017']
+            .toFixed(2),
+          maximum_income_for_full_rebate: res
+            .data
+            .properties
+            .property_1
+            .maximum_income_for_full_rebate['2017']
+            .toFixed(2)
+        }))
+        .catch(err => console.log('err fetching properties', err));
+    } else {
+      this.setState({dependants: null});
+    }
+
+    if (this.state.selectedLocation !== '' && this.state.selectedRatesPayer !== '') {
+      this.setState({show_income: true})
+    }
   }
 
-  handleIncome() {
-    this.setState({isLoadingExternally: true});
-    // var openFiscaRequest = JSON.parse(JSON.stringify(OpenFiscaData));
-    // we should put the year in config...
-      OpenFiscaData.persons.Tui.dependants = this.state.dependants;
-      OpenFiscaData.properties.property_1.rates['2017'] = 0 //rates bill...//this.state.includedRatesBills[0].totalRates;
-      axios
-        .post(`${config.OPENFISCA_ORIGIN}`,OpenFiscaData)
-        .then(res => {
-          console.log(res.data);
-          if (res && res.data) {
-            //const valuationId = res.data.data[0].attributes.valuation_id;
-            const properties = res
-              .data
-              .data
-              .map(i => {
-                return {
-                  id: i.id,
-                  location: i.attributes.location,
-                  valuationId: i.attributes.valuation_id
-                }
-              });
-            this.setState({
-              properties
-            }, () => this.setState({isLoadingExternally: false}));
-          }
-        })
-        .catch(err => console.log('err fetching properties', err));
+  handleIncome1(e) {
+    this.setState({earns_less_than: e.target.value})
   }
-  componentWillReceiveProps() {
-    if(this.state.selectedLocation !== ''
-      && this.state.selectedRatesPayer !== ''
-      && this.state.dependants >= 0)
-    { this.setState({isEligible: true}); }
+
+  handleIncome2(e) {
+    this.setState({earns_between: e.target.value})
   }
+
+  handleIncome3(e) {
+    this.setState({earns_more_than: e.target.value});
+    if (this.state.earns_less_than !== null || this.state.earns_between !== null || this.state.earns_more_than !== null) {
+      this.setState({isEligible: true})
+    }
+  }
+
+  showIncome() {
+    this.setState({show_income: true})
+  }
+
+  showEligibility() {
+    this.setState({isEligible: true})
+  }
+
   render() {
     const {handleSubmit} = this.props;
     const earnLessThan = {
       'label': {
         'en': {
-          'text': 'Do you earn less than '//+this.state.openFiscaObject.properties.property_1.minimum_income_for_no_rebate
+          'text': 'Do you earn less than ' //+this.state.openFiscaObject.properties.property_1.minimum_income_for_no_rebate
         },
         'mi': {
-          'text': 'Do you earn less than '//+this.state.openFiscaObject.properties.property_1.minimum_income_for_no_rebate
+          'text': 'Do you earn less than ' //+this.state.openFiscaObject.properties.property_1.minimum_income_for_no_rebate
         }
       },
       'instructions': {
@@ -202,10 +259,10 @@ class WizardFormFirstPage extends React.Component {
       },
       'options': {
         'en': {
-          'text': [ 'yes','no' ]
+          'text': ['yes', 'no']
         },
         'mi': {
-          'text': [ 'ae', 'kaore' ]
+          'text': ['ae', 'kaore']
         }
       },
       'isRequired': true,
@@ -216,11 +273,11 @@ class WizardFormFirstPage extends React.Component {
 
         <form onSubmit={handleSubmit}>
           <section>
-            <h2 className="heading-primary">If you are a low-income homeowner you could get a discount or partial
-                refund of up to $620 on your property rates with a rates rebate.<br/>
-              <span>Mena he kaipupuri whenua iti koe, ka taea e koe
-              te whakahekenga i te utu me te utu reti ki te $620 i runga i to reiti nama me te
-              reiti reiti.</span>
+            <h2 className="heading-primary">If you are a low-income homeowner you could get
+              a discount or partial refund of up to $620 on your property rates with a rates
+              rebate.<br/>
+              <span>Mena he kaipupuri whenua iti koe, ka taea e koe te whakahekenga i te utu
+                me te utu reti ki te $620 i runga i to reiti nama me te reiti reiti.</span>
             </h2>
             <Accordian
               label="<strong>What is a rates rebate?</strong> <br/><span>He aha te utu whakahokia?</span>"
@@ -230,8 +287,7 @@ class WizardFormFirstPage extends React.Component {
                 dependants, the upper threshold of your income can be $500 more for each
                 dependant in your care. For example, if you have 2 children, the top limit of
                 how much you could earn to be entitled to the full rebate would be $1000 more
-                than someone with no dependants.</p>"
-            />
+                than someone with no dependants.</p>"/>
             <h2 className="heading-secondary">Find out if you could get a rebate<br/>
               <span>Tirohia mehemea ka taea e koe te utu whakahokia</span>
             </h2>
@@ -241,7 +297,6 @@ class WizardFormFirstPage extends React.Component {
           <section>
             <div className="arrow-box primary">
               <div>
-
 
                 <div className="calc-layout">
                   <span>I live at</span>
@@ -256,9 +311,9 @@ class WizardFormFirstPage extends React.Component {
                     options={this.state.properties}
                     labelKey={'location'}
                     valueKey={'id'}/>
-                  </div>
+                </div>
 
-                  {this.state.selectedLocation && <Fragment>
+                {this.state.selectedLocation && <Fragment>
                   <div>Who are you?</div>
                   <Select
                     name="what_is_your_full_name"
@@ -270,51 +325,70 @@ class WizardFormFirstPage extends React.Component {
                     valueKey={'fullName'}
                     isLoading={this.state.isLoadingExternally}
                     options={this.state.includedRatePayers}/>
-                  </Fragment>
-                  }
+                </Fragment>
+}
 
-                <Field name="valuation_id" type="hidden" component={renderField}/>
-                {this.state.selectedRatesPayer && <Fragment>
-                  <div>Your rates are: </div>
+                <Field name="valuation_id" type="hidden" component={renderField}/> {this.state.selectedRatesPayer && <Fragment>
+                  <div>Your rates are:
+                  </div>
                   <Field name="your_rates_are" type="text" component={renderField}/>
                   <div>How many dependents do you have?</div>
-                  <Field name="do_you_have_dependants" onChange={(e) => this.handleDependants(e)} type="text" component={renderField}/>
+                  <Field
+                    name="do_you_have_dependants"
+                    onChange={this.handleDependants}
+                    type="text"
+                    component={renderField}/>
                 </Fragment>
-                }
-                <Field
-                label={earnLessThan.label['en'].text}
-                name={earnLessThan.isNested ? `has${camelCaser(earnLessThan.label['en'].text)}Checked` : underscorize(earnLessThan.label['en'].text)}
-                component={earnLessThan.component}
-                instructions={earnLessThan.instructions && earnLessThan.instructions['en'].text}
-                instructionsSecondary={earnLessThan.instructionsSecondary && earnLessThan.instructionsSecondary['en'].text}
-//values={form_values && form_values}
-                accordianLabel={earnLessThan.accordianLabel && earnLessThan.accordianLabel['en'].text}
-                accordianText={earnLessThan.accordianText && earnLessThan.accordianText['en'].text}
-                checkboxLabel={earnLessThan.checkboxLabel && earnLessThan.checkboxLabel['en'].text}
-                checkboxText={earnLessThan.checkboxText && earnLessThan.checkboxText['en'].text}
-                options={earnLessThan.options && earnLessThan.options['en'].text}
-                optionsText={earnLessThan.optionsText && earnLessThan.optionsText['en'].text}
-                textearnLessThanLabel={earnLessThan.textFieldLabel && earnLessThan.textFieldLabel['en'].text}
-                placeholder={earnLessThan.placeholder && earnLessThan.placeholder['en'].text}
-                hasAddressFinder={earnLessThan.hasAddressFinder}/>
-                
+}
+
+                {this.state.show_income && <section>
+                  <label htmlFor="earn_less_than">
+                    <span>Do you earn less than ${this.state.minimum_income_for_no_rebate}?</span>
+                  </label>
+                  <Field
+                    name="earn_less_than"
+                    component={earnLessThan.component}
+                    options={earnLessThan.options && earnLessThan.options['en'].text}
+                    optionsText={earnLessThan.optionsText && earnLessThan.optionsText['en'].text}
+                    onChange={this.handleIncome1}/>
+                  <label htmlFor="earns_between">
+                    <span>Do you earn between ${this.state.minimum_income_for_no_rebate}
+                      and ${this.state.maximum_income_for_full_rebate}?</span>
+                  </label>
+                  <Field
+                    name="earns_between"
+                    component={earnLessThan.component}
+                    options={earnLessThan.options && earnLessThan.options['en'].text}
+                    optionsText={earnLessThan.optionsText && earnLessThan.optionsText['en'].text}
+                    onChange={this.handleIncome2}/>
+
+                  <label htmlFor="earns_more_than">
+                    <span>Do you earn more than ${this.state.maximum_income_for_full_rebate}?</span>
+                  </label>
+                  <Field
+                    name="earns_more_than"
+                    component={earnLessThan.component}
+                    options={earnLessThan.options && earnLessThan.options['en'].text}
+                    optionsText={earnLessThan.optionsText && earnLessThan.optionsText['en'].text}
+                    onFocus={this.handleIncome3}/>
+                </section>
+}
 
               </div>
             </div>
 
-            {this.state.isEligible &&
-              <Fragment>
-                <div className="arrow-box secondary">
-                  <p className="heading-paragraph">You are eligible for
-                    <span>$620</span>
-                  </p>
-                  <p className="heading-paragraph">Assuming you meet the criteria</p>
-                </div>
-                <div className="layout">
-                  <button type="submit" className="btn-primary">Apply now</button>
-                </div>
-              </Fragment>
-            }
+            {this.state.isEligible && <Fragment>
+              <div className="arrow-box secondary">
+                <p className="heading-paragraph">You are eligible for
+                  <span>$620</span>
+                </p>
+                <p className="heading-paragraph">Assuming you meet the criteria</p>
+              </div>
+              <div className="layout">
+                <button type="submit" className="btn-primary">Apply now</button>
+              </div>
+            </Fragment>
+}
           </section>
         </form>
       </div>
@@ -323,9 +397,7 @@ class WizardFormFirstPage extends React.Component {
 }
 
 export default reduxForm({
-  form: 'wizard',
-  destroyOnUnmount: false,
-  forceUnregisterOnUnmount: true,
+  form: 'wizard', destroyOnUnmount: false, forceUnregisterOnUnmount: true,
   // validate,
   onSubmitFail: (errors) => scrollToFirstError(errors)
 })(WizardFormFirstPage);
