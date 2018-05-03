@@ -46,10 +46,10 @@ var firstTimeApplication = [
     },
     'accordianLabel': {
       'en': {
-        'text': 'What if I moved house during the rates year'
+        'text': 'What if I moved house during the rates year?'
       },
       'mi': {
-        'text': 'What if I moved house during the rates year'
+        'text': 'What if I moved house during the rates year?'
       }
     },
     'accordianText': {
@@ -127,18 +127,18 @@ var firstTimeApplication = [
   {
     'label': {
       'en': {
-        'text': 'Was your total income for the 2017/18 tax year below $34,000?'
+        'text': 'What was your total income for the 2017/18 tax year?'
       },
       'mi': {
-        'text': 'Was your total income for the 2017/18 tax year below $34,000?'
+        'text': 'What was your total income for the 2017/18 tax year?'
       }
     },
     'instructions': {
       'en': {
-        'text': 'This is the money received, before tax, for the year 1 April 2016 to 31 March 2017. '
+        'text': 'You will need to know your total income for the 2016/2017 Tax year (1 March 2016 - 31 March 2017). This includes rental income from any properties you own, interest and dividends, and overseas income (converted to $NZD). <br> <br> Select any that apply to you.'
       },
       'mi': {
-        'text': 'This is the money received, before tax, for the year 1 April 2016 to 31 March 2017. '
+        'text': 'You will need to know your total income for the 2016/2017 Tax year (1 March 2016 - 31 March 2017). This includes rental income from any properties you own, interest and dividends, and overseas income (converted to $NZD). <br> <br>  Select any that apply to you.'
       }
     },
     'options': {
