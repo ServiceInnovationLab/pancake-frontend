@@ -1,12 +1,15 @@
 import React, {Fragment} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import renderField from './renderField';
+import RenderRadio from '../../components/Forms/RenderRadio';
+import {underscorize, camelCaser} from '../../helpers/strings';
 import {scrollToFirstError} from '../../components/Forms/FormScroll';
 import axios from 'axios';
 import config from '../../config';
 import Select from 'react-select';
 import Accordian from '../Forms/Accordian';
 import 'react-select/dist/react-select.css';
+import OpenFiscaData from '../../JSONFormData/OpenFiscaObject';
 
 class WizardFormFirstPage extends React.Component {
   constructor(props) {
@@ -142,6 +145,39 @@ class WizardFormFirstPage extends React.Component {
     this.setState({dependants: e.target.value});
   }
 
+  handleIncome() {
+    if(value) {
+      this.setState({isLoadingExternally: true});
+    // var openFiscaRequest = JSON.parse(JSON.stringify(OpenFiscaData));
+    // we should put the year in config...
+      OpenFiscaData.persons.Tui.dependants = this.state.dependants;
+      OpenFiscaData.properties.property_1.rates['2017'] = 0 //rates bill...//this.state.includedRatesBills[0].totalRates;
+      axios
+        .post(`${config.OPENFISCA_ORIGIN}`,OpenFiscaData)
+        .then(res => {
+          console.log(res.data);
+          if (res && res.data) {
+            //const valuationId = res.data.data[0].attributes.valuation_id;
+            const properties = res
+              .data
+              .data
+              .map(i => {
+                return {
+                  id: i.id,
+                  location: i.attributes.location,
+                  valuationId: i.attributes.valuation_id
+                }
+              });
+            this.setState({
+              properties
+            }, () => this.setState({isLoadingExternally: false}));
+          }
+        })
+        .catch(err => console.log('err fetching properties', err));
+    } else {
+      this.setState({dependants: null});
+    }
+  }
   componentWillReceiveProps() {
     if(this.state.selectedLocation !== ''
       && this.state.selectedRatesPayer !== ''
@@ -150,6 +186,34 @@ class WizardFormFirstPage extends React.Component {
   }
   render() {
     const {handleSubmit} = this.props;
+    const earnLessThan = {
+      'label': {
+        'en': {
+          'text': 'Do you earn less than '//+this.state.openFiscaObject.properties.property_1.minimum_income_for_no_rebate
+        },
+        'mi': {
+          'text': 'Do you earn less than '//+this.state.openFiscaObject.properties.property_1.minimum_income_for_no_rebate
+        }
+      },
+      'instructions': {
+        'en': {
+          'text': ''
+        },
+        'mi': {
+          'text': ''
+        }
+      },
+      'options': {
+        'en': {
+          'text': [ 'yes','no' ]
+        },
+        'mi': {
+          'text': [ 'ae', 'kaore' ]
+        }
+      },
+      'isRequired': true,
+      'component': RenderRadio
+    };
     return (
       <div className="container autocomplete-form">
 
@@ -219,6 +283,17 @@ class WizardFormFirstPage extends React.Component {
                   <div>How many dependents do you have?</div>
                   <Field name="do_you_have_dependants" onChange={(e) => this.handleDependants(e)} type="text" component={renderField}/>
                 </Fragment>
+                }
+                {this.state.dependants && <Field
+                  label={earnLessThan.label['en'].text}
+                  name={earnLessThan.isNested ? `has${camelCaser(earnLessThan.label['en'].text)}Checked` : underscorize(earnLessThan.label['en'].text)}
+                  component={earnLessThan.component}
+                  checkboxLabel={earnLessThan.checkboxLabel && earnLessThan.checkboxLabel['en'].text}
+                  checkboxText={earnLessThan.checkboxText && earnLessThan.checkboxText['en'].text}
+                  options={earnLessThan.options && earnLessThan.options['en'].text}
+                  optionsText={earnLessThan.optionsText && earnLessThan.optionsText['en'].text}
+                  textearnLessThanLabel={earnLessThan.textFieldLabel && earnLessThan.textFieldLabel['en'].text}
+                />
                 }
 
               </div>
