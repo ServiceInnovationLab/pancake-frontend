@@ -73,7 +73,7 @@ const FieldRadio = props => {
 };
 
 const FieldText = props => {
-  // console.log('fieldText', `${props.prop.input.name}`);
+  // Console.log('fieldText', `${props.prop.input.name}`);
   let field = `${props.prop.input.name}`;
   let value = `${props.prop.values[field]}`;
   return (
