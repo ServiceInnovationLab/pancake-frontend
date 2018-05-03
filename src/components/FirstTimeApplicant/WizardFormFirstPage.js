@@ -1,6 +1,5 @@
 import React, {Fragment} from 'react';
 import {Field, reduxForm} from 'redux-form';
-import validate from '../../helpers/validate';
 import renderField from './renderField';
 import RenderRadio from '../../components/Forms/RenderRadio';
 import {underscorize, camelCaser} from '../../helpers/strings';
@@ -8,7 +7,9 @@ import {scrollToFirstError} from '../../components/Forms/FormScroll';
 import axios from 'axios';
 import config from '../../config';
 import Select from 'react-select';
-let isLoadingExternally = false;
+import Accordian from '../Forms/Accordian';
+import OpenFiscaData from '../../JSONFormData/OpenFiscaObject';
+import 'react-select/dist/react-select.css';
 
 
 class WizardFormFirstPage extends React.Component {
@@ -27,9 +28,8 @@ class WizardFormFirstPage extends React.Component {
       included: [],
       rate_payers: [],
       selectedRatesPayer: '',
-      rates: null,
-      dependants: null,
-      clearable: true
+      clearable: true,
+      isEligible: false
     };
     this.nextPage = this
       .nextPage
@@ -144,7 +144,32 @@ class WizardFormFirstPage extends React.Component {
 
 handleDependants(value) {
   if(value) {
-    this.setState({dependants: value})
+    this.setState({dependants: value,isLoadingExternally: true});
+    var openFiscaRequest = JSON.parse(JSON.stringify(OpenFiscaData));
+    openFiscaRequest.persons.Tui.dependants = this.state.dependants;
+    openFiscaRequest.properties.property_1.rates = 0 //rates bill...//this.state.includedRatesBills[0].totalRates;
+    axios
+      .post(`${config.OPENFISCA_ORIGIN}`,openFiscaRequest)
+      .then(res => {
+        console.log(res.data);
+        if (res && res.data && res.data.data.length) {
+          //const valuationId = res.data.data[0].attributes.valuation_id;
+          const properties = res
+            .data
+            .data
+            .map(i => {
+              return {
+                id: i.id,
+                location: i.attributes.location,
+                valuationId: i.attributes.valuation_id
+              }
+            });
+          this.setState({
+            properties
+          }, () => this.setState({isLoadingExternally: false}));
+        }
+      })
+      .catch(err => console.log('err fetching properties', err));
   } else {
     this.setState({dependants: null});
   }
@@ -156,10 +181,10 @@ handleDependants(value) {
     const earnLessThan = {
       'label': {
         'en': {
-          'text': 'You earn less than '
+          'text': 'Do you earn less than ?'
         },
         'mi': {
-          'text': 'You earn less than '
+          'text': 'Do you earn less than ?'
         }
       },
       'instructions': {
@@ -187,40 +212,49 @@ handleDependants(value) {
 
         <form onSubmit={handleSubmit}>
           <section>
-            <h2 className="heading-primary">Mena he kaipupuri whenua iti koe, ka taea e koe
+            <h2 className="heading-primary">If you are a low-income homeowner you could get a discount or partial
+                refund of up to $620 on your property rates with a rates rebate.<br/>
+              <span>Mena he kaipupuri whenua iti koe, ka taea e koe
               te whakahekenga i te utu me te utu reti ki te $620 i runga i to reiti nama me te
-              reiti reiti.<br/>
-              <span>If you are a low-income homeowner you could get a discount or partial
-                refund of up to $620 on your property rates with a rates rebate.</span>
+              reiti reiti.</span>
             </h2>
-
-            <hr/>
-            <h2 className="heading-secondary">Tirohia mehemea ka taea e koe te utu whakahokia<br/>
-              <span>Find out if you could get a rebate</span>
+            <Accordian
+              label="<strong>What is a rates rebate?</strong> <br/><span style='font-weight: normal'>He aha te utu whakahokia?</span>"
+              text="<p>Rates rebates are a subsidy that gives you a discount on the rates bill of your residential property.</p><p>Any homeowner may receive a rebate for the property they live in, as long as
+                they meet the criteria. This is calculated by your property rates, your income
+                for the last tax year, and the number of dependants you have. If you have
+                dependants, the upper threshold of your income can be $500 more for each
+                dependant in your care. For example, if you have 2 children, the top limit of
+                how much you could earn to be entitled to the full rebate would be $1000 more
+                than someone with no dependants.</p>"
+            />
+            <h2 className="heading-secondary">Find out if you could get a rebate<br/>
+              <span>Tirohia mehemea ka taea e koe te utu whakahokia</span>
             </h2>
             <p>Use our online calculator.<br />In your calculation, please include
             all homeowners who live at the address <b>and</b> their partners
             </p>
           </section>
+
           <section>
             <div className="arrow-box primary">
               <div>
 
 
                 <div className="calc-layout">
-                <span>You live at</span>
-                <Select
-                  name="what_is_your_address"
-                  value={this.state.selectedLocation}
-                  onChange={this.handleSelectLocation}
-                  onInputChange={this.handleChange}
-                  clearable={this.state.clearable}
-                  searchable={this.state.searchable}
-                  isLoading={this.state.isLoadingExternally}
-                  options={this.state.properties}
-                  labelKey={'location'}
-                  valueKey={'id'}/>
-                </div>
+                  <span>You live at</span>
+                  <Select
+                    name="what_is_your_address"
+                    value={this.state.selectedLocation}
+                    onChange={this.handleSelectLocation}
+                    onInputChange={this.handleChange}
+                    clearable={this.state.clearable}
+                    searchable={this.state.searchable}
+                    isLoading={this.state.isLoadingExternally}
+                    options={this.state.properties}
+                    labelKey={'location'}
+                    valueKey={'id'}/>
+                  </div>
 
                   {this.state.selectedLocation && <Fragment>
                   <div>Who are you?</div>
@@ -234,8 +268,8 @@ handleDependants(value) {
                     valueKey={'fullName'}
                     isLoading={this.state.isLoadingExternally}
                     options={this.state.includedRatePayers}/>
-                </Fragment>
-}
+                  </Fragment>
+                  }
 
                 <Field name="valuation_id" type="hidden" component={renderField}/>
                 {this.state.selectedRatesPayer && <Fragment>
@@ -244,7 +278,7 @@ handleDependants(value) {
                   <div>How many dependents do you have?</div>
                   <Field name="do_you_have_dependants" type="text" onChange={this.handleDependants} component={renderField}/>
                 </Fragment>
-}
+                }
 
                 {this.state.dependants && <Field
                       label={earnLessThan.label['en'].text}
@@ -272,25 +306,20 @@ handleDependants(value) {
               <p className="heading-paragraph">Assuming you meet the criteria</p>
             </div>
 
+            {this.state.isEligible &&
+              <Fragment>
+                <div className="arrow-box secondary">
+                  <p className="heading-paragraph">You are eligible for
+                    <span>$620</span>
+                  </p>
+                  <p className="heading-paragraph">Assuming you meet the criteria</p>
+                </div>
+                <div className="layout">
+                  <button type="submit" className="btn-primary">Apply now</button>
+                </div>
+              </Fragment>
+            }
           </section>
-          <div className="layout">
-            <button type="submit" className="btn-primary">Apply now</button>
-          </div>
-          <section>
-            <div className="arrow-box quote">
-              <h3>What is a Rates Rebate?</h3>
-              <p>Rates rebates are a subsidy that gives you a discount on the rates bill of
-                your residential property.</p>
-              <p>Any homeowner may receive a rebate for the property they live in, as long as
-                they meet the criteria. This is calculated by your property rates, your income
-                for the last tax year, and the number of dependants you have. If you have
-                dependants, the upper threshold of your income can be $500 more for each
-                dependant in your care. For example, if you have 2 children, the top limit of
-                how much you could earn to be entitled to the full rebate would be $1000 more
-                than someone with no dependants.</p>
-            </div>
-          </section>
-
         </form>
       </div>
     );
