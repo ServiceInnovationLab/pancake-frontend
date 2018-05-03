@@ -295,7 +295,7 @@ var firstTimeApplication = [
         'text': 'What is your phone number?'
       }
     }
-  },
+  }
   // {
   //   'component': TextBoxWithAccordian,
   //   'label': {
