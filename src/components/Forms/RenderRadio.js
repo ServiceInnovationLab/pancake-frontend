@@ -15,8 +15,8 @@ const RenderRadio = fields => {
       <div>
         {options && options.map((item, key) => {
           return <label key={key}>
-            <input {...input} type="radio" value={item} />
-            <span style={{border: '1px solid black'}}>{item}</span>
+            <input {...input} type="radio" value={item.value} />
+            <span style={{border: '1px solid black'}}>{item.label}</span>
           </label>;
         })}
       </div>
