@@ -13,7 +13,6 @@ class WizardForm extends Component {
     };
   }
   nextPage() {
-    debugger;
     this.setState({ page: this.state.page + 1 });
   }
 
