@@ -81,9 +81,9 @@ class Income extends React.Component {
     return {
       'options': {
         'en': [
-            {value: 'below', label: 'less then $' + this.formatDollars(this.state.maximum_income_for_full_rebate)},
-            {value: 'between', label: 'somewhere in the middle'},
-            {value: 'above', label: 'more than $' + this.formatDollars(this.state.minimum_income_for_no_rebate)}
+          {value: 'below', label: 'less then $' + this.formatDollars(this.state.maximum_income_for_full_rebate)},
+          {value: 'between', label: 'somewhere in the middle'},
+          {value: 'above', label: 'more than $' + this.formatDollars(this.state.minimum_income_for_no_rebate)}
         ]
       },
       'isRequired': true,
