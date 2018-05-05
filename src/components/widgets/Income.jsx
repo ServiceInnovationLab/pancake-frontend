@@ -92,7 +92,7 @@ class Income extends React.Component {
   }
 
   formatDollars(number) {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
 
   render() {

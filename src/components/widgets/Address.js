@@ -27,7 +27,7 @@ class Address extends React.Component {
             .data
             .data
             .map(i => {
-              return {id: i.id, location: i.attributes.location, valuationId: i.attributes.valuation_id}
+              return {id: i.id, location: i.attributes.location, valuationId: i.attributes.valuation_id};
             });
           this.setState({
             properties
@@ -49,14 +49,14 @@ class Address extends React.Component {
               .included
               .filter(i => i.type === 'rates_payers')
               .map(p => {
-                return p
+                return p;
               });
             const rates_bills = res
               .data
               .included
               .filter(i => i.type === 'rates_bills')
               .map(p => {
-                return p
+                return p;
               });
             this.props.onSelection({
               location: res.data.data.attributes,
@@ -66,7 +66,7 @@ class Address extends React.Component {
         })
         .catch(err => console.log('err fetching included properties', err));
     } else {
-      this.setState({location: {}})
+      this.setState({location: {}});
       this.props.onSelection({
         location: {},
         rates_payers: [],
