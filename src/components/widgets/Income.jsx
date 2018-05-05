@@ -14,11 +14,11 @@ class Income extends React.Component {
   handleSelection(event, newValue, previousValue, name) {
     let income;
     if (newValue === 'between') {
-      this.setState({show_input: true})
+      this.setState({show_input: true});
     } else if (newValue === 'below') {
-      income = this.state.minimum_income_for_no_rebate
+      income = this.state.minimum_income_for_no_rebate;
     } else if (newValue === 'above') {
-      income = this.state.maximum_income_for_full_rebate
+      income = this.state.maximum_income_for_full_rebate;
     }
     this.setState({income: income});
     this.props.onSelection(income, newValue);
