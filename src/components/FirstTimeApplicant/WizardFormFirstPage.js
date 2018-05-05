@@ -18,8 +18,6 @@ class WizardFormFirstPage extends React.Component {
       properties: [],
       rate_payers: [],
       selectedRatesPayer: '',
-      // value: '',
-      // values: '',
     };
     this.nextPage = this
       .nextPage
