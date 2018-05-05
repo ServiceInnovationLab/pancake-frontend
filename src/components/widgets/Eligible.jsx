@@ -59,7 +59,8 @@ class Eligible extends React.Component {
       return (
         <Fragment>
           <div className="arrow-box secondary">
-            <p className="heading-paragraph">You are eligible for
+            <p className="heading-paragraph">
+              You are eligible for
               <span> ${this.formatDollars(this.state.rebate)}</span>
             </p>
             <p className="heading-paragraph">(Assuming you meet the criteria)</p>
