@@ -1,14 +1,11 @@
 import React, {Fragment} from 'react';
 import {Field, reduxForm} from 'redux-form';
-import renderField from './renderField';
-import RenderRadio from '../../components/Forms/RenderRadio';
+import renderField from '../Forms/renderField';
 import {scrollToFirstError} from '../../components/Forms/FormScroll';
-import axios from 'axios';
-import config from '../../config';
-import Select from 'react-select';
 import Accordian from '../Forms/Accordian';
 import Address from '../widgets/Address';
 import Income from '../widgets/Income';
+import Eligible from '../widgets/Eligible';
 import 'react-select/dist/react-select.css';
 
 class WizardFormFirstPage extends React.Component {
@@ -21,8 +18,8 @@ class WizardFormFirstPage extends React.Component {
       properties: [],
       rate_payers: [],
       selectedRatesPayer: '',
-      value: '',
-      values: '',
+      // value: '',
+      // values: '',
     };
     this.nextPage = this
       .nextPage
@@ -179,18 +176,11 @@ class WizardFormFirstPage extends React.Component {
               </div>
             </div>
 
-            {this.state.income && this.state.location && this.state.dependants && <Fragment>
-              <div className="arrow-box secondary">
-                <p className="heading-paragraph">You are eligible for
-                  <span>???</span>
-                </p>
-                <p className="heading-paragraph">Assuming you meet the criteria</p>
-              </div>
-              <div className="layout">
-                <button type="submit" className="btn-primary">Apply now</button>
-              </div>
-            </Fragment>
-            }
+            <Eligible
+              dependants={this.state.dependants}
+              rates_bill={this.state.rates_bill}
+              income={this.state.income}
+              />
           </section>
         </form>
       </div>

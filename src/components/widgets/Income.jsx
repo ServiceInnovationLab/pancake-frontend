@@ -1,30 +1,28 @@
 import React from 'react';
-import Select from 'react-select';
 import axios from 'axios';
 import config from '../../config';
 import RenderRadio from '../../components/Forms/RenderRadio';
-import {Field, reduxForm} from 'redux-form';
+import {Field} from 'redux-form';
 
 class Income extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {show_input: false};
     this.handleSelection = this.handleSelection.bind(this);
   }
 
   handleSelection(event, newValue, previousValue, name) {
     let income;
-    if (newValue == 'between') {
-      // complicated
-      debugger;
-    } else if (newValue == 'below') {
+    if (newValue === 'between') {
+      this.setState({show_input: true})
+    } else if (newValue === 'below') {
       income = this.state.minimum_income_for_no_rebate
-    } else if (newValue == 'above') {
+    } else if (newValue === 'above') {
       income = this.state.maximum_income_for_full_rebate
     }
+    this.setState({income: income});
     this.props.onSelection(income, newValue);
   }
-
 
   componentWillReceiveProps(nextProps) {
     console.log('fetchMinMaxIncome');
@@ -107,7 +105,7 @@ class Income extends React.Component {
           </label>
 
           <Field
-            name="income"
+            name="income_range"
             component={RenderRadio}
             options={earnLessThan.options && earnLessThan.options['en']}
             onChange={this.handleSelection}/>
