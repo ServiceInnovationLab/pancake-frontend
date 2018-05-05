@@ -2,8 +2,7 @@ import React, {Fragment} from 'react';
 // import Select from 'react-select';
 import axios from 'axios';
 import config from '../../config';
-import RenderRadio from '../../components/Forms/RenderRadio';
-import {Field, reduxForm} from 'redux-form';
+// import {Field, reduxForm} from 'redux-form';
 
 class Eligible extends React.Component {
   constructor(props) {
@@ -14,7 +13,6 @@ class Eligible extends React.Component {
 
 
   componentWillReceiveProps(nextProps) {
-    console.log('calculating...');
     if (nextProps.dependants && nextProps.rates_bill && nextProps.income) {
       let data = {
         'persons': {
