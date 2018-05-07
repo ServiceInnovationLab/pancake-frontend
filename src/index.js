@@ -28,12 +28,6 @@ class App extends React.Component {
           <main>
             <Route exact={true} path="/" component={WizardForm} />
             <Route path="/:id" component={Sign}/>
-            {/* <Route path="/apply" component={WizardFormSecondPage} store={store} /> */}
-            {/* <Route path="/apply" render={()=><WizardFormSecondPage store={store}/>} /> */}
-            {/* <Route path="/complete" component={WizardFormThirdPage} /> */}
-            {/* <Route path="/apply" component={WizardForm} /> */}
-            {/* <Route path="/page2" component={Page2} />
-            <Route path="/page3" component={Page3} /> */}
           </main>
           <Footer />
         </div>
