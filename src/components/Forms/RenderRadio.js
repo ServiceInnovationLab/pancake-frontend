@@ -1,6 +1,12 @@
 import React, {Fragment} from 'react';
 import ErrorMessage from '../../components/Forms/Error';
 
+var _ = require('lodash');
+
+const isObject = (obj, key) => {
+  return _.isObject(obj) ? obj[key] : obj;
+};
+
 const RenderRadio = fields => {
   const {label, isRequired, instructions, options, input} = fields;
 
@@ -14,9 +20,9 @@ const RenderRadio = fields => {
     <div>
       <div>
         {options && options.map((item, key) => {
-          return <label key={key}>
-            <input {...input} type="radio" value={item} />
-            <span style={{border: '1px solid black'}}>{item}</span>
+          return <label key={key} className={fields.className && fields.className}>
+            <input {...input} type="radio" value={isObject(item, 'value')} />
+            <span style={{border: '1px solid black'}}>{isObject(item, 'label')}</span>
           </label>;
         })}
       </div>
