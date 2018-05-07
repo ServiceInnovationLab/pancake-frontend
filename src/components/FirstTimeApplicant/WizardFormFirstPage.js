@@ -88,11 +88,11 @@ class WizardFormFirstPage extends React.Component {
 
         <form onSubmit={handleSubmit}>
           <section>
-            <h2 className="heading-primary">If you are a low-income homeowner you could get
-              a discount or partial refund of up to $620 on your property rates with a rates
-              rebate.<br/>
-              <span>Mena he kaipupuri whenua iti koe, ka taea e koe te whakahekenga i te utu
-                me te utu reti ki te $620 i runga i to reiti nama me te reiti reiti.</span>
+            <h2 className="heading-primary">If you are a low to medium income homeowner you could get a discount or partial
+                refund of up to $620 on your property rates with a rates rebate.<br/>
+              <span>Mena he kaipupuri whenua iti koe, ka taea e koe
+              te whakahekenga i te utu me te utu reti ki te $620 i runga i to reiti nama me te
+              reiti reiti.</span>
             </h2>
             <Accordian
               label="<strong>What is a rates rebate?</strong> <br/><span>He aha te utu whakahokia?</span>"
