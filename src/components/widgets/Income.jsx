@@ -40,7 +40,7 @@ class Income extends React.Component {
         },
         'properties': {
           'property_1': {
-            'owners': ['Tui'],
+            'owners': [ 'Tui' ],
             'rates': {
               '2017': nextProps.rates_bill
             },
@@ -110,7 +110,7 @@ class Income extends React.Component {
             options={earnLessThan.options && earnLessThan.options['en']}
             onChange={this.handleSelection}
             className={'radio-group-income'}
-            />
+          />
         </section>
       );
     }
