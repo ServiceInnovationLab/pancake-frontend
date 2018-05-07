@@ -1,14 +1,14 @@
 import React, {Fragment} from 'react';
-// import Select from 'react-select';
+// Import Select from 'react-select';
 import axios from 'axios';
 import config from '../../config';
-// import {Field, reduxForm} from 'redux-form';
+// Import {Field, reduxForm} from 'redux-form';
 
 class Eligible extends React.Component {
   constructor(props) {
     super(props);
     this.state = {rebate: null};
-    // this.handleSelection = this.handleSelection.bind(this);
+    // This.handleSelection = this.handleSelection.bind(this);
   }
 
 
