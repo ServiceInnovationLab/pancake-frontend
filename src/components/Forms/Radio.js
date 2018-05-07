@@ -32,7 +32,7 @@ class Radio extends React.Component {
   }
 
   componentDidMount() {
-    this.props.props.input.name === 'do_you_have_dependants' && this.option1.click();
+    this.props.props.input.name === 'dependants' && this.option1.click();
     this.setState({hideButtons: true});
   }
 
@@ -42,7 +42,7 @@ class Radio extends React.Component {
     return (
       <Fragment>
         <div>
-          {this.props.props.input.name === 'do_you_have_dependants' && this.state.hideButtons ? '' :
+          {this.props.props.input.name === 'dependants' && this.state.hideButtons ? '' :
             prop.options && prop.options.map((item, key) => {
               return <label key={key}>
                 <input {...prop.input} ref={i => this[`option${key+1}`] = i} type="radio" value={item} onClick={()=>{
@@ -55,12 +55,14 @@ class Radio extends React.Component {
           }
         </div>
         {this.props.fieldType === 'radio' &&
-          <FieldRadio
-            showYes={this.stateType('showYes')}
-            showNo={this.stateType('showNo')}
-            prop={prop}
-            showSub={this.stateType('sub')}
-          />
+          <Fragment>
+            <FieldRadio
+              showYes={this.stateType('showYes')}
+              showNo={this.stateType('showNo')}
+              prop={prop}
+              showSub={this.stateType('sub')}
+            />
+          </Fragment>
         }
         {this.props.fieldType === 'text' && <FieldText showYes={this.stateType('showYes')} prop={prop} submittedValue={this.props.submittedValue} /> }
       </Fragment>
@@ -96,7 +98,7 @@ const FieldSet = props => {
   return (
     <fieldset style={{marginTop: '35px'}}>
       <legend style={{marginBottom: '15px'}}>{props.prop.optionsText[1]}</legend>
-      <RadioChild name={props.prop.input.name}/>
+      <RadioChild name={`${props.prop.input.name}_child`}/>
     </fieldset>
   );
 };
