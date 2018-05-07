@@ -58,7 +58,10 @@ class WizardFormFirstPage extends React.Component {
     this
       .props
       .change('what_is_your_address', state.location.location);
-      
+    this
+      .props
+      .change('valuation_id', this.state.location.valuation_id);
+
     if (state['rates_bills']) {
       let attributes = state['rates_bills'][0]['attributes'];
       this.setState({
