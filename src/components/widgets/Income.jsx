@@ -109,7 +109,7 @@ class Income extends React.Component {
             component={RenderRadio}
             options={earnLessThan.options && earnLessThan.options['en']}
             onChange={this.handleSelection}
-            className={'radio-group-income'}
+            className="radio-group-income"
           />
         </section>
       );
