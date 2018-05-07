@@ -20,6 +20,7 @@ class WizardFormSecondPage extends React.Component {
       page: 2,
       shown: false,
       complete: false,
+      complete_error: false,
       signature: '',
       stage: ''
     };
@@ -51,7 +52,6 @@ class WizardFormSecondPage extends React.Component {
   }
 
   saveFormData() {
-    this.setState({complete: true});
     let values = this.props.formState.form.wizard.values;
     delete values.address
     let data = {
@@ -64,8 +64,8 @@ class WizardFormSecondPage extends React.Component {
 
     axios
       .post(`${config.API_ORIGIN}/api/v1/rebate_forms`, {data})
-      .then(res => res)
-      .catch(err => console.log('Error occurred: Check origin has been enabled correctly on the server', err));
+      .then(res => this.setState({complete: true}))
+      .catch(err => this.setState({complete_error: true, complete: false}));
 
   }
   goHome() {
@@ -119,7 +119,9 @@ class WizardFormSecondPage extends React.Component {
                 hasAddressFinder={field.hasAddressFinder}/>);
             })}
             <Calculated/>
-            <Submit/> {this.state.complete && <Foot/>}
+            <Submit/>
+            {this.state.complete && <Success/>}
+            {this.state.complete_error && <Failed/>}
           </form>
         </div>
       </Fragment>
@@ -161,7 +163,15 @@ const Head = () => {
   );
 }
 
-const Foot = () => {
+const Failed = () => {
+  return (
+    <Fragment>
+      <h2>Something went wrong :(</h2>
+      <p>Please contact us on XXX-XXXX or you can email us at XXXX@XXXX.govt.nz</p>
+    </Fragment>
+  );
+}
+const Success = () => {
   return (
     <div>
       <h2 className="heading-secondary">Step 3: Get your application witnessed</h2>
