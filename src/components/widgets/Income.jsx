@@ -71,8 +71,7 @@ class Income extends React.Component {
             .toFixed(2)
         }))
         .catch(err => console.log('err fetching properties', err));
-    }
-    else {
+    } else {
       this.setState({minimum_income_for_no_rebate: null, maximum_income_for_full_rebate: null});
     }
   }
@@ -110,11 +109,10 @@ class Income extends React.Component {
             options={earnLessThan.options && earnLessThan.options['en']}
             onChange={this.handleSelection}
             className={'radio-group-income'}
-            />
+          />
         </section>
       );
-    }
-    else {
+    } else {
       return '';
     }
   }
