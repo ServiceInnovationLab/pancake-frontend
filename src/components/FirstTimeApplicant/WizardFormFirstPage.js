@@ -55,7 +55,10 @@ class WizardFormFirstPage extends React.Component {
 
   handleAddressSelection(state) {
     this.setState(state);
-
+    this
+      .props
+      .change('what_is_your_address', state.location.location);
+      
     if (state['rates_bills']) {
       let attributes = state['rates_bills'][0]['attributes'];
       this.setState({
@@ -67,23 +70,6 @@ class WizardFormFirstPage extends React.Component {
       this.setState({rates_bills: null, rating_year: null});
     }
   }
-
-  // handleRatesPayers(selectedOption) {
-  //   if (selectedOption) {
-  //     this.setState({selectedRatesPayer: selectedOption.fullName})
-  //     this
-  //       .props
-  //       .change('what_is_your_full_name', selectedOption.fullName);
-  //     this
-  //       .props
-  //       .change('your_rates_are', this.state.includedRatesBills[0].totalRates);
-  //     this
-  //       .props
-  //       .change('valuation_id', this.state.selectedLocation.valuationId);
-  //   } else {
-  //     this.setState({selectedRatesPayer: null});
-  //   }
-  // }
 
   handleDependants(event, newValue, previousValue, name) {
     if (newValue) {
