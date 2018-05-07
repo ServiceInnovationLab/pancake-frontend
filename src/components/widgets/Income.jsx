@@ -114,9 +114,9 @@ class Income extends React.Component {
         </section>
       );
     }
-    else {
-      return '';
-    }
+    
+    return '';
+    
   }
 }
 
