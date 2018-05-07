@@ -132,19 +132,22 @@ class WizardFormFirstPage extends React.Component {
 
                 {this.state.rates_bill && this.state.rating_year && <Fragment>
                   <div className="calc-layout">
-                    Your {this.state.rating_year} rates are <strong>$ {this.state.rates_bill}</strong>
+                    My {this.state.rating_year} rates are <strong>$ {this.state.rates_bill}</strong>
                   </div>
                 </Fragment>
                 }
 
                 {this.state.rates_bill && <Fragment>
                   <div className="calc-layout">
-                    <div>How many dependants do you have?</div>
-                    <Field
-                      name="do_you_have_dependants"
-                      onChange={this.handleDependants}
-                      type="text"
-                      component={renderField}/>
+                    <div>
+                      I have
+                      <Field
+                        name="do_you_have_dependants"
+                        onChange={this.handleDependants}
+                        type="text"
+                        component={renderField}/>
+                      dependants.
+                    </div>
                   </div>
                 </Fragment>
                 }

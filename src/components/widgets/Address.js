@@ -77,7 +77,7 @@ class Address extends React.Component {
   render() {
     return (
       <div className="calc-layout">
-        <span>I live at </span>
+        <div>I live at </div>
         <Select
           name="location"
           value={this.state.location}
@@ -89,6 +89,7 @@ class Address extends React.Component {
           options={this.state.properties}
           labelKey={'location'}
           valueKey={'id'}/>
+        <div> in Tauranga</div>
       </div>
     );
   }

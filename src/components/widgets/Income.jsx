@@ -101,7 +101,7 @@ class Income extends React.Component {
       return (
         <section>
           <label htmlFor="earn_less_than">
-            <span>Do you earn less than ${this.formatDollars(this.state.minimum_income_for_no_rebate)}?</span>
+            I earn
           </label>
 
           <Field
