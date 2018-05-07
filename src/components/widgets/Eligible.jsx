@@ -13,6 +13,7 @@ class Eligible extends React.Component {
 
 
   componentWillReceiveProps(nextProps) {
+    this.setState({rebate: null});
     if (nextProps.dependants && nextProps.rates_bill && nextProps.income) {
       let data = {
         'persons': {
@@ -51,7 +52,7 @@ class Eligible extends React.Component {
   }
 
   formatDollars(number) {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return number.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
 
   render() {
