@@ -3,12 +3,13 @@ import TextBoxWithAccordian from '../components/Forms/TextboxWithAccordian';
 // import TextFieldWithCheckbox from '../components/Forms/TextFieldWithCheckbox';
 import RadioWithRadio from '../components/Forms/RadioWithRadio';
 import RadioWithTextField from '../components/Forms/RadioWithTextField';
-// import RadioWithSelect from '../components/Forms/RadioWithSelect';
+import RadioWithSelect from '../components/Forms/RadioWithSelect';
 
 
 var firstTimeApplication = [
   {
     'component': TextBoxWithAccordian,
+    'field_name': 'address',
     'label': {
       'en': {
         'text': 'What is your address?'
@@ -20,6 +21,7 @@ var firstTimeApplication = [
   },
   {
     'component': RadioWithRadio,
+    'field_name': 'date_lived_here',
     'label': {
       'en': {
         'text': 'Did you live here at 1 July 2017?'
@@ -46,15 +48,15 @@ var firstTimeApplication = [
     },
     'accordianLabel': {
       'en': {
-        'text': 'What if I moved house during the rates year'
+        'text': 'What if I moved house during the rates year?'
       },
       'mi': {
-        'text': 'What if I moved house during the rates year'
+        'text': 'What if I moved house during the rates year?'
       }
     },
     'accordianText': {
       'en': {
-        'text': 'You can still get a rates rebate if you move house, as long as you haven\'t claimed the rebate on your previous house. When you fill out the application form, you\'ll need to give information about the property you sold, including: <ul><li>the settlement date</li><li>what rates you paid for the current year. If the rebate for your previous house was quite small and the rates on your new house are much higher, ask your council if you can have your rebate assessed again.</li></ul>'
+        'text': 'Get in touch with your local council. There are some situations where you can still get a rebate on your previous home after you moved. They will ask you some details including: <ul><li>the settlement date</li><li>what rates you paid for the current year.</li></ul>'
       },
       'mi': {
         'text': 'You can still get a rates rebate if you move house, as long as you haven\'t claimed the rebate on your previous house. When you fill out the application form, you\'ll need to give information about the property you sold, including: <ul><li>the settlement date</li><li>what rates you paid for the current year. If the rebate for your previous house was quite small and the rates on your new house are much higher, ask your council if you can have your rebate assessed again.</li></ul>'
@@ -63,6 +65,7 @@ var firstTimeApplication = [
   },
   {
     'component': TextBoxWithAccordian,
+    'field_name': 'full_name',
     'label': {
       'en': {
         'text': 'What is your full name?'
@@ -81,15 +84,15 @@ var firstTimeApplication = [
     },
     'accordianLabel': {
       'en': {
-        'text': 'What if my name isn’t on the RID?'
+        'text': 'What if I have a License to Occupy?'
       },
       'mi': {
-        'text': 'What if my name isn’t on the RID?'
+        'text': 'What if I have a License to Occupy?'
       }
     },
     'accordianText': {
       'en': {
-        'text': 'If your name isn’t on the RID because you are a retirement village resident or an owner-occupiers you will need to fill in an additional declaration form. '
+        'text': 'If your name isn’t on the RID because you are a retirement village resident and/or have a License to Occupy you will need to fill in an additional declaration form and bring it with you when visit the council. This can be found here https://www.dia.govt.nz/Pubforms.nsf/URL/OwnerOccupierDeclarationFormJuly2011.pdf/$file/OwnerOccupierDeclarationFormJuly2011.pdf <br/><br/> <strong>Please note: Retirement Villages that became elegible to apply for a rates rebate under the Rates Rebate (Retirement Village Residents) Amendment Act 2018 cannot apply for a rebate until 1 July 2018.</strong>'
       },
       'mi': {
         'text': 'If your name isn’t on the RID because you are a retirement village resident or an owner-occupiers you will need to fill in an additional declaration form.'
@@ -122,23 +125,24 @@ var firstTimeApplication = [
       }
     },
     'isRequired': true,
-    'component': RenderRadio
+    'component': RenderRadio,
+    'field_name': 'partner'
   },
   {
     'label': {
       'en': {
-        'text': 'Was your total income for the 2017/18 tax year below $34,000?'
+        'text': 'What was your total income for the 2017/18 tax year?'
       },
       'mi': {
-        'text': 'Was your total income for the 2017/18 tax year below $34,000?'
+        'text': 'What was your total income for the 2017/18 tax year?'
       }
     },
     'instructions': {
       'en': {
-        'text': 'This is the money received, before tax, for the year 1 April 2016 to 31 March 2017. '
+        'text': 'You will need to know your total income for the 2016/2017 Tax year (1 March 2016 - 31 March 2017). This includes rental income from any properties you own, interest and dividends, and overseas income (converted to $NZD). <br> <br> Select any that apply to you.'
       },
       'mi': {
-        'text': 'This is the money received, before tax, for the year 1 April 2016 to 31 March 2017. '
+        'text': 'You will need to know your total income for the 2016/2017 Tax year (1 March 2016 - 31 March 2017). This includes rental income from any properties you own, interest and dividends, and overseas income (converted to $NZD). <br> <br>  Select any that apply to you.'
       }
     },
     'options': {
@@ -150,7 +154,8 @@ var firstTimeApplication = [
       }
     },
     'isRequired': true,
-    'component': RenderRadio
+    'component': RenderRadio,
+    'field_name': 'total_income'
   },
   {
     'label': {
@@ -179,6 +184,7 @@ var firstTimeApplication = [
     },
     'isRequired': true,
     'component': RadioWithTextField,
+    'field_name': 'dependants',
     'textFieldLabel': {
       'en': {
         'text': 'label'
@@ -222,6 +228,7 @@ var firstTimeApplication = [
       }
     },
     'component': RadioWithTextField,
+    'field_name': 'home_business',
     'textFieldLabel': {
       'en': {
         'text': 'Please describe how you earn money or what business you run'
@@ -239,46 +246,47 @@ var firstTimeApplication = [
       }
     }
   },
-  // {
-  //   'label': {
-  //     'en': {
-  //       'text': 'What was your total income for the 2016/2017 tax year?'
-  //     },
-  //     'mi': {
-  //       'text': 'What was your total income for the 2016/2017 tax year?'
-  //     }
-  //   },
-  //   'instructions': {
-  //     'en': {
-  //       'text': 'This is the money received, before tax, for the year 1 April 2016 to 31 March 2017. Enter any income you or your partner/joint home owner(s) received for the tax year. Use gross amounts unless otherwise indicated. Select any that you receive'
-  //     },
-  //     'mi': {
-  //       'text': 'This is the money received, before tax, for the year 1 April 2016 to 31 March 2017. Enter any income you or your partner/joint home owner(s) received for the tax year. Use gross amounts unless otherwise indicated. Select any that you receive'
-  //     }
-  //   },
-  //   'accordianLabel': {
-  //     'en': {
-  //       'text': 'What is a gross amount?'
-  //     },
-  //     'mi': {
-  //       'text': 'What is a gross amount?'
-  //     }
-  //   },
-  //   'accordianText': {
-  //     'en': {
-  //       'text': 'Satisfactory proof of income includes: <ul><li>income confirmation from Work and Income</li><li>income confirmation from Inland Revenue</li><li>investment earning statements for the tax year </li><li>statement of earnings from your employer.</li>Additionally for self-employed people:</li><li>a copy of your complete set of financial accounts, IR3B or IR10 you provided to Inland Revenue for the income year 1 April 2016 to 31 March 2017</li><li>you cannot offset business losses against other income</li><li>business losses should be entered as $0.</li></ul>'
-  //     },
-  //     'mi': {
-  //       'text': 'Satisfactory proof of income includes: <ul><li>income confirmation from Work and Income</li><li>income confirmation from Inland Revenue</li><li>investment earning statements for the tax year </li><li>statement of earnings from your employer.</li>Additionally for self-employed people:</li><li>a copy of your complete set of financial accounts, IR3B or IR10 you provided to Inland Revenue for the income year 1 April 2016 to 31 March 2017</li><li>you cannot offset business losses against other income</li><li>business losses should be entered as $0.</li></ul>'
-  //     }
-  //   },
-  //   'component': RadioWithSelect
-  // },
   {
-    'component': TextBoxWithAccordian,
     'label': {
       'en': {
-        'text': 'What is your email address?'
+        'text': 'What was your total income for the 2016/2017 tax year?'
+      },
+      'mi': {
+        'text': 'What was your total income for the 2016/2017 tax year?'
+      }
+    },
+    'instructions': {
+      'en': {
+        'text': 'This is the money received, before tax, for the year 1 April 2016 to 31 March 2017. Enter any income you or your partner/joint home owner(s) received for the tax year. Use gross amounts unless otherwise indicated. Select any that you receive'
+      },
+      'mi': {
+        'text': 'This is the money received, before tax, for the year 1 April 2016 to 31 March 2017. Enter any income you or your partner/joint home owner(s) received for the tax year. Use gross amounts unless otherwise indicated. Select any that you receive'
+      }
+    },
+    'accordianLabel': {
+      'en': {
+        'text': 'What is a gross amount?'
+      },
+      'mi': {
+        'text': 'What is a gross amount?'
+      }
+    },
+    'accordianText': {
+      'en': {
+        'text': 'Satisfactory proof of income includes: <ul><li>income confirmation from Work and Income</li><li>income confirmation from Inland Revenue</li><li>investment earning statements for the tax year </li><li>statement of earnings from your employer.</li>Additionally for self-employed people:</li><li>a copy of your complete set of financial accounts, IR3B or IR10 you provided to Inland Revenue for the income year 1 April 2016 to 31 March 2017</li><li>you cannot offset business losses against other income</li><li>business losses should be entered as $0.</li></ul>'
+      },
+      'mi': {
+        'text': 'Satisfactory proof of income includes: <ul><li>income confirmation from Work and Income</li><li>income confirmation from Inland Revenue</li><li>investment earning statements for the tax year </li><li>statement of earnings from your employer.</li>Additionally for self-employed people:</li><li>a copy of your complete set of financial accounts, IR3B or IR10 you provided to Inland Revenue for the income year 1 April 2016 to 31 March 2017</li><li>you cannot offset business losses against other income</li><li>business losses should be entered as $0.</li></ul>'
+      }
+    },
+    'component': RadioWithSelect
+  },
+  {
+    'component': TextBoxWithAccordian,
+    'field_name': 'email',
+    'label': {
+      'en': {
+        'text': 'What is your email address?' 
       },
       'mi': {
         'text': 'What is your email address?'
@@ -287,6 +295,7 @@ var firstTimeApplication = [
   },
   {
     'component': TextBoxWithAccordian,
+    'field_name': 'phone_number',
     'label': {
       'en': {
         'text': 'What is your phone number?'
@@ -296,25 +305,6 @@ var firstTimeApplication = [
       }
     }
   }
-  // {
-  //   'component': TextBoxWithAccordian,
-  //   'label': {
-  //     'en': {
-  //       'text': 'What is your phone number?'
-  //     },
-  //     'mi': {
-  //       'text': 'What is your phone number?'
-  //     }
-  //   },
-  //   'instructions': {
-  //     'en': {
-  //       'text': 'This will be used so that we can send you a text confirming that your application has been received.'
-  //     },
-  //     'mi': {
-  //       'text': 'This will be used so that we can send you a text confirming that your application has been received.'
-  //     }
-  //   }
-  // }
 ];
 
 export default firstTimeApplication;

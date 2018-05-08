@@ -57,8 +57,11 @@ class WizardFormFirstPage extends React.Component {
     this.setState(state);
     this
       .props
-      .change('what_is_your_address', state.location.location);
-      
+      .change('address', state.location.location);
+    this
+      .props
+      .change('valuation_id', this.state.location.valuation_id);
+
     if (state['rates_bills']) {
       let attributes = state['rates_bills'][0]['attributes'];
       this.setState({
@@ -73,12 +76,14 @@ class WizardFormFirstPage extends React.Component {
 
   handleDependants(event, newValue, previousValue, name) {
     if (newValue) {
-      this.setState({dependants: newValue});
+      let dependants = (newValue >= 0 ? newValue : 0);
+      this.setState({dependants});
     }
   }
 
-  handleIncome(income, extra_income_info) {
-    this.setState({income: income, extra_income_info: extra_income_info});
+  handleIncome(income, direction) {
+    // note: direction is above, between, below
+    this.setState({income, direction});
   }
 
   render() {
@@ -88,14 +93,21 @@ class WizardFormFirstPage extends React.Component {
 
         <form onSubmit={handleSubmit}>
           <section>
-            <h2 className="heading-primary">If you are a low-income homeowner you could get
-              a discount or partial refund of up to $620 on your property rates with a rates
-              rebate.<br/>
-              <span>Mena he kaipupuri whenua iti koe, ka taea e koe te whakahekenga i te utu
-                me te utu reti ki te $620 i runga i to reiti nama me te reiti reiti.</span>
+            <h2 className="heading-primary">If you are a low to medium income homeowner you could get a discount or partial
+                refund of up to $620 on your property rates with a rates rebate.<br/>
+              <span>Mena he kaipupuri whenua iti koe, ka taea e koe
+              te whakahekenga i te utu me te utu reti ki te $620 i runga i to reiti nama me te
+              reiti reiti.</span>
             </h2>
+
+            <p><strong>If you are a low-income homeowner you could get
+              a discount or partial refund of up to $620 on your property rates with a rates
+              rebate.</strong><br/>
+              <span>Mehemea he tangata whai whare koe e iti ana ngā whiwhinga moni, ka taea pea te whakamāmā,
+                te whakahoki utu rānei, tae atu ki te $620 te rahi, mō ngā reiti whenua mā te kaupapa whakamāmā reiti. </span>
+            </p>
             <Accordian
-              label="<strong>What is a rates rebate?</strong> <br/><span>He aha te utu whakahokia?</span>"
+              label="<strong>What is a rates rebate?</strong> <br/><span>He aha te whakamāmā reiti?</span>"
               text="<p>Rates rebates are a subsidy that gives you a discount on the rates bill of your residential property.</p><p>Any homeowner may receive a rebate for the property they live in, as long as
                 they meet the criteria. This is calculated by your property rates, your income
                 for the last tax year, and the number of dependants you have. If you have
@@ -104,9 +116,10 @@ class WizardFormFirstPage extends React.Component {
                 how much you could earn to be entitled to the full rebate would be $1000 more
                 than someone with no dependants.</p>"/>
             <h2 className="heading-secondary">Find out if you could get a rebate<br/>
-              <span>Tirohia mehemea ka taea e koe te utu whakahokia</span>
+              <span>Tirohia mehemea ka taea ō reiti te whakamāmā</span>
             </h2>
-            <p>Use our online calculator</p>
+            <p><strong>Use our online calculator.</strong><br/>
+            This calculator uses public information on property rates. <br/>Any information you enter is not stored. <br/>If you choose to apply, the information from the calculator will be used to pre-fill part of your application for you. </p>
           </section>
 
           <section>
@@ -115,53 +128,42 @@ class WizardFormFirstPage extends React.Component {
                 <Address onSelection={this.handleAddressSelection} />
 
                 <Field name="valuation_id" type="hidden" component={renderField}/>
-
                 {this.state.rates_bill && this.state.rating_year && <Fragment>
                   <div className="calc-layout">
-                    My {this.state.rating_year} rates are <strong>$ {this.state.rates_bill}</strong>
+                    My {this.state.rating_year - 1} to {this.state.rating_year} rates
+                    are <strong>$ {this.state.rates_bill}</strong>
                   </div>
                 </Fragment>
                 }
+              </div>
+            </div>
 
-                {this.state.rates_bill && <Fragment>
+            {this.state.rates_bill && <Fragment>
+              <div className="arrow-box primary">
+                <div>
                   <div className="calc-layout">
                     <div>
                       I have
                       <Field
-                        name="do_you_have_dependants"
+                        name="dependants"
                         onChange={this.handleDependants}
                         type="text"
                         component={renderField}/>
                       dependants.
                     </div>
                   </div>
-                </Fragment>
-                }
-
-{/*                {this.state.location && <Fragment>
-                  <div className="calc-layout">
-                    <div>Who are you?</div>
-                    <Select
-                      name="what_is_your_full_name"
-                      value={this.state.selectedRatesPayer}
-                      onChange={this.handleRatesPayers}
-                      clearable={this.state.clearable}
-                      searchable={this.state.searchable}
-                      labelKey={'fullName'}
-                      valueKey={'fullName'}
-                      isLoading={this.state.isLoadingExternally}
-                      options={this.state.includedRatePayers}/>
-                  </div>
-                </Fragment>
-                }*/}
-
-                <Income
-                  dependants={this.state.dependants}
-                  rates_bill={this.state.rates_bill}
-                  onSelection={this.handleIncome}
-                />
+                </div>
               </div>
-            </div>
+            </Fragment>
+            }
+
+
+            <Income
+              dependants={this.state.dependants}
+              rates_bill={this.state.rates_bill}
+              onSelection={this.handleIncome}
+            />
+
 
             <Fragment>
               <Eligible
