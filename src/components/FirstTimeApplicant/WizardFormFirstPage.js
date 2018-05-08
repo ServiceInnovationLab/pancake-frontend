@@ -92,14 +92,17 @@ class WizardFormFirstPage extends React.Component {
 
         <form onSubmit={handleSubmit}>
           <section>
-          <h2 className="heading-secondary">Online rates rebate applications now open exclusively for Tauranga residents<br/>
-              
+            <h2 className="heading-primary">If you are a low to medium income homeowner you could get a discount or partial
+                refund of up to $620 on your property rates with a rates rebate.<br/>
+              <span>Mena he kaipupuri whenua iti koe, ka taea e koe
+              te whakahekenga i te utu me te utu reti ki te $620 i runga i to reiti nama me te
+              reiti reiti.</span>
             </h2>
 
             <p><strong>If you are a low-income homeowner you could get
               a discount or partial refund of up to $620 on your property rates with a rates
               rebate.</strong><br/>
-              <span>Mehemea he tangata whai whare koe e iti ana ngā whiwhinga moni, ka taea pea te whakamāmā, 
+              <span>Mehemea he tangata whai whare koe e iti ana ngā whiwhinga moni, ka taea pea te whakamāmā,
                 te whakahoki utu rānei, tae atu ki te $620 te rahi, mō ngā reiti whenua mā te kaupapa whakamāmā reiti. </span>
             </p>
             <Accordian

@@ -143,15 +143,15 @@ const Head = () => {
               label="Where can I get my income details?"
               text="<p>You can find a list of the total amounts for Work and Income payments, including NZ Superannuation https://www.dia.govt.nz/diawebsite.nsf/Files/Benefit-Schedule-2016-17/$file/Benefit-Schedule-2016-17.pdf <br/><br/>You can get this from a few places, such as:
                <ul><li>Inland Revenue, by calling them
-              on 0800 775 247 and asking for a Personal Tax Summary, or logging on to your MyIR account at IRD.govt.nz.</li> 
+              on 0800 775 247 and asking for a Personal Tax Summary, or logging on to your MyIR account at IRD.govt.nz.</li>
               <li>from Ministry
               of Social Development, </li> <li>through your employer, accountant etc.</il></ul></p>"/>
-        
-      </section> 
+
+      </section>
 
       <section>
         <h3 className="heading-secondary grey">Step Two<br/>Mahi Tuarua</h3>
-        <p>Fill out this form online and push the send button. 
+        <p>Fill out this form online and push the send button.
           This will send your application to your local council.</p>
       </section>
 
@@ -183,19 +183,10 @@ const Success = () => {
 
       <h3>You are almost there!</h3>
 
-      <h4>Your application form has been digitally sent to the Tauranga City Council - now
-        you have to have your signed declaration witnessed for your rebate to be
-        processed.</h4>
-
-      <p>To do this you can visit the Council at 91 Willow Street during
-        opening hours and let the staff at the service desk know you are there to sign
-        your rates rebates application.</p>
+      <h4>Your application form has been digitally sent to your local council, and you need to visit the Tauranga Council at 91 Willow Street your rebate to be processed.</h4>
 
       <p>The only thing you need to bring with you is your proof of income.</p>
-
-      <p>If you entered your email, an email with these insructions has been sent to your inbox.</p>
-
-      <a className="btn btn-primary">Where is the Tauranga City Council?</a>
+      <a className="btn btn-primary">Find my nearest service centre</a>
     </div>
   );
 }
