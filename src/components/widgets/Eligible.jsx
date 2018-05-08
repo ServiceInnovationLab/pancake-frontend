@@ -42,8 +42,7 @@ class Eligible extends React.Component {
           this.setState({rebate: res.data.properties.property_1.rates_rebate['2017']});
         })
         .catch(err => console.log('err fetching properties', err));
-    }
-    else {
+    } else {
       this.setState({minimum_income_for_no_rebate: null, maximum_income_for_full_rebate: null});
     }
   }
