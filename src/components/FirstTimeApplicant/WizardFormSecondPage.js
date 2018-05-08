@@ -103,7 +103,7 @@ class WizardFormSecondPage extends React.Component {
                 label={label}
                 name={field.isNested
                 ? `has${camelCaser(label)}Checked`
-                : underscorize(field.label['en'].text)}
+                : field.field_name}
                 component={field.component}
                 instructions={field.instructions && field.instructions['en'].text}
                 instructionsSecondary={field.instructionsSecondary && field.instructionsSecondary['en'].text}
