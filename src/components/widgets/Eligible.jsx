@@ -25,7 +25,7 @@ class Eligible extends React.Component {
         },
         'properties': {
           'property_1': {
-            'owners': ['Tahi'],
+            'owners': [ 'Tahi' ],
             'rates': {
               '2017': nextProps.rates_bill
             },
