@@ -76,7 +76,8 @@ class WizardFormFirstPage extends React.Component {
 
   handleDependants(event, newValue, previousValue, name) {
     if (newValue) {
-      this.setState({dependants: newValue});
+      let dependants = (newValue >= 0 ? newValue : 0);
+      this.setState({dependants});
     }
   }
 
