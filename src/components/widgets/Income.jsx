@@ -106,34 +106,35 @@ class Income extends React.Component {
     if (this.state.minimum_income_for_no_rebate) {
       let earnLessThan = this.getOptions();
       return (
-            <div className="arrow-box primary">
-              <div>
-        <section>
-          <label htmlFor="earn_less_than">
-            From 1st April 2016 to 31 March 2017 I earned
-          </label>
+        <div className="arrow-box primary">
+          <div>
+            <section>
+              <label htmlFor="earn_less_than">
+                From 1st April 2016 to 31 March 2017 I earned
+              </label>
 
-          <Field
-            name="income_range"
-            component={RenderRadio}
-            options={earnLessThan.options && earnLessThan.options['en']}
-            onChange={this.handleSelection}
-            className={'radio-group-income'}
-            />
-
-            {this.state.show_input &&
-            <div>
-              <label>My annual income was</label>
               <Field
-                name="income"
-                onChange={this.handleManualIncome}
-                type="text"
-                component={renderField}/>
-              <span class="reassurance">Approximate values are fine. You'll need the real values if you choose to apply</span>
-            </div>
-            }
-        </section>
-        </div></div>
+                name="income_range"
+                component={RenderRadio}
+                options={earnLessThan.options && earnLessThan.options['en']}
+                onChange={this.handleSelection}
+                className={'radio-group-income'}
+                />
+
+              {this.state.show_input &&
+                <div>
+                  <label>My annual income was</label>
+                  <Field
+                    name="income"
+                    onChange={this.handleManualIncome}
+                    type="text"
+                    component={renderField}/>
+                  <span class="reassurance">Approximate values are fine. You'll need the real values if you choose to apply</span>
+                </div>
+                }
+            </section>
+          </div>
+        </div>
       );
     }
     else {
