@@ -223,12 +223,12 @@ p {
   padding-top: 5px; }
 
 .accordian {
-  margin: 60px 0; }
+  margin: 10px 0; }
 
 .accordian-header {
   border-top: 1px solid #cecece;
   border-bottom: 1px solid #cecece;
-  font-size: 20px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 1.4em;
