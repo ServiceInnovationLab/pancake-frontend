@@ -81,8 +81,9 @@ class WizardFormFirstPage extends React.Component {
     }
   }
 
-  handleIncome(income, extra_income_info) {
-    this.setState({income: income, extra_income_info: extra_income_info});
+  handleIncome(income, direction) {
+    // note: direction is above, between, below
+    this.setState({income, direction});
   }
 
   render() {
@@ -127,15 +128,19 @@ class WizardFormFirstPage extends React.Component {
                 <Address onSelection={this.handleAddressSelection} />
 
                 <Field name="valuation_id" type="hidden" component={renderField}/>
-
                 {this.state.rates_bill && this.state.rating_year && <Fragment>
                   <div className="calc-layout">
-                    My {this.state.rating_year} rates are <strong>$ {this.state.rates_bill}</strong>
+                    My {this.state.rating_year - 1} to {this.state.rating_year} rates
+                    are <strong>$ {this.state.rates_bill}</strong>
                   </div>
                 </Fragment>
                 }
+              </div>
+            </div>
 
-                {this.state.rates_bill && <Fragment>
+            {this.state.rates_bill && <Fragment>
+              <div className="arrow-box primary">
+                <div>
                   <div className="calc-layout">
                     <div>
                       I have
@@ -147,33 +152,18 @@ class WizardFormFirstPage extends React.Component {
                       dependants.
                     </div>
                   </div>
-                </Fragment>
-                }
-
-{/*                {this.state.location && <Fragment>
-                  <div className="calc-layout">
-                    <div>Who are you?</div>
-                    <Select
-                      name="what_is_your_full_name"
-                      value={this.state.selectedRatesPayer}
-                      onChange={this.handleRatesPayers}
-                      clearable={this.state.clearable}
-                      searchable={this.state.searchable}
-                      labelKey={'fullName'}
-                      valueKey={'fullName'}
-                      isLoading={this.state.isLoadingExternally}
-                      options={this.state.includedRatePayers}/>
-                  </div>
-                </Fragment>
-                }*/}
-
-                <Income
-                  dependants={this.state.dependants}
-                  rates_bill={this.state.rates_bill}
-                  onSelection={this.handleIncome}
-                />
+                </div>
               </div>
-            </div>
+            </Fragment>
+            }
+
+
+            <Income
+              dependants={this.state.dependants}
+              rates_bill={this.state.rates_bill}
+              onSelection={this.handleIncome}
+            />
+
 
             <Fragment>
               <Eligible
