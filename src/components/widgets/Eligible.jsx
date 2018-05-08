@@ -64,9 +64,9 @@ class Eligible extends React.Component {
         </div>
       );
     }
-    else {
-      return '';
-    }
+    
+    return '';
+    
   }
 }
 
