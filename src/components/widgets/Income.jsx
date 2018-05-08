@@ -126,7 +126,8 @@ class Income extends React.Component {
                     name="income"
                     onChange={this.handleManualIncome}
                     type="text"
-                    component={renderField}/>
+                    component={renderField}
+                  />
                   <span class="reassurance">
                     Approximate values are fine. You'll need the real values if you choose to apply
                   </span>
