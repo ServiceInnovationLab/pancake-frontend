@@ -117,7 +117,7 @@ class Income extends React.Component {
                 options={earnLessThan.options && earnLessThan.options['en']}
                 onChange={this.handleSelection}
                 className={'radio-group-income'}
-                />
+              />
 
               {this.state.show_input &&
                 <div>
@@ -131,7 +131,7 @@ class Income extends React.Component {
                     Approximate values are fine. You'll need the real values if you choose to apply
                   </span>
                 </div>
-                }
+              }
             </section>
           </div>
         </div>
