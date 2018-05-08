@@ -168,21 +168,9 @@ const Foot = () => {
 
       <h3>You are almost there!</h3>
 
-      <h4>Your application form has been digitally sent to your local council - now
-        you have to have your signed declaration witnessed for your rebate to be
-        processed.</h4>
-
-      <p>To do this you can visit one of your local council’s service centres during
-        opening hours and let the staff at the service desk know you are there to sign
-        your rates rebates application.</p>
+      <h4>Your application form has been digitally sent to your local council, and you need to visit the Tauranga Council at 91 Willow Street your rebate to be processed.</h4>
 
       <p>The only thing you need to bring with you is your proof of income.</p>
-
-      <p>A copy of your answers to the application has been sent to your email, so if
-        you can't make it to the service centre, you can print out a copy of your
-        application and get your declaration witnessed and signed by an authorised
-        witness such as a JP or Minister for Religion.</p>
-
       <a className="btn btn-primary">Find my nearest service centre</a>
     </div>
   );
