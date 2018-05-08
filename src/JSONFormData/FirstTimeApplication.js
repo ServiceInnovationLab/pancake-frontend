@@ -9,6 +9,7 @@ import RadioWithSelect from '../components/Forms/RadioWithSelect';
 var firstTimeApplication = [
   {
     'component': TextBoxWithAccordian,
+    'field_name': 'address',
     'label': {
       'en': {
         'text': 'What is your address?'
@@ -20,6 +21,7 @@ var firstTimeApplication = [
   },
   {
     'component': RadioWithRadio,
+    'field_name': 'date_lived_here',
     'label': {
       'en': {
         'text': 'Did you live here at 1 July 2017?'
@@ -63,6 +65,7 @@ var firstTimeApplication = [
   },
   {
     'component': TextBoxWithAccordian,
+    'field_name': 'full_name',
     'label': {
       'en': {
         'text': 'What is your full name?'
@@ -122,7 +125,8 @@ var firstTimeApplication = [
       }
     },
     'isRequired': true,
-    'component': RenderRadio
+    'component': RenderRadio,
+    'field_name': 'partner'
   },
   {
     'label': {
@@ -150,7 +154,8 @@ var firstTimeApplication = [
       }
     },
     'isRequired': true,
-    'component': RenderRadio
+    'component': RenderRadio,
+    'field_name': 'total_income'
   },
   {
     'label': {
@@ -179,6 +184,7 @@ var firstTimeApplication = [
     },
     'isRequired': true,
     'component': RadioWithTextField,
+    'field_name': 'dependants',
     'textFieldLabel': {
       'en': {
         'text': 'label'
@@ -222,6 +228,7 @@ var firstTimeApplication = [
       }
     },
     'component': RadioWithTextField,
+    'field_name': 'home_business',
     'textFieldLabel': {
       'en': {
         'text': 'Please describe how you earn money or what business you run'
@@ -276,6 +283,7 @@ var firstTimeApplication = [
   },
   {
     'component': TextBoxWithAccordian,
+    'field_name': 'email',
     'label': {
       'en': {
         'text': 'What is your email address?'
@@ -287,6 +295,7 @@ var firstTimeApplication = [
   },
   {
     'component': TextBoxWithAccordian,
+    'field_name': 'phone_number',
     'label': {
       'en': {
         'text': 'What is your phone number?'
@@ -296,25 +305,6 @@ var firstTimeApplication = [
       }
     }
   }
-  // {
-  //   'component': TextBoxWithAccordian,
-  //   'label': {
-  //     'en': {
-  //       'text': 'What is your phone number?'
-  //     },
-  //     'mi': {
-  //       'text': 'What is your phone number?'
-  //     }
-  //   },
-  //   'instructions': {
-  //     'en': {
-  //       'text': 'This will be used so that we can send you a text confirming that your application has been received.'
-  //     },
-  //     'mi': {
-  //       'text': 'This will be used so that we can send you a text confirming that your application has been received.'
-  //     }
-  //   }
-  // }
 ];
 
 export default firstTimeApplication;
