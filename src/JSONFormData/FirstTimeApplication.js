@@ -3,7 +3,7 @@ import TextBoxWithAccordian from '../components/Forms/TextboxWithAccordian';
 // import TextFieldWithCheckbox from '../components/Forms/TextFieldWithCheckbox';
 import RadioWithRadio from '../components/Forms/RadioWithRadio';
 import RadioWithTextField from '../components/Forms/RadioWithTextField';
-// import RadioWithSelect from '../components/Forms/RadioWithSelect';
+import RadioWithSelect from '../components/Forms/RadioWithSelect';
 
 
 var firstTimeApplication = [
@@ -246,41 +246,41 @@ var firstTimeApplication = [
       }
     }
   },
-  // {
-  //   'label': {
-  //     'en': {
-  //       'text': 'What was your total income for the 2016/2017 tax year?'
-  //     },
-  //     'mi': {
-  //       'text': 'What was your total income for the 2016/2017 tax year?'
-  //     }
-  //   },
-  //   'instructions': {
-  //     'en': {
-  //       'text': 'This is the money received, before tax, for the year 1 April 2016 to 31 March 2017. Enter any income you or your partner/joint home owner(s) received for the tax year. Use gross amounts unless otherwise indicated. Select any that you receive'
-  //     },
-  //     'mi': {
-  //       'text': 'This is the money received, before tax, for the year 1 April 2016 to 31 March 2017. Enter any income you or your partner/joint home owner(s) received for the tax year. Use gross amounts unless otherwise indicated. Select any that you receive'
-  //     }
-  //   },
-  //   'accordianLabel': {
-  //     'en': {
-  //       'text': 'What is a gross amount?'
-  //     },
-  //     'mi': {
-  //       'text': 'What is a gross amount?'
-  //     }
-  //   },
-  //   'accordianText': {
-  //     'en': {
-  //       'text': 'Satisfactory proof of income includes: <ul><li>income confirmation from Work and Income</li><li>income confirmation from Inland Revenue</li><li>investment earning statements for the tax year </li><li>statement of earnings from your employer.</li>Additionally for self-employed people:</li><li>a copy of your complete set of financial accounts, IR3B or IR10 you provided to Inland Revenue for the income year 1 April 2016 to 31 March 2017</li><li>you cannot offset business losses against other income</li><li>business losses should be entered as $0.</li></ul>'
-  //     },
-  //     'mi': {
-  //       'text': 'Satisfactory proof of income includes: <ul><li>income confirmation from Work and Income</li><li>income confirmation from Inland Revenue</li><li>investment earning statements for the tax year </li><li>statement of earnings from your employer.</li>Additionally for self-employed people:</li><li>a copy of your complete set of financial accounts, IR3B or IR10 you provided to Inland Revenue for the income year 1 April 2016 to 31 March 2017</li><li>you cannot offset business losses against other income</li><li>business losses should be entered as $0.</li></ul>'
-  //     }
-  //   },
-  //   'component': RadioWithSelect
-  // },
+  {
+    'label': {
+      'en': {
+        'text': 'What was your total income for the 2016/2017 tax year?'
+      },
+      'mi': {
+        'text': 'What was your total income for the 2016/2017 tax year?'
+      }
+    },
+    'instructions': {
+      'en': {
+        'text': 'This is the money received, before tax, for the year 1 April 2016 to 31 March 2017. Enter any income you or your partner/joint home owner(s) received for the tax year. Use gross amounts unless otherwise indicated. Select any that you receive'
+      },
+      'mi': {
+        'text': 'This is the money received, before tax, for the year 1 April 2016 to 31 March 2017. Enter any income you or your partner/joint home owner(s) received for the tax year. Use gross amounts unless otherwise indicated. Select any that you receive'
+      }
+    },
+    'accordianLabel': {
+      'en': {
+        'text': 'What is a gross amount?'
+      },
+      'mi': {
+        'text': 'What is a gross amount?'
+      }
+    },
+    'accordianText': {
+      'en': {
+        'text': 'Satisfactory proof of income includes: <ul><li>income confirmation from Work and Income</li><li>income confirmation from Inland Revenue</li><li>investment earning statements for the tax year </li><li>statement of earnings from your employer.</li>Additionally for self-employed people:</li><li>a copy of your complete set of financial accounts, IR3B or IR10 you provided to Inland Revenue for the income year 1 April 2016 to 31 March 2017</li><li>you cannot offset business losses against other income</li><li>business losses should be entered as $0.</li></ul>'
+      },
+      'mi': {
+        'text': 'Satisfactory proof of income includes: <ul><li>income confirmation from Work and Income</li><li>income confirmation from Inland Revenue</li><li>investment earning statements for the tax year </li><li>statement of earnings from your employer.</li>Additionally for self-employed people:</li><li>a copy of your complete set of financial accounts, IR3B or IR10 you provided to Inland Revenue for the income year 1 April 2016 to 31 March 2017</li><li>you cannot offset business losses against other income</li><li>business losses should be entered as $0.</li></ul>'
+      }
+    },
+    'component': RadioWithSelect
+  },
   {
     'component': TextBoxWithAccordian,
     'field_name': 'email',
