@@ -63,7 +63,7 @@ class WizardFormSecondPage extends React.Component {
     };
 
     axios
-      .post(`${confisrc/components/FirstTimeApplicant/WizardFormFirstPage.jsg.API_ORIGIN}/api/v1/rebate_forms`, {data})
+      .post(`${config.API_ORIGIN}/api/v1/rebate_forms`, {data})
       .then(res => this.setState({complete: true}))
       .catch(err => this.setState({complete_error: true, complete: false}));
 
