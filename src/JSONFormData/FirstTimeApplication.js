@@ -48,15 +48,15 @@ var firstTimeApplication = [
     },
     'accordianLabel': {
       'en': {
-        'text': 'What if I moved house during the rates year'
+        'text': 'What if I moved house during the rates year?'
       },
       'mi': {
-        'text': 'What if I moved house during the rates year'
+        'text': 'What if I moved house during the rates year?'
       }
     },
     'accordianText': {
       'en': {
-        'text': 'You can still get a rates rebate if you move house, as long as you haven\'t claimed the rebate on your previous house. When you fill out the application form, you\'ll need to give information about the property you sold, including: <ul><li>the settlement date</li><li>what rates you paid for the current year. If the rebate for your previous house was quite small and the rates on your new house are much higher, ask your council if you can have your rebate assessed again.</li></ul>'
+        'text': 'Get in touch with your local council. There are some situations where you can still get a rebate on your previous home after you moved. They will ask you some details including: <ul><li>the settlement date</li><li>what rates you paid for the current year.</li></ul>'
       },
       'mi': {
         'text': 'You can still get a rates rebate if you move house, as long as you haven\'t claimed the rebate on your previous house. When you fill out the application form, you\'ll need to give information about the property you sold, including: <ul><li>the settlement date</li><li>what rates you paid for the current year. If the rebate for your previous house was quite small and the rates on your new house are much higher, ask your council if you can have your rebate assessed again.</li></ul>'
@@ -84,15 +84,15 @@ var firstTimeApplication = [
     },
     'accordianLabel': {
       'en': {
-        'text': 'What if my name isn’t on the RID?'
+        'text': 'What if I have a License to Occupy?'
       },
       'mi': {
-        'text': 'What if my name isn’t on the RID?'
+        'text': 'What if I have a License to Occupy?'
       }
     },
     'accordianText': {
       'en': {
-        'text': 'If your name isn’t on the RID because you are a retirement village resident or an owner-occupiers you will need to fill in an additional declaration form. '
+        'text': 'If your name isn’t on the RID because you are a retirement village resident and/or have a License to Occupy you will need to fill in an additional declaration form and bring it with you when visit the council. This can be found here https://www.dia.govt.nz/Pubforms.nsf/URL/OwnerOccupierDeclarationFormJuly2011.pdf/$file/OwnerOccupierDeclarationFormJuly2011.pdf <br/><br/> <strong>Please note: Retirement Villages that became elegible to apply for a rates rebate under the Rates Rebate (Retirement Village Residents) Amendment Act 2018 cannot apply for a rebate until 1 July 2018.</strong>'
       },
       'mi': {
         'text': 'If your name isn’t on the RID because you are a retirement village resident or an owner-occupiers you will need to fill in an additional declaration form.'
@@ -286,7 +286,7 @@ var firstTimeApplication = [
     'field_name': 'email',
     'label': {
       'en': {
-        'text': 'What is your email address?'
+        'text': 'What is your email address?' 
       },
       'mi': {
         'text': 'What is your email address?'
