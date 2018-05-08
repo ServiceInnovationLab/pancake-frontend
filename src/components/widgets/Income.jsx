@@ -16,9 +16,9 @@ class Income extends React.Component {
     if (newValue === 'between') {
       this.setState({show_input: true});
     } else if (newValue === 'below') {
-      income = this.state.minimum_income_for_no_rebate;
-    } else if (newValue === 'above') {
       income = this.state.maximum_income_for_full_rebate;
+    } else if (newValue === 'above') {
+      income = this.state.minimum_income_for_no_rebate;
     }
     this.setState({income: income});
     this.props.onSelection(income, newValue);
@@ -110,7 +110,7 @@ class Income extends React.Component {
             options={earnLessThan.options && earnLessThan.options['en']}
             onChange={this.handleSelection}
             className={'radio-group-income'}
-            />
+          />
         </section>
       );
     }
