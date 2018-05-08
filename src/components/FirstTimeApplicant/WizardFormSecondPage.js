@@ -8,6 +8,7 @@ import firstTimeApplication from '../../JSONFormData/FirstTimeApplication';
 import '../../styles/RadioGroup.css';
 import '../../styles/CheckboxGroup.css';
 import '../../styles/FormValidation.css';
+import Accordian from '../Forms/Accordian';
 import axios from 'axios';
 import config from '../../config';
 // import SignaturePad from 'react-signature-pad';
@@ -132,32 +133,36 @@ class WizardFormSecondPage extends React.Component {
 const Head = () => {
   return (
     <Fragment>
-      <h2 className="heading-secondary green">What you will need to do to apply for a rebate</h2>
+      <h2 className="heading-secondary green">What you will need to do to apply for a rebate <br/><span>He aha ngā mahi e tonoa ai te whakamāmā reiti</span></h2>
       <section>
-        <h3 className="heading-secondary grey">Step 1</h3>
-        <p>You will need to know your total income for the 2016/2017 Tax year (1 March
+        <h3 className="heading-secondary grey">Step One<br/>Mahi Tuatahi</h3>
+        <p>You will need to know your total income for the 2016/2017 Tax year (1 April
           2016 - 31 March 2017). This includes rental income from any properties you own,
-          interest and dividends, and overseas income (converted to $NZD).</p>
-        <p>You can get this from a few places, such as Inland Revenue, by calling them
-          on 0800 775 247 or logging on to your MyIR account at IRD.govt.nz, from Ministry
-          of Social Development, through your employer, accountant etc.
-        </p>
+          interest and dividends, and overseas income (converted to $NZD). </p>
+          <Accordian
+              label="Where can I get my income details?"
+              text="<p>You can find a list of the total amounts for Work and Income payments, including NZ Superannuation https://www.dia.govt.nz/diawebsite.nsf/Files/Benefit-Schedule-2016-17/$file/Benefit-Schedule-2016-17.pdf <br/><br/>You can get this from a few places, such as:
+               <ul><li>Inland Revenue, by calling them
+              on 0800 775 247 and asking for a Personal Tax Summary, or logging on to your MyIR account at IRD.govt.nz.</li>
+              <li>from Ministry
+              of Social Development, </li> <li>through your employer, accountant etc.</il></ul></p>"/>
+
       </section>
 
       <section>
-        <h3 className="heading-secondary grey">Step 2</h3>
-        <p>Fill out this form and submit it</p>
+        <h3 className="heading-secondary grey">Step Two<br/>Mahi Tuarua</h3>
+        <p>Fill out this form online and push the send button.
+          This will send your application to your local council.</p>
       </section>
 
       <section>
-        <h3 className="heading-secondary grey">Step 3</h3>
-        <p>Make a declaration in front of an authorised witness (you can do this by
-          visiting your local council). All you need to bring with you is your proof of
+        <h3 className="heading-secondary grey">Step Three<br/>Mahi Tuatoru</h3>
+        <p>Visit the Tauranga City Council at 91 Willow Street and sign your application. All you need to bring with you is your proof of
           income.</p>
       </section>
 
       <hr/>
-      <h2 className="heading-secondary green">Step 2: Apply for a rates rebate</h2>
+      <h2 className="heading-secondary green">Step Two: Apply for a rates rebate<br/> <span>Mahi Tuarua: Tonoa te whakamāmā reiti</span></h2>
       <h3 className="heading-secondary grey">This is for the 1 July 2017 - 30 June 2018 rating year</h3>
     </Fragment>
   );
@@ -167,32 +172,20 @@ const Failed = () => {
   return (
     <Fragment>
       <h2>Something went wrong :(</h2>
-      <p>Please contact us on XXX-XXXX or you can email us at XXXX@XXXX.govt.nz</p>
+      <p>Please contact us on 07 5777 000 at ratesrebates@tauranga.govt.nz</p>
     </Fragment>
   );
 }
 const Success = () => {
   return (
     <div>
-      <h2 className="heading-secondary">Step 3: Get your application witnessed</h2>
+      <h2 className="heading-secondary">Step Three: Get your application witnessed<br/> <span>Mahi Tuatoru: Mā te kaiwhakaatu e waitohu tō tono.</span> </h2>
 
       <h3>You are almost there!</h3>
 
-      <h4>Your application form has been digitally sent to your local council - now
-        you have to have your signed declaration witnessed for your rebate to be
-        processed.</h4>
-
-      <p>To do this you can visit one of your local council’s service centres during
-        opening hours and let the staff at the service desk know you are there to sign
-        your rates rebates application.</p>
+      <h4>Your application form has been digitally sent to your local council, and you need to visit the Tauranga Council at 91 Willow Street your rebate to be processed.</h4>
 
       <p>The only thing you need to bring with you is your proof of income.</p>
-
-      <p>A copy of your answers to the application has been sent to your email, so if
-        you can't make it to the service centre, you can print out a copy of your
-        application and get your declaration witnessed and signed by an authorised
-        witness such as a JP or Minister for Religion.</p>
-
       <a className="btn btn-primary">Find my nearest service centre</a>
     </div>
   );
