@@ -88,7 +88,8 @@ class Address extends React.Component {
           isLoading={this.state.isLoadingExternally}
           options={this.state.properties}
           labelKey={'location'}
-          valueKey={'id'}/>
+          valueKey={'id'}
+        />
         <div> in Tauranga</div>
       </div>
     );
