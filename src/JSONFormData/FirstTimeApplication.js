@@ -92,7 +92,7 @@ var firstTimeApplication = [
     },
     'accordianText': {
       'en': {
-        'text': 'If your name isn’t on the RID because you are a retirement village resident and/or have a License to Occupy you will need to fill in an additional declaration form and bring it with you when visit the council. This can be found here https://www.dia.govt.nz/Pubforms.nsf/URL/OwnerOccupierDeclarationFormJuly2011.pdf/$file/OwnerOccupierDeclarationFormJuly2011.pdf <br/><br/> <strong>Please note: Retirement Villages that became elegible to apply for a rates rebate under the Rates Rebate (Retirement Village Residents) Amendment Act 2018 cannot apply for a rebate until 1 July 2018.</strong>'
+        'text': 'If your name isn’t on the RID because you are a retirement village resident and/or have a License to Occupy you will need to fill in an additional declaration form and bring it with you when visit the council. This can be found here <a href="https://www.dia.govt.nz/Pubforms.nsf/URL/OwnerOccupierDeclarationFormJuly2011.pdf/$file/OwnerOccupierDeclarationFormJuly2011.pdf"">here</a> <br/><br/> <strong>Please note: Retirement Villages that became elegible to apply for a rates rebate under the Rates Rebate (Retirement Village Residents) Amendment Act 2018 cannot apply for a rebate until 1 July 2018.</strong>'
       },
       'mi': {
         'text': 'If your name isn’t on the RID because you are a retirement village resident or an owner-occupiers you will need to fill in an additional declaration form.'
@@ -286,7 +286,7 @@ var firstTimeApplication = [
     'field_name': 'email',
     'label': {
       'en': {
-        'text': 'What is your email address?' 
+        'text': 'What is your email address?'
       },
       'mi': {
         'text': 'What is your email address?'
