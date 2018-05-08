@@ -82,8 +82,8 @@ class WizardFormFirstPage extends React.Component {
   }
 
   handleIncome(income, direction) {
-    // note: direction is:
-    this.setState({income: income, direction: direction});
+    // note: direction is above, between, below
+    this.setState({income, direction});
   }
 
   render() {
