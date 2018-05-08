@@ -153,10 +153,14 @@ var firstTimeApplication = [
     },
     'instructions': {
       'en': {
-        'text': 'You will need to know your total income for the 2016/2017 Tax year (1 March 2016 - 31 March 2017). This includes rental income from any properties you own, interest and dividends, and overseas income (converted to $NZD). <br> <br> Select any that apply to you.'
+        'text': 'You will need to know your total income for the 2016/2017 Tax year (1 March 2016 - 31 March 2017) \
+                including rental income from any properties you own, interest and dividends, and overseas income (converted to\
+                $NZD). <br> <br> Select any that apply to you.'
       },
       'mi': {
-        'text': 'You will need to know your total income for the 2016/2017 Tax year (1 March 2016 - 31 March 2017). This includes rental income from any properties you own, interest and dividends, and overseas income (converted to $NZD). <br> <br>  Select any that apply to you.'
+        'text': 'You will need to know your total income for the 2016/2017 Tax year (1 March 2016 - 31 March 2017) \
+                including rental income from any properties you own, interest and dividends, and overseas income (converted to\
+                $NZD). <br> <br>  Select any that apply to you.'
       }
     },
     'options': {
