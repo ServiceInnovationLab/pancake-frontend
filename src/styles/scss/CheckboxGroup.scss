@@ -65,7 +65,7 @@ font-style : normal;
       border-color: $input-bg-color;
     }
     :checked + span::after {
-      font-family: 'FontAwesome';
+      font-family: "FontAwesome";
       font-size: 21px;
       content: "\f00c";
       position: absolute;
@@ -177,7 +177,7 @@ font-style : normal;
   .select-wrapper {
     position: relative;
     &::after {
-      content: '\f0d7';
+      content: "\f0d7";
       font-family: 'FontAwesome';
       color: $checkbox-icon;
       display: inline-block;
@@ -187,6 +187,7 @@ font-style : normal;
       pointer-events: none;
     }
   }
+
   select {
     font-family: 'Fira Sans', sans-serif;
     font-size: 16px;
@@ -195,7 +196,7 @@ font-style : normal;
     border-radius: 5px;
     padding: 8px 20px;
     background-color: $white;
-    border: 1px solid #677a8e;
+    border: 1px solid $input-bg-color;
     line-height: 42px;
     height: 42px;
     width: 100%;

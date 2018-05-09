@@ -46,7 +46,7 @@
     background-color: #677a8e;
     border-color: #677a8e; }
   .checkbox-group > label:not(.checkbox-radio) :checked + span::after {
-    font-family: 'FontAwesome';
+    font-family: "FontAwesome";
     font-size: 21px;
     content: "\f00c";
     position: absolute;
@@ -140,7 +140,7 @@
   .nested-list .select-wrapper {
     position: relative; }
     .nested-list .select-wrapper::after {
-      content: '\f0d7';
+      content: "\f0d7";
       font-family: 'FontAwesome';
       color: #4f4b46;
       display: inline-block;
