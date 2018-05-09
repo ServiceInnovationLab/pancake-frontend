@@ -110,7 +110,7 @@ var firstTimeApplication = [
                  form and bring it with you when visiting the council.</a> This can be found\
                  <a href="https://www.dia.govt.nz/Pubforms.nsf/URL/OwnerOccupierDeclarationFormJuly2011.pdf/$file/OwnerOccupierDeclarationFormJuly2011.pdf">\
                  here</a></p>'
-     }
+      }
     }
   },
   {
