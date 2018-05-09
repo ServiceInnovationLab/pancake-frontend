@@ -84,19 +84,33 @@ var firstTimeApplication = [
     },
     'accordianLabel': {
       'en': {
-        'text': 'What if I have a License to Occupy?'
+        'text': 'What if I live in a retirement village or company share flat/apartment?'
       },
       'mi': {
-        'text': 'What if I have a License to Occupy?'
+        'text': 'What if I live in a retirement village or company share flat/apartment?'
       }
     },
     'accordianText': {
       'en': {
-        'text': 'If your name isn’t on the RID because you are a retirement village resident and/or have a License to Occupy you will need to fill in an additional declaration form and bring it with you when visit the council. This can be found here https://www.dia.govt.nz/Pubforms.nsf/URL/OwnerOccupierDeclarationFormJuly2011.pdf/$file/OwnerOccupierDeclarationFormJuly2011.pdf <br/><br/> <strong>Please note: Retirement Villages that became elegible to apply for a rates rebate under the Rates Rebate (Retirement Village Residents) Amendment Act 2018 cannot apply for a rebate until 1 July 2018.</strong>'
+        'text': '<p>If you are eligible for a rebate under the Rates Rebate (Retirement Village Residents)\
+                 Amendment Act 2018 you will be able to apply for a rebate in the new rating year after\
+                 1 July 2018.</p>\
+                 <p>If the property you own is part of owner/occupier flats (often referred to as\
+                 company share flats or apartments), you will need to fill in an additional declaration\
+                 form and bring it with you when visiting the council.</a> This can be found\
+                 <a href="https://www.dia.govt.nz/Pubforms.nsf/URL/OwnerOccupierDeclarationFormJuly2011.pdf/$file/OwnerOccupierDeclarationFormJuly2011.pdf">\
+                 here</a></p>'
       },
       'mi': {
-        'text': 'If your name isn’t on the RID because you are a retirement village resident or an owner-occupiers you will need to fill in an additional declaration form.'
-      }
+        'text': '<p>If you are eligible for a rebate under the Rates Rebate (Retirement Village Residents)\
+                 Amendment Act 2018 you will be able to apply for a rebate in the new rating year after\
+                 1 July 2018.</p>\
+                 <p>If the property you own is part of owner/occupier flats (often referred to as\
+                 company share flats or apartments), you will need to fill in an additional declaration\
+                 form and bring it with you when visiting the council.</a> This can be found\
+                 <a href="https://www.dia.govt.nz/Pubforms.nsf/URL/OwnerOccupierDeclarationFormJuly2011.pdf/$file/OwnerOccupierDeclarationFormJuly2011.pdf">\
+                 here</a></p>'
+     }
     }
   },
   {
@@ -139,10 +153,14 @@ var firstTimeApplication = [
     },
     'instructions': {
       'en': {
-        'text': 'You will need to know your total income for the 2016/2017 Tax year (1 March 2016 - 31 March 2017). This includes rental income from any properties you own, interest and dividends, and overseas income (converted to $NZD). <br> <br> Select any that apply to you.'
+        'text': 'You will need to know your total income for the 2016/2017 Tax year (1 March 2016 - 31 March 2017) \
+                including rental income from any properties you own, interest and dividends, and overseas income (converted to\
+                $NZD). <br> <br> Select any that apply to you.'
       },
       'mi': {
-        'text': 'You will need to know your total income for the 2016/2017 Tax year (1 March 2016 - 31 March 2017). This includes rental income from any properties you own, interest and dividends, and overseas income (converted to $NZD). <br> <br>  Select any that apply to you.'
+        'text': 'You will need to know your total income for the 2016/2017 Tax year (1 March 2016 - 31 March 2017) \
+                including rental income from any properties you own, interest and dividends, and overseas income (converted to\
+                $NZD). <br> <br>  Select any that apply to you.'
       }
     },
     'options': {
@@ -286,7 +304,7 @@ var firstTimeApplication = [
     'field_name': 'email',
     'label': {
       'en': {
-        'text': 'What is your email address?' 
+        'text': 'What is your email address?'
       },
       'mi': {
         'text': 'What is your email address?'
