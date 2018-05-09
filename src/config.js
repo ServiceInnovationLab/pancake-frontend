@@ -10,7 +10,7 @@ const staging = {
 };
 
 const production = {
-  API_ORIGIN: 'https://pancakenz.herokuapp.com',
+  API_ORIGIN: 'https://pancakenz-staging.herokuapp.com',
   OPENFISCA_ORIGIN: 'https://openfisca-aotearoa.herokuapp.com/calculate'
 };
 
