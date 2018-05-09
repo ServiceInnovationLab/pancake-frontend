@@ -267,7 +267,7 @@ canvas {
 .Select-placeholder {
   display: none !important; }
 
-.Select-results {
+.select-results {
   font-size: 24px; }
 
 .autocomplete-form {
@@ -303,5 +303,10 @@ canvas {
     margin-top: 40px; }
   .radio-list div div:first-child {
     margin-top: 20px; }
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0; }
 
 /*# sourceMappingURL=App.css.map */

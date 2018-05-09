@@ -335,7 +335,7 @@ canvas {
   display: none !important;
 }
 
-.Select-results { font-size: 24px; }
+.select-results { font-size: 24px; }
 
 .autocomplete-form {
   text-align: center;
@@ -385,6 +385,12 @@ canvas {
   div div:first-child {
     margin-top: 20px;
   }
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 

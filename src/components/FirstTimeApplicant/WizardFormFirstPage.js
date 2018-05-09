@@ -124,7 +124,7 @@ class WizardFormFirstPage extends React.Component {
 
                 <Field name="valuation_id" type="hidden" component={renderField}/>
                 {this.state.rates_bill && this.state.rating_year && <Fragment>
-                  <p className="Select-results">
+                  <p className="select-results">
                     My {this.state.rating_year - 1} to {this.state.rating_year} rates
                     are <strong>${this.state.rates_bill}</strong>
                   </p>
