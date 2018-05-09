@@ -205,7 +205,7 @@ const Submit = () => {
   return (
     <div>
       <button type="submit" className="next btn-primary">
-        Submit Application
+        Send Application
       </button>
     </div>
   );
