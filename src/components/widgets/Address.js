@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import Select from 'react-select';
 import axios from 'axios';
 import config from '../../config';
@@ -76,8 +76,8 @@ class Address extends React.Component {
 
   render() {
     return (
-      <div className="calc-layout">
-        <div>I live at </div>
+      <Fragment>
+        <label>I live at
         <Select
           name="location"
           value={this.state.location}
@@ -90,8 +90,8 @@ class Address extends React.Component {
           labelKey="location"
           valueKey="id"
         />
-        <div> in Tauranga</div>
-      </div>
+        in Tauranga</label>
+      </Fragment>
     );
   }
 }

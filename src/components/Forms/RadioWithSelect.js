@@ -45,7 +45,7 @@ const renderOtherIncome = ({ fields, meta: { error, submitFailed } }) => (
 
         <h4>Other income #{index + 1} </h4>
         <RemoveButton fields={fields} index={index} />
-        <div>
+        <div className="select-wrapper">
           <select>
             <option>Wage or salary</option>
             <option>NZ Superannuation</option>
@@ -86,11 +86,10 @@ const renderOtherIncome = ({ fields, meta: { error, submitFailed } }) => (
 
 const renderField = ({ input, label, type, meta: { touched, error } }) => (
   <div>
-    <label><span className="aria-hidden">{label}</span>
-      <div>
-        <input {...input} type={type} placeholder={label} style={{marginBottom: '5px'}} />
-        {touched && error && <span>{error}</span>}
-      </div>
-    </label>
+    <span className="aria-hidden">{label}</span>
+    <div>
+      <input {...input} type={type} placeholder={label} style={{marginBottom: '5px'}} />
+      {touched && error && <span>{error}</span>}
+    </div>
   </div>
 );

@@ -120,35 +120,30 @@ class WizardFormFirstPage extends React.Component {
 
           <section>
             <div className="arrow-box primary">
-              <div>
                 <Address onSelection={this.handleAddressSelection} />
 
                 <Field name="valuation_id" type="hidden" component={renderField}/>
                 {this.state.rates_bill && this.state.rating_year && <Fragment>
-                  <div className="calc-layout">
+                  <p className="select-results">
                     My {this.state.rating_year - 1} to {this.state.rating_year} rates
-                    are <strong>$ {this.state.rates_bill}</strong>
-                  </div>
+                    are <strong>${this.state.rates_bill}</strong>
+                  </p>
                 </Fragment>
                 }
-              </div>
             </div>
 
             {this.state.rates_bill && <Fragment>
               <div className="arrow-box primary">
-                <div>
-                  <div className="calc-layout">
-                    <div>
-                      I have
-                      <Field
-                        name="dependants"
-                        onChange={this.handleDependants}
-                        type="text"
-                        component={renderField}/>
-                      dependants.
-                    </div>
-                  </div>
-                </div>
+                <label>I have
+                  <Field
+                    name="dependants"
+                    onChange={this.handleDependants}
+                    type="number"
+                    min="0"
+                    step="1"
+                    component={renderField}/>
+                  dependants.
+                </label>
               </div>
             </Fragment>
             }

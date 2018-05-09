@@ -59,7 +59,7 @@ class Eligible extends React.Component {
             You are eligible for
             <span> ${this.formatDollars(this.state.rebate)}</span>
           </p>
-          <p className="heading-paragraph">(Assuming you meet the criteria)</p>
+          <p className="help-text">(Assuming you meet the criteria)</p>
         </div>
       );
     }

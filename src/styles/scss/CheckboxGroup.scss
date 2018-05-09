@@ -65,7 +65,7 @@ font-style : normal;
       border-color: $input-bg-color;
     }
     :checked + span::after {
-      font-family: 'FontAwesome';
+      font-family: "FontAwesome";
       font-size: 21px;
       content: "\f00c";
       position: absolute;
@@ -173,5 +173,32 @@ font-style : normal;
   padding-left: 0;
   li {
     list-style: none;
+  }
+  .select-wrapper {
+    position: relative;
+    &::after {
+      content: "\f0d7";
+      font-family: 'FontAwesome';
+      color: $checkbox-icon;
+      display: inline-block;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      pointer-events: none;
+    }
+  }
+
+  select {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 16px;
+    display: inline-block;
+    margin-top: 10px;
+    border-radius: 5px;
+    padding: 8px 20px;
+    background-color: $white;
+    border: 1px solid $input-bg-color;
+    line-height: 42px;
+    height: 42px;
+    width: 100%;
   }
 }

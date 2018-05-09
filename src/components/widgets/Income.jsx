@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import axios from 'axios';
 import config from '../../config';
 import RenderRadio from '../../components/Forms/RenderRadio';
@@ -85,9 +85,9 @@ class Income extends React.Component {
     return {
       'options': {
         'en': [
-          {value: 'below', label: 'less then $' + this.formatDollars(this.state.maximum_income_for_full_rebate)},
-          {value: 'between', label: 'somewhere in the middle'},
-          {value: 'above', label: 'more than $' + this.formatDollars(this.state.minimum_income_for_no_rebate)}
+          {value: 'below', label: 'Less than $' + this.formatDollars(this.state.maximum_income_for_full_rebate)},
+          {value: 'between', label: 'Somewhere in the middle'},
+          {value: 'above', label: 'More than $' + this.formatDollars(this.state.minimum_income_for_no_rebate)}
         ]
       },
       'isRequired': true,
@@ -99,41 +99,43 @@ class Income extends React.Component {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
 
+  getCurrentFinancialYear(add, subtract) {
+    return (new Date().getFullYear() - (add !== 0 ? add : subtract));
+  }
+
   render() {
     if (this.state.minimum_income_for_no_rebate) {
       let earnLessThan = this.getOptions();
       return (
         <div className="arrow-box primary">
-          <div>
-            <section>
-              <label htmlFor="earn_less_than">
-                From 1st April 2016 to 31 March 2017 I earned
-              </label>
+          <label htmlFor="earn_less_than">
+            From 1st April {this.getCurrentFinancialYear(0, 2)} to 31 March {this.getCurrentFinancialYear(0, 1)} I earned
+          </label>
 
+          <Field
+            name="income_range"
+            component={RenderRadio}
+            options={earnLessThan.options && earnLessThan.options['en']}
+            onChange={this.handleSelection}
+          />
+
+          {this.state.show_input &&
+            <Fragment>
+              <label>My annual income was</label>
               <Field
-                name="income_range"
-                component={RenderRadio}
-                options={earnLessThan.options && earnLessThan.options['en']}
-                onChange={this.handleSelection}
-                className="radio-group-income"
+                name="income"
+                onChange={this.handleManualIncome}
+                type="text"
+                component={renderField}
               />
-
-              {this.state.show_input &&
-                <div>
-                  <label>My annual income was</label>
-                  <Field
-                    name="income"
-                    onChange={this.handleManualIncome}
-                    type="text"
-                    component={renderField}
-                  />
-                  <span class="reassurance">
-                    Approximate values are fine. You'll need the real values if you choose to apply
-                  </span>
-                </div>
-              }
-            </section>
-          </div>
+              <p className="help-text">
+                Approximate values are fine.
+                <br/>You'll need the real values if you choose to apply
+              </p>
+            </Fragment>
+          }
+        
+         
         </div>
       );
     }
