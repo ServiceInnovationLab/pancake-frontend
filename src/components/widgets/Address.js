@@ -87,8 +87,9 @@ class Address extends React.Component {
           searchable={this.state.searchable}
           isLoading={this.state.isLoadingExternally}
           options={this.state.properties}
-          labelKey={'location'}
-          valueKey={'id'}/>
+          labelKey="location"
+          valueKey="id"
+        />
         <div> in Tauranga</div>
       </div>
     );

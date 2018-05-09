@@ -45,7 +45,7 @@ class Income extends React.Component {
         },
         'properties': {
           'property_1': {
-            'owners': ['Tui'],
+            'owners': [ 'Tui' ],
             'rates': {
               '2017': nextProps.rates_bill
             },
@@ -76,8 +76,7 @@ class Income extends React.Component {
             .toFixed(2)
         }))
         .catch(err => console.log('err fetching properties', err));
-    }
-    else {
+    } else {
       this.setState({minimum_income_for_no_rebate: null, maximum_income_for_full_rebate: null});
     }
   }
@@ -116,7 +115,7 @@ class Income extends React.Component {
                 component={RenderRadio}
                 options={earnLessThan.options && earnLessThan.options['en']}
                 onChange={this.handleSelection}
-                className={'radio-group-income'}
+                className="radio-group-income"
               />
 
               {this.state.show_input &&
@@ -126,7 +125,8 @@ class Income extends React.Component {
                     name="income"
                     onChange={this.handleManualIncome}
                     type="text"
-                    component={renderField}/>
+                    component={renderField}
+                  />
                   <span class="reassurance">
                     Approximate values are fine. You'll need the real values if you choose to apply
                   </span>
@@ -137,9 +137,9 @@ class Income extends React.Component {
         </div>
       );
     }
-    else {
-      return '';
-    }
+    
+    return '';
+    
   }
 }
 

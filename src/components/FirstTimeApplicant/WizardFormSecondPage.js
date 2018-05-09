@@ -192,13 +192,14 @@ const Success = () => {
 }
 
 const Calculated = () => {
-  return (
-    <Fragment>
-      <h2>We have calculated that your entitlement is $620</h2>
-      <p>This will be applied to your rates account once your application has been
-        fully proccessed.</p>
-    </Fragment>
-  );
+  return '';
+  //  (
+  //   <Fragment>
+  //     <h2>We have calculated that your entitlement is $620</h2>
+  //     <p>This will be applied to your rates account once your application has been
+  //       fully proccessed.</p>
+  //   </Fragment>
+  // );
 }
 const Submit = () => {
   return (
