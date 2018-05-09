@@ -267,6 +267,9 @@ canvas {
 .Select-placeholder {
   display: none !important; }
 
+.Select-results {
+  font-size: 24px; }
+
 .autocomplete-form {
   text-align: center; }
 
