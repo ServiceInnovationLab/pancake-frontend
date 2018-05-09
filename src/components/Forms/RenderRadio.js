@@ -15,7 +15,7 @@ const RenderRadio = fields => {
       {label}
       {isRequired && <span className="aria-hidden">(required)</span>}
     </legend>}
-    {instructions && <p>{instructions}</p>}
+    {instructions && <p dangerouslySetInnerHTML={{ __html: instructions }}></p>}
     {!instructions && <Fragment></Fragment>}
     <div>
       <div>
