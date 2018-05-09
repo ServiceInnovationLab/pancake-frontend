@@ -137,5 +137,28 @@
   padding-left: 0; }
   .nested-list li {
     list-style: none; }
+  .nested-list .select-wrapper {
+    position: relative; }
+    .nested-list .select-wrapper::after {
+      content: '\f0d7';
+      font-family: 'FontAwesome';
+      color: #4f4b46;
+      display: inline-block;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      pointer-events: none; }
+  .nested-list select {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 16px;
+    display: inline-block;
+    margin-top: 10px;
+    border-radius: 5px;
+    padding: 8px 20px;
+    background-color: #fff;
+    border: 1px solid #677a8e;
+    line-height: 42px;
+    height: 42px;
+    width: 100%; }
 
 /*# sourceMappingURL=CheckboxGroup.css.map */

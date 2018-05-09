@@ -10,7 +10,7 @@ const isObject = (obj, key) => {
 const RenderRadio = fields => {
   const {label, isRequired, instructions, options, input} = fields;
 
-  return <fieldset className="radio-group">
+  return <fieldset className={options.length > 2 ? 'radio-list' : 'radio-group'}>
     {label && <legend>
       {label}
       {isRequired && <span className="aria-hidden">(required)</span>}
