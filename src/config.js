@@ -1,6 +1,6 @@
 const dev = {
-  API_ORIGIN: 'http://localhost:3001',
-  // API_ORIGIN: 'https://pancakenz-staging.herokuapp.com',
+  // API_ORIGIN: 'http://localhost:3001',
+  API_ORIGIN: 'https://pancakenz-staging.herokuapp.com',
   OPENFISCA_ORIGIN: 'https://openfisca-aotearoa.herokuapp.com/calculate'
 };
 
