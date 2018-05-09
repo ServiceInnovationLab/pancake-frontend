@@ -267,13 +267,6 @@ canvas {
 .Select-placeholder {
   display: none !important; }
 
-.calc-layout {
-  display: inline-block;
-  width: 100%; }
-  .calc-layout input {
-    text-align: center;
-    height: 44px; }
-
 .autocomplete-form {
   text-align: center; }
 
