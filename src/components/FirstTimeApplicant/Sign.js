@@ -26,6 +26,7 @@ class Sign extends React.Component {
       applicant_role: '',
       witness_role: '',
       sig1: ''
+      error: false
     };
     this.nextPage = this
       .nextPage
@@ -48,15 +49,10 @@ class Sign extends React.Component {
   }
 
   componentDidMount() {
-    this.getData();
-  }
-
-  getData = () => {
-    // set state for fields and display data
     axios
       .get(`${config.API_ORIGIN}/api/v1/rebate_forms/${this.props.match.params.id}`)
       .then(res => this.setState({fields: res.data.data.attributes.fields}))
-      .catch(err => console.log('Error occurred: Check origin has been enabled correctly on the server', err));
+      .catch(err => this.setState({error: true}));
   }
 
   submitSignature = () => {
@@ -78,7 +74,7 @@ class Sign extends React.Component {
     } : {
       "signature": this.state.sig2,
       "role": this.state.applicant_role,
-      "name": this.state.fields.what_is_your_full_name,
+      "name": this.state.fields.full_name,
       "type": sign_type
     };
     return data;
@@ -88,7 +84,7 @@ class Sign extends React.Component {
     axios
       .post(`${config.API_ORIGIN}/api/v1/signatures`, {data})
       .then(res => res)
-      .catch(err => console.log('Error occurred: Check origin has been enabled correctly on the server', err));
+      .catch(err => console.log('Error occurred: COULD NOT POST SIGNATURE', err));
   }
 
 
@@ -110,20 +106,8 @@ class Sign extends React.Component {
     const {handleSubmit} = this.props
     return (
       <Fragment>
-        <div className="container">
+        {!this.state.error && <div className="container">
           <h2>Sign here</h2>
-          {delete this.state.fields['i_earn']}
-          {delete this.state.fields['my_rates']}
-          {Object
-            .keys(this.state.fields)
-            .map((item, key) => {
-              return <div key={key} style={{
-                marginBottom: '50px'
-              }}>
-                <h3>{removeUnderscore(item)}?</h3>
-                <p>{this.state.fields[item]}</p>
-              </div>
-            })}
 
           <form onSubmit={handleSubmit(this.submitSignature)} className="container form-inner">
             <Accordian
@@ -133,7 +117,7 @@ class Sign extends React.Component {
               exceeding 12 months or to a fine not exceeding $500, or to both.</li></ul>"
             />
             <h3 style={{marginTop: '80px'}}>Applicant</h3>
-            <p>I <b>{this.state.fields['what_is_your_full_name']}</b> of <b>{this.state.fields['what_is_your_address']}</b>, solemnly and sincerely
+            <p>I <b>{this.state.fields['full_name']}</b> of <b>{this.state.fields['address']}</b>, solemnly and sincerely
               declare that I believe the information I have given on this form is true and
               correct, and I make this solemn declaration conscientiously believing the same
               to be true and by virtue of the Oaths and Declarations Act 1957.
@@ -145,12 +129,12 @@ class Sign extends React.Component {
             <p>Declared at {new Date().toLocaleString()} before me</p>
             <div style={{margin: '30px 0'}}>
               <label>Witness Name</label>
-              <signatureExtraInfo
+              <WitnessField
                 onChange={e=>this.setState({witness_name: e.target.value})}
                 name="witness_name"
               />
               <label>Role</label>
-              <signatureExtraInfo
+              <WitnessField
                 onChange={e=>this.setState({witness_role: e.target.value})}
                 name="witness_role"
               />
@@ -160,13 +144,14 @@ class Sign extends React.Component {
               penColor='black' ref={(ref) => { this.sigCanvas2 = ref }} canvasProps={{width: 500, height: 300, className: 'sigCanvas'}} />
             <Submit/> {this.state.complete && <Foot/>}
           </form>
-        </div>
+        </div>}
+        {this.state.error && <div className="container"><h2>Oops, this application does not exist.</h2></div>}
       </Fragment>
     )
   }
 }
 
-const signatureExtraInfo = props => {
+const WitnessField = props => {
   return <input type="text" name={props.name} />
 }
 
