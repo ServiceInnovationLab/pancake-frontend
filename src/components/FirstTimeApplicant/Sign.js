@@ -125,14 +125,12 @@ class Sign extends React.Component {
             <p>Declared at {new Date().toLocaleString()} before me</p>
             <div style={{margin: '30px 0'}}>
               <label>Witness Name</label>
-              <input
-                type="text"
+              <WitnessField
                 onChange={e=>this.setState({witness_name: e.target.value})}
                 name="witness_name"
               />
               <label>Role</label>
-              <input
-                type="text"
+              <WitnessField
                 onChange={e=>this.setState({witness_role: e.target.value})}
                 name="witness_role"
               />
@@ -146,6 +144,10 @@ class Sign extends React.Component {
       </Fragment>
     )
   }
+}
+
+const WitnessField = props => {
+  return <input type="text" name={props.name} />
 }
 
 const Submit = () => {
