@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
 import validate from '../../helpers/validate'
-import {underscorize, camelCaser} from '../../helpers/strings';
+import {camelCaser} from '../../helpers/strings';
 import {scrollToFirstError} from '../../components/Forms/FormScroll';
 import firstTimeApplication from '../../JSONFormData/FirstTimeApplication';
 import '../../styles/RadioGroup.css';
@@ -54,7 +54,7 @@ class WizardFormSecondPage extends React.Component {
 
   saveFormData() {
     let values = this.props.formState.form.wizard.values;
-    delete values.address
+    console.log(values)
     let data = {
       "type": "rebate-forms",
       "attributes": {
@@ -73,7 +73,7 @@ class WizardFormSecondPage extends React.Component {
     return window.location = '#/';
   }
   render() {
-    const {handleSubmit, formState} = this.props
+    const {handleSubmit} = this.props
 
     return (
       <Fragment>

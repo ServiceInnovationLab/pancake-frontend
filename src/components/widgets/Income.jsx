@@ -25,7 +25,7 @@ class Income extends React.Component {
     } else if (newValue === 'above') {
       income = this.state.minimum_income_for_no_rebate;
     }
-    this.setState({income: income, show_input: (newValue == 'between')});
+    this.setState({income: income, show_input: (newValue === 'between')});
     this.props.onSelection(income, newValue);
   }
 
@@ -123,7 +123,7 @@ class Income extends React.Component {
             <Fragment>
               <label>My annual income was</label>
               <Field
-                name="income"
+                name="annual_income_entered_on_first_page"
                 onChange={this.handleManualIncome}
                 type="text"
                 component={renderField}
