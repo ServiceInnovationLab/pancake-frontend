@@ -13,11 +13,12 @@ class WizardFormFirstPage extends React.Component {
     super(props);
     this.state = {
       dependants: null,
-      isEligible: false,
       page: 1,
       properties: [],
       rate_payers: [],
       selectedRatesPayer: '',
+      income: null,
+      rates_bill: null
     };
     this.nextPage = this
       .nextPage
@@ -155,17 +156,12 @@ class WizardFormFirstPage extends React.Component {
               onSelection={this.handleIncome}
             />
 
+            <Eligible
+              dependants={this.state.dependants}
+              rates_bill={this.state.rates_bill}
+              income={this.state.income}
+              />
 
-            <Fragment>
-              <Eligible
-                dependants={this.state.dependants}
-                rates_bill={this.state.rates_bill}
-                income={this.state.income}
-                />
-              <div className="layout">
-                <button type="submit" className="btn-primary">Apply now</button>
-              </div>
-            </Fragment>
           </section>
         </form>
       </div>
