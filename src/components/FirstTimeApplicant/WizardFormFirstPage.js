@@ -16,9 +16,7 @@ class WizardFormFirstPage extends React.Component {
       page: 1,
       properties: [],
       rate_payers: [],
-      selectedRatesPayer: '',
-      income: null,
-      rates_bill: null
+      selectedRatesPayer: ''
     };
     this.nextPage = this
       .nextPage
