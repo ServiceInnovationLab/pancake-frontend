@@ -8,7 +8,6 @@ import '../../styles/CheckboxGroup.css';
 import '../../styles/FormValidation.css';
 import axios from 'axios';
 import config from '../../config';
-import SignaturePad from 'react-signature-pad';
 import Accordian from '../Forms/Accordian';
 import SignatureCanvas from 'react-signature-canvas';
 
@@ -50,26 +49,7 @@ class Sign extends React.Component {
 
   componentDidMount() {
     this.getData();
-    // alert(window.devicePixelRatio)
   }
-
-  // componentWillMount() {
-  //   const ratio = Math.max(1);
-  //   const pads = document.getElementsByTagName('canvas');
-  //   for (let i = 0, len = pads.length; i < len; i++) {
-  //     if(window.devicePixelRatio > 1) {
-  //       pads[i].width = pads[i].offsetWidth * ratio;
-  //       pads[i].height = pads[i].offsetHeight * ratio;
-  //       pads[i].getContext("2d").scale(ratio, ratio);
-  //       pads[i].style.transform = 'scale(0.7)';
-  //     } else {
-  //       pads[i].width = 580;
-  //       pads[i].height = 300;
-  //       pads[i].getContext("2d").scale(1, 1);
-  //     }
-  //   }
-  //   // alert('componentWillMount')
-  // }
 
   getData = () => {
     // set state for fields and display data
@@ -90,8 +70,6 @@ class Sign extends React.Component {
 
 
   getData = sign_type => {
-    // console.log(this['sigCanvas'].toDataURL())
-    // console.log(this['sigCanvas2'].toDataURL())
     let data = sign_type === 'witness' ? {
       "signature": this.state.sig1,
       "role": this.state.witness_role,
@@ -162,8 +140,7 @@ class Sign extends React.Component {
             </p>
             <SignatureCanvas
               onEnd={()=>this.setState({sig1: this.sigCanvas.toDataURL()})}
-              penColor='green' ref={(ref) => { this.sigCanvas = ref }} canvasProps={{width: 500, height: 200, className: 'sigCanvas'}} />
-            {/* <SignaturePad canvasProps={{width: 500, height: 200}} clearButton="true" ref={ref => this.signaturePad = ref}/> */}
+              penColor='black' ref={(ref) => { this.sigCanvas = ref }} canvasProps={{width: 500, height: 300, className: 'sigCanvas'}} />
             <h3>Witness</h3>
             <p>Declared at {new Date().toLocaleString()} before me</p>
             <div style={{margin: '30px 0'}}>
@@ -180,8 +157,7 @@ class Sign extends React.Component {
             </div>
             <SignatureCanvas
               onEnd={()=>this.setState({sig2: this.sigCanvas2.toDataURL()})}
-              penColor='red' ref={(ref) => { this.sigCanvas2 = ref }} canvasProps={{width: 500, height: 200, className: 'sigCanvas'}} />
-            {/* <SignaturePad clearButton="true" ref={ref => this.signaturePad2 = ref}/> */}
+              penColor='black' ref={(ref) => { this.sigCanvas2 = ref }} canvasProps={{width: 500, height: 300, className: 'sigCanvas'}} />
             <Submit/> {this.state.complete && <Foot/>}
           </form>
         </div>
