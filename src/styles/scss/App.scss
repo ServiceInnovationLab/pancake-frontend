@@ -275,13 +275,13 @@ p {
 .accordian-header {
   border-top: 1px solid $accordian-border-color;
   border-bottom: 1px solid $accordian-border-color;
-  font-size: 20px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: 1.4em;
   text-align: left;
   background-color: $accordian-bg;
-  padding: 10px 20px;
+  padding: 10px 25px 10px 20px;
   position: relative;
   span { font-weight: normal; }
   &:hover { cursor: pointer; }
