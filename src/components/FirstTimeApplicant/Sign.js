@@ -141,6 +141,8 @@ class Sign extends React.Component {
             <SignatureCanvas
               onEnd={()=>this.setState({sig1: this.sigCanvas.toDataURL()})}
               penColor='black' ref={(ref) => { this.sigCanvas = ref }} canvasProps={{width: 500, height: 300, className: 'sigCanvas'}} />
+            <button onClick={()=>{this.sigCanvas.clear()}}>Clear</button>
+            
             <h3>Witness</h3>
             <p>Declared at {new Date().toLocaleString()} before me</p>
             <div style={{margin: '30px 0'}}>
@@ -158,6 +160,7 @@ class Sign extends React.Component {
             <SignatureCanvas
               onEnd={()=>this.setState({sig2: this.sigCanvas2.toDataURL()})}
               penColor='black' ref={(ref) => { this.sigCanvas2 = ref }} canvasProps={{width: 500, height: 300, className: 'sigCanvas'}} />
+            <button onClick={()=>{this.sigCanvas2.clear()}}>Clear</button>
             <Submit/> {this.state.complete && <Foot/>}
           </form>
         </div>
