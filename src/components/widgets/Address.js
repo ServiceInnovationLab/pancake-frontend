@@ -90,7 +90,8 @@ class Address extends React.Component {
             labelKey="location"
             valueKey="id"
           />
-        in Tauranga</label>
+        in Tauranga
+        </label>
       </Fragment>
     );
   }
