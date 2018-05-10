@@ -18,7 +18,6 @@ const RenderRadio = fields => {
       {isRequired && <span className="aria-hidden">(required)</span>}
     </legend>}
     {instructions && <p dangerouslySetInnerHTML={{ __html: instructions }}></p>}
-    {!instructions && <Fragment></Fragment>}
     <div>
       <div>
         {options && options.map((item, key) => {
@@ -26,16 +25,10 @@ const RenderRadio = fields => {
             <label className={fields.className && fields.className}>
               <input {...input} type="radio" value={isObject(item, 'value')} />
               <span style={{border: '1px solid black'}}>{isObject(item, 'label')}</span>
-              {input.name === 'income_range' &&
-              <Field
-                key={key+1}
-                component={HiddenField}
-                type="hidden"
-                name="income_range_from_first_page"
-                value={isObject(item, 'label')}
-                className="aria-hidden"
-              />
-              }
+              {input.name === 'income_range' && 
+              <Field key={key+1} component={HiddenField}
+                type="hidden" name="income_range_from_first_page"
+                value={isObject(item, 'label')} className="aria-hidden" />}
             </label>
           </Fragment>;
         })}
