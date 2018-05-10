@@ -141,7 +141,7 @@ class Sign extends React.Component {
               correct, and I make this solemn declaration conscientiously believing the same
               to be true and by virtue of the Oaths and Declarations Act 1957.
             </p>
-            <SignaturePad clearButton="false" ref={ref => this.signaturePad = ref}/>
+            <SignaturePad clearButton="true" ref={ref => this.signaturePad = ref}/>
             <h3>Witness</h3>
             <p>Declared at {new Date().toLocaleString()} before me</p>
             <div style={{margin: '30px 0'}}>
@@ -156,7 +156,7 @@ class Sign extends React.Component {
                 name="witness_role"
               />
             </div>
-            <SignaturePad clearButton="false" ref={ref => this.signaturePad2 = ref}/>
+            <SignaturePad clearButton="true" ref={ref => this.signaturePad2 = ref}/>
             <Submit/> {this.state.complete && <Foot/>}
           </form>
         </div>
