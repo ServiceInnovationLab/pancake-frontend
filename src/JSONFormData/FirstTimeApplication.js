@@ -21,7 +21,7 @@ var firstTimeApplication = [
   },
   {
     'component': RadioWithRadio,
-    'field_name': 'date_lived_here',
+    'field_name': 'lived_here_before_july_2017',
     'label': {
       'en': {
         'text': 'Did you live here at 1 July 2017?'
@@ -140,7 +140,7 @@ var firstTimeApplication = [
     },
     'isRequired': true,
     'component': RenderRadio,
-    'field_name': 'partner'
+    'field_name': 'living_with_partner'
   },
   {
     'label': {
@@ -201,7 +201,7 @@ var firstTimeApplication = [
       }
     },
     'isRequired': true,
-    'component': RadioWithTextField,
+    'component': TextBoxWithAccordian,
     'field_name': 'dependants',
     'textFieldLabel': {
       'en': {
@@ -246,7 +246,7 @@ var firstTimeApplication = [
       }
     },
     'component': RadioWithTextField,
-    'field_name': 'home_business',
+    'field_name': 'has_home_business',
     'textFieldLabel': {
       'en': {
         'text': 'Please describe how you earn money or what business you run'
@@ -297,7 +297,8 @@ var firstTimeApplication = [
         'text': 'Satisfactory proof of income includes: <ul><li>income confirmation from Work and Income</li><li>income confirmation from Inland Revenue</li><li>investment earning statements for the tax year </li><li>statement of earnings from your employer.</li>Additionally for self-employed people:</li><li>a copy of your complete set of financial accounts, IR3B or IR10 you provided to Inland Revenue for the income year 1 April 2016 to 31 March 2017</li><li>you cannot offset business losses against other income</li><li>business losses should be entered as $0.</li></ul>'
       }
     },
-    'component': RadioWithSelect
+    'component': RadioWithSelect,
+    'field_name': 'total_income_for_year',
   },
   {
     'component': TextBoxWithAccordian,
