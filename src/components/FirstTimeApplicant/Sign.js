@@ -10,6 +10,7 @@ import axios from 'axios';
 import config from '../../config';
 import SignaturePad from 'react-signature-pad';
 import Accordian from '../Forms/Accordian';
+import SignatureCanvas from 'react-signature-canvas';
 
 class Sign extends React.Component {
   constructor(props) {
@@ -24,7 +25,8 @@ class Sign extends React.Component {
       fields: [],
       witness_name: '',
       applicant_role: '',
-      witness_role: ''
+      witness_role: '',
+      sig1: ''
     };
     this.nextPage = this
       .nextPage
@@ -48,11 +50,26 @@ class Sign extends React.Component {
 
   componentDidMount() {
     this.getData();
-    const pads = document.getElementsByTagName('canvas');
-    for (let i = 0, len = pads.length; i < len; i++) {
-      pads[i].width = 600;
-    }
+    // alert(window.devicePixelRatio)
   }
+
+  // componentWillMount() {
+  //   const ratio = Math.max(1);
+  //   const pads = document.getElementsByTagName('canvas');
+  //   for (let i = 0, len = pads.length; i < len; i++) {
+  //     if(window.devicePixelRatio > 1) {
+  //       pads[i].width = pads[i].offsetWidth * ratio;
+  //       pads[i].height = pads[i].offsetHeight * ratio;
+  //       pads[i].getContext("2d").scale(ratio, ratio);
+  //       pads[i].style.transform = 'scale(0.7)';
+  //     } else {
+  //       pads[i].width = 580;
+  //       pads[i].height = 300;
+  //       pads[i].getContext("2d").scale(1, 1);
+  //     }
+  //   }
+  //   // alert('componentWillMount')
+  // }
 
   getData = () => {
     // set state for fields and display data
@@ -71,14 +88,17 @@ class Sign extends React.Component {
     })
   }
 
+
   getData = sign_type => {
+    // console.log(this['sigCanvas'].toDataURL())
+    // console.log(this['sigCanvas2'].toDataURL())
     let data = sign_type === 'witness' ? {
-      "signature": this['signaturePad2'].toDataURL(),
+      "signature": this.state.sig1,
       "role": this.state.witness_role,
       "name": this.state.witness_name,
       "type": sign_type
     } : {
-      "signature": this['signaturePad'].toDataURL(),
+      "signature": this.state.sig2,
       "role": this.state.applicant_role,
       "name": this.state.fields.what_is_your_full_name,
       "type": sign_type
@@ -116,7 +136,6 @@ class Sign extends React.Component {
           <h2>Sign here</h2>
           {delete this.state.fields['i_earn']}
           {delete this.state.fields['my_rates']}
-
           {Object
             .keys(this.state.fields)
             .map((item, key) => {
@@ -141,7 +160,10 @@ class Sign extends React.Component {
               correct, and I make this solemn declaration conscientiously believing the same
               to be true and by virtue of the Oaths and Declarations Act 1957.
             </p>
-            <SignaturePad clearButton="true" ref={ref => this.signaturePad = ref}/>
+            <SignatureCanvas
+              onEnd={()=>this.setState({sig1: this.sigCanvas.toDataURL()})}
+              penColor='green' ref={(ref) => { this.sigCanvas = ref }} canvasProps={{width: 500, height: 200, className: 'sigCanvas'}} />
+            {/* <SignaturePad canvasProps={{width: 500, height: 200}} clearButton="true" ref={ref => this.signaturePad = ref}/> */}
             <h3>Witness</h3>
             <p>Declared at {new Date().toLocaleString()} before me</p>
             <div style={{margin: '30px 0'}}>
@@ -156,7 +178,10 @@ class Sign extends React.Component {
                 name="witness_role"
               />
             </div>
-            <SignaturePad clearButton="true" ref={ref => this.signaturePad2 = ref}/>
+            <SignatureCanvas
+              onEnd={()=>this.setState({sig2: this.sigCanvas2.toDataURL()})}
+              penColor='red' ref={(ref) => { this.sigCanvas2 = ref }} canvasProps={{width: 500, height: 200, className: 'sigCanvas'}} />
+            {/* <SignaturePad clearButton="true" ref={ref => this.signaturePad2 = ref}/> */}
             <Submit/> {this.state.complete && <Foot/>}
           </form>
         </div>
