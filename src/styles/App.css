@@ -165,12 +165,11 @@ body {
   font-family: 'Fira Sans', sans-serif; }
 
 main {
-  overflow: auto;
-  padding-bottom: 200px; }
+  overflow: auto; }
 
 .footer {
   position: relative;
-  margin-top: -140px;
+  margin-top: 200px;
   height: 200px;
   clear: both;
   background-color: #000;
