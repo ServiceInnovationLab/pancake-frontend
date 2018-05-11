@@ -77,30 +77,13 @@ class WizardFormSecondPage extends React.Component {
 
     return (
       <Fragment>
-        <div className="container">
-          <a
-            onClick={() => {
-            window
-              .location
-              .reload()
-          }}
-            style={{
-            'color': '#aaa',
-            'marginTop': '15px',
-            'marginBottom': '60px',
-            'display': 'inline-block'
-          }}>
-            &larr; Home
-          </a>
+        <div className="theme-main">
           <Head/>
-          <form
-            onSubmit={handleSubmit(this.saveFormData)}
-            className="container form-inner">
+          <form onSubmit={handleSubmit(this.saveFormData)}>
             {firstTimeApplication.map((field, key) => {
               let label = field.label['en'].text;
               let form_values = '';
-              return (<Field
-                key={key}
+              return (<section className={field.theme} key={key}><div className="container"><Field
                 label={label}
                 name={field.isNested
                 ? `has${camelCaser(label)}Checked`
@@ -114,10 +97,15 @@ class WizardFormSecondPage extends React.Component {
                 checkboxLabel={field.checkboxLabel && field.checkboxLabel['en'].text}
                 checkboxText={field.checkboxText && field.checkboxText['en'].text}
                 options={field.options && field.options['en'].text}
+                childOptions={field.childOptions && field.childOptions['en'].text}
+                childLabel={field.childLabel && field.childLabel['en'].text}
+                childInstructions={field.childInstructions && field.childInstructions['en'].text}
                 optionsText={field.optionsText && field.optionsText['en'].text}
                 textFieldLabel={field.textFieldLabel && field.textFieldLabel['en'].text}
                 placeholder={field.placeholder && field.placeholder['en'].text}
-                hasAddressFinder={field.hasAddressFinder}/>);
+                hasAddressFinder={field.hasAddressFinder}
+                theme={field.theme && field.theme}
+                /></div></section>);
             })}
             <Calculated/>
             <Submit/>
@@ -132,7 +120,19 @@ class WizardFormSecondPage extends React.Component {
 
 const Head = () => {
   return (
-    <Fragment>
+    <div className="container">
+      <a
+        onClick={() => {
+        window
+          .location
+          .reload()
+      }}
+        style={{
+        'color': '#aaa',
+        'marginTop': '15px',
+        'marginBottom': '60px',
+        'display': 'inline-block'
+      }}>&larr; Home</a>
       <h2 className="heading-secondary green">What you will need to do to apply for a rebate <br/><span>He aha ngā mahi e tonoa ai te whakamāmā reiti</span></h2>
       <section>
         <h3 className="heading-secondary grey">Step One<br/>Mahi Tuatahi</h3>
@@ -163,8 +163,8 @@ const Head = () => {
 
       <hr/>
       <h2 className="heading-secondary green">Step Two: Apply for a rates rebate<br/> <span>Mahi Tuarua: Tonoa te whakamāmā reiti</span></h2>
-      <h3 className="heading-secondary grey">This is for the 1 July 2017 - 30 June 2018 rating year</h3>
-    </Fragment>
+      <h3 className="heading-primary grey">This is for the 1 July 2017 - 30 June 2018 rating year</h3>
+    </div>
   );
 }
 
@@ -203,7 +203,7 @@ const Calculated = () => {
 }
 const Submit = () => {
   return (
-    <div>
+    <div className="container layout">
       <button type="submit" className="next btn-primary">
         Send Application
       </button>

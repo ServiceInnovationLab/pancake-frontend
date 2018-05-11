@@ -1,16 +1,16 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 
 const Error = props => {
   const {fields} = props;
-  return (
-    <div>
+  return <Fragment>
+    {fields.length > 0 && <div>
       {fields && fields.touched && fields.error &&
         <div>
           <span className="error"><strong>Error: </strong>{fields.error}</span>
         </div>
       }
-    </div>
-  );
+    </div>}
+  </Fragment>;
 };
 
 
