@@ -95,55 +95,56 @@ const FieldText = props => {
   );
 };
 
-const FieldList = props => {
-  return (
-    <div style={{marginTop: '42px'}}>
-      <fieldset>
-        <label style={{fontSize: '20px'}}>{props.props.props.childLabel}</label>
-        {props.props.props.childInstructions && <label style={{marginTop: '35px'}}>{props.props.props.textFieldLabel}</label>}
-        <p dangerouslySetInnerHTML={{ __html: props.props.props.childInstructions }}></p>
+class FieldList extends React.Component {
 
-        <div className="row">
-          <ul className="column list-stripped">
-            <li>
-              <h4>
-                Your Income
-              </h4>
-            </li>
-            {props.props.props.childOptions
-              .map((item, i) => {
-                return <li key={i}>
-                  <label className="radio-list-container">
-                    <input type="checkbox" {...props.input} name={`total_income.applicant_${underscorize(item)}`}/>
-                    <div className="radio-list-multi">
-                      {item}
-                      <span className="checkmark"></span>
-                    </div>
-                  </label>
-                </li>;
-              })}</ul>
-          {props.showYes && <ul style={props.showYes} className="column list-stripped">
-            <li>
-              <h4>
-                Partner/joint homeowner's income
-              </h4>
-            </li>
-            {props.props.props.childOptions
-              .map((item, i) => {
-                return <li key={i} className="radio-list-container">
-                  <label className="radio-list-container">
-                    <input type="checkbox" {...props.input} name={`total_income.partner_${underscorize(item)}`}/>
-                    <div className="radio-list-multi">
-                      {item}
-                      <span className="checkmark"></span>
-                    </div>
-                  </label>
-                </li>;
-              })}</ul>}
-        </div>
-      </fieldset>
-    </div>
-  );
+  render() {
+    return (
+      <div style={{marginTop: '42px'}}>
+        <fieldset>
+          <label style={{fontSize: '20px'}}>{this.props.props.props.childLabel}</label>
+          {this.props.props.props.childInstructions && <label style={{marginTop: '35px'}}>{this.props.props.props.textFieldLabel}</label>}
+          <p dangerouslySetInnerHTML={{ __html: this.props.props.props.childInstructions }}></p>
+
+          <div className="row">
+            <ul className="column list-stripped">
+              <li>
+                <h4>
+                  Your Income
+                </h4>
+              </li>
+              {this.props.props.props.childOptions
+                .map((item, i) => {
+                  return <ListItem key={i} item={item} />;
+                })}
+              <li>Your total Income:</li></ul>
+            {this.props.showYes && <ul style={this.props.showYes} className="column list-stripped">
+              <li>
+                <h4>
+                  Partner/joint homeowner's income
+                </h4>
+              </li>
+              {this.props.props.props.childOptions
+                .map((item, i) => {
+                  return <ListItem key={i} item={item} />;
+                })}
+              <li>Partner's total Income:</li></ul>}
+          </div>
+        </fieldset>
+      </div>
+    );
+  }
+};
+
+const ListItem = props => {
+  return <li>
+    <label className="radio-list-container">
+      <input type="checkbox" {...props.input} onClick={e=>alert(1)} name={`total_income.applicant_${underscorize(props.item)}`}/>
+      <div className="radio-list-multi">
+        {props.item}
+        <span className="checkmark"></span>
+      </div>
+    </label>
+  </li>;
 };
 
 const FieldSet = props => {
