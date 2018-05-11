@@ -133,7 +133,7 @@ class FieldList extends React.Component {
       </div>
     );
   }
-};
+}
 
 const ListItem = props => {
   return <li>
