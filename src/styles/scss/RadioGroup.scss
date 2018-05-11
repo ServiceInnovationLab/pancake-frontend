@@ -6,9 +6,6 @@ $white: #fff;
 
 
 .radio-group {
-  display: flex;
-  flex-flow: column;
-  margin: 45px 0;
 
   > div {
     flex: 1 0 auto;
@@ -16,11 +13,10 @@ $white: #fff;
     justify-content: center;
     flex-flow: column;
     position: relative;
-    margin-bottom: .8em;
     box-sizing: inherit;
   }
 
-  label {
+  label:not(.radio-list-container) {
     display: inline-block;
     cursor: pointer;
     line-height: 1.5;

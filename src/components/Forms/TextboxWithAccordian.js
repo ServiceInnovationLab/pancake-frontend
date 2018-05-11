@@ -26,13 +26,12 @@ export default class TextBoxWithAccordian extends React.Component {
   render() {
     let prepopulatedValue = this.props.prepopulatedValue ? this.props.prepopulatedValue[underscorize(this.props.label)] : null;
     return (
-      <fieldset className="radio-group">
+      <fieldset className="field">
         <legend>
           {this.props.label}
         </legend>
         <input type="text" {...this.props.input} value={prepopulatedValue ? prepopulatedValue : this.getValue()} />
         {this.props.instructions && <p dangerouslySetInnerHTML={{ __html: this.props.instructions }}></p>}
-        {!this.props.instructions && <p></p>}
         {this.props.accordianText && <div>
           <Accordian label={this.props.accordianLabel} text={this.props.accordianText} />
         </div>
