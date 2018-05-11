@@ -114,7 +114,7 @@ class FieldList extends React.Component {
               </li>
               {this.props.props.props.childOptions
                 .map((item, i) => {
-                  return <ListItem key={i} item={item} />;
+                  return <ListItem key={i} item={item} type="applicant" />;
                 })}
               <li>Your total Income:</li></ul>
             {this.props.showYes && <ul style={this.props.showYes} className="column list-stripped">
@@ -125,7 +125,7 @@ class FieldList extends React.Component {
               </li>
               {this.props.props.props.childOptions
                 .map((item, i) => {
-                  return <ListItem key={i} item={item} />;
+                  return <ListItem key={i} item={item} type="partner" />;
                 })}
               <li>Partner's total Income:</li></ul>}
           </div>
@@ -135,16 +135,70 @@ class FieldList extends React.Component {
   }
 }
 
-const ListItem = props => {
-  return <li>
-    <label className="radio-list-container">
-      <input type="checkbox" {...props.input} onClick={e=>alert(1)} name={`total_income.applicant_${underscorize(props.item)}`}/>
-      <div className="radio-list-multi">
-        {props.item}
-        <span className="checkmark"></span>
-      </div>
-    </label>
-  </li>;
+class ListItem extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      applicant_nz_superannuation: false
+    };
+    this.handleCheckboxClick = this.handleCheckboxClick.bind(this);
+  }
+
+  handleCheckboxClick(e){
+
+    switch(e.target.name) {
+    case 'applicant_nz_superannuation':
+      this.setState({applicant_nz_superannuation: this.state.applicant_nz_superannuation ? false : true});
+      break;
+    case 'partner_nz_superannuation':
+      this.setState({partner_nz_superannuation: this.state.partner_nz_superannuation ? false : true});
+      break;
+    case 'applicant_wage_or_salary':
+      this.setState({applicant_wage_or_salary: this.state.applicant_wage_or_salary ? false : true});
+      break;
+    case 'partner_wage_or_salary':
+      this.setState({partner_wage_or_salary: this.state.partner_wage_or_salary ? false : true});
+      break;
+    case 'applicant_other1':
+      // console.log('applicant_other');
+      break;
+    case 'applicant_other2':
+      // console.log('applicant_other');
+      break;
+    case 'applicant_other3':
+      // console.log('applicant_other');
+      break;
+    }
+  }
+
+  render() {
+    return <li>
+      <label className="radio-list-container">
+        <input type="checkbox" {...this.props.input} onClick={e=>this.handleCheckboxClick(e)} name={`${this.props.type}_${underscorize(this.props.item)}`}/>
+        <div className="radio-list-multi">
+          {this.props.item}
+          <span className="checkmark"></span>
+        </div>
+      </label>
+      {this.state.applicant_nz_superannuation && <CheckboxGroup/>}
+      {this.state.partner_nz_superannuation && <p>Partner Radios Here</p>}
+      {/* {this.state.applicant_nz_superannuation && <p>Applicant Radios Here</p>}
+      {this.state.partner_nz_superannuation && <p>Partner Radios Here</p>} */}
+    </li>;
+  }
+}
+
+const RadioGroup = () => {
+  return (
+    <div><label><input type="radio" name="total_income" value="yes"/><span>yes</span></label><label><input type="radio" name="total_income" value="no"/><span>no</span></label></div>
+  );
+};
+
+const CheckboxGroup = () => {
+  return (
+    <div><label><input type="checkbox" name="total_income" value="yes"/><span>yes</span></label><label><input type="radio" name="total_income" value="no"/><span>no</span></label></div>
+  );
 };
 
 const FieldSet = props => {
