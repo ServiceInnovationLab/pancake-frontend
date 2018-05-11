@@ -28,7 +28,8 @@ const RenderRadio = fields => {
               {input.name === 'income_range' && 
               <Field key={key+1} component={HiddenField}
                 type="hidden" name="income_range_from_first_page"
-                value={isObject(item, 'label')} className="aria-hidden" />}
+                value={isObject(item, 'label')} className="aria-hidden"
+              />}
             </label>
           </Fragment>;
         })}
