@@ -8,8 +8,8 @@ import '../../styles/CheckboxGroup.css';
 import '../../styles/FormValidation.css';
 import axios from 'axios';
 import config from '../../config';
-import SignaturePad from 'react-signature-pad';
 import Accordian from '../Forms/Accordian';
+import SignatureCanvas from 'react-signature-canvas';
 
 class Sign extends React.Component {
   constructor(props) {
@@ -25,6 +25,7 @@ class Sign extends React.Component {
       witness_name: '',
       applicant_role: '',
       witness_role: '',
+      sig1: ''
       error: false
     };
     this.nextPage = this
@@ -63,14 +64,15 @@ class Sign extends React.Component {
     })
   }
 
+
   getData = sign_type => {
     let data = sign_type === 'witness' ? {
-      "signature": this['signaturePad2'].toDataURL(),
+      "signature": this.state.sig1,
       "role": this.state.witness_role,
       "name": this.state.witness_name,
       "type": sign_type
     } : {
-      "signature": this['signaturePad'].toDataURL(),
+      "signature": this.state.sig2,
       "role": this.state.applicant_role,
       "name": this.state.fields.full_name,
       "type": sign_type
@@ -120,7 +122,11 @@ class Sign extends React.Component {
               correct, and I make this solemn declaration conscientiously believing the same
               to be true and by virtue of the Oaths and Declarations Act 1957.
             </p>
-            <SignaturePad clearButton="true" ref={ref => this.signaturePad = ref}/>
+            <SignatureCanvas
+              onEnd={()=>this.setState({sig1: this.sigCanvas.toDataURL()})}
+              penColor='black' ref={(ref) => { this.sigCanvas = ref }} canvasProps={{width: 500, height: 300, className: 'sigCanvas'}} />
+            <button onClick={()=>{this.sigCanvas.clear()}}>Clear</button>
+            
             <h3>Witness</h3>
             <p>Declared at {new Date().toLocaleString()} before me</p>
             <div style={{margin: '30px 0'}}>
@@ -135,8 +141,10 @@ class Sign extends React.Component {
                 name="witness_role"
               />
             </div>
-            <SignaturePad clearButton="true" ref={ref => this.signaturePad2 = ref}/>
-            {this.state.witness_name}
+            <SignatureCanvas
+              onEnd={()=>this.setState({sig2: this.sigCanvas2.toDataURL()})}
+              penColor='black' ref={(ref) => { this.sigCanvas2 = ref }} canvasProps={{width: 500, height: 300, className: 'sigCanvas'}} />
+            <button onClick={()=>{this.sigCanvas2.clear()}}>Clear</button>
             <Submit/> {this.state.complete && <Foot/>}
           </form>
         </div>}
