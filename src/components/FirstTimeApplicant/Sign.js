@@ -25,7 +25,7 @@ class Sign extends React.Component {
       witness_name: '',
       applicant_role: '',
       witness_role: '',
-      sig1: ''
+      sig1: '',
       error: false
     };
     this.nextPage = this
