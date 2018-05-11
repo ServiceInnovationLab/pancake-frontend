@@ -17,7 +17,7 @@ class WizardFormFirstPage extends React.Component {
       page: 1,
       properties: [],
       rate_payers: [],
-      selectedRatesPayer: '',
+      selectedRatesPayer: ''
     };
     this.nextPage = this
       .nextPage
@@ -86,12 +86,18 @@ class WizardFormFirstPage extends React.Component {
     this.setState({income, direction});
   }
 
+  handleKeyPress = (event) => {
+    if(event.key == 'Enter'){
+      event.preventDefault()
+    }
+  }
+
   render() {
     const {handleSubmit} = this.props;
     return (
       <div className="container autocomplete-form">
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} onKeyPress={this.handleKeyPress}>
           <section>
             <h2 className="heading-secondary">Online rates rebates applications are now open exclusively for Tauranga residents<br/>
             </h2>
@@ -141,7 +147,8 @@ class WizardFormFirstPage extends React.Component {
                     type="number"
                     min="0"
                     step="1"
-                    component={renderField}/>
+                    component={renderField}
+                    />
                   dependants.
                 </label>
               </div>
