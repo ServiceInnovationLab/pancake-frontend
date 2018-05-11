@@ -28,7 +28,7 @@ export default class RadioWithSelect extends React.Component {
           {showYes && <div style={showYes}>
             <label>{this.props.textFieldLabel}</label>
             <p>{this.props.instructions}</p>
-            <input type="number" placeholder={this.props.placeholder} />
+            <input type="number" name="otherIncomeParent" placeholder={this.props.placeholder} />
           </div>}
           <FieldArray name="otherIncome" component={renderOtherIncome} />
         </fieldset>

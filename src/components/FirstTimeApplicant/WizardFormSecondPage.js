@@ -54,7 +54,7 @@ class WizardFormSecondPage extends React.Component {
 
   saveFormData() {
     let values = this.props.formState.form.wizard.values;
-    delete values.address
+    console.log(values)
     let data = {
       "type": "rebate-forms",
       "attributes": {

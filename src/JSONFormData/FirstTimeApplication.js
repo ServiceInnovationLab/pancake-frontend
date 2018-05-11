@@ -6,7 +6,6 @@ import RadioWithRadio from '../components/Forms/RadioWithRadio';
 import RadioWithTextField from '../components/Forms/RadioWithTextField';
 import RadioWithRadioList from '../components/Forms/RadioWithRadioList';
 // import RadioWithSelect from '../components/Forms/RadioWithSelect';
-import Checkbox from '../components/Forms/Checkbox';
 
 var firstTimeApplication = [
   {
@@ -22,7 +21,7 @@ var firstTimeApplication = [
     }
   }, {
     'component': RadioWithRadio,
-    'field_name': 'date_lived_here',
+    'field_name': 'lived_here_before_july_2017',
     'label': {
       'en': {
         'text': 'Did you live here at 1 July 2017?'
@@ -177,8 +176,9 @@ var firstTimeApplication = [
     },
     'isRequired': true,
     'component': RenderRadio,
-    'field_name': 'partner'
-  }, {
+    'field_name': 'living_with_partner'
+  },
+  {
     'label': {
       'en': {
         'text': 'Were you living with a partner or joint home owner(s) on July 1 2017?'
@@ -291,7 +291,7 @@ var firstTimeApplication = [
       }
     },
     'isRequired': true,
-    'component': RadioWithTextField,
+    'component': TextBoxWithAccordian,
     'field_name': 'dependants',
     'textFieldLabel': {
       'en': {
@@ -340,7 +340,7 @@ var firstTimeApplication = [
       }
     },
     'component': RadioWithTextField,
-    'field_name': 'home_business',
+    'field_name': 'has_home_business',
     'textFieldLabel': {
       'en': {
         'text': 'Please describe how you earn money or what business you run'

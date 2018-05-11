@@ -123,7 +123,7 @@ fieldset {
   margin: 0;
   border: none;
   padding: 0;
-  
+
   > p {
     font-size: 17px;
     margin-top: 5px;
@@ -232,13 +232,12 @@ body {
 
 main {
   overflow: auto;
-  padding-bottom: 200px;
 }
 
 // templates
 .footer {
   position: relative;
-  margin-top: -140px;
+  margin-top: 200px;
   height: 200px;
   clear: both;
   background-color: #000;
@@ -374,7 +373,7 @@ canvas {
 
 .radio-list {
   display: block;
-  
+
   span {
     @extend .radio;
 }
