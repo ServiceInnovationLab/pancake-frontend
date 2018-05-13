@@ -75,6 +75,7 @@ class IncomeList extends React.Component {
 
     this.handleChild = this.handleChild.bind(this);
     this.handleChildRadioClick = this.handleChildRadioClick.bind(this);
+
   }
 
   setChild(state) {
@@ -116,6 +117,10 @@ class IncomeList extends React.Component {
     }
   }
 
+  getWageOrSalary(name) {
+    return typeof document.getElementsByName(name)[0] !== 'undefined' ? document.getElementsByName(name)[0].value : 0;
+  }
+
   render() {
     const list = [
       {
@@ -144,10 +149,6 @@ class IncomeList extends React.Component {
         child: 'nested-group'
       }
     ];
-
-    const getName = typeof document.getElementsByName('wos_applicant')[0] !== 'undefined' ? document.getElementsByName('wos_applicant')[0].value : 0;
-    const getName2 = typeof document.getElementsByName('wos_partner')[0] !== 'undefined' ? document.getElementsByName('wos_partner')[0].value : 0;
-
     return (
       <Fragment>
         <ul>
@@ -197,7 +198,7 @@ class IncomeList extends React.Component {
           jobseeker_support={this.state.jobseeker_support}
           sole_parent_support={this.state.sole_parent_support}
           supported_living={this.state.supported_living}
-          wos_total={getName + getName2}
+          wos_total={(parseInt(this.getWageOrSalary('wos_applicant')) + parseInt(this.getWageOrSalary('wos_partner')))}
         />
       </Fragment>
     );
@@ -242,6 +243,7 @@ class Entitlement extends React.Component {
     let jss_total = 0;
     let sps_total = 0;
     let spl_total = 0;
+    let wos_total = 0;
 
     if(typeof this.props.dependants !== 'undefined') {
       var dependants = this.props.dependants.value ? this.props.dependants.value : 0;
@@ -315,7 +317,9 @@ class Entitlement extends React.Component {
     }
 
     // WAGE OR SALARY
-    console.log((sa_total + jss_total + sps_total + spl_total + this.props.wos_total));
+    // console.log((sa_total + jss_total + sps_total + spl_total + this.props.wos_total));
+    wos_total += this.props.wos_total
+    console.log('wos total1', this.props.wos_total)
   }
 
 
