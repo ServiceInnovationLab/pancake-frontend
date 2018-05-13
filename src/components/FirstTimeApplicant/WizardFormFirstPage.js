@@ -141,7 +141,8 @@ class WizardFormFirstPage extends React.Component {
                     type="number"
                     min="0"
                     step="1"
-                    component={renderField}/>
+                    component={renderField}
+                    />
                   dependants.
                 </label>
               </div>

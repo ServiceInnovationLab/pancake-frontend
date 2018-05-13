@@ -4,6 +4,7 @@ import TextBoxWithAccordian from '../components/Forms/TextboxWithAccordian';
 import RadioWithRadio from '../components/Forms/RadioWithRadio';
 import RadioWithTextField from '../components/Forms/RadioWithTextField';
 import RadioWithSelect from '../components/Forms/RadioWithSelect';
+import IncomeListSection from '../components/Forms/IncomeListSection';
 
 
 var firstTimeApplication = [
@@ -141,6 +142,35 @@ var firstTimeApplication = [
     'isRequired': true,
     'component': RenderRadio,
     'field_name': 'living_with_partner'
+  },
+  {
+    'label': {
+      'en': {
+        'text': 'Income section'
+      },
+      'mi': {
+        'text': 'Were you living with a partner or joint home owner(s) on July 1 2017?'
+      }
+    },
+    'instructions': {
+      'en': {
+        'text': '\'Partner\' is a person you are married to/in a civil union, or de facto relationship with.'
+      },
+      'mi': {
+        'text': '\'Partner\' is a person you are married to/in a civil union, or de facto relationship with.'
+      }
+    },
+    'options': {
+      'en': {
+        'text': [ 'yes','no' ]
+      },
+      'mi': {
+        'text': [ 'ae', 'kaore' ]
+      }
+    },
+    'isRequired': true,
+    'component': IncomeListSection,
+    'field_name': 'income_page_2'
   },
   {
     'label': {

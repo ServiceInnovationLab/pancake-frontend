@@ -27,10 +27,10 @@ export default class RadioWithSelect extends React.Component {
 
           {showYes && <div style={showYes}>
             <label>{this.props.textFieldLabel}</label>
-            <p>{this.props.instructions}</p>
+            {this.props.instructions && <p>{this.props.instructions}</p>}
             <input type="number" name="otherIncomeParent" placeholder={this.props.placeholder} />
           </div>}
-          <FieldArray name="otherIncome" component={renderOtherIncome} />
+          <FieldArray name={this.props.name ? this.props.name : 'otherIncome'} component={renderOtherIncome} />
         </fieldset>
 
       </div>
@@ -46,7 +46,7 @@ const renderOtherIncome = ({ fields, meta: { error, submitFailed } }) => (
         <h4>Other income #{index + 1} </h4>
         <RemoveButton fields={fields} index={index} />
         <div className="select-wrapper">
-          <select>
+          <select name={`${income}.selectedOption`}>
             <option>Wage or salary</option>
             <option>NZ Superannuation</option>
             <option>Personal Superannuation</option>
