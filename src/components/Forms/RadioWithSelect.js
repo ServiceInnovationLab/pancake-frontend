@@ -53,6 +53,8 @@ class renderOtherIncome extends React.Component {
     let index = e.target.selectedIndex;
     if(e.nativeEvent.target[index].text === 'Income from other source (please identify)' && index === 10) {
       this.setState({other_source: true});
+    } else {
+      this.setState({other_source: false});
     }
   }
 
