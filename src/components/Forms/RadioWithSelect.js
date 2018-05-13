@@ -37,52 +37,73 @@ export default class RadioWithSelect extends React.Component {
     );
   }
 }
-const renderOtherIncome = ({ fields, meta: { error, submitFailed } }) => (
 
-  <ul className="nested-list">
-    {fields.map((income, index) => (
-      <li key={index} style={{marginBottom: '15px'}}>
+class renderOtherIncome extends React.Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      other_source: false
+    };
 
-        <h4>Other income #{index + 1} </h4>
-        <RemoveButton fields={fields} index={index} />
-        <div className="select-wrapper">
-          <select name={`${income}.selectedOption`}>
-            <option>Wage or salary</option>
-            <option>NZ Superannuation</option>
-            <option>Personal Superannuation</option>
-            <option>Interest or dividends</option>
-            <option>Overseas income (converted to $NZD)</option>
-            <option>Net profit before tax from any business – enter ‘0’ if you sustained a loss</option>
-            <option>Rental income – enter ‘0’ if you sustained a loss</option>
-            <option>Work and Income benefits</option>
-            <option>Work and Income supplements (e.g. Accommodation Supplement)</option>
-            <option>Working for Families Tax Credits (excludes Family Tax Credits)</option>
-            <option>Trust income paid to you</option>
-            <option>Income from other source (please identify)</option>
-          </select>
-        </div>
-        <Field
-          name={`${income}.incomeFrom`}
-          type="text"
-          component={renderField}
-          label="Where did this income come from?"
-        />
-        <Field
-          name={`${income}.totalAmount`}
-          type="number"
-          component={renderField}
-          label="Enter the total amount"
-        />
-      </li>
-    ))}
-    <li>
-      <button type="button" onClick={() => fields.push({})}>
-        + Add Income
-      </button>
-      {submitFailed && error && <span>Error</span>}
-    </li>
-  </ul>
-);
+    this.handleOnChange = this.handleOnChange.bind(this);
+  }
+
+  handleOnChange(e) {
+    let index = e.target.selectedIndex;
+    if(e.nativeEvent.target[index].text === 'Income from other source (please identify)' && index === 10) {
+      this.setState({other_source: true});
+    }
+  }
+
+  render() {
+    const { fields, meta: { error, submitFailed } } = this.props;
+    return (
+      <ul className="nested-list">
+        {fields.map((income, index) => (
+          <li key={index} style={{marginBottom: '15px'}}>
+
+            <h4>Other income #{index + 1} </h4>
+            <RemoveButton fields={fields} index={index} />
+            <div className="select-wrapper">
+              <select name={`${income}.selectedOption`} onChange={e=>this.handleOnChange(e)}>
+                <option>Wage or salary</option>
+                <option>Work and incomes supplements (e.g. Accommodation Supplement)</option>
+                <option>Personal Superannuation</option>
+                <option>Interest or dividends</option>
+                <option>Overseas income (converted to $NZD)</option>
+                <option>Net profit before tax from any business – enter ‘0’ if you sustained a loss</option>
+                <option>Rental income – enter ‘0’ if you sustained a loss</option>
+                <option>ACC earnings compensation</option>
+                <option>Working for Families Tax Credits (excludes Family Tax Credits)</option>
+                <option>Trust income paid to you</option>
+                <option>Income from other source (please identify)</option>
+              </select>
+            </div>
+            {this.state.other_source && <Field
+              name={`${income}.incomeFrom`}
+              type="text"
+              component={renderField}
+              label="Where did this income come from?"
+            />}
+            <Field
+              name={`${income}.totalAmount`}
+              type="number"
+              component={renderField}
+              label="Enter the total amount"
+            />
+          </li>
+        ))}
+        <li>
+          <button type="button" onClick={() => fields.push({})}>
+            + Add Income
+          </button>
+          {submitFailed && error && <span>Error</span>}
+        </li>
+      </ul>
+    );
+  }
+}
 
 const renderField = ({ input, label, type, meta: { touched, error } }) => (
   <div>
