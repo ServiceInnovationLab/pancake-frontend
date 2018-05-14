@@ -162,6 +162,8 @@ class WizardFormFirstPage extends React.Component {
                 rates_bill={this.state.rates_bill}
                 income={this.state.income}
                 />
+
+                <p>Only apply online if you can vist the Council office at 91 Willow Street, as online applications can only be completed there</p>
               <div className="layout">
                 <button type="submit" className="btn-primary">Apply now</button>
               </div>
@@ -171,7 +173,7 @@ class WizardFormFirstPage extends React.Component {
       </div>
     );
   }
-}
+} 
 
 export default reduxForm({
   form: 'wizard', destroyOnUnmount: false, forceUnregisterOnUnmount: true,
