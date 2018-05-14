@@ -40,16 +40,12 @@ var firstTimeApplication = [
     'optionsText': {
       'en': {
         'text': [
-          '', 'Were you living in another property that you owned on 1 July 2017, have sold tha' +
-              't property, and moved to the address of the property you are currently living in' +
-              ' during the the current rating year (1 July 2017-30 June 2018)?'
+          '', 'Were you living in another property that you owned on 1 July 2017, have sold that property, and moved to the address of the property you are currently living in during the the current rating year (1 July 2017-30 June 2018)?'
         ]
       },
       'mi': {
         'text': [
-          '', 'Were you living in another property that you owned on 1 July 2017, have sold tha' +
-              't property, and moved to the address of the property you are currently living in' +
-              ' during the the current rating year (1 July 2017-30 June 2018)?'
+          '', 'Were you living in another property that you owned on 1 July 2017, have sold that property, and moved to the address of the property you are currently living in during the the current rating year (1 July 2017-30 June 2018)?'
         ]
       }
     },
@@ -63,19 +59,10 @@ var firstTimeApplication = [
     },
     'accordianText': {
       'en': {
-        'text': 'Get in touch with your local council. There are some situations where you can st' +
-            'ill get a rebate on your previous home after you moved. They will ask you some d' +
-            'etails including: <ul><li>the settlement date</li><li>what rates you paid for th' +
-            'e current year.</li></ul>'
+        'text': 'Get in touch with your local council. There are some situations where you can still get a rebate on your previous home after you moved. They will ask you some details including: <ul><li>the settlement date</li><li>what rates you paid for the current year.</li></ul>'
       },
       'mi': {
-        'text': 'You can still get a rates rebate if you move house, as long as you haven\'t clai' +
-            'med the rebate on your previous house. When you fill out the application form, y' +
-            'ou\'ll need to give information about the property you sold, including: <ul><li>' +
-            'the settlement date</li><li>what rates you paid for the current year. If the reb' +
-            'ate for your previous house was quite small and the rates on your new house are ' +
-            'much higher, ask your council if you can have your rebate assessed again.</li></' +
-            'ul>'
+        'text': 'Get in touch with your local council. There are some situations where you can still get a rebate on your previous home after you moved. They will ask you some details including: <ul><li>the settlement date</li><li>what rates you paid for the current year.</li></ul>'
       }
     }
   }, {
@@ -110,43 +97,13 @@ var firstTimeApplication = [
     },
     'accordianText': {
       'en': {
-        'text': '<p>If you are eligible for a rebate under the Rates Rebate (Retirement Village R' +
-            'esidents)\
-                 Amendment Act 2018 you will be able to apply for a r' +
-            'ebate in the new rating year after\
-                 1 July 2018.</p>\
-         ' +
-            '        <p>If the property you own is part of owner/occupier flats (often referr' +
-            'ed to as\
-                 company share flats or apartments), you will need to ' +
-            'fill in an additional declaration\
-                 form and bring it with you w' +
-            'hen visiting the council.</a> This can be found\
-                 <a href="https' +
-            '://www.dia.govt.nz/Pubforms.nsf/URL/OwnerOccupierDeclarationFormJuly2011.pdf/$fi' +
-            'le/OwnerOccupierDeclarationFormJuly2011.pdf">\
-                 here</a></p>'
+        'text': '<p>If you are eligible for a rebate under the Rates Rebate (Retirement Village Residents) Amendment Act 2018 you will be able to apply for a rebate in the new rating year after 1 July 2018.</p><p>If the property you own is part of owner/occupier flats (often referred to as company share flats or apartments), you will need to fill in an additional declaration form and bring it with you when visiting the council.</a> This can be found <a href="https://www.dia.govt.nz/Pubforms.nsf/URL/OwnerOccupierDeclarationFormJuly2011.pdf/$file/OwnerOccupierDeclarationFormJuly2011.pdf">here</a></p>'
       },
       'mi': {
-        'text': '<p>If you are eligible for a rebate under the Rates Rebate (Retirement Village R' +
-            'esidents)\
-                 Amendment Act 2018 you will be able to apply for a r' +
-            'ebate in the new rating year after\
-                 1 July 2018.</p>\
-         ' +
-            '        <p>If the property you own is part of owner/occupier flats (often referr' +
-            'ed to as\
-                 company share flats or apartments), you will need to ' +
-            'fill in an additional declaration\
-                 form and bring it with you w' +
-            'hen visiting the council.</a> This can be found\
-                 <a href="https' +
-            '://www.dia.govt.nz/Pubforms.nsf/URL/OwnerOccupierDeclarationFormJuly2011.pdf/$fi' +
-            'le/OwnerOccupierDeclarationFormJuly2011.pdf">\
-                 here</a></p>'
+        'text': '<p>If you are eligible for a rebate under the Rates Rebate (Retirement Village Residents) Amendment Act 2018 you will be able to apply for a rebate in the new rating year after 1 July 2018.</p><p>If the property you own is part of owner/occupier flats (often referred to as company share flats or apartments), you will need to fill in an additional declaration form and bring it with you when visiting the council.</a> This can be found <a href="https://www.dia.govt.nz/Pubforms.nsf/URL/OwnerOccupierDeclarationFormJuly2011.pdf/$file/OwnerOccupierDeclarationFormJuly2011.pdf">here</a></p>'
       }
     }
-  }, 
+  },
   // {
   //   'label': {
   //     'en': {
@@ -268,7 +225,7 @@ var firstTimeApplication = [
   //   'component': IncomeListSection,
   //   'field_name': 'total_income',
   //   'theme': 'theme-sand'
-  // }, 
+  // },
   {
     'label': {
       'en': {

@@ -1,21 +1,18 @@
-const dev = {
-  // API_ORIGIN: 'http://localhost:3001',
-  API_ORIGIN: 'https://pancakenz-staging.herokuapp.com',
-  OPENFISCA_ORIGIN: 'https://openfisca-aotearoa.herokuapp.com/calculate'
-};
+// const dev = {
+//   API_ORIGIN: 'https://alpha.ratesrebates.services.govt.nz',
+//   OPENFISCA_ORIGIN: 'https://openfisca.ratesrebates.services.govt.nz/calculate'
+// };
 
-const staging = {
-  API_ORIGIN: 'https://pancakenz-staging.herokuapp.com',
-  OPENFISCA_ORIGIN: 'https://openfisca-aotearoa.herokuapp.com/calculate'
-};
+// const staging = {
+//   API_ORIGIN: 'https://alpha.ratesrebates.services.govt.nz',
+//   OPENFISCA_ORIGIN: 'https://openfisca.ratesrebates.services.govt.nz/calculate'
+// };
 
 const production = {
-  API_ORIGIN: 'https://pancakenz-staging.herokuapp.com',
-  OPENFISCA_ORIGIN: 'https://openfisca-aotearoa.herokuapp.com/calculate'
+  API_ORIGIN: 'https://alpha.ratesrebates.services.govt.nz',
+  OPENFISCA_ORIGIN: 'https://openfisca.ratesrebates.services.govt.nz/calculate'
 };
 
-const config = window.location.origin === 'https://serviceinnovationlab.github.io'
-  ? production
-  : dev;
+const config = production;
 
 export default config;
