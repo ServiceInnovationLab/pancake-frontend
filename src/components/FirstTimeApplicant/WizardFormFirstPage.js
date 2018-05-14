@@ -162,17 +162,12 @@ class WizardFormFirstPage extends React.Component {
               onSelection={this.handleIncome}
             />
 
+            <Eligible
+              dependants={this.state.dependants}
+              rates_bill={this.state.rates_bill}
+              income={this.state.income}
+              />
 
-            <Fragment>
-              <Eligible
-                dependants={this.state.dependants}
-                rates_bill={this.state.rates_bill}
-                income={this.state.income}
-                />
-              <div className="layout">
-                <button type="submit" className="btn-primary">Apply now</button>
-              </div>
-            </Fragment>
           </section>
         </form>
       </div>
