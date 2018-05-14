@@ -1,24 +1,9 @@
-// import RenderRadio from '../components/Forms/RenderRadio';
 import TextBoxWithAccordian from '../components/Forms/TextboxWithAccordian';
-// import TextFieldWithCheckbox from
-// '../components/Forms/TextFieldWithCheckbox';
 import RadioWithRadio from '../components/Forms/RadioWithRadio';
 import RadioWithTextField from '../components/Forms/RadioWithTextField';
 import IncomeListSection from '../components/Forms/IncomeListSection';
 
 var firstTimeApplication = [
-  // {
-  //   'component': TextBoxWithAccordian,
-  //   'field_name': 'address',
-  //   'label': {
-  //     'en': {
-  //       'text': 'What is your address?'
-  //     },
-  //     'mi': {
-  //       'text': 'What is your address?'
-  //     }
-  //   }
-  // },
   {
     'component': RadioWithRadio,
     'field_name': 'lived_here_before_july_2017',
