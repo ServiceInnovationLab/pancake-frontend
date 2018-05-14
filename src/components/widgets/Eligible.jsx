@@ -54,13 +54,16 @@ class Eligible extends React.Component {
   render() {
     if (this.state.rebate !== null) {
       return (
-        <div className="arrow-box secondary">
-          <p className="heading-paragraph">
-            You are eligible for
-            <span> ${this.formatDollars(this.state.rebate)}</span>
-          </p>
-          <p className="help-text">(Assuming you meet the criteria)</p>
-        </div>
+        <Fragment>
+          <div className="arrow-box secondary">
+            <p className="heading-paragraph">
+              You are eligible for
+              <span> ${this.formatDollars(this.state.rebate)}</span>
+            </p>
+            <p className="help-text">(Assuming you meet the criteria)</p>
+          </div>
+          <button type="submit" className="btn-primary">Apply now</button>
+        </Fragment>
       );
     }
 
