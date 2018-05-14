@@ -21,24 +21,38 @@ class IncomeListSection extends React.Component {
 
   render() {
     return (
-      <fieldset>
-        <h2>Question 1</h2>
-        <p>instructions</p>
-        <RadioField
-          options={['yes', 'no']}
-          handleRadioClick={this.handleRadioClick}
-        />
+      <section>
+        <div class="container">
+          <fieldset class="field radio-group">
+            <legend>Question 1</legend>
+            <p>instructions</p>
+            <RadioField
+              options={['yes', 'no']}
+              handleRadioClick={this.handleRadioClick}
+            />
 
-        <h2>Question 2</h2>
-        <h5>Your List</h5>
-        <IncomeList name="applicant" hasPartner={this.state.showPartnerOptions} showRadios={this.state.showPartnerOptions} />
-        {this.state.showPartnerOptions && 
-          <Fragment>
-            <h5>Partners List</h5>
-            <IncomeList name="partner" hasPartner={this.state.showPartnerOptions} showRadios={this.state.showPartnerOptions} />
-          </Fragment>
-        }
-      </fieldset>  
+          </fieldset>
+        </div>
+      </section>
+
+      // <fieldset>
+      //   <h2>Question 1</h2>
+      //   <p>instructions</p>
+      //   <RadioField
+      //     options={['yes', 'no']}
+      //     handleRadioClick={this.handleRadioClick}
+      //   />
+
+      //   <h2>Question 2</h2>
+      //   <h5>Your List</h5>
+      //   <IncomeList name="applicant" hasPartner={this.state.showPartnerOptions} showRadios={this.state.showPartnerOptions} />
+      //   {this.state.showPartnerOptions &&
+      //     <Fragment>
+      //       <h5>Partners List</h5>
+      //       <IncomeList name="partner" hasPartner={this.state.showPartnerOptions} showRadios={this.state.showPartnerOptions} />
+      //     </Fragment>
+      //   }
+      // </fieldset>
     );
   }
 }
@@ -55,7 +69,7 @@ const RadioField = props => {
 };
 
 class IncomeList extends React.Component {
-  
+
   constructor(props) {
     super(props);
     this.state = {
@@ -163,7 +177,7 @@ class IncomeList extends React.Component {
                   <input type="checkbox" name={underscorize(item.label)} onClick={()=>this.handleChild(item)} />
                   {item.label}
                 </label>
-                
+
                 {!this.props.showRadios && item.child === 'radio' &&
                   <RadioGroup
                     handleChildRadioClick={this.handleChildRadioClick}
@@ -182,7 +196,7 @@ class IncomeList extends React.Component {
                     />
                   </Fragment>
                 }
-                
+
                 {this.state.ShowNestedGroup && item.child === 'nested-group' &&
                   <RadioWithSelect
                     visible={this.state.ShowNestedGroup}
@@ -245,7 +259,7 @@ class Entitlement extends React.Component {
     // SUPER ANNUATION
     if(this.props.sa_checked) {
       if(dependants.length > 0) {
-        
+
         if(this.props.hasPartner) {
           sa_total += 34916.96;
         } // TODO: this value is empty in benefit schedult
@@ -296,7 +310,7 @@ class Entitlement extends React.Component {
           } else {
             spl_total += 26884.00; // married, with 2 or more children
           }
-          
+
         } else {
           spl_total += 22134.84; // single, with children
         }
@@ -311,7 +325,7 @@ class Entitlement extends React.Component {
 
     // WAGE OR SALARY
     const firstTotal = (sa_total + jss_total + sps_total + spl_total + this.props.wos_total) || 0;
-    
+
 
     // OTHER INCOME
     const {incomeListStates} = this.props;
@@ -325,13 +339,13 @@ class Entitlement extends React.Component {
       }
     }
     const total = firstTotal + otherOptionValues.length ? otherOptionValues.reduce((a, b) => a + b, 0) : 0;
-    
+
   }
 
   render() {
     return (
       <div>
-        
+
         <p>Entitlement: {}</p>
       </div>
     );
