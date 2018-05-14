@@ -3,7 +3,8 @@ import {underscorize} from '../../helpers/strings';
 import RadioWithSelect from './RadioWithSelect';
 import axios from 'axios';
 import config from '../../config';
-import { stat } from 'fs';
+// import { state } from 'fs';
+import RadioField from './RadioField';
 
 class IncomeListSection extends React.Component {
   constructor(props) {
@@ -53,13 +54,13 @@ class IncomeListSection extends React.Component {
             <p>You will need to know your total income for the 2016/2017 Tax year (1 March
               2016 - 31 March 2017) including rental income from any properties you own,
               interest and dividends, and overseas income (converted to $NZD).
-              <br/>
-              <br/>
+            <br/>
+            <br/>
               Select any that apply to you.</p>
             <div className="row">
               <ul className="column list-stripped">
                 <li>
-                  <h4>Your Incomes</h4>
+                  <h4>Your Income</h4>
                 </li>
                 <IncomeList
                   name="applicant"
@@ -69,7 +70,7 @@ class IncomeListSection extends React.Component {
               <ul className="column list-stripped">
                 {this.state.showPartnerOptions && <Fragment>
                   <li>
-                    <h4>Your Incomes</h4>
+                    <h4>Partner/join homeowner's income</h4>
                   </li>
                   <IncomeList
                     name="partner"
@@ -84,24 +85,6 @@ class IncomeListSection extends React.Component {
     );
   }
 }
-
-const RadioField = props => {
-  return (
-    <Fragment>
-      {props
-        .options
-        .map((item, i) => <Fragment key={i}>
-          <label>
-            <input
-              type="radio"
-              name="radio_fields"
-              onClick={() => props.handleRadioClick(item)}/>
-            <span>{item}</span>
-          </label>
-        </Fragment>)}
-    </Fragment>
-  );
-};
 
 class IncomeList extends React.Component {
 
@@ -275,25 +258,16 @@ class IncomeList extends React.Component {
 
 const RadioGroup = props => {
   return (
-    <div
-      style={props.type !== 'radio'
-      ? {
-        display: 'none'
-      }
-      : null}>
-      {props.options && props
-        .options
-        .map((item, i) => {
-          return <Fragment key={i}>
-            <label>
-              <input
-                key={i}
-                type="radio"
-                name={props.name}
-                onClick={() => props.handleChildRadioClick(item, props.name)}/> {item}
-            </label>
-          </Fragment>;
-        })}
+    <div className="radio-list" style={props.type !== 'radio' ? { display: 'none' } : null}>
+      {props.options.map((item, i) => <Fragment key={i}>
+        <label>
+          <input
+            type="radio"
+            name={props.name}
+            onClick={() => props.handleChildRadioClick(item, props.name)}/>
+          <span>{item}</span>
+        </label>
+      </Fragment>)}
     </div>
   );
 };

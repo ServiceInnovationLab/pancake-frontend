@@ -102,10 +102,24 @@ class WizardFormSecondPage extends React.Component {
                 placeholder={field.placeholder && field.placeholder['en'].text}
                 hasAddressFinder={field.hasAddressFinder}
                 theme={field.theme && field.theme}
-                /></div></section>);
+                />
+                </div></section>);
             })}
+            <section className="container"><div>
+            <Accordian
+            label="It is an offence to knowingly make a false statement in your application"
+            text="<p>You can find a list of the total amounts for Work and Income payments, including NZ Superannuation https://www.dia.govt.nz/diawebsite.nsf/Files/Benefit-Schedule-2016-17/$file/Benefit-Schedule-2016-17.pdf <br/><br/>You can get this from a few places, such as:
+              <ul><li>Inland Revenue, by calling them
+            on 0800 775 247 and asking for a Personal Tax Summary, or logging on to your MyIR account at IRD.govt.nz.</li>
+            <li>from Ministry
+            of Social Development, </li> <li>through your employer, accountant etc.</il></ul></p>"/>
+            </div>
+            <h3 style={{marginTop: '100px'}}>We have calculated that your entitlement is $620</h3>
+            <p>This will be applied to your rates account once your application has been fully proccessed.</p>
+            </section>
             <Calculated/>
             <Submit/>
+          
             {this.state.complete && <Success/>}
             {this.state.complete_error && <Failed/>}
           </form>
@@ -129,7 +143,7 @@ const Head = () => {
         'marginTop': '15px',
         'marginBottom': '60px',
         'display': 'inline-block'
-      }}>&larr; Home</a>
+      }}><span className="arrow left"></span>Home</a>
       <h2 className="heading-secondary green">What you will need to do to apply for a rebate <br/><span>He aha ngā mahi e tonoa ai te whakamāmā reiti</span></h2>
       <section>
         <h3 className="heading-secondary grey">Step One<br/>Mahi Tuatahi</h3>
@@ -137,12 +151,12 @@ const Head = () => {
           2016 - 31 March 2017). This includes rental income from any properties you own,
           interest and dividends, and overseas income (converted to $NZD). </p>
           <Accordian
-              label="Where can I get my income details?"
-              text="<p>You can find a list of the total amounts for Work and Income payments, including NZ Superannuation https://www.dia.govt.nz/diawebsite.nsf/Files/Benefit-Schedule-2016-17/$file/Benefit-Schedule-2016-17.pdf <br/><br/>You can get this from a few places, such as:
-               <ul><li>Inland Revenue, by calling them
-              on 0800 775 247 and asking for a Personal Tax Summary, or logging on to your MyIR account at IRD.govt.nz.</li>
-              <li>from Ministry
-              of Social Development, </li> <li>through your employer, accountant etc.</il></ul></p>"/>
+            label="Where can I get my income details?"
+            text="<p>You can find a list of the total amounts for Work and Income payments, including NZ Superannuation https://www.dia.govt.nz/diawebsite.nsf/Files/Benefit-Schedule-2016-17/$file/Benefit-Schedule-2016-17.pdf <br/><br/>You can get this from a few places, such as:
+              <ul><li>Inland Revenue, by calling them
+            on 0800 775 247 and asking for a Personal Tax Summary, or logging on to your MyIR account at IRD.govt.nz.</li>
+            <li>from Ministry
+            of Social Development, </li> <li>through your employer, accountant etc.</il></ul></p>"/>
 
       </section>
 
