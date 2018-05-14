@@ -71,7 +71,10 @@ button {
   border-color: #6dca7f;
   color: #fff;
   padding-left: 60px;
-  padding-right: 60px; }
+  padding-right: 60px;
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: 1px; }
   .btn-primary:hover {
     background: #68bd78; }
 
@@ -249,7 +252,7 @@ p {
     top: 50%;
     transform: translateY(-50%);
     opacity: 1;
-    color: #6b6b6b; }
+    color: #333; }
 
 .accordian-body {
   text-align: left;
@@ -303,7 +306,10 @@ canvas {
   box-sizing: border-box; }
 
 .radio-list {
-  display: block; }
+  display: block;
+  margin-bottom: 30px; }
+  .radio-list span:hover {
+    cursor: pointer; }
   .radio-list input {
     position: absolute;
     left: -9999px;
@@ -316,6 +322,9 @@ canvas {
     margin-top: 40px; }
   .radio-list div div:first-child {
     margin-top: 20px; }
+
+.radio-list-compact {
+  width: 70%; }
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
@@ -338,6 +347,8 @@ input[type=number]::-webkit-outer-spin-button {
 
 .column {
   flex: 50%; }
+  .column:first-child {
+    padding-right: 10px; }
   .column:last-child {
     padding-left: 10px; }
 
@@ -386,13 +397,16 @@ input[type=number]::-webkit-outer-spin-button {
 
 /* Style the checkmark/indicator */
 input:checked ~ .radio-list-multi .checkmark:after {
-  left: 10px;
-  top: 4px;
-  width: 7px;
-  height: 15px;
+  left: 8px;
+  top: 0;
+  width: 10px;
+  height: 20px;
   border: solid #4f4b46;
   border-width: 0 4px 4px 0;
   transform: rotate(45deg); }
+
+input:checked + .radio-list-multi {
+  background: #ccddf0; }
 
 .radio-list-container > input {
   display: none; }
@@ -403,4 +417,16 @@ input:checked ~ .radio-list-multi .checkmark:after {
   position: relative;
   left: -30px; }
 
-/*# sourceMappingURL=App.css.map */
+.arrow {
+  border: solid #c3c3c3;
+  border-width: 0 4px 4px 0;
+  display: inline-block;
+  padding: 6px;
+  position: relative;
+  top: 1px;
+  margin-right: 10px; }
+  .arrow.left {
+    transform: rotate(135deg); }
+
+a:hover {
+  cursor: pointer; }
