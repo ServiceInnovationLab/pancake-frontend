@@ -92,7 +92,6 @@ class Sign extends React.Component {
     return {
       "type": "signaturess",
       "attributes": {
-        "valuation_id": "123",
         "token": this.props.match.params.id,
         type,
         name,
