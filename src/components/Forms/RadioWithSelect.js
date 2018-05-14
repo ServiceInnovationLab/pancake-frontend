@@ -6,7 +6,7 @@ import store from '../../store';
 
 export default class RadioWithSelect extends React.Component {
   render() {
-    return <FieldArray getOtherOptionValues={this.props.getOtherOptionValues} name={this.props.name ? this.props.name : 'otherIncome'} component={renderOtherIncome} />;
+    return <FieldArray removeOtherOptionValues={this.props.removeOtherOptionValues} getOtherOptionValues={this.props.getOtherOptionValues} name={this.props.name ? this.props.name : 'otherIncome'} component={renderOtherIncome} />;
   }
 }
 
@@ -26,7 +26,7 @@ class renderOtherIncome extends React.Component {
           <li key={index} style={{marginBottom: '15px'}}>
 
             <h4>Other income #{index + 1} </h4>
-            <RemoveButton fields={fields} index={index} />
+            <RemoveButton fields={fields} index={index} removeOtherOptionValues={this.props.removeOtherOptionValues}/>
             <div className="select-wrapper">
               <select name={`${income}.selectedOption`}>
                 <option>Wage or salary</option>

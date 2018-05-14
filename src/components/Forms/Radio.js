@@ -169,6 +169,8 @@ class ListItem extends React.Component {
     case 'applicant_other3':
       // console.log('applicant_other');
       break;
+    default:
+      return;
     }
   }
 
@@ -183,17 +185,9 @@ class ListItem extends React.Component {
       </label>
       {this.state.applicant_nz_superannuation && <CheckboxGroup/>}
       {this.state.partner_nz_superannuation && <p>Partner Radios Here</p>}
-      {/* {this.state.applicant_nz_superannuation && <p>Applicant Radios Here</p>}
-      {this.state.partner_nz_superannuation && <p>Partner Radios Here</p>} */}
     </li>;
   }
 }
-
-const RadioGroup = () => {
-  return (
-    <div><label><input type="radio" name="total_income" value="yes"/><span>yes</span></label><label><input type="radio" name="total_income" value="no"/><span>no</span></label></div>
-  );
-};
 
 const CheckboxGroup = () => {
   return (
