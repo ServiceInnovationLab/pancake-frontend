@@ -298,7 +298,7 @@ var firstTimeApplication = [
       }
     },
     'component': RadioWithSelect,
-    'field_name': 'total_income_for_year',
+    'field_name': 'total_income_for_year'
   },
   {
     'component': TextBoxWithAccordian,

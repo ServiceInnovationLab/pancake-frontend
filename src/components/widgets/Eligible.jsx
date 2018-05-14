@@ -16,10 +16,10 @@ class Eligible extends React.Component {
         'persons': {
           'Tahi': {
             'salary': {
-              '2017': nextProps.income
+              '2018': nextProps.income
             },
             'dependants': {
-              '2017': nextProps.dependants
+              '2018': nextProps.dependants
             }
           }
         },
@@ -27,10 +27,10 @@ class Eligible extends React.Component {
           'property_1': {
             'owners': [ 'Tahi' ],
             'rates': {
-              '2017': nextProps.rates_bill
+              '2018': nextProps.rates_bill
             },
             'rates_rebate': {
-              '2017': null
+              '2018': null
             }
           }
         }
@@ -39,7 +39,7 @@ class Eligible extends React.Component {
       axios
         .post(`${config.OPENFISCA_ORIGIN}`, data)
         .then(res => {
-          this.setState({rebate: res.data.properties.property_1.rates_rebate['2017']});
+          this.setState({rebate: res.data.properties.property_1.rates_rebate['2018']});
         })
         .catch(err => console.log('err fetching properties', err));
     } else {
@@ -66,9 +66,9 @@ class Eligible extends React.Component {
         </Fragment>
       );
     }
-    
+
     return '';
-    
+
   }
 }
 
