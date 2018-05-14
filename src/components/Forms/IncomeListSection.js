@@ -405,12 +405,7 @@ class Entitlement extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-
-        <p>Entitlement: {} < /p>
-      </div}
-    );
+    return <div> <p>Entitlement: {} </p> </div>;
   }
 }
 
