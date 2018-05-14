@@ -163,7 +163,11 @@ const Head = () => {
 
       <hr/>
       <h2 className="heading-secondary green">Step Two: Apply for a rates rebate<br/> <span>Mahi Tuarua: Tonoa te whakamāmā reiti</span></h2>
-      <h3 className="heading-secondary grey">This is for the 1 July 2017 - 30 June 2018 rating year</h3>
+      <section class="theme-sand">  <div>
+          
+          
+        <h3 className="heading-secondary grey"> <img src="exclaim-point.png" srcSet="exclaim-point.png" width="30" height="30" alt="Warning" /> Only apply online online if you can vist the Council at 91 Willow Street, Tauranga. Online applications can only be witnessed at this location. <img src="exclaim-point.png" srcSet="exclaim-point.png" width="30" height="30" alt="Warning" /> <br/><br/> </h3></div> </section>
+      <h3 className="heading-secondary grey">  This is for the 1 July 2017 - 30 June 2018 rating year</h3>
     </Fragment>
   );
 }
@@ -186,7 +190,7 @@ const Success = () => {
       <h4>Your application form has been digitally sent to your local council, and you need to visit the Tauranga Council at 91 Willow Street your rebate to be processed.</h4>
 
       <p>The only thing you need to bring with you is your proof of income.</p>
-      <a className="btn btn-primary">Find my nearest service centre</a>
+      <a className="btn btn-primary">Directions to 91 Willow Street</a>
     </div>
   );
 }

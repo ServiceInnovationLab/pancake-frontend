@@ -163,7 +163,7 @@ class WizardFormFirstPage extends React.Component {
                 income={this.state.income}
                 />
 
-                <p>Only apply online if you can vist the Council office at 91 Willow Street, as online applications can only be completed there</p>
+                <p><img src="exclaim-point.png" srcSet="exclaim-point.png" width="30" height="30" alt="Warning" /> Only apply online if you can vist the Council office at 91 Willow Street, as online applications can only be completed there <img src="exclaim-point.png" srcSet="exclaim-point.png" width="30" height="30" alt="Warning" /> </p>
               <div className="layout">
                 <button type="submit" className="btn-primary">Apply now</button>
               </div>
