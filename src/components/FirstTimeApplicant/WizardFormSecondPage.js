@@ -52,6 +52,7 @@ class WizardFormSecondPage extends React.Component {
   }
 
   saveFormData() {
+    debugger;
     let values = this.props.formState.form.wizard.values;
     let data = {
       "type": "rebate-forms",
@@ -70,12 +71,24 @@ class WizardFormSecondPage extends React.Component {
   goHome() {
     return window.location = '#/';
   }
+
+  renderAddress(){
+    return (
+      <section>
+        <div className="container">
+          <h4>Your address is</h4>
+          {this.props.formState.form.wizard.values['address']}
+        </div>
+      </section>
+      );
+  }
   render() {
     const {handleSubmit} = this.props
     return (
       <Fragment>
         <div className="theme-main">
           <Head/>
+          {this.renderAddress()}
           <form onSubmit={handleSubmit(this.saveFormData)}>
             {firstTimeApplication.map((field, key) => {
               let label = field.label['en'].text;
@@ -114,14 +127,13 @@ class WizardFormSecondPage extends React.Component {
             <li>from Ministry
             of Social Development, </li> <li>through your employer, accountant etc.</il></ul></p>"/>
             </div>
-            <h3 style={{marginTop: '100px'}}>We have calculated that your entitlement is $620</h3>
             <p>This will be applied to your rates account once your application has been fully proccessed.</p>
             </section>
             <Calculated/>
             <Submit/>
-          
             {this.state.complete && <Success/>}
             {this.state.complete_error && <Failed/>}
+
           </form>
         </div>
       </Fragment>

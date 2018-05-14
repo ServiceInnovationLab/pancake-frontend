@@ -68,9 +68,11 @@ class WizardFormFirstPage extends React.Component {
         'rates_bill': attributes['total_rates'],
         'rating_year': attributes['rating_year']
       });
+      this.props.change('rates_bill', attributes['total_rates']);
     }
     else {
       this.setState({rates_bills: null, rating_year: null});
+      this.props.change('rates_bill', null);
     }
   }
 
@@ -78,6 +80,7 @@ class WizardFormFirstPage extends React.Component {
     if (newValue) {
       let dependants = (newValue >= 0 ? newValue : 0);
       this.setState({dependants});
+      this.props.change('dependants', dependants);
     }
   }
 
@@ -128,6 +131,7 @@ class WizardFormFirstPage extends React.Component {
             <div className="arrow-box primary">
                 <Address onSelection={this.handleAddressSelection} />
 
+                <Field name="rates_bill" type="hidden" component={renderField}/>
                 <Field name="valuation_id" type="hidden" component={renderField}/>
                 {this.state.rates_bill && this.state.rating_year && <Fragment>
                   <p className="select-results">

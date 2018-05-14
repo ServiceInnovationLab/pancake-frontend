@@ -30,7 +30,8 @@ const Checkbox = props => (
                   </div>
                 </label>
               </li>;
-            })}</ul>
+            })}
+        </ul>
         <ul className="column list-stripped">
           <li>
             <h4>

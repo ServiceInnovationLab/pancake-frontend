@@ -18,11 +18,7 @@ class IncomeListSection extends React.Component {
   }
 
   handleRadioClick(val) {
-    if (val === 'yes') {
-      this.setState({showPartnerOptions: true});
-    } else {
-      this.setState({showPartnerOptions: false});
-    }
+    this.setState({showPartnerOptions: val === 'yes'});
   }
 
   render() {
@@ -218,7 +214,7 @@ class IncomeList extends React.Component {
                   name={`${underscorize(item.label)}_${this.props.name}`}
                   options={item.options && item.options}
                   type={this.state.ShowRadio ? 'radio' : 'hidden'}/>}
-                
+
                 {item.child === 'text-field' && <Fragment>
                   <input
                     type={this.state.ShowTextField ? 'text' : 'hidden'}
@@ -250,7 +246,8 @@ class IncomeList extends React.Component {
           jobseeker_support={this.state.jobseeker_support}
           sole_parent_support={this.state.sole_parent_support}
           supported_living={this.state.supported_living}
-          wos_total={(parseInt(this.getWageOrSalary('wos_applicant'), 0) + parseInt(this.getWageOrSalary('wos_partner'), 0))}/>
+          wos_total={(parseInt(this.getWageOrSalary('wos_applicant'), 0) + parseInt(this.getWageOrSalary('wos_partner'), 0))
+        }/>
       </Fragment>
     );
   }
@@ -276,10 +273,15 @@ class Entitlement extends React.Component {
   constructor() {
     super();
     this.state = {
+      income: null
     };
+
+    this.totalIncome = this
+      .totalIncome
+      .bind(this);
   }
 
-  componentDidUpdate() {
+  totalIncome() {
     let sa_total = 0;
     let jss_total = 0;
     let sps_total = 0;
@@ -376,14 +378,25 @@ class Entitlement extends React.Component {
     const total = firstTotal + (otherOptionValues.length
       ? otherOptionValues.reduce((a, b) => a + b, 0)
       : 0);
-    const newData = {
+
+    return total;
+
+  }
+
+  componentWillReceiveProps() {
+    // let total = this.calculateTotalIncome();
+    // this.setState({income: total});
+  }
+
+  componentDidUpdate() {
+    const data = {
       'persons': {
         'Tui': {
           'salary': {
-            '2018': total
+            '2018': this.totalIncome()
           },
           'dependants': {
-            '2018': 1
+            '2018': this.props.dependants
           }
         }
       },
@@ -391,7 +404,7 @@ class Entitlement extends React.Component {
         'property_1': {
           'owners': ['Tui'],
           'rates': {
-            '2018': 9
+            '2018': this.props.rates_bill
           },
           'rates_rebate': {
             '2018': null
@@ -399,16 +412,18 @@ class Entitlement extends React.Component {
         }
       }
     };
-    axios
-      .post(`${config.OPENFISCA_ORIGIN}`, newData)
-      .then(res => console.log(res))
-      .catch(err => console.log('err fetching properties', err));
+    console.log(data);
+    // axios
+    //   .post(`${config.OPENFISCA_ORIGIN}`, data)
+    //   .then(res => console.log(res))
+    //   .catch(err => console.log('err fetching properties', err));
   }
 
   render() {
-    return <div>
-      <p></p>
-    </div>;
+    return (
+      <div>
+        <p>Income $<strong>{this.totalIncome()}</strong></p>
+      </div>);
   }
 }
 

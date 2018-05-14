@@ -7,18 +7,19 @@ import RadioWithTextField from '../components/Forms/RadioWithTextField';
 import IncomeListSection from '../components/Forms/IncomeListSection';
 
 var firstTimeApplication = [
+  // {
+  //   'component': TextBoxWithAccordian,
+  //   'field_name': 'address',
+  //   'label': {
+  //     'en': {
+  //       'text': 'What is your address?'
+  //     },
+  //     'mi': {
+  //       'text': 'What is your address?'
+  //     }
+  //   }
+  // },
   {
-    'component': TextBoxWithAccordian,
-    'field_name': 'address',
-    'label': {
-      'en': {
-        'text': 'What is your address?'
-      },
-      'mi': {
-        'text': 'What is your address?'
-      }
-    }
-  }, {
     'component': RadioWithRadio,
     'field_name': 'lived_here_before_july_2017',
     'label': {
