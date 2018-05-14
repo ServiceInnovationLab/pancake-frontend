@@ -56,7 +56,8 @@ class IncomeListSection extends React.Component {
         }}>
           <fieldset>
             <label style={{
-              fontSize: '20px'
+              fontSize: '20px',
+              fontWeight: '500'
             }}>What was your total income for the 2017/18 tax year?</label>
             <p>You will need to know your total income for the 2016/2017 Tax year (1 March
               2016 - 31 March 2017) including rental income from any properties you own,
@@ -220,7 +221,7 @@ class IncomeList extends React.Component {
           return (
             <Fragment key={i}>
               <li>
-                <legend className="radio-list-container">
+                <label className="radio-list-container">
                   <input
                     type="checkbox"
                     name={underscorize(item.label)}
@@ -228,14 +229,17 @@ class IncomeList extends React.Component {
                   <div className="radio-list-multi">{item.label}
                     <span className="checkmark"></span>
                   </div>
-                </legend>
+                </label>
               </li>
               <div>
                 {!this.props.showRadios && item.child === 'radio' && <RadioGroup
                   handleChildRadioClick={this.handleChildRadioClick}
                   name={`${underscorize(item.label)}_${this.props.name}`}
                   options={item.options && item.options}
-                  type={this.state.ShowRadio ? 'radio' : 'hidden'}/>}
+                  type={this.state.ShowRadio
+                  ? 'radio'
+                  : 'hidden'}/>
+}
                 {item.child === 'text-field' && <Fragment>
                   <input
                     type={this.state.ShowTextField
@@ -280,9 +284,11 @@ class IncomeList extends React.Component {
 const RadioGroup = props => {
   return (
     <div
-      style={props.type !== 'radio' ? {
+      style={props.type !== 'radio'
+      ? {
         display: 'none'
-      } : null}>
+      }
+      : null}>
       {props.options && props
         .options
         .map((item, i) => {
@@ -395,12 +401,14 @@ class Entitlement extends React.Component {
         otherOptionValues.push(parseInt(incomeListStates[key]));
       }
     }
-    const total = firstTotal + otherOptionValues.length ? otherOptionValues.reduce((a, b) => a + b, 0) : 0;
+    const total = firstTotal + otherOptionValues.length
+      ? otherOptionValues.reduce((a, b) => a + b, 0)
+      : 0;
 
   }
 
   render() {
-    return <div></div>;
+    return <div> <p>Entitlement: {} </p> </div>;
   }
 }
 
