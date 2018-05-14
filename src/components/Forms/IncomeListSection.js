@@ -135,6 +135,9 @@ class IncomeList extends React.Component {
     if (this.state.ShowTextField) {
       //this.setState({});
       document.getElementsByName('wos_applicant')[0].value = 0;
+
+      this.setState({[state]: !this.state[state] });
+    } else {
       this.setState({[state]: !this.state[state] });
     }
   }
@@ -161,11 +164,12 @@ class IncomeList extends React.Component {
   }
 
   handleTextChange(e) {
+    // console.log('in handleTextChange', e.target.value)
     if (e.target.name === 'wage_or_salary_applicant') {
-      this.setState({wos_applicant: e.target.value});
+      this.setState({wos_applicant: e.target.value})
     }
     if (e.target.name === 'wage_or_salary_partner') {
-      this.setState({wos_partner: e.target.value});
+      this.setState({wos_partner: e.target.value})
     }
   }
 
