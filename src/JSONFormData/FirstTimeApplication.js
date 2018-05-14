@@ -92,24 +92,11 @@ var firstTimeApplication = [
     },
     'accordianText': {
       'en': {
-        'text': '<p>If you are eligible for a rebate under the Rates Rebate (Retirement Village Residents)\
-                 Amendment Act 2018 you will be able to apply for a rebate in the new rating year after\
-                 1 July 2018.</p>\
-                 <p>If the property you own is part of owner/occupier flats (often referred to as\
-                 company share flats or apartments), you will need to fill in an additional declaration\
-                 form and bring it with you when visiting the council.</a> This can be found\
-                 <a href="https://www.dia.govt.nz/Pubforms.nsf/URL/OwnerOccupierDeclarationFormJuly2011.pdf/$file/OwnerOccupierDeclarationFormJuly2011.pdf">\
-                 here</a></p>'
+        'text': '<p>If you are eligible for a rebate under the Rates Rebate (Retirement Village Residents) Amendment Act 2018 you will be able to apply for a rebate in the new rating year after 1 July 2018.</p> <p>If the property you own is part of owner/occupier flats (often referred to as company share flats or apartments), you will need to fill in an additional declaration form and bring it with you when visiting the council.</a> This can be found <a href="https://www.dia.govt.nz/Pubforms.nsf/URL/OwnerOccupierDeclarationFormJuly2011.pdf/$file/OwnerOccupierDeclarationFormJuly2011.pdf"> here</a></p>'
       },
       'mi': {
-        'text': '<p>If you are eligible for a rebate under the Rates Rebate (Retirement Village Residents)\
-                 Amendment Act 2018 you will be able to apply for a rebate in the new rating year after\
-                 1 July 2018.</p>\
-                 <p>If the property you own is part of owner/occupier flats (often referred to as\
-                 company share flats or apartments), you will need to fill in an additional declaration\
-                 form and bring it with you when visiting the council.</a> This can be found\
-                 <a href="https://www.dia.govt.nz/Pubforms.nsf/URL/OwnerOccupierDeclarationFormJuly2011.pdf/$file/OwnerOccupierDeclarationFormJuly2011.pdf">\
-                 here</a></p>'
+        'text': '<p>If you are eligible for a rebate under the Rates Rebate (Retirement Village Residents) Amendment Act 2018 you will be able to apply for a rebate in the new rating year after 1 July 2018.</p> <p>If the property you own is part of owner/occupier flats (often referred to as company share flats or apartments), you will need to fill in an additional declaration form and bring it with you when visiting the council.</a> This can be found <a href="https://www.dia.govt.nz/Pubforms.nsf/URL/OwnerOccupierDeclarationFormJuly2011.pdf/$file/OwnerOccupierDeclarationFormJuly2011.pdf"> here</a></p>'
+
       }
     }
   },
