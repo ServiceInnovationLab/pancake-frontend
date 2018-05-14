@@ -1,8 +1,7 @@
 import React, {Fragment} from 'react';
 import {reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
-// import validate from '../../helpers/validate'
-import {removeUnderscore} from '../../helpers/strings';
+
 import '../../styles/RadioGroup.css';
 import '../../styles/CheckboxGroup.css';
 import '../../styles/FormValidation.css';
@@ -126,7 +125,7 @@ class Sign extends React.Component {
               onEnd={()=>this.setState({sig1: this.sigCanvas.toDataURL()})}
               penColor='black' ref={(ref) => { this.sigCanvas = ref }} canvasProps={{width: 500, height: 300, className: 'sigCanvas'}} />
             <button onClick={()=>{this.sigCanvas.clear()}}>Clear</button>
-            
+
             <h3>Witness</h3>
             <p>Declared at {new Date().toLocaleString()} before me</p>
             <div style={{margin: '30px 0'}}>
