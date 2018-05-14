@@ -11,7 +11,6 @@ import '../../styles/FormValidation.css';
 import Accordian from '../Forms/Accordian';
 import axios from 'axios';
 import config from '../../config';
-// import SignaturePad from 'react-signature-pad';
 
 class WizardFormSecondPage extends React.Component {
   constructor(props) {
@@ -54,7 +53,6 @@ class WizardFormSecondPage extends React.Component {
 
   saveFormData() {
     let values = this.props.formState.form.wizard.values;
-    console.log(values)
     let data = {
       "type": "rebate-forms",
       "attributes": {
@@ -74,9 +72,7 @@ class WizardFormSecondPage extends React.Component {
   }
   render() {
     const {handleSubmit} = this.props
-
     return (
-      <Fragment>
         <div className="container">
           <a
             onClick={() => {
@@ -125,7 +121,6 @@ class WizardFormSecondPage extends React.Component {
             {this.state.complete_error && <Failed/>}
           </form>
         </div>
-      </Fragment>
     )
   }
 }

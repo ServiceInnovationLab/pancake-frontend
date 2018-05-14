@@ -1,61 +1,21 @@
 import React from 'react';
 import { Field, FieldArray } from 'redux-form';
 import RemoveButton from './RemoveButton';
+import store from '../../store';
+
 
 export default class RadioWithSelect extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { showYes: false
-    };
-  }
-
-  toggle(item) {
-    this.setState({showYes: item === 'yes' ? true : false});
-  }
-
   render() {
-    let showYes = {
-      display: this.state.showYes ? 'block' : 'none'
-    };
-
-    return (
-      <div>
-        <fieldset className="radio-group">
-          {this.props.label && <legend>
-            {this.props.label}
-          </legend>}
-
-          {showYes && <div style={showYes}>
-            <label>{this.props.textFieldLabel}</label>
-            {this.props.instructions && <p>{this.props.instructions}</p>}
-            <input type="number" name="otherIncomeParent" placeholder={this.props.placeholder} />
-          </div>}
-          <FieldArray name={this.props.name ? this.props.name : 'otherIncome'} component={renderOtherIncome} />
-        </fieldset>
-
-      </div>
-    );
+    return <FieldArray getOtherOptionValues={this.props.getOtherOptionValues} name={this.props.name ? this.props.name : 'otherIncome'} component={renderOtherIncome} />;
   }
 }
 
 class renderOtherIncome extends React.Component {
-  
   constructor(props) {
     super(props);
     this.state = {
       other_source: false
     };
-
-    this.handleOnChange = this.handleOnChange.bind(this);
-  }
-
-  handleOnChange(e) {
-    let index = e.target.selectedIndex;
-    if(e.nativeEvent.target[index].text === 'Income from other source (please identify)' && index === 10) {
-      this.setState({other_source: true});
-    } else {
-      this.setState({other_source: false});
-    }
   }
 
   render() {
@@ -68,7 +28,7 @@ class renderOtherIncome extends React.Component {
             <h4>Other income #{index + 1} </h4>
             <RemoveButton fields={fields} index={index} />
             <div className="select-wrapper">
-              <select name={`${income}.selectedOption`} onChange={e=>this.handleOnChange(e)}>
+              <select name={`${income}.selectedOption`}>
                 <option>Wage or salary</option>
                 <option>Work and incomes supplements (e.g. Accommodation Supplement)</option>
                 <option>Personal Superannuation</option>
@@ -82,17 +42,26 @@ class renderOtherIncome extends React.Component {
                 <option>Income from other source (please identify)</option>
               </select>
             </div>
+
             {this.state.other_source && <Field
               name={`${income}.incomeFrom`}
               type="text"
               component={renderField}
               label="Where did this income come from?"
+              onChange={e=> {
+                store[`${income}.incomeFrom`] = e.target.value;
+              }}
             />}
+
             <Field
               name={`${income}.totalAmount`}
               type="number"
               component={renderField}
               label="Enter the total amount"
+              onChange={e=>{
+                this.props.getOtherOptionValues(store, income, e.target.value, index);
+                //store[`${income}.totalAmount`] = e.target.value;
+              }}
             />
           </li>
         ))}

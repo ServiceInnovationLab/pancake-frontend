@@ -1,7 +1,6 @@
 import React, {Fragment} from 'react';
 import {underscorize} from '../../helpers/strings';
 import RadioWithSelect from './RadioWithSelect';
-import {Field} from 'redux-form';
 
 class IncomeListSection extends React.Component {
   constructor(props) {
@@ -69,13 +68,11 @@ class IncomeList extends React.Component {
       jobseeker_support: 0,
       sole_parent_support: 0,
       supported_living: 0
-
-
     };
 
     this.handleChild = this.handleChild.bind(this);
     this.handleChildRadioClick = this.handleChildRadioClick.bind(this);
-
+    this.getOtherOptionValues = this.getOtherOptionValues.bind(this);
   }
 
   setChild(state) {
@@ -108,7 +105,7 @@ class IncomeList extends React.Component {
   }
 
   handleTextChange(e) {
-    console.log('in handleTextChange', e.target.value)
+    // console.log('in handleTextChange', e.target.value)
     if(e.target.name === 'wage_or_salary_applicant') {
       this.setState({wos_applicant: e.target.value})
     }
@@ -119,6 +116,13 @@ class IncomeList extends React.Component {
 
   getWageOrSalary(name) {
     return typeof document.getElementsByName(name)[0] !== 'undefined' ? document.getElementsByName(name)[0].value : 0;
+  }
+
+  getOtherOptionValues(store, income, value, index) {
+    const data = {};
+    data[`otherOptionValue${index}`] = value;
+    this.setState(data);
+    store[`${income}.totalAmount`] = value;
   }
 
   render() {
@@ -180,7 +184,11 @@ class IncomeList extends React.Component {
                 }
                 
                 {this.state.ShowNestedGroup && item.child === 'nested-group' &&
-                  <NestedGroup visible={this.state.ShowNestedGroup} name={`${underscorize(item.label)}_${this.props.name}`} />
+                  <RadioWithSelect
+                    visible={this.state.ShowNestedGroup}
+                    name={`${underscorize(item.label)}_${this.props.name}`}
+                    getOtherOptionValues={this.getOtherOptionValues}
+                  />
                 }
               </li>
             );
@@ -189,6 +197,7 @@ class IncomeList extends React.Component {
         {/* {console.log(this.props)} */}
 
         <Entitlement
+          incomeListStates={this.state}
           dependants={document.getElementsByName('dependants')[0]}
           hasPartner={this.props.hasPartner}
           data={this.props}
@@ -198,7 +207,7 @@ class IncomeList extends React.Component {
           jobseeker_support={this.state.jobseeker_support}
           sole_parent_support={this.state.sole_parent_support}
           supported_living={this.state.supported_living}
-          wos_total={(parseInt(this.getWageOrSalary('wos_applicant')) + parseInt(this.getWageOrSalary('wos_partner')))}
+          wos_total={(parseInt(this.getWageOrSalary('wos_applicant'), 0) + parseInt(this.getWageOrSalary('wos_partner'), 0))}
         />
       </Fragment>
     );
@@ -220,30 +229,14 @@ const RadioGroup = props => {
   );
 };
 
-const Textfield = props => {
-  return <input
-    type={props.type}
-    name={props.name}
-    onChange={e=>props.handleTextChange(e)}
-    value={props.value} />;
-};
-
-const NestedGroup = props => {
-  return <RadioWithSelect visible={props.visible} type={props.type} name={props.name} />;
-};
 
 class Entitlement extends React.Component {
 
-  constructor(props) {
-    super(props);
-  }
- 
   componentDidUpdate() {
     let sa_total = 0;
     let jss_total = 0;
     let sps_total = 0;
     let spl_total = 0;
-    let wos_total = 0;
 
     if(typeof this.props.dependants !== 'undefined') {
       var dependants = this.props.dependants.value ? this.props.dependants.value : 0;
@@ -317,19 +310,29 @@ class Entitlement extends React.Component {
     }
 
     // WAGE OR SALARY
-    // console.log((sa_total + jss_total + sps_total + spl_total + this.props.wos_total));
-    wos_total += this.props.wos_total
-    console.log('wos total1', this.props.wos_total)
-  }
+    const firstTotal = (sa_total + jss_total + sps_total + spl_total + this.props.wos_total) || 0;
+    
 
-
-  calculate() {
+    // OTHER INCOME
+    const {incomeListStates} = this.props;
+    const otherOptionValueStates = Object
+      .keys(incomeListStates)
+      .filter(state => /^otherOptionValue/.test(state));
+    const otherOptionValues = [];
+    for (const key in incomeListStates) {
+      if (otherOptionValueStates.includes(key)) {
+        otherOptionValues.push(parseInt(incomeListStates[key]));
+      }
+    }
+    const total = firstTotal + otherOptionValues.length ? otherOptionValues.reduce((a, b) => a + b, 0) : 0;
+    
   }
 
   render() {
     return (
       <div>
-        <p>Entitlement:</p>
+        
+        <p>Entitlement: {}</p>
       </div>
     );
   }

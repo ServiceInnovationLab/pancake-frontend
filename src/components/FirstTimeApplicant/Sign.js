@@ -1,8 +1,6 @@
 import React, {Fragment} from 'react';
 import {reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
-// import validate from '../../helpers/validate'
-import {removeUnderscore} from '../../helpers/strings';
 import '../../styles/RadioGroup.css';
 import '../../styles/CheckboxGroup.css';
 import '../../styles/FormValidation.css';
