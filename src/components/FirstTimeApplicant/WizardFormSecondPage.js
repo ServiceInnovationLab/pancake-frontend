@@ -62,12 +62,13 @@ class WizardFormSecondPage extends React.Component {
     return this.props.formState.form.wizard.values['rates_bill'];
   }
   saveFormData() {
-    let values = this.props.formState.form.wizard.values;
+    let fields = this.props.formState.form.wizard.values;
+    fields['income'] = this.props.storeValues.totalIncome;
     let data = {
       "type": "rebate-forms",
       "attributes": {
-        "valuation_id": values.valuation_id,
-        "fields": values
+        "valuation_id": fields.valuation_id,
+        "fields": fields
       }
     };
 
