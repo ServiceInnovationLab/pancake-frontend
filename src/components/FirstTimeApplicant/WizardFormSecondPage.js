@@ -11,6 +11,7 @@ import '../../styles/FormValidation.css';
 import Accordian from '../Forms/Accordian';
 import axios from 'axios';
 import config from '../../config';
+import Rebate from '../widgets/Rebate';
 
 class WizardFormSecondPage extends React.Component {
   constructor(props) {
@@ -32,7 +33,11 @@ class WizardFormSecondPage extends React.Component {
       .bind(this);
     this.saveFormData = this
       .saveFormData
-      .bind(this)
+      .bind(this);
+
+    this.ratesBill = this.ratesBill.bind(this);
+    this.dependants = this.dependants.bind(this);
+    this.totalIncome = this.totalIncome.bind(this);
   }
 
   componentDidMount() {
@@ -49,6 +54,18 @@ class WizardFormSecondPage extends React.Component {
     this.setState({
       page: this.state.page - 1
     });
+  }
+
+
+  dependants() {
+    return this.props.formState.form.wizard.values['dependants'];
+  }
+  ratesBill() {
+    return this.props.formState.form.wizard.values['rates_bill'];
+  }
+  totalIncome() {
+    return 40000;
+    // return this.props.formState.form.wizard.values['total_income'];
   }
 
   saveFormData() {
@@ -119,6 +136,7 @@ class WizardFormSecondPage extends React.Component {
                 </div></section>);
             })}
             <section className="container"><div>
+            <Calculated rates_bill={this.ratesBill()} dependants={this.dependants()} income={this.totalIncome()} />
             <Accordian
             label="It is an offence to knowingly make a false statement in your application"
             text="<p>You can find a list of the total amounts for Work and Income payments, including NZ Superannuation https://www.dia.govt.nz/diawebsite.nsf/Files/Benefit-Schedule-2016-17/$file/Benefit-Schedule-2016-17.pdf <br/><br/>You can get this from a few places, such as:
@@ -129,7 +147,6 @@ class WizardFormSecondPage extends React.Component {
             </div>
             <p>This will be applied to your rates account once your application has been fully proccessed.</p>
             </section>
-            <Calculated/>
             <Submit/>
             {this.state.complete && <Success/>}
             {this.state.complete_error && <Failed/>}
@@ -214,15 +231,23 @@ const Success = () => {
   );
 }
 
-const Calculated = () => {
-  return '';
-  //  (
-  //   <Fragment>
-  //     <h2>We have calculated that your entitlement is $620</h2>
-  //     <p>This will be applied to your rates account once your application has been
-  //       fully proccessed.</p>
-  //   </Fragment>
-  // );
+class Calculated extends React.Component {
+
+  render() {
+    return (
+      <Fragment>
+        <p className="heading-paragraph">
+          Based on a <strong>rates bill of ${this.props.rates_bill}
+          </strong> and <strong> income of ${this.props.income}</strong> and <strong>{this.props.dependants} dependants</strong>.
+        </p>
+        <Rebate dependants={this.props.dependants}
+                rates_bill={this.props.rates_bill}
+                income={this.props.income} />
+        <p>This will be applied to your rates account once your application has been
+          fully proccessed.</p>
+      </Fragment>
+    );
+  }
 }
 const Submit = () => {
   return (
