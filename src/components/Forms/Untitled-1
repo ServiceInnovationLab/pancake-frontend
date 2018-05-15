@@ -53,7 +53,7 @@ class IncomeListSection extends React.Component {
             <br/>
             <br/>
               Select any that apply to you.</p>
-            <div className="row">
+            <div className="row" style={{position: 'relative', marginBottom: '50px'}}>
               <ul className="column list-stripped">
                 <li>
                   <h4>Your Income</h4>
@@ -112,6 +112,7 @@ class IncomeList extends React.Component {
 
   setChild(state, clicked) {
     if (this.state.ShowTextField) {
+
       if(clicked === 'wage_or_salary0') {
         document.getElementsByName('wos_applicant')[0].value = 0;
       }
@@ -124,7 +125,6 @@ class IncomeList extends React.Component {
       this.setState({[state]: !this.state[state] });
     }
   }
-
 
   handleChild(val, clicked) {
     switch (val.child) {
@@ -143,7 +143,6 @@ class IncomeList extends React.Component {
     }
   }
 
-
   handleChildRadioClick(e, name) {
     this.setState({[name]: `${name}_${underscorize(e)}`});
   }
@@ -151,10 +150,10 @@ class IncomeList extends React.Component {
   handleTextChange(e) {
     // console.log('in handleTextChange', e.target.value)
     if (e.target.name === 'wage_or_salary_applicant') {
-      this.setState({wos_applicant: e.target.value});
+      this.setState({wos_applicant: e.target.value})
     }
     if (e.target.name === 'wage_or_salary_partner') {
-      this.setState({wos_partner: e.target.value});
+      this.setState({wos_partner: e.target.value})
     }
   }
 
@@ -198,8 +197,6 @@ class IncomeList extends React.Component {
         child: 'nested-group'
       }
     ];
-
-    let dependants = document.getElementsByName('dependants')[0];
     return (
       <Fragment>
         {list.map((item, i) => {
@@ -217,7 +214,7 @@ class IncomeList extends React.Component {
                 </label>
               </li>
               <div>
-                {dependants < 1 && !this.props.showRadios && item.child === 'radio' && <RadioGroup
+                {!this.props.showRadios && item.child === 'radio' && <RadioGroup
                   handleChildRadioClick={this.handleChildRadioClick}
                   name={`${underscorize(item.label)}_${this.props.name}`}
                   options={item.options && item.options}
@@ -254,8 +251,10 @@ class IncomeList extends React.Component {
           jobseeker_support={this.state.jobseeker_support}
           sole_parent_support={this.state.sole_parent_support}
           supported_living={this.state.supported_living}
-          wos_total={(parseInt(this.getWageOrSalary('wos_applicant'), 0) + parseInt(this.getWageOrSalary('wos_partner'), 0))
-        }/>
+          wos_total={(parseInt(this.getWageOrSalary('wos_applicant'), 0) + parseInt(this.getWageOrSalary('wos_partner'), 0))}
+          wos_single={parseInt(this.getWageOrSalary('wos_applicant'), 0)}
+          wos_partner={parseInt(this.getWageOrSalary('wos_partner'), 0)}
+        />
       </Fragment>
     );
   }
@@ -312,15 +311,11 @@ class Entitlement extends React.Component {
       } else { // no children
         if (this.props.hasPartner) {
           sa_total += 17458.48;
-        }
-
-        if(!this.props.hasPartner) {
+        } else { // SINGLE
           if (this.props.super_annuation_applicant.includes('alone')) {
             sa_total += 23058.36;
           } else if (this.props.super_annuation_applicant.includes('sharing')) {
             sa_total += 21191.56;
-          } else {
-            sa_total += 23058.36;
           }
         }
       }
@@ -354,6 +349,28 @@ class Entitlement extends React.Component {
       }
     }
 
+    // console.log('dependants', dependants);
+    // // SUPPORTED LIVING PAYMENT
+    // if (this.props.supported_living) {
+    //   if (dependants.length > 0) {
+    //     if (this.props.hasPartner) {
+    //       console.log(this.props.hasPartner);
+    //       spl_total += 13442.00;
+    //     }
+
+    //     if (!this.props.hasPartner) {
+    //       spl_total += 22134.84;
+    //     }
+    //   }
+
+    //   if (dependants.length === 0) { // no kids
+    //     if (this.props.hasPartner) {
+    //       spl_total += 12716.08; // married, no children
+    //     } else {
+    //       spl_total += 15366.52; // single, no children
+    //     }
+    //   }
+    // }
     if (this.props.supported_living) {
       if (dependants > 0) {
         if (this.props.hasPartner) {
@@ -372,8 +389,11 @@ class Entitlement extends React.Component {
       }
     }
     // WAGE OR SALARY
+    // const partner = (this.props.wos_partner - this.props.wos_applicant);
     // console.log('sa_total', sa_total, 'jss_total', jss_total, 'sps_total', sps_total, 'spl_total', spl_total, 'this.props.wos_total',this.props.wos_total || 0);
-    const firstTotal = (sa_total + jss_total + sps_total + spl_total + (this.props.wos_total || 0)) || 0;
+    
+    const wos_total = this.props.wos_total;
+    const firstTotal = (sa_total + jss_total + sps_total + spl_total + wos_total  || 0) || 0;
 
     // OTHER INCOME
     const {incomeListStates} = this.props;
@@ -393,7 +413,6 @@ class Entitlement extends React.Component {
     return total;
 
   }
-
 
   componentDidUpdate() {
     const data = {
