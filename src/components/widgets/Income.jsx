@@ -30,7 +30,6 @@ class Income extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('fetchMinMaxIncome');
     if (nextProps.dependants && nextProps.rates_bill) {
       let data = {
         'persons': {
