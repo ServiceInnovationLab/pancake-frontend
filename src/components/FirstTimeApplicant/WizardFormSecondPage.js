@@ -97,7 +97,8 @@ class WizardFormSecondPage extends React.Component {
       );
   }
   render() {
-    const {handleSubmit} = this.props
+    const {handleSubmit} = this.props;
+    let help_text = "<p>You can find a list of the total amounts for Work and Income payments, including NZ Superannuation https://www.dia.govt.nz/diawebsite.nsf/Files/Benefit-Schedule-2016-17/$file/Benefit-Schedule-2016-17.pdf <br/><br/>You can get this from a few places, such as:<ul><li>Inland Revenue, by calling them on 0800 775 247 and asking for a Personal Tax Summary, or logging on to your MyIR account at IRD.govt.nz.</li><li>from Ministry of Social Development</li> <li>through your employer, accountant etc.</il></ul></p>";
     return (
       <Fragment>
         <div className="theme-main">
@@ -136,11 +137,8 @@ class WizardFormSecondPage extends React.Component {
             <Calculated rates_bill={this.ratesBill()} dependants={this.dependants()} income={this.totalIncome()} />
             <Accordian
             label="It is an offence to knowingly make a false statement in your application"
-            text="<p>You can find a list of the total amounts for Work and Income payments, including NZ Superannuation https://www.dia.govt.nz/diawebsite.nsf/Files/Benefit-Schedule-2016-17/$file/Benefit-Schedule-2016-17.pdf <br/><br/>You can get this from a few places, such as:
-              <ul><li>Inland Revenue, by calling them
-            on 0800 775 247 and asking for a Personal Tax Summary, or logging on to your MyIR account at IRD.govt.nz.</li>
-            <li>from Ministry
-            of Social Development, </li> <li>through your employer, accountant etc.</il></ul></p>"/>
+            text={help_text}
+            />
             </div>
             <p>This will be applied to your rates account once your application has been fully proccessed.</p>
             </section>
@@ -156,6 +154,7 @@ class WizardFormSecondPage extends React.Component {
 }
 
 const Head = () => {
+  let help_text = "<p>You can find a list of the total amounts for Work and Income payments, including NZ Superannuation <a href=\"https://www.dia.govt.nz/diawebsite.nsf/Files/Benefit-Schedule-2016-17/$file/Benefit-Schedule-2016-17.pdf\">here</a></p><p>You can get this from a few places, such as:<ul><li>Inland Revenue, by calling them on 0800 775 247 and asking for a Personal Tax Summary, or logging on to your MyIR account at IRD.govt.nz.</li><li>from Ministry of Social Development, </li> <li>through your employer, accountant etc.</il></ul></p>";
   return (
     <div className="container">
       <a
@@ -178,11 +177,7 @@ const Head = () => {
           interest and dividends, and overseas income (converted to $NZD). </p>
           <Accordian
             label="Where can I get my income details?"
-            text="<p>You can find a list of the total amounts for Work and Income payments, including NZ Superannuation</a> <a hrefhttps://www.dia.govt.nz/diawebsite.nsf/Files/Benefit-Schedule-2016-17/$file/Benefit-Schedule-2016-17.pdf <br/><br/>You can get this from a few places, such as:
-              <ul><li>Inland Revenue, by calling them
-            on 0800 775 247 and asking for a Personal Tax Summary, or logging on to your MyIR account at IRD.govt.nz.</li>
-            <li>from Ministry
-            of Social Development, </li> <li>through your employer, accountant etc.</il></ul></p>"/>
+            text={help_text} />
 
       </section>
 
@@ -222,7 +217,7 @@ const Success = () => {
 
       <h4>Your application form has been digitally sent to your local council.<br/> Now you need to visit the Tauranga Council at 91 Willow Street to finalise your rebate.</h4>
 
-      <p> 
+      <p>
         Proof of income may be requested, especially for those with income sources other than superannuation or work and income benefits. <br/><br/>If you are self-employed, you must supply evidence with your application. Evidence of income helps to ensure you receive the correct rebate promptly. <br/><br/>Tell the Service Centre staff you're there to sign your rates rebate application.
       </p>
       <a className="btn btn-primary">Find my nearest service centre</a>
