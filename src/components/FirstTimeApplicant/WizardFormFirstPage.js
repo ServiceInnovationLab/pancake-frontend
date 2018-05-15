@@ -17,7 +17,7 @@ class WizardFormFirstPage extends React.Component {
       page: 1,
       properties: [],
       rate_payers: [],
-      selectedRatesPayer: '',
+      selectedRatesPayer: ''
     };
     this.nextPage = this
       .nextPage
@@ -55,12 +55,8 @@ class WizardFormFirstPage extends React.Component {
 
   handleAddressSelection(state) {
     this.setState(state);
-    this
-      .props
-      .change('address', state.location.location);
-    this
-      .props
-      .change('valuation_id', this.state.location.valuation_id);
+    this.props.change('address', state.location.location);
+    this.props.change('valuation_id', this.state.location.valuation_id);
 
     if (state['rates_bills']) {
       let attributes = state['rates_bills'][0]['attributes'];
@@ -68,9 +64,11 @@ class WizardFormFirstPage extends React.Component {
         'rates_bill': attributes['total_rates'],
         'rating_year': attributes['rating_year']
       });
+      this.props.change('rates_bill', attributes['total_rates']);
     }
     else {
       this.setState({rates_bills: null, rating_year: null});
+      this.props.change('rates_bill', null);
     }
   }
 
@@ -78,6 +76,7 @@ class WizardFormFirstPage extends React.Component {
     if (newValue) {
       let dependants = (newValue >= 0 ? newValue : 0);
       this.setState({dependants});
+      this.props.change('dependants', dependants);
     }
   }
 
@@ -86,12 +85,18 @@ class WizardFormFirstPage extends React.Component {
     this.setState({income, direction});
   }
 
+  handleKeyPress = (event) => {
+    if(event.key === 'Enter'){
+      event.preventDefault()
+    }
+  }
+
   render() {
     const {handleSubmit} = this.props;
     return (
       <div className="container autocomplete-form">
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} onKeyPress={this.handleKeyPress}>
           <section>
             <h2 className="heading-secondary">Online rates rebates applications are now open exclusively for Tauranga residents<br/>
             </h2>
@@ -122,6 +127,7 @@ class WizardFormFirstPage extends React.Component {
             <div className="arrow-box primary">
                 <Address onSelection={this.handleAddressSelection} />
 
+                <Field name="rates_bill" type="hidden" component={renderField}/>
                 <Field name="valuation_id" type="hidden" component={renderField}/>
                 {this.state.rates_bill && this.state.rating_year && <Fragment>
                   <p className="select-results">
@@ -141,7 +147,8 @@ class WizardFormFirstPage extends React.Component {
                     type="number"
                     min="0"
                     step="1"
-                    component={renderField}/>
+                    component={renderField}
+                    />
                   dependants.
                 </label>
               </div>
@@ -155,17 +162,12 @@ class WizardFormFirstPage extends React.Component {
               onSelection={this.handleIncome}
             />
 
+            <Eligible
+              dependants={this.state.dependants}
+              rates_bill={this.state.rates_bill}
+              income={this.state.income}
+              />
 
-            <Fragment>
-              <Eligible
-                dependants={this.state.dependants}
-                rates_bill={this.state.rates_bill}
-                income={this.state.income}
-                />
-              <div className="layout">
-                <button type="submit" className="btn-primary">Apply now</button>
-              </div>
-            </Fragment>
           </section>
         </form>
       </div>

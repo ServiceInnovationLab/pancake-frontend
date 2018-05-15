@@ -1,21 +1,19 @@
-import React, { Component } from 'react';
-import App from '../components/App';
-import { connect } from 'react-redux';
-import * as actionCreators from '../actions/index';
+// import React from 'react';
 
-class AppCon extends Component {
+// const ThemeContext = React.createContext('light');
 
-  render() {
-    return (
-      // <main>
-      <App />
-      // </main>
-    );
-  }
-}
+// class Container extends React.Component {
 
-const mapStateToProps=(state)=>{
-  return state;
-};
+//   state = this.props.initialState;
 
-export default connect (mapStateToProps, actionCreators)(AppCon);
+//   render() {
+//     return this.props.children({
+//       ...this.state
+//     });
+//   }
+// }
+// // export default Container;
+
+// const actions = {
+//   toggle: () => state => ({ visible: !state.visible})
+// };

@@ -5,7 +5,10 @@ const RemoveButton = props => {
     type="button"
     title="Remove income"
     className="nested-button"
-    onClick={() => props.fields.remove(props.index)}
+    onClick={() => {
+      props.removeOtherOptionValues(props.index);
+      props.fields.remove(props.index);
+    }}
   >Remove income
   </button>;
 };

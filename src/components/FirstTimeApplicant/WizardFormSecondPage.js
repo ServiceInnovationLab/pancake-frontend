@@ -11,7 +11,7 @@ import '../../styles/FormValidation.css';
 import Accordian from '../Forms/Accordian';
 import axios from 'axios';
 import config from '../../config';
-// import SignaturePad from 'react-signature-pad';
+import Rebate from '../widgets/Rebate';
 
 class WizardFormSecondPage extends React.Component {
   constructor(props) {
@@ -33,7 +33,11 @@ class WizardFormSecondPage extends React.Component {
       .bind(this);
     this.saveFormData = this
       .saveFormData
-      .bind(this)
+      .bind(this);
+
+    this.ratesBill = this.ratesBill.bind(this);
+    this.dependants = this.dependants.bind(this);
+    this.totalIncome = this.totalIncome.bind(this);
   }
 
   componentDidMount() {
@@ -52,9 +56,18 @@ class WizardFormSecondPage extends React.Component {
     });
   }
 
+  dependants() {
+    return this.props.formState.form.wizard.values['dependants'];
+  }
+  ratesBill() {
+    return this.props.formState.form.wizard.values['rates_bill'];
+  }
+  totalIncome() {
+    return 40000;
+    // return this.props.formState.form.wizard.values['total_income'];
+  }
   saveFormData() {
     let values = this.props.formState.form.wizard.values;
-    console.log(values)
     let data = {
       "type": "rebate-forms",
       "attributes": {
@@ -72,35 +85,29 @@ class WizardFormSecondPage extends React.Component {
   goHome() {
     return window.location = '#/';
   }
+
+  renderAddress(){
+    return (
+      <section>
+        <div className="container">
+          <h4>Your address is</h4>
+          {this.props.formState.form.wizard.values['address']}
+        </div>
+      </section>
+      );
+  }
   render() {
     const {handleSubmit} = this.props
-
     return (
       <Fragment>
-        <div className="container">
-          <a
-            onClick={() => {
-            window
-              .location
-              .reload()
-          }}
-            style={{
-            'color': '#aaa',
-            'marginTop': '15px',
-            'marginBottom': '60px',
-            'display': 'inline-block'
-          }}>
-            &larr; Home
-          </a>
+        <div className="theme-main">
           <Head/>
-          <form
-            onSubmit={handleSubmit(this.saveFormData)}
-            className="container form-inner">
+          {this.renderAddress()}
+          <form onSubmit={handleSubmit(this.saveFormData)}>
             {firstTimeApplication.map((field, key) => {
               let label = field.label['en'].text;
               let form_values = '';
-              return (<Field
-                key={key}
+              return (<section className={field.theme} key={key}><div className="container"><Field
                 label={label}
                 name={field.isNested
                 ? `has${camelCaser(label)}Checked`
@@ -114,25 +121,55 @@ class WizardFormSecondPage extends React.Component {
                 checkboxLabel={field.checkboxLabel && field.checkboxLabel['en'].text}
                 checkboxText={field.checkboxText && field.checkboxText['en'].text}
                 options={field.options && field.options['en'].text}
+                childOptions={field.childOptions && field.childOptions['en'].text}
+                childLabel={field.childLabel && field.childLabel['en'].text}
+                childInstructions={field.childInstructions && field.childInstructions['en'].text}
                 optionsText={field.optionsText && field.optionsText['en'].text}
                 textFieldLabel={field.textFieldLabel && field.textFieldLabel['en'].text}
                 placeholder={field.placeholder && field.placeholder['en'].text}
-                hasAddressFinder={field.hasAddressFinder}/>);
+                hasAddressFinder={field.hasAddressFinder}
+                theme={field.theme && field.theme}
+                />
+                </div></section>);
             })}
-            <Calculated/>
+            <section className="container"><div>
+            <Calculated rates_bill={this.ratesBill()} dependants={this.dependants()} income={this.totalIncome()} />
+            <Accordian
+            label="It is an offence to knowingly make a false statement in your application"
+            text="<p>You can find a list of the total amounts for Work and Income payments, including NZ Superannuation https://www.dia.govt.nz/diawebsite.nsf/Files/Benefit-Schedule-2016-17/$file/Benefit-Schedule-2016-17.pdf <br/><br/>You can get this from a few places, such as:
+              <ul><li>Inland Revenue, by calling them
+            on 0800 775 247 and asking for a Personal Tax Summary, or logging on to your MyIR account at IRD.govt.nz.</li>
+            <li>from Ministry
+            of Social Development, </li> <li>through your employer, accountant etc.</il></ul></p>"/>
+            </div>
+            <p>This will be applied to your rates account once your application has been fully proccessed.</p>
+            </section>
             <Submit/>
             {this.state.complete && <Success/>}
             {this.state.complete_error && <Failed/>}
+
           </form>
         </div>
       </Fragment>
-    )
+    );
   }
 }
 
 const Head = () => {
   return (
-    <Fragment>
+    <div className="container">
+      <a
+        onClick={() => {
+        window
+          .location
+          .reload()
+      }}
+        style={{
+        'color': '#aaa',
+        'marginTop': '15px',
+        'marginBottom': '60px',
+        'display': 'inline-block'
+      }}><span className="arrow left"></span>Home</a>
       <h2 className="heading-secondary green">What you will need to do to apply for a rebate <br/><span>He aha ngā mahi e tonoa ai te whakamāmā reiti</span></h2>
       <section>
         <h3 className="heading-secondary grey">Step One<br/>Mahi Tuatahi</h3>
@@ -140,12 +177,12 @@ const Head = () => {
           2016 - 31 March 2017). This includes rental income from any properties you own,
           interest and dividends, and overseas income (converted to $NZD). </p>
           <Accordian
-              label="Where can I get my income details?"
-              text="<p>You can find a list of the total amounts for Work and Income payments, including NZ Superannuation https://www.dia.govt.nz/diawebsite.nsf/Files/Benefit-Schedule-2016-17/$file/Benefit-Schedule-2016-17.pdf <br/><br/>You can get this from a few places, such as:
-               <ul><li>Inland Revenue, by calling them
-              on 0800 775 247 and asking for a Personal Tax Summary, or logging on to your MyIR account at IRD.govt.nz.</li>
-              <li>from Ministry
-              of Social Development, </li> <li>through your employer, accountant etc.</il></ul></p>"/>
+            label="Where can I get my income details?"
+            text="<p>You can find a list of the total amounts for Work and Income payments, including NZ Superannuation https://www.dia.govt.nz/diawebsite.nsf/Files/Benefit-Schedule-2016-17/$file/Benefit-Schedule-2016-17.pdf <br/><br/>You can get this from a few places, such as:
+              <ul><li>Inland Revenue, by calling them
+            on 0800 775 247 and asking for a Personal Tax Summary, or logging on to your MyIR account at IRD.govt.nz.</li>
+            <li>from Ministry
+            of Social Development, </li> <li>through your employer, accountant etc.</il></ul></p>"/>
 
       </section>
 
@@ -163,8 +200,8 @@ const Head = () => {
 
       <hr/>
       <h2 className="heading-secondary green">Step Two: Apply for a rates rebate<br/> <span>Mahi Tuarua: Tonoa te whakamāmā reiti</span></h2>
-      <h3 className="heading-secondary grey">This is for the 1 July 2017 - 30 June 2018 rating year</h3>
-    </Fragment>
+      <h3 className="heading-primary grey">This is for the 1 July 2017 - 30 June 2018 rating year</h3>
+    </div>
   );
 }
 
@@ -191,19 +228,27 @@ const Success = () => {
   );
 }
 
-const Calculated = () => {
-  return '';
-  //  (
-  //   <Fragment>
-  //     <h2>We have calculated that your entitlement is $620</h2>
-  //     <p>This will be applied to your rates account once your application has been
-  //       fully proccessed.</p>
-  //   </Fragment>
-  // );
+class Calculated extends React.Component {
+
+  render() {
+    return (
+      <Fragment>
+        <p className="heading-paragraph">
+          Based on a <strong>rates bill of ${this.props.rates_bill}
+          </strong> and <strong> income of ${this.props.income}</strong> and <strong>{this.props.dependants} dependants</strong>.
+        </p>
+        <Rebate dependants={this.props.dependants}
+                rates_bill={this.props.rates_bill}
+                income={this.props.income} />
+        <p>This will be applied to your rates account once your application has been
+          fully proccessed.</p>
+      </Fragment>
+    );
+  }
 }
 const Submit = () => {
   return (
-    <div>
+    <div className="container layout">
       <button type="submit" className="next btn-primary">
         Send Application
       </button>

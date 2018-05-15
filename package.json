@@ -41,7 +41,7 @@
     "build": "react-scripts build",
     "test": "jest",
     "eject": "react-scripts eject",
-    "sass": "sass --watch src/styles/scss:src/styles/"
+    "sass": "node-sass src/styles/scss src/styles/"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
