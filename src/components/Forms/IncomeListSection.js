@@ -308,7 +308,7 @@ class Entitlement extends React.Component {
         if (this.props.hasPartner) {
           sa_total += 17458.48;
         } // TODO: this value is empty in benefit schedule
-        
+
         if(!this.props.hasPartner) {
           if (this.props.super_annuation_applicant.includes('alone')) {
             sa_total += 23058.36;
@@ -355,11 +355,7 @@ class Entitlement extends React.Component {
     // SOLE PARENT SUPPORT
     if (this.props.sole_parent_support) {
       if (dependants > 0) {
-        if(this.props.hasPartner) {
-          sps_total += 0;
-        } else {
-          sps_total += 19358.56;
-        }
+        sps_total += 19358.56;
       }
     }
 
