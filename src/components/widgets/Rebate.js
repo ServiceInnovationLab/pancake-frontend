@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import axios from 'axios';
 import config from '../../config';
 
-class Eligible extends React.Component {
+class Rebate extends React.Component {
   constructor(props) {
     super(props);
     this.state = {rebate: null};
@@ -39,7 +39,8 @@ class Eligible extends React.Component {
       axios
         .post(`${config.OPENFISCA_ORIGIN}`, data)
         .then(res => {
-          this.setState({rebate: res.data.properties.property_1.rates_rebate['2018']});
+          let rebate = res.data.properties.property_1.rates_rebate['2018']
+          this.setState({rebate: rebate});
         })
         .catch(err => console.log('err fetching properties', err));
     } else {
@@ -54,25 +55,14 @@ class Eligible extends React.Component {
   render() {
     if (this.state.rebate !== null) {
       return (
-        <Fragment>
-          <div className="arrow-box secondary">
-            <p className="heading-paragraph">
-              You are eligible for
-              <span> ${this.formatDollars(this.state.rebate)}</span>
-            </p>
-            <p className="help-text">(Assuming you meet the criteria)</p>
-          </div>
-          <div className="layout">
-            <button type="submit" className="btn-primary">Apply now</button>
-          </div>
-        </Fragment>
-
+        <p className="heading-paragraph">
+          You are eligible for
+          <span> ${this.formatDollars(this.state.rebate)}</span>
+        </p>
       );
     }
-
     return '';
-
   }
 }
 
-export default Eligible;
+export default Rebate;

@@ -5,7 +5,7 @@ body {
 }
 
 .container {
-  max-width: 580px;
+  max-width: 680px;
   margin: 0 auto;
 }
 
@@ -13,14 +13,23 @@ body {
   text-align: center;
 }
 
+section {
+  margin-bottom: 42px;
+}
 // headings
 h2 {
   font-size: 34px;
   font-weight: 700;
-  margin-bottom: 30px;
+  margin-bottom: 56px;
   > span {
     font-weight: 400;
   }
+}
+
+h3 {
+  font-size: 23px;
+  font-weight: 700;
+  margin-bottom: 30px;
 }
 
 .heading-primary {
@@ -29,6 +38,10 @@ h2 {
 
 .heading-secondary {
   color: $green;
+  margin-bottom: 10px;
+  ~ p {
+    margin-top: 0;
+  }
 }
 
 .heading-paragraph {
@@ -78,7 +91,9 @@ button
   color: $white;
   padding-left: 60px;
   padding-right: 60px;
-
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: 1px;
   &:hover {
     background: #68bd78;
   }
@@ -88,12 +103,12 @@ input {
   font-family: 'Fira Sans', sans-serif;
   font-size: 16px;
   display: inline-block;
-  margin-top: 10px;
   border: 2px solid transparent;
   border-radius: 5px;
   padding: 8px 20px;
   position: relative;
   box-sizing: border-box;
+  margin-bottom: 25px;
   &[type=text],
   &[type=number],
   &[type=search] {
@@ -111,18 +126,25 @@ fieldset {
   border: none;
   padding: 0;
 
-  >p {
-    font-size: 16px;
+  > p {
+    font-size: 17px;
     margin-top: 5px;
     font-weight: 400;
   }
 }
 
+h4,
 legend {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 500;
   padding: 0;
   font-weight: 500;
+  margin-bottom: 15px;
+}
+
+h4 {
+  font-size: 18px;
+  margin-bottom: 25px;
 }
 
 
@@ -240,7 +262,7 @@ main {
   img {
     height: 55px;
     position: absolute;
-    top: 25%;
+    top: 32%;
   }
   a {
     color: $green;
@@ -261,26 +283,22 @@ p {
   font-size: 18px;
 }
 
-.radio-group > div > div {
-  padding-top: 5px;
-}
-
 
 
 .accordian {
-  margin: 60px 0;
+  margin: 30px 0 20px;
 }
 
 .accordian-header {
   border-top: 1px solid $accordian-border-color;
   border-bottom: 1px solid $accordian-border-color;
-  font-size: 18px;
+  font-size: 17px;
   font-style: normal;
   font-weight: 400;
   line-height: 1.4em;
   text-align: left;
   background-color: $accordian-bg;
-  padding: 10px 25px 10px 20px;
+  padding: 10px 55px 10px 20px;
   position: relative;
   span { font-weight: normal; }
   &:hover { cursor: pointer; }
@@ -293,27 +311,24 @@ p {
     top: 50%;
     transform: translateY(-50%);
     opacity: 1;
-    color: $font-color-primary;
+    color: $deep-grey;
   }
 }
 
 .accordian-body {
-  margin-bottom: 60px;
-  font-size: 16px;
   text-align: left;
   background-color: $accordian-bg;
   margin-top: 0;
-  padding: 20px;
+  padding: 8px 20px 20px;
   > p:first-child { margin-top: 10px; }
+  p {
+    font-size: 17px;
+  }
 }
 
 canvas {
   border: 1px solid #000;
 }
-
-// .Select + p {
-//   margin-top: 5px;
-// }
 
 .Select-input {
   height: 44px;
@@ -360,10 +375,13 @@ canvas {
 
 .radio-list {
   display: block;
-  
+  margin-bottom: 30px;
   span {
     @extend .radio;
-}
+    &:hover {
+      cursor: pointer;
+    }
+  }
 
   input {
     position: absolute;
@@ -386,10 +404,137 @@ canvas {
   }
 }
 
+.radio-list-compact {
+  width: 70%;
+}
+
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
+.theme-sand {
+  overflow: auto;
+  background: $sand;
+}
 
+.field {
+  display: flex;
+  flex-flow: column;
+  margin: 40px 0;
+  input:nth-child(2) {
+    margin-bottom: 0;
+  }
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+  &:first-child {
+    padding-right: 10px;
+  }
+  &:last-child {
+    padding-left: 10px;
+  }
+}
+
+.list-stripped {
+  padding-left: 0;
+  list-style: none;
+}
+
+.radio-list-multi {
+  display: block;
+  position: relative;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  user-select: none;
+  background: #eeeeee;
+  border-radius: 30px;
+  padding: 12px 20px 12px 65px;
+}
+
+/* Hide the browser's default checkbox */
+.radio-list-multi input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.radio-list-multi .checkmark {
+  position: absolute;
+  top: 10px;
+  left: 18px;
+  height: 30px;
+  width: 30px;
+  // background-color: #eee;
+  display: block;
+}
+
+/* On mouse-over, add a grey background color */
+.radio-list-container input ~ .radio-list-multi .checkmark {
+  background-color: $white !important;
+  border-radius: 8px;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.radio-list-multi .checkmark:after {
+  content: "";
+  position: absolute;
+}
+
+/* Show the checkmark when checked */
+.radio-list-multi input:checked ~ .radio-list-multi .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+input:checked ~ .radio-list-multi .checkmark:after {
+  left: 8px;
+  top: 0;
+  width: 10px;
+  height: 20px;
+  border: solid $deep-grey1;
+  border-width: 0 4px 4px 0;
+  transform: rotate(45deg);
+}
+input:checked + .radio-list-multi {
+  background: $selected;
+}
+
+.radio-list-container > input {
+  display: none;
+}
+
+.theme-main {
+  h2 {
+    border-left: 4px solid $green;
+    padding-left: 25px;
+    position: relative;
+    left: -30px;
+  }
+}
+
+.arrow {
+  border: solid $grey2;
+  border-width: 0 4px 4px 0;
+  display: inline-block;
+  padding: 6px;
+  position: relative;
+  top: 1px;
+  margin-right: 10px;
+  &.left {
+    transform: rotate(135deg);
+  }
+}
+
+a {
+  &:hover {
+    cursor: pointer;
+  }
+}

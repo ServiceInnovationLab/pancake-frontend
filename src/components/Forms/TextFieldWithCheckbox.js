@@ -40,7 +40,7 @@ export default class TextFieldWithCheckbox extends React.Component {
     delete this.props.input.value;
 
     return (
-      <fieldset className="radio-group">
+      <fieldset className="field">
         <legend>{this.props.label}</legend>
         <div>
           {this.props.hasAddressFinder && 
