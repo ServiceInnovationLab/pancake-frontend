@@ -61,10 +61,10 @@ class WizardFormFirstPage extends React.Component {
     if (state['rates_bills']) {
       let attributes = state['rates_bills'][0]['attributes'];
       this.setState({
-        'rates_bill': attributes['total_rates'],
+        'rates_bill': attributes['total_bill'],
         'rating_year': attributes['rating_year']
       });
-      this.props.change('rates_bill', attributes['total_rates']);
+      this.props.change('rates_bill', attributes['total_bill']);
     }
     else {
       this.setState({rates_bills: null, rating_year: null});
