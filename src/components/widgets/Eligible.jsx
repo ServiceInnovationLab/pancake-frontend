@@ -62,7 +62,7 @@ class Eligible extends React.Component {
                 <span> ${this.formatDollars(this.state.rebate)}</span>
               </p>
               <p className="help-text">(Assuming you meet the criteria)</p>
-              </div>
+            </div>
             <div className="layout">
               <button type="submit" className="btn-primary">Apply now</button>
             </div>
