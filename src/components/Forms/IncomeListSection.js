@@ -217,7 +217,7 @@ class IncomeList extends React.Component {
                 </label>
               </li>
               <div>
-                {dependants < 1 && !this.props.showRadios && item.child === 'radio' && <RadioGroup
+                {!this.props.showRadios && item.child === 'radio' && <RadioGroup
                   handleChildRadioClick={this.handleChildRadioClick}
                   name={`${underscorize(item.label)}_${this.props.name}`}
                   options={item.options && item.options}
@@ -307,8 +307,17 @@ class Entitlement extends React.Component {
 
         if (this.props.hasPartner) {
           sa_total += 17458.48;
-        } // TODO: this value is empty in benefit schedult
-
+        } // TODO: this value is empty in benefit schedule
+        
+        if(!this.props.hasPartner) {
+          if (this.props.super_annuation_applicant.includes('alone')) {
+            sa_total += 23058.36;
+          } else if (this.props.super_annuation_applicant.includes('sharing')) {
+            sa_total += 21191.56;
+          } else {
+            sa_total += 23058.36;
+          }
+        }
       } else { // no children
         if (this.props.hasPartner) {
           sa_total += 17458.48;
