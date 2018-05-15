@@ -20,7 +20,7 @@ class Sign extends React.Component {
       complete: false,
       signature: '',
       stage: '',
-      fields: [],
+      fields: {},
       witness_name: '',
       applicant_role: '',
       witness_role: '',
@@ -65,17 +65,18 @@ class Sign extends React.Component {
 
 
   getData = sign_type => {
-    let data = sign_type === 'witness' ? {
-      "signature": this.state.sig1,
+    let data = (sign_type === 'witness' ? {
+      "signature": this.state.sig2,
       "role": this.state.witness_role,
       "name": this.state.witness_name,
       "type": sign_type
     } : {
-      "signature": this.state.sig2,
+      "signature": this.state.sig1,
       "role": this.state.applicant_role,
       "name": this.state.fields.full_name,
       "type": sign_type
-    };
+    });
+    console.log(this.state);
     return data;
   }
 
@@ -105,6 +106,13 @@ class Sign extends React.Component {
     return (
       <Fragment>
         {!this.state.error && <div className="container">
+          <h2>Rates Rebates application for 2017/2018</h2>
+          <p>My name is <strong>{this.state.fields.full_name}</strong>.</p>
+          <p>My Address is <strong>{this.state.fields.address}</strong> and I lived here on 1 July 2017.</p>
+          <p>My 2017/2018 rates bill (including water) is $<strong>{this.state.fields.rates_bill}</strong>.</p>
+          <p>I have {this.state.fields.dependants} dependant(s)</p>
+          <p>The combined income of myself and joint-owners and partners living with me on 1 July 2017 was {this.state.fields.income}</p>
+
           <h2>Sign here</h2>
 
           <form onSubmit={handleSubmit(this.submitSignature)} className="container form-inner">
@@ -115,7 +123,7 @@ class Sign extends React.Component {
               exceeding 12 months or to a fine not exceeding $500, or to both.</li></ul>"
             />
             <h3 style={{marginTop: '80px'}}>Applicant</h3>
-            <p>I <b>{this.state.fields['full_name']}</b> of <b>{this.state.fields['address']}</b>, solemnly and sincerely
+            <p>I <b>{this.state.fields.full_name}</b> of <b>{this.state.fields.address}</b>, solemnly and sincerely
               declare that I believe the information I have given on this form is true and
               correct, and I make this solemn declaration conscientiously believing the same
               to be true and by virtue of the Oaths and Declarations Act 1957.
@@ -153,7 +161,7 @@ class Sign extends React.Component {
 }
 
 const WitnessField = props => {
-  return <input type="text" name={props.name} />
+  return <input type="text" name={props.name} onChange={props.onChange} />
 }
 
 const Submit = () => {
