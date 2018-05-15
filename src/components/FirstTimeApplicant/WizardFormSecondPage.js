@@ -37,7 +37,6 @@ class WizardFormSecondPage extends React.Component {
 
     this.ratesBill = this.ratesBill.bind(this);
     this.dependants = this.dependants.bind(this);
-    this.totalIncome = this.totalIncome.bind(this);
   }
 
   componentDidMount() {
@@ -61,10 +60,6 @@ class WizardFormSecondPage extends React.Component {
   }
   ratesBill() {
     return this.props.formState.form.wizard.values['rates_bill'];
-  }
-  totalIncome() {
-    return 40000;
-    // return this.props.formState.form.wizard.values['total_income'];
   }
   saveFormData() {
     let values = this.props.formState.form.wizard.values;
@@ -97,7 +92,7 @@ class WizardFormSecondPage extends React.Component {
       );
   }
   render() {
-    const {handleSubmit} = this.props
+    const {handleSubmit} = this.props;
     return (
       <Fragment>
         <div className="theme-main">
@@ -133,7 +128,7 @@ class WizardFormSecondPage extends React.Component {
                 </div></section>);
             })}
             <section className="container"><div>
-            <Calculated rates_bill={this.ratesBill()} dependants={this.dependants()} income={this.totalIncome()} />
+            <Calculated rates_bill={this.ratesBill()} dependants={this.dependants()} income={this.props.storeValues.totalIncome} />
             <Accordian
             label="It is an offence to knowingly make a false statement in your application"
             text="<p>You can find a list of the total amounts for Work and Income payments, including NZ Superannuation https://www.dia.govt.nz/diawebsite.nsf/Files/Benefit-Schedule-2016-17/$file/Benefit-Schedule-2016-17.pdf <br/><br/>You can get this from a few places, such as:
@@ -262,7 +257,7 @@ WizardFormSecondPage = reduxForm({
 })(WizardFormSecondPage)
 
 WizardFormSecondPage = connect(state => {
-  return {formState: state, validate}
+  return {formState: state, validate, storeValues: state.reducers}
 })(WizardFormSecondPage)
 
 export default WizardFormSecondPage
