@@ -110,10 +110,17 @@ class IncomeList extends React.Component {
     this.removeOtherOptionValues = this.removeOtherOptionValues.bind(this);
   }
 
-  setChild(state) {
+  setChild(state, clicked) {
     if (this.state.ShowTextField) {
-      //this.setState({});
-      document.getElementsByName('wos_applicant')[0].value = 0;
+      if(clicked === 'wage_or_salary0') {
+        document.getElementsByName('wos_applicant')[0].value = 0;
+        alert(1)
+      }
+      if(clicked === 'wage_or_salary1') {
+        document.getElementsByName('wos_partner')[0].value = 0;
+
+        alert(2)
+      }
 
       this.setState({[state]: !this.state[state] });
     } else {
@@ -121,14 +128,15 @@ class IncomeList extends React.Component {
     }
   }
 
-  handleChild(val) {
+
+  handleChild(val, clicked) {
     switch (val.child) {
     case 'radio':
       this.setState({sa_checked: !this.state.sa_checked});
       this.setChild('ShowRadio');
       break;
     case 'text-field':
-      this.setChild('ShowTextField');
+      this.setChild('ShowTextField', clicked);
       break;
     case 'nested-group':
       this.setChild('ShowNestedGroup');
@@ -138,6 +146,7 @@ class IncomeList extends React.Component {
     }
   }
 
+
   handleChildRadioClick(e, name) {
     this.setState({[name]: `${name}_${underscorize(e)}`});
   }
@@ -145,10 +154,10 @@ class IncomeList extends React.Component {
   handleTextChange(e) {
     // console.log('in handleTextChange', e.target.value)
     if (e.target.name === 'wage_or_salary_applicant') {
-      this.setState({wos_applicant: e.target.value})
+      this.setState({wos_applicant: e.target.value});
     }
     if (e.target.name === 'wage_or_salary_partner') {
-      this.setState({wos_partner: e.target.value})
+      this.setState({wos_partner: e.target.value});
     }
   }
 
@@ -192,6 +201,8 @@ class IncomeList extends React.Component {
         child: 'nested-group'
       }
     ];
+
+    let dependants = document.getElementsByName('dependants')[0];
     return (
       <Fragment>
         {list.map((item, i) => {
@@ -202,14 +213,14 @@ class IncomeList extends React.Component {
                   <input
                     type="checkbox"
                     name={underscorize(item.label)}
-                    onClick={() => this.handleChild(item)}/>
+                    onClick={() => this.handleChild(item, underscorize(`${item.label}${this.props.hasPartner ? '1' : '0'}`))}/>
                   <div className="radio-list-multi">{item.label}
                     <span className="checkmark"></span>
                   </div>
                 </label>
               </li>
               <div>
-                {!this.props.showRadios && item.child === 'radio' && <RadioGroup
+                {dependants < 1 && !this.props.showRadios && item.child === 'radio' && <RadioGroup
                   handleChildRadioClick={this.handleChildRadioClick}
                   name={`${underscorize(item.label)}_${this.props.name}`}
                   options={item.options && item.options}
@@ -295,20 +306,24 @@ class Entitlement extends React.Component {
 
     // SUPER ANNUATION
     if (this.props.sa_checked) {
-      if (dependants.length > 0) {
+      if (dependants > 0) {
 
         if (this.props.hasPartner) {
-          sa_total += 34916.96;
+          sa_total += 17458.48;
         } // TODO: this value is empty in benefit schedult
 
       } else { // no children
         if (this.props.hasPartner) {
           sa_total += 17458.48;
-        } else { // SINGLE
+        }
+
+        if(!this.props.hasPartner) {
           if (this.props.super_annuation_applicant.includes('alone')) {
             sa_total += 23058.36;
           } else if (this.props.super_annuation_applicant.includes('sharing')) {
             sa_total += 21191.56;
+          } else {
+            sa_total += 23058.36;
           }
         }
       }
@@ -316,15 +331,15 @@ class Entitlement extends React.Component {
 
     // JOB SEEKER SUPPORT
     if (this.props.jobseeker_support) {
-      if (dependants.length > 0) {
+      if (dependants > 0) {
         if (this.props.hasPartner) {
-          jss_total += 21799.44;
+          jss_total += 10899.72;
         } else {
           jss_total += 19358.56;
         }
       } else { // no children
         if (this.props.hasPartner) {
-          jss_total += 20346.56;
+          jss_total += 10173.28;
         } else {
           jss_total += 10173.28; // took first value: Single 18-19 years (away from home)
         }
@@ -333,33 +348,32 @@ class Entitlement extends React.Component {
 
     // SOLE PARENT SUPPORT
     if (this.props.sole_parent_support) {
-      if (dependants.length > 0) {
-        sps_total += 19358.56;
+      if (dependants > 0) {
+        if(this.props.hasPartner) {
+          sps_total += 0;
+        } else {
+          sps_total += 19358.56;
+        }
       }
     }
 
-    // SUPPORTED LIVING PAYMENT
     if (this.props.supported_living) {
-      if (dependants.length > 0) {
+      if (dependants > 0) {
         if (this.props.hasPartner) {
-          if (dependants.length === 1) {
-            spl_total += 12716.08; // married, with 1 child
-          } else {
-            spl_total += 26884.00; // married, with 2 or more children
-          }
-
-        } else {
-          spl_total += 22134.84; // single, with children
+          sa_total += 13442.00;
         }
-      } else {
+        if (!this.props.hasPartner) {
+          sa_total += 22134.84;
+        }
+
+      } else { // no children
         if (this.props.hasPartner) {
-          spl_total += 12716.08; // married, no children
-        } else {
-          spl_total += 15366.52; // single, no children
+          sa_total += 12716.08;
+        } else { // SINGLE
+          sa_total += 15366.52;
         }
       }
     }
-
     // WAGE OR SALARY
     // console.log('sa_total', sa_total, 'jss_total', jss_total, 'sps_total', sps_total, 'spl_total', spl_total, 'this.props.wos_total',this.props.wos_total || 0);
     const firstTotal = (sa_total + jss_total + sps_total + spl_total + (this.props.wos_total || 0)) || 0;
@@ -383,10 +397,6 @@ class Entitlement extends React.Component {
 
   }
 
-  componentWillReceiveProps() {
-    // let total = this.calculateTotalIncome();
-    // this.setState({income: total});
-  }
 
   componentDidUpdate() {
     const data = {
@@ -412,11 +422,6 @@ class Entitlement extends React.Component {
         }
       }
     };
-    console.log(data);
-    // axios
-    //   .post(`${config.OPENFISCA_ORIGIN}`, data)
-    //   .then(res => console.log(res))
-    //   .catch(err => console.log('err fetching properties', err));
   }
 
   render() {
