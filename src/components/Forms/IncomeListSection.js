@@ -1,8 +1,10 @@
 import React, {Fragment} from 'react';
+import {connect} from 'react-redux';
 import {underscorize} from '../../helpers/strings';
 import RadioWithSelect from './RadioWithSelect';
 import axios from 'axios';
 import config from '../../config';
+import {sendTotalIncome} from '../../actions'
 // import { state } from 'fs';
 import RadioField from './RadioField';
 
@@ -10,15 +12,39 @@ class IncomeListSection extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showPartnerOptions: false
+      showPartnerOptions: false,
+      totalIncome1: 0,
+      totalIncome2: 0
     };
     this.handleRadioClick = this
       .handleRadioClick
+      .bind(this);
+    this.setTotalIncome1 = this
+      .setTotalIncome1
+      .bind(this);
+    this.setTotalIncome2 = this
+      .setTotalIncome2
       .bind(this);
   }
 
   handleRadioClick(val) {
     this.setState({showPartnerOptions: val === 'yes'});
+  }
+
+  setTotalIncome1(totalIncome) {
+    if (this.state.totalIncome1 !== totalIncome) {
+      this.setState({totalIncome1: totalIncome});
+    }
+  }
+
+  setTotalIncome2(totalIncome) {
+    if (this.state.totalIncome2 !== totalIncome) {
+      this.setState({totalIncome2: totalIncome});
+    }
+  }
+
+  componentDidUpdate() {
+    this.props.dispatch(sendTotalIncome(this.state.totalIncome1 + this.state.totalIncome2));
   }
 
   render() {
@@ -61,7 +87,9 @@ class IncomeListSection extends React.Component {
                 <IncomeList
                   name="applicant"
                   hasPartner={this.state.showPartnerOptions}
-                  showRadios={this.state.showPartnerOptions}/>
+                  showRadios={this.state.showPartnerOptions}
+                  setTotalIncome={this.setTotalIncome1}
+                />
               </ul>
               <ul className="column list-stripped">
                 {this.state.showPartnerOptions && <Fragment>
@@ -71,7 +99,9 @@ class IncomeListSection extends React.Component {
                   <IncomeList
                     name="partner"
                     hasPartner={this.state.showPartnerOptions}
-                    showRadios={this.state.showPartnerOptions}/>
+                    showRadios={this.state.showPartnerOptions}
+                    setTotalIncome={this.setTotalIncome2}
+                  />
                 </Fragment>}
               </ul>
             </div>
@@ -149,7 +179,6 @@ class IncomeList extends React.Component {
   }
 
   handleTextChange(e) {
-    // console.log('in handleTextChange', e.target.value)
     if (e.target.name === 'wage_or_salary_applicant') {
       this.setState({wos_applicant: e.target.value});
     }
@@ -254,8 +283,9 @@ class IncomeList extends React.Component {
           jobseeker_support={this.state.jobseeker_support}
           sole_parent_support={this.state.sole_parent_support}
           supported_living={this.state.supported_living}
-          wos_total={(parseInt(this.getWageOrSalary('wos_applicant'), 0) + parseInt(this.getWageOrSalary('wos_partner'), 0))
-        }/>
+          wos_total={(parseInt(this.getWageOrSalary('wos_applicant'), 0) + parseInt(this.getWageOrSalary('wos_partner'), 0))}
+          setTotalIncome={this.props.setTotalIncome}
+        />
       </Fragment>
     );
   }
@@ -281,7 +311,8 @@ class Entitlement extends React.Component {
   constructor() {
     super();
     this.state = {
-      income: null
+      income: null,
+      totalIncome: 0
     };
 
     this.totalIncome = this
@@ -308,7 +339,7 @@ class Entitlement extends React.Component {
         if (this.props.hasPartner) {
           sa_total += 17458.48;
         } // TODO: this value is empty in benefit schedule
-        
+
         if(!this.props.hasPartner) {
           if (this.props.super_annuation_applicant.includes('alone')) {
             sa_total += 23058.36;
@@ -355,11 +386,7 @@ class Entitlement extends React.Component {
     // SOLE PARENT SUPPORT
     if (this.props.sole_parent_support) {
       if (dependants > 0) {
-        if(this.props.hasPartner) {
-          sps_total += 0;
-        } else {
-          sps_total += 19358.56;
-        }
+        sps_total += 19358.56;
       }
     }
 
@@ -381,7 +408,6 @@ class Entitlement extends React.Component {
       }
     }
     // WAGE OR SALARY
-    // console.log('sa_total', sa_total, 'jss_total', jss_total, 'sps_total', sps_total, 'spl_total', spl_total, 'this.props.wos_total',this.props.wos_total || 0);
     const firstTotal = (sa_total + jss_total + sps_total + spl_total + (this.props.wos_total || 0)) || 0;
 
     // OTHER INCOME
@@ -400,34 +426,10 @@ class Entitlement extends React.Component {
       : 0);
 
     return total;
-
   }
 
-
   componentDidUpdate() {
-    const data = {
-      'persons': {
-        'Tui': {
-          'salary': {
-            '2018': this.totalIncome()
-          },
-          'dependants': {
-            '2018': this.props.dependants
-          }
-        }
-      },
-      'properties': {
-        'property_1': {
-          'owners': ['Tui'],
-          'rates': {
-            '2018': this.props.rates_bill
-          },
-          'rates_rebate': {
-            '2018': null
-          }
-        }
-      }
-    };
+    this.props.setTotalIncome(this.totalIncome());
   }
 
   render() {
@@ -438,4 +440,4 @@ class Entitlement extends React.Component {
   }
 }
 
-export default IncomeListSection;
+export default connect()(IncomeListSection);

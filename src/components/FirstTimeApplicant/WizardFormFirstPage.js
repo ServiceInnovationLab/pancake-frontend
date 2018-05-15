@@ -132,8 +132,10 @@ class WizardFormFirstPage extends React.Component {
                 {this.state.rates_bill && this.state.rating_year && <Fragment>
                   <p className="select-results">
                     My {this.state.rating_year - 1} to {this.state.rating_year} rates
-                    are <strong>${this.state.rates_bill}</strong>
+                    are <strong>${this.state.rates_bill}.
+                    </strong>
                   </p>
+                  <p className="help-text">This includes water rates, as provided by Tauranga City Council.</p>
                 </Fragment>
                 }
             </div>

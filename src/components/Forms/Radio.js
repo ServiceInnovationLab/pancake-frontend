@@ -160,15 +160,6 @@ class ListItem extends React.Component {
     case 'partner_wage_or_salary':
       this.setState({partner_wage_or_salary: this.state.partner_wage_or_salary ? false : true});
       break;
-    case 'applicant_other1':
-      // console.log('applicant_other');
-      break;
-    case 'applicant_other2':
-      // console.log('applicant_other');
-      break;
-    case 'applicant_other3':
-      // console.log('applicant_other');
-      break;
     default:
       return;
     }

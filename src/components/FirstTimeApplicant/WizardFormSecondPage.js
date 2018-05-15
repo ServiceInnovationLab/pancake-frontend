@@ -37,7 +37,6 @@ class WizardFormSecondPage extends React.Component {
 
     this.ratesBill = this.ratesBill.bind(this);
     this.dependants = this.dependants.bind(this);
-    this.totalIncome = this.totalIncome.bind(this);
   }
 
   componentDidMount() {
@@ -62,17 +61,14 @@ class WizardFormSecondPage extends React.Component {
   ratesBill() {
     return this.props.formState.form.wizard.values['rates_bill'];
   }
-  totalIncome() {
-    return 40000;
-    // return this.props.formState.form.wizard.values['total_income'];
-  }
   saveFormData() {
-    let values = this.props.formState.form.wizard.values;
+    let fields = this.props.formState.form.wizard.values;
+    fields['income'] = this.props.storeValues.totalIncome;
     let data = {
       "type": "rebate-forms",
       "attributes": {
-        "valuation_id": values.valuation_id,
-        "fields": values
+        "valuation_id": fields.valuation_id,
+        "fields": fields
       }
     };
 
@@ -134,7 +130,7 @@ class WizardFormSecondPage extends React.Component {
                 </div></section>);
             })}
             <section className="container"><div>
-            <Calculated rates_bill={this.ratesBill()} dependants={this.dependants()} income={this.totalIncome()} />
+            <Calculated rates_bill={this.ratesBill()} dependants={this.dependants()} income={this.props.storeValues.totalIncome} />
             <Accordian
             label="It is an offence to knowingly make a false statement in your application"
             text={help_text}
@@ -259,7 +255,7 @@ WizardFormSecondPage = reduxForm({
 })(WizardFormSecondPage)
 
 WizardFormSecondPage = connect(state => {
-  return {formState: state, validate}
+  return {formState: state, validate, storeValues: state.reducers}
 })(WizardFormSecondPage)
 
 export default WizardFormSecondPage
