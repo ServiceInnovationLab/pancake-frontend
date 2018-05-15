@@ -56,7 +56,6 @@ class WizardFormSecondPage extends React.Component {
     });
   }
 
-
   dependants() {
     return this.props.formState.form.wizard.values['dependants'];
   }
