@@ -209,25 +209,26 @@ const Head = () => {
 
 const Failed = () => {
   return (
-    <Fragment>
+    <div className="container">
+      <section>
       <h2>Something went wrong :(</h2>
-      <p>Please contact us on 07 5777 000 at ratesrebates@tauranga.govt.nz</p>
-    </Fragment>
+      <p>Please contact us on 07 5777 000 or ratesrebates@tauranga.govt.nz</p>
+      </section>
+    </div>
   );
 }
 const Success = () => {
   return (
-    <div>
-      <h2 className="heading-secondary">Step Three: Get your application witnessed<br/> <span>Mahi Tuatoru: Mā te kaiwhakaatu e waitohu tō tono.</span> </h2>
-
-      <h3>You are almost there!</h3>
-
-      <h4>Your application form has been digitally sent to your local council.<br/> Now you need to visit the Tauranga Council at 91 Willow Street to finalise your rebate.</h4>
-
-      <p>
-        Proof of income may be requested, especially for those with income sources other than superannuation or work and income benefits. <br/><br/>If you are self-employed, you must supply evidence with your application. Evidence of income helps to ensure you receive the correct rebate promptly. <br/><br/>Tell the Service Centre staff you're there to sign your rates rebate application.
-      </p>
-      <a className="btn btn-primary">Find my nearest service centre</a>
+    <div className="container">
+      <section>
+          <h2 className="heading-secondary">Step Three: Get your application witnessed<br/> <span>Mahi Tuatoru: Mā te kaiwhakaatu e waitohu tō tono.</span> </h2>
+          <h3>You are almost there!</h3>
+          <h4>Your application form has been digitally sent to your local council.<br/> Now you need to visit the Tauranga Council at 91 Willow Street to finalise your rebate.</h4>
+          <p>
+            Proof of income may be requested, especially for those with income sources other than superannuation or work and income benefits. <br/><br/>If you are self-employed, you must supply evidence with your application. Evidence of income helps to ensure you receive the correct rebate promptly. <br/><br/>Tell the Service Centre staff you're there to sign your rates rebate application.
+          </p>
+          <a className="btn btn-primary">Find my nearest service centre</a>
+      </section>
     </div>
   );
 }
