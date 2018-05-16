@@ -1,50 +1,49 @@
-import React, {Fragment} from 'react';
-import {connect} from 'react-redux';
-import {underscorize} from '../../helpers/strings';
-import RadioWithSelect from './RadioWithSelect';
 import axios from 'axios';
 import config from '../../config';
-import {sendTotalIncome} from '../../actions'
-// import { state } from 'fs';
 import RadioField from './RadioField';
+import RadioWithSelect from './RadioWithSelect';
+import React, {Fragment} from 'react';
+import {connect} from 'react-redux';
+import {sendTotalIncome} from '../../actions'
+import {underscorize} from '../../helpers/strings';
 
 class IncomeListSection extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showPartnerOptions: false,
-      totalIncome1: 0,
-      totalIncome2: 0
+      should_show_partner_options: false,
+      total_applicant_income: 0,
+      total_partner_income: 0
     };
     this.handleRadioClick = this
       .handleRadioClick
       .bind(this);
-    this.setTotalIncome1 = this
-      .setTotalIncome1
+    this.setApplicantTotalIncome = this
+      .setApplicantTotalIncome
       .bind(this);
-    this.setTotalIncome2 = this
-      .setTotalIncome2
+    this.setPartnerTotalIncome = this
+      .setPartnerTotalIncome
       .bind(this);
   }
 
   handleRadioClick(val) {
-    this.setState({showPartnerOptions: val === 'yes'});
+    this.setState({should_show_partner_options: val === 'yes'});
   }
 
-  setTotalIncome1(totalIncome) {
-    if (this.state.totalIncome1 !== totalIncome) {
-      this.setState({totalIncome1: totalIncome});
+  setApplicantTotalIncome(totalIncome) {
+    if (this.state.total_applicant_income !== totalIncome) {
+      this.setState({total_applicant_income: totalIncome});
     }
   }
 
-  setTotalIncome2(totalIncome) {
-    if (this.state.totalIncome2 !== totalIncome) {
-      this.setState({totalIncome2: totalIncome});
+  setPartnerTotalIncome(totalIncome) {
+    if (this.state.total_partner_income !== totalIncome) {
+      this.setState({total_partner_income: totalIncome});
     }
   }
 
   componentDidUpdate() {
-    this.props.dispatch(sendTotalIncome(this.state.totalIncome1 + this.state.totalIncome2));
+    this.props.dispatch(sendTotalIncome(this.state.total_applicant_income + this.state.total_partner_income));
   }
 
   render() {
@@ -86,21 +85,21 @@ class IncomeListSection extends React.Component {
                 </li>
                 <IncomeList
                   name="applicant"
-                  hasPartner={this.state.showPartnerOptions}
-                  showRadios={this.state.showPartnerOptions}
-                  setTotalIncome={this.setTotalIncome1}
+                  hasPartner={this.state.should_show_partner_options}
+                  showRadios={this.state.should_show_partner_options}
+                  setTotalIncome={this.setApplicantTotalIncome}
                 />
               </ul>
               <ul className="column list-stripped">
-                {this.state.showPartnerOptions && <Fragment>
+                {this.state.should_show_partner_options && <Fragment>
                   <li>
                     <h4>Partner/join homeowner's income</h4>
                   </li>
                   <IncomeList
                     name="partner"
-                    hasPartner={this.state.showPartnerOptions}
-                    showRadios={this.state.showPartnerOptions}
-                    setTotalIncome={this.setTotalIncome2}
+                    hasPartner={this.state.should_show_partner_options}
+                    showRadios={this.state.should_show_partner_options}
+                    setTotalIncome={this.setPartnerTotalIncome}
                   />
                 </Fragment>}
               </ul>
@@ -293,7 +292,6 @@ class IncomeList extends React.Component {
   wosTotal() {
     let total = parseFloat(this.getWageOrSalary(`wos_${this.props.name}`), 0);
     if (!total) total = 0;
-
     return total;
   }
 }
