@@ -129,13 +129,18 @@ class WizardFormSecondPage extends React.Component {
                 />
                 </div></section>);
             })}
-            <section className="container"><div>
-            <Calculated rates_bill={this.ratesBill()} dependants={this.dependants()} income={this.props.storeValues.totalIncome} />
-            <Accordian
-            label="It is an offence to knowingly make a false statement in your application"
-            text={help_text}
-            />
-            </div>
+            <section className="container">
+              <div>
+                <Calculated
+                  rates_bill={this.ratesBill()}
+                  dependants={this.dependants()}
+                  income={this.props.storeValues.totalIncome} />
+
+                <Accordian
+                  label="It is an offence to knowingly make a false statement in your application"
+                  text={help_text}
+                  />
+              </div>
             <p>This will be applied to your rates account once your application has been fully proccessed.</p>
             </section>
             <Submit/>
