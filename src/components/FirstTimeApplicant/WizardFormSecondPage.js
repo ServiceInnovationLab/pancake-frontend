@@ -103,32 +103,37 @@ class WizardFormSecondPage extends React.Component {
           <form onSubmit={handleSubmit(this.saveFormData)}>
             {firstTimeApplication.map((field, key) => {
               let label = field.label['en'].text;
+              let name = field.isNested ? `has${camelCaser(label)}Checked` : field.field_name;
               let form_values = '';
-              return (<section className={field.theme} key={key}><div className="container"><Field
-                label={label}
-                name={field.isNested
-                ? `has${camelCaser(label)}Checked`
-                : field.field_name}
-                component={field.component}
-                instructions={field.instructions && field.instructions['en'].text}
-                instructionsSecondary={field.instructionsSecondary && field.instructionsSecondary['en'].text}
-                values={form_values && form_values}
-                accordianLabel={field.accordianLabel && field.accordianLabel['en'].text}
-                accordianText={field.accordianText && field.accordianText['en'].text}
-                checkboxLabel={field.checkboxLabel && field.checkboxLabel['en'].text}
-                checkboxText={field.checkboxText && field.checkboxText['en'].text}
-                options={field.options && field.options['en'].text}
-                childOptions={field.childOptions && field.childOptions['en'].text}
-                childLabel={field.childLabel && field.childLabel['en'].text}
-                childInstructions={field.childInstructions && field.childInstructions['en'].text}
-                optionsText={field.optionsText && field.optionsText['en'].text}
-                textFieldLabel={field.textFieldLabel && field.textFieldLabel['en'].text}
-                placeholder={field.placeholder && field.placeholder['en'].text}
-                hasAddressFinder={field.hasAddressFinder}
-                theme={field.theme && field.theme}
-                />
-                </div></section>);
+              return (
+                <section className={field.theme} key={key}>
+                  <div className="container">
+                    <Field
+                      label={label}
+                      name={name}
+                      component={field.component}
+                      instructions={field.instructions && field.instructions['en'].text}
+                      instructionsSecondary={field.instructionsSecondary && field.instructionsSecondary['en'].text}
+                      values={form_values && form_values}
+                      accordianLabel={field.accordianLabel && field.accordianLabel['en'].text}
+                      accordianText={field.accordianText && field.accordianText['en'].text}
+                      checkboxLabel={field.checkboxLabel && field.checkboxLabel['en'].text}
+                      checkboxText={field.checkboxText && field.checkboxText['en'].text}
+                      options={field.options && field.options['en'].text}
+                      childOptions={field.childOptions && field.childOptions['en'].text}
+                      childLabel={field.childLabel && field.childLabel['en'].text}
+                      childInstructions={field.childInstructions && field.childInstructions['en'].text}
+                      optionsText={field.optionsText && field.optionsText['en'].text}
+                      textFieldLabel={field.textFieldLabel && field.textFieldLabel['en'].text}
+                      placeholder={field.placeholder && field.placeholder['en'].text}
+                      hasAddressFinder={field.hasAddressFinder}
+                      theme={field.theme && field.theme}
+                      />
+                  </div>
+                  </section>
+                );
             })}
+
             <section className="container">
               <div>
                 <Calculated
@@ -143,6 +148,7 @@ class WizardFormSecondPage extends React.Component {
               </div>
             <p>This will be applied to your rates account once your application has been fully proccessed.</p>
             </section>
+
             <Submit/>
             {this.state.complete && <Success/>}
             {this.state.complete_error && <Failed/>}
