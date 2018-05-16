@@ -124,97 +124,6 @@ var firstTimeApplication = [
   {
     'label': {
       'en': {
-        'text': 'Were you living with a partner or joint home owner(s) on July 1 2017?'
-      },
-      'mi': {
-        'text': 'Were you living with a partner or joint home owner(s) on July 1 2017?'
-      }
-    },
-    'instructions': {
-      'en': {
-        'text': '\'Partner\' is a person you are married to/in a civil union, or de facto relationship with.'
-      },
-      'mi': {
-        'text': '\'Partner\' is a person you are married to/in a civil union, or de facto relationship with.'
-      }
-    },
-    'options': {
-      'en': {
-        'text': [ 'yes','no' ]
-      },
-      'mi': {
-        'text': [ 'ae', 'kaore' ]
-      }
-    },
-    'isRequired': true,
-    'component': IncomeListSection,
-    'field_name': 'income_page_2'
-  },
-  // {
-  //   'label': {
-  //     'en': {
-  //       'text': 'What was your total income for the 2017/18 tax year?'
-  //     },
-  //     'mi': {
-  //       'text': 'What was your total income for the 2017/18 tax year?'
-  //     }
-  //   },
-  //   'childInstructions': {
-  //     'en': {
-  //       'text': 'You will need to know your total income for the 2016/2017 Tax year (1 March 2016' +
-  //           ' - 31 March 2017) \
-  //               including rental income from any properties ' +
-  //           'you own, interest and dividends, and overseas income (converted to\
-  //           ' +
-  //           '    $NZD). <br> <br> Select any that apply to you.'
-  //     },
-  //     'mi': {
-  //       'text': 'You will need to know your total income for the 2016/2017 Tax year (1 March 2016' +
-  //           ' - 31 March 2017) \
-  //               including rental income from any properties ' +
-  //           'you own, interest and dividends, and overseas income (converted to\
-  //           ' +
-  //           '    $NZD). <br> <br>  Select any that apply to you.'
-  //     }
-  //   },
-  //   'childOptions': {
-  //     'en': {
-  //       'text': [
-  //         'NZ Superannuation',
-  //         'Jobseeker Support',
-  //         'Sole Parent Support',
-  //         'Supported living',
-  //         'Wage or salary',
-  //         'Other'
-  //       ]
-  //     },
-  //     'mi': {
-  //       'text': [
-  //         'NZ Superannuation',
-  //         'Jobseeker Support',
-  //         'Sole Parent Support',
-  //         'Supported living',
-  //         'Wage or salary',
-  //         'Other'
-  //       ]
-  //     }
-  //   },
-  //   'options': {
-  //     'en': {
-  //       'text': ['yes', 'no']
-  //     },
-  //     'mi': {
-  //       'text': ['yes', 'no']
-  //     }
-  //   },
-  //   'isRequired': true,
-  //   'component': IncomeListSection,
-  //   'field_name': 'total_income',
-  //   'theme': 'theme-sand'
-  // },
-  {
-    'label': {
-      'en': {
         'text': 'Do you have dependants?'
       },
       'mi': {
@@ -264,7 +173,37 @@ var firstTimeApplication = [
         'text': 'Enter the total amount'
       }
     }
-  }, {
+  },
+  {
+    'label': {
+      'en': {
+        'text': 'Were you living with a partner or joint home owner(s) on July 1 2017?'
+      },
+      'mi': {
+        'text': 'Were you living with a partner or joint home owner(s) on July 1 2017?'
+      }
+    },
+    'instructions': {
+      'en': {
+        'text': '\'Partner\' is a person you are married to/in a civil union, or de facto relationship with.'
+      },
+      'mi': {
+        'text': '\'Partner\' is a person you are married to/in a civil union, or de facto relationship with.'
+      }
+    },
+    'options': {
+      'en': {
+        'text': [ 'yes','no' ]
+      },
+      'mi': {
+        'text': [ 'ae', 'kaore' ]
+      }
+    },
+    'isRequired': true,
+    'component': IncomeListSection,
+    'field_name': 'income_page_2'
+  },
+  {
     'theme': 'theme-sand',
     'label': {
       'en': {

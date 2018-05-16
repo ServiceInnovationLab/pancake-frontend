@@ -272,7 +272,7 @@ class IncomeList extends React.Component {
         })}
 
 
-        <Entitlement
+        <IncomeTotals
           incomeListStates={this.state}
           dependants={document.getElementsByName('dependants')[0]}
           hasPartner={this.props.hasPartner}
@@ -283,11 +283,18 @@ class IncomeList extends React.Component {
           jobseeker_support={this.state.jobseeker_support}
           sole_parent_support={this.state.sole_parent_support}
           supported_living={this.state.supported_living}
-          wos_total={(parseInt(this.getWageOrSalary('wos_applicant'), 0) + parseInt(this.getWageOrSalary('wos_partner'), 0))}
+          wos_total={this.wosTotal()}
           setTotalIncome={this.props.setTotalIncome}
         />
       </Fragment>
     );
+  }
+
+  wosTotal() {
+    let total = parseFloat(this.getWageOrSalary(`wos_${this.props.name}`), 0);
+    if (!total) total = 0;
+
+    return total;
   }
 }
 
@@ -307,7 +314,7 @@ const RadioGroup = props => {
   );
 };
 
-class Entitlement extends React.Component {
+class IncomeTotals extends React.Component {
   constructor() {
     super();
     this.state = {
