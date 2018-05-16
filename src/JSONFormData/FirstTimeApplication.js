@@ -65,12 +65,10 @@ var firstTimeApplication = [
     },
     'instructions': {
       'en': {
-        'text': 'Your name must be on the title for the property you are applying for on the Rati' +
-            'ng Information Database (RID) at your local council.  '
+        'text': 'Your name must be on the title for the property you are applying for on the Rating Information Database (RID) at your local council.  '
       },
       'mi': {
-        'text': 'Your name must be on the title for the property you are applying for on the Rati' +
-            'ng Information Database (RID) at your local council.'
+        'text': 'Your name must be on the title for the property you are applying for on the Rating Information Database (RID) at your local council.'
       }
     },
     'accordianLabel': {
@@ -101,18 +99,10 @@ var firstTimeApplication = [
     },
     'instructions': {
       'en': {
-        'text': 'Dependants are: <br><ul><li>children you care and provide for under the age of 1' +
-            '8 on 1 July 2017 and who at this time were not married and for whom you were not' +
-            ' receiving payments under section 363 of the Children, Young Persons, and their ' +
-            'Families Act 1989</li><li>relatives in receipt of a benefit (but not NZ Superann' +
-            'uation) on 1 July 2017.</li></ul>'
+        'text': 'Dependants are: <br/><ul><li>children you care and provide for under the age of 18 on 1 July 2017 and who at this time were not married and for whom you were not receiving payments under section 363 of the Children, Young Persons, and their Families Act 1989</li><li>relatives in receipt of a benefit (but not NZ Superannuation) on 1 July 2017.</li></ul>'
       },
       'mi': {
-        'text': 'Dependants are: <br><ul><li>children you care and provide for under the age of 1' +
-            '8 on 1 July 2017 and who at this time were not married and for whom you were not' +
-            ' receiving payments under section 363 of the Children, Young Persons, and their ' +
-            'Families Act 1989</li><li>relatives in receipt of a benefit (but not NZ Superann' +
-            'uation) on 1 July 2017.</li></ul>'
+        'text': 'Dependants are: <br/><ul><li>children you care and provide for under the age of 18 on 1 July 2017 and who at this time were not married and for whom you were not receiving payments under section 363 of the Children, Young Persons, and their Families Act 1989</li><li>relatives in receipt of a benefit (but not NZ Superannuation) on 1 July 2017.</li></ul>'
       }
     },
     'options': {
@@ -184,14 +174,10 @@ var firstTimeApplication = [
     },
     'instructionsSecondary': {
       'en': {
-        'text': 'If yes, and you deducted over 50% of your rates as expenses, you may not be able' +
-            ' to get a rebate. If your property is mainly used for commercial activities, for' +
-            ' example farming or business, you cannot apply for a rates rebate.'
+        'text': 'If yes, and you deducted over 50% of your rates as expenses, you may not be able to get a rebate. If your property is mainly used for commercial activities, for example farming or business, you cannot apply for a rates rebate.'
       },
       'mi': {
-        'text': 'If yes, and you deducted over 50% of your rates as expenses, you may not be able' +
-            ' to get a rebate. If your property is mainly used for commercial activities, for' +
-            ' example farming or business, you cannot apply for a rates rebate.'
+        'text': 'If yes, and you deducted over 50% of your rates as expenses, you may not be able to get a rebate. If your property is mainly used for commercial activities, for example farming or business, you cannot apply for a rates rebate.'
       }
     },
     'options': {
