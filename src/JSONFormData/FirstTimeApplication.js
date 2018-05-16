@@ -65,12 +65,10 @@ var firstTimeApplication = [
     },
     'instructions': {
       'en': {
-        'text': 'Your name must be on the title for the property you are applying for on the Rati' +
-            'ng Information Database (RID) at your local council.  '
+        'text': 'Your name must be on the title for the property you are applying for on the Rating Information Database (RID) at your local council.  '
       },
       'mi': {
-        'text': 'Your name must be on the title for the property you are applying for on the Rati' +
-            'ng Information Database (RID) at your local council.'
+        'text': 'Your name must be on the title for the property you are applying for on the Rating Information Database (RID) at your local council.'
       }
     },
     'accordianLabel': {
@@ -90,37 +88,6 @@ var firstTimeApplication = [
       }
     }
   },
-  // {
-  //   'label': {
-  //     'en': {
-  //       'text': 'Were you living with a partner or joint home owner(s) on July 1 2017?'
-  //     },
-  //     'mi': {
-  //       'text': 'Were you living with a partner or joint home owner(s) on July 1 2017?'
-  //     }
-  //   },
-  //   'instructions': {
-  //     'en': {
-  //       'text': '\'Partner\' is a person you are married to/in a civil union, or de facto relatio' +
-  //           'nship with.'
-  //     },
-  //     'mi': {
-  //       'text': '\'Partner\' is a person you are married to/in a civil union, or de facto relatio' +
-  //           'nship with.'
-  //     }
-  //   },
-  //   'options': {
-  //     'en': {
-  //       'text': ['yes', 'no']
-  //     },
-  //     'mi': {
-  //       'text': ['ae', 'kaore']
-  //     }
-  //   },
-  //   'isRequired': true,
-  //   'component': RenderRadio,
-  //   'field_name': 'living_with_partner'
-  // },
   {
     'label': {
       'en': {
@@ -132,18 +99,10 @@ var firstTimeApplication = [
     },
     'instructions': {
       'en': {
-        'text': 'Dependants are: <br><ul><li>children you care and provide for under the age of 1' +
-            '8 on 1 July 2017 and who at this time were not married and for whom you were not' +
-            ' receiving payments under section 363 of the Children, Young Persons, and their ' +
-            'Families Act 1989</li><li>relatives in receipt of a benefit (but not NZ Superann' +
-            'uation) on 1 July 2017.</li></ul>'
+        'text': 'Dependants are: <br/><ul><li>children you care and provide for under the age of 18 on 1 July 2017 and who at this time were not married and for whom you were not receiving payments under section 363 of the Children, Young Persons, and their Families Act 1989</li><li>relatives in receipt of a benefit (but not NZ Superannuation) on 1 July 2017.</li></ul>'
       },
       'mi': {
-        'text': 'Dependants are: children you care and provide for under the age of 18 on 1 July ' +
-            '2017 and who at this time were not married and for whom you were not receiving p' +
-            'ayments under section 363 of the Children, Young Persons, and their Families Act' +
-            ' 1989 relatives in receipt of a benefit (but not NZ Superannuation) on 1 July 20' +
-            '17.'
+        'text': 'Dependants are: <br/><ul><li>children you care and provide for under the age of 18 on 1 July 2017 and who at this time were not married and for whom you were not receiving payments under section 363 of the Children, Young Persons, and their Families Act 1989</li><li>relatives in receipt of a benefit (but not NZ Superannuation) on 1 July 2017.</li></ul>'
       }
     },
     'options': {
@@ -215,14 +174,10 @@ var firstTimeApplication = [
     },
     'instructionsSecondary': {
       'en': {
-        'text': 'If yes, and you deducted over 50% of your rates as expenses, you may not be able' +
-            ' to get a rebate. If your property is mainly used for commercial activities, for' +
-            ' example farming or business, you cannot apply for a rates rebate.'
+        'text': 'If yes, and you deducted over 50% of your rates as expenses, you may not be able to get a rebate. If your property is mainly used for commercial activities, for example farming or business, you cannot apply for a rates rebate.'
       },
       'mi': {
-        'text': 'If yes, and you deducted over 50% of your rates as expenses, you may not be able' +
-            ' to get a rebate. If your property is mainly used for commercial activities, for' +
-            ' example farming or business, you cannot apply for a rates rebate.'
+        'text': 'If yes, and you deducted over 50% of your rates as expenses, you may not be able to get a rebate. If your property is mainly used for commercial activities, for example farming or business, you cannot apply for a rates rebate.'
       }
     },
     'options': {
@@ -252,35 +207,6 @@ var firstTimeApplication = [
       }
     }
   },
-  // {   'label': {     'en': {       'text': 'What was your total income for the
-  // 2016/2017 tax year?'     },     'mi': {       'text': 'What was your total
-  // income for the 2016/2017 tax year?'     }   },   'instructions': {     'en':
-  // {       'text': 'This is the money received, before tax, for the year 1 April
-  // 2016 to 31 March 2017. Enter any income you or your partner/joint home
-  // owner(s) received for the tax year. Use gross amounts unless otherwise
-  // indicated. Select any that you receive'     },     'mi': {       'text':
-  // 'This is the money received, before tax, for the year 1 April 2016 to 31 March
-  // 2017. Enter any income you or your partner/joint home owner(s) received for
-  // the tax year. Use gross amounts unless otherwise indicated. Select any that
-  // you receive'     }   },   'accordianLabel': {     'en': {       'text': 'What
-  // is a gross amount?'     },     'mi': {       'text': 'What is a gross
-  // amount?'     }   },   'accordianText': {     'en': {       'text':
-  // 'Satisfactory proof of income includes: <ul><li>income confirmation from Work
-  // and Income</li><li>income confirmation from Inland Revenue</li><li>investment
-  // earning statements for the tax year </li><li>statement of earnings from your
-  // employer.</li>Additionally for self-employed people:</li><li>a copy of your
-  // complete set of financial accounts, IR3B or IR10 you provided to Inland
-  // Revenue for the income year 1 April 2016 to 31 March 2017</li><li>you cannot
-  // offset business losses against other income</li><li>business losses should be
-  // entered as $0.</li></ul>'     },     'mi': {       'text': 'Satisfactory
-  // proof of income includes: <ul><li>income confirmation from Work and
-  // Income</li><li>income confirmation from Inland Revenue</li><li>investment
-  // earning statements for the tax year </li><li>statement of earnings from your
-  // employer.</li>Additionally for self-employed people:</li><li>a copy of your
-  // complete set of financial accounts, IR3B or IR10 you provided to Inland
-  // Revenue for the income year 1 April 2016 to 31 March 2017</li><li>you cannot
-  // offset business losses against other income</li><li>business losses should be
-  // entered as $0.</li></ul>'     }   },   'component': RadioWithSelect },
   {
     'component': TextBoxWithAccordian,
     'field_name': 'email',
