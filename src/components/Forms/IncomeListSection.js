@@ -4,7 +4,7 @@ import RadioField from './RadioField';
 import RadioWithSelect from './RadioWithSelect';
 import React, {Fragment} from 'react';
 import {connect} from 'react-redux';
-import {sendTotalIncome} from '../../actions'
+import {sendTotalIncome} from '../../actions';
 import {underscorize} from '../../helpers/strings';
 
 class IncomeListSection extends React.Component {
