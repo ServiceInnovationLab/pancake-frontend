@@ -108,8 +108,8 @@ class WizardFormFirstPage extends React.Component {
                 te whakahoki utu rānei, tae atu ki te $620 te rahi, mō ngā reiti whenua mā te kaupapa whakamāmā reiti. </span>
             </p>
             <Accordian
-              label="<strong>What is a rates rebate?</strong> <br/><span>He aha te whakamāmā reiti?</span>"
-              text="<p>Rates rebates are a subsidy that gives you a discount on the rates bill of your residential property.</p><p>Any homeowner may receive a rebate for the property they live in, as long as
+              accordianLabel="<strong>What is a rates rebate?</strong> <br/><span>He aha te whakamāmā reiti?</span>"
+              accordianText="<p>Rates rebates are a subsidy that gives you a discount on the rates bill of your residential property.</p><p>Any homeowner may receive a rebate for the property they live in, as long as
                 they meet the criteria. This is calculated by your property rates, your income
                 for the 2016 to 2017 tax year, and the number of dependants you have. If you have
                 dependants, the upper threshold of your income can be $500 more for each

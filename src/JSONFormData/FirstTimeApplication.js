@@ -1,11 +1,10 @@
 import TextBoxWithAccordian from '../components/Forms/TextboxWithAccordian';
-import RadioWithRadio from '../components/Forms/RadioWithRadio';
-import RadioWithTextField from '../components/Forms/RadioWithTextField';
 import IncomeListSection from '../components/Forms/IncomeListSection';
+import RadioGroupSection from '../components/Forms/RadioGroupSection';
 
 var firstTimeApplication = [
   {
-    'component': RadioWithRadio,
+    'component': RadioGroupSection,
     'field_name': 'lived_here_before_july_2017',
     'label': {
       'en': {
@@ -23,18 +22,25 @@ var firstTimeApplication = [
         'text': ['yes', 'no']
       }
     },
-    'optionsText': {
+    'childType': 'radio',
+    'childFieldName':'were_you_living_in_another_property_sold_or_moved',
+    'childLabel': {
       'en': {
-        'text': [
-          '', 'Were you living in another property that you owned on 1 July 2017, have sold that property, and moved to the address of the property you are currently living in during the the current rating year (1 July 2017-30 June 2018)?'
-        ]
+        'text': 'Were you living in another property that you owned on 1 July 2017, have sold that property, and moved to the address of the property you are currently living in during the the current rating year (1 July 2017-30 June 2018)?'
       },
       'mi': {
-        'text': [
-          '', 'Were you living in another property that you owned on 1 July 2017, have sold that property, and moved to the address of the property you are currently living in during the the current rating year (1 July 2017-30 June 2018)?'
-        ]
+        'text': 'Were you living in another property that you owned on 1 July 2017, have sold that property, and moved to the address of the property you are currently living in during the the current rating year (1 July 2017-30 June 2018)?'
       }
     },
+    'childOptions': {
+      'en': {
+        'text': ['yes', 'no']
+      },
+      'mi': {
+        'text': ['yes', 'no']
+      }
+    },
+    'toggleByOption': 'No',
     'accordianLabel': {
       'en': {
         'text': 'What if I moved house during the rates year?'
@@ -172,14 +178,6 @@ var firstTimeApplication = [
         'text': 'Do you earn money from home or run a business from home?'
       }
     },
-    'instructionsSecondary': {
-      'en': {
-        'text': 'If yes, and you deducted over 50% of your rates as expenses, you may not be able to get a rebate. If your property is mainly used for commercial activities, for example farming or business, you cannot apply for a rates rebate.'
-      },
-      'mi': {
-        'text': 'If yes, and you deducted over 50% of your rates as expenses, you may not be able to get a rebate. If your property is mainly used for commercial activities, for example farming or business, you cannot apply for a rates rebate.'
-      }
-    },
     'options': {
       'en': {
         'text': ['yes', 'no']
@@ -188,7 +186,7 @@ var firstTimeApplication = [
         'text': ['ae', 'kaore']
       }
     },
-    'component': RadioWithTextField,
+    'component': RadioGroupSection,
     'field_name': 'has_home_business',
     'textFieldLabel': {
       'en': {
@@ -198,14 +196,25 @@ var firstTimeApplication = [
         'text': 'Please describe how you earn money or what business you run'
       }
     },
-    'placeholder': {
+    'childType': 'radio',
+    'childFieldName':'business_deducted_over_50',
+    'childLabel': {
       'en': {
-        'text': 'Enter the total amount'
+        'text': 'If yes, and you deducted over 50% of your rates as expenses, you may not be able to get a rebate. If your property is mainly used for commercial activities, for example farming or business, you cannot apply for a rates rebate.'
       },
       'mi': {
-        'text': 'Enter the total amount'
+        'text': 'If yes, and you deducted over 50% of your rates as expenses, you may not be able to get a rebate. If your property is mainly used for commercial activities, for example farming or business, you cannot apply for a rates rebate.'
       }
-    }
+    },
+    'childOptions': {
+      'en': {
+        'text': ['yes', 'no']
+      },
+      'mi': {
+        'text': ['yes', 'no']
+      }
+    },
+    'toggleByOption': 'Yes',
   },
   {
     'component': TextBoxWithAccordian,
