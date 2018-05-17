@@ -178,14 +178,6 @@ var firstTimeApplication = [
         'text': 'Do you earn money from home or run a business from home?'
       }
     },
-    'instructionsSecondary': {
-      'en': {
-        'text': 'If yes, and you deducted over 50% of your rates as expenses, you may not be able to get a rebate. If your property is mainly used for commercial activities, for example farming or business, you cannot apply for a rates rebate.'
-      },
-      'mi': {
-        'text': 'If yes, and you deducted over 50% of your rates as expenses, you may not be able to get a rebate. If your property is mainly used for commercial activities, for example farming or business, you cannot apply for a rates rebate.'
-      }
-    },
     'options': {
       'en': {
         'text': ['yes', 'no']

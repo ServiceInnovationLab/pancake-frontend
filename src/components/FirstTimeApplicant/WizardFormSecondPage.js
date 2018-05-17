@@ -113,7 +113,6 @@ class WizardFormSecondPage extends React.Component {
                       name={name}
                       component={field.component}
                       instructions={field.instructions && field.instructions['en'].text}
-                      instructionsSecondary={field.instructionsSecondary && field.instructionsSecondary['en'].text}
                       values={form_values && form_values}
                       accordianLabel={field.accordianLabel && field.accordianLabel['en'].text}
                       accordianText={field.accordianText && field.accordianText['en'].text}
