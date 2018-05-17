@@ -96,6 +96,7 @@ class WizardFormSecondPage extends React.Component {
 
     return (
       <Fragment>
+        {this.renderAddress()}
         {firstTimeApplication.map((field, key) => {
           let label = field.label['en'].text;
           let name = field.isNested ? `has${camelCaser(label)}Checked` : field.field_name;
@@ -155,7 +156,6 @@ class WizardFormSecondPage extends React.Component {
       <Fragment>
         <div className="theme-main">
           <Head/>
-            {this.renderAddress()}
 
             <form onSubmit={handleSubmit(this.saveFormData)}>
             {this.renderFields()}
