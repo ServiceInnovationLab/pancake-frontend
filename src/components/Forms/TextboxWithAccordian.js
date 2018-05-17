@@ -2,6 +2,12 @@ import React from 'react';
 import ErrorMessage from '../../components/Forms/Error';
 import Accordian from '../../components/Forms/Accordian';
 import {underscorize} from '../../helpers/strings';
+import NumberField from '../Forms/NumberField';
+
+/*
+  TextBoxWithAccordian
+  type can be specified in FirstTimeApplication.js if you require number field instead of text
+*/
 
 export default class TextBoxWithAccordian extends React.Component {
   constructor(props) {
@@ -30,7 +36,12 @@ export default class TextBoxWithAccordian extends React.Component {
         <legend>
           {this.props.label}
         </legend>
-        <input type="text" {...this.props.input} value={prepopulatedValue ? prepopulatedValue : this.getValue()} />
+        {this.props.type === 'number' ?
+          <NumberField {...this.props} value={prepopulatedValue ? prepopulatedValue : this.getValue()} />
+          : 
+          <input type="text" {...this.props.input} value={prepopulatedValue ? prepopulatedValue : this.getValue()} />
+        }
+
         {this.props.instructions && <p dangerouslySetInnerHTML={{ __html: this.props.instructions }}></p>}
         {this.props.accordianText && <div>
           <Accordian label={this.props.accordianLabel} text={this.props.accordianText} />

@@ -128,6 +128,7 @@ class WizardFormSecondPage extends React.Component {
                       placeholder={field.placeholder && field.placeholder['en'].text}
                       hasAddressFinder={field.hasAddressFinder}
                       theme={field.theme && field.theme}
+                      type={field.type && field.type}
                       />
                   </div>
                   </section>
