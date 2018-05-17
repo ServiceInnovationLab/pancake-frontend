@@ -1,11 +1,12 @@
 import TextBoxWithAccordian from '../components/Forms/TextboxWithAccordian';
 import RadioWithRadio from '../components/Forms/RadioWithRadio';
 import RadioWithTextField from '../components/Forms/RadioWithTextField';
+import RadioGroupSection from '../components/Forms/RadioGroupSection';
 import IncomeListSection from '../components/Forms/IncomeListSection';
 
 var firstTimeApplication = [
   {
-    'component': RadioWithRadio,
+    'component': RadioGroupSection,
     'field_name': 'lived_here_before_july_2017',
     'label': {
       'en': {
@@ -188,7 +189,7 @@ var firstTimeApplication = [
         'text': ['ae', 'kaore']
       }
     },
-    'component': RadioWithTextField,
+    'component': RadioGroupSection,
     'field_name': 'has_home_business',
     'textFieldLabel': {
       'en': {
