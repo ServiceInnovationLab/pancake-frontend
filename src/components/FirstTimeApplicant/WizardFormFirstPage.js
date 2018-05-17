@@ -146,7 +146,6 @@ class WizardFormFirstPage extends React.Component {
                 <label>I have
                   <Field
                     name="dependants"
-                    type="number"
                     component={NumberField}
                     onChange={this.handleDependants}
                     />

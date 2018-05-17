@@ -4,7 +4,7 @@ const NumberField = props => {
   return (
     <input
       {...props.input}
-      type={props.type}
+      type="number"
       min="0"
       step="1"
       className={props.className && props.className}
