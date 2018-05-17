@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import './RadioGroup.css';
+import '../../styles/RadioGroup.css';
 
 export class RadioGroup extends React.Component {
 
@@ -8,13 +8,13 @@ export class RadioGroup extends React.Component {
   }
 
   render() {
-    const { childFieldName, childLabel, label, options, field_name } = this.props;
+    const { childFieldName, childLabel, label, childOptions, field_name } = this.props;
     return (
       <fieldset className="field">
         <legend>{this.propData(label, childLabel)}</legend>
         <div>
           <div>
-            {options.map((item, key)=> <label key={key}>
+            {childOptions.map((item, key)=> <label key={key}>
               <input
                 type="radio"
                 name={this.propData(field_name, childFieldName)}
@@ -51,7 +51,7 @@ export default class RadioGroupSection extends React.Component {
     return (
       <Fragment>
         {/* Parent Radio */}
-        <div className={this.props.options && this.props.options.length > 2 ? 'radio-list' : 'field radio-group'}>
+        <div className={this.props.options && this.props.options.length > 2 ? 'radio-list' : 'radio-group'}>
           <RadioGroup {...this.props} handleClick={this.handleClick} />
         </div>
 

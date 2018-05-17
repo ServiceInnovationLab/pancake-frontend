@@ -120,13 +120,16 @@ class WizardFormSecondPage extends React.Component {
                       checkboxLabel={field.checkboxLabel && field.checkboxLabel['en'].text}
                       checkboxText={field.checkboxText && field.checkboxText['en'].text}
                       options={field.options && field.options['en'].text}
-                      childOptions={field.childOptions && field.childOptions['en'].text}
-                      childLabel={field.childLabel && field.childLabel['en'].text}
                       childInstructions={field.childInstructions && field.childInstructions['en'].text}
                       optionsText={field.optionsText && field.optionsText['en'].text}
                       textFieldLabel={field.textFieldLabel && field.textFieldLabel['en'].text}
                       placeholder={field.placeholder && field.placeholder['en'].text}
-                      hasAddressFinder={field.hasAddressFinder}
+                      field_name={field.field_name && field.field_name}
+                      childLabel={field.childLabel && field.childLabel['en'].text}
+                      childFieldName={field.childFieldName && field.childFieldName}
+                      childOptions={field.childOptions && field.childOptions['en'].text}
+                      childType={field.childType && field.childType}
+                      toggleByOption={field.toggleByOption && field.toggleByOption}
                       theme={field.theme && field.theme}
                       />
                   </div>
