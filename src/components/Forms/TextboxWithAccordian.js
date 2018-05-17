@@ -32,10 +32,8 @@ export default class TextBoxWithAccordian extends React.Component {
         </legend>
         <input type="text" {...this.props.input} value={prepopulatedValue ? prepopulatedValue : this.getValue()} />
         {this.props.instructions && <p dangerouslySetInnerHTML={{ __html: this.props.instructions }}></p>}
-        {this.props.accordianText && <div>
-          <Accordian label={this.props.accordianLabel} text={this.props.accordianText} />
-        </div>
-        }
+        {/* <Accordian {...this.props} /> */}
+        {console.log('in textbox', this.props)}
         <ErrorMessage fields={this.props.meta} />
       </fieldset>
     );

@@ -69,11 +69,7 @@ export default class RadioGroupSection extends React.Component {
             <input {...this.props} type="text" />
           </div>
         }
-
-        {this.props.accordianText && <div>
-          <Accordian label={this.props.accordianLabel} text={this.props.accordianText} />
-        </div>
-        }
+        <Accordian {...this.props} />
       </Fragment>
     );
   }
