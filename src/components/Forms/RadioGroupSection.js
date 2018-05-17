@@ -1,4 +1,5 @@
 import React, {Fragment} from 'react';
+import Accordian from '../Forms/Accordian';
 import '../../styles/RadioGroup.css';
 
 export class RadioGroup extends React.Component {
@@ -67,6 +68,11 @@ export default class RadioGroupSection extends React.Component {
           <div>
             <input {...this.props} type="text" />
           </div>
+        }
+
+        {this.props.accordianText && <div>
+          <Accordian label={this.props.accordianLabel} text={this.props.accordianText} />
+        </div>
         }
       </Fragment>
     );
