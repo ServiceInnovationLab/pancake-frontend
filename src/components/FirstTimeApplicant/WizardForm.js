@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import WizardFormFirstPage from './WizardFormFirstPage';
 import WizardFormSecondPage from './WizardFormSecondPage';
-// import WizardFormThirdPage from './WizardFormThirdPage';
 
 class WizardForm extends Component {
   constructor(props) {

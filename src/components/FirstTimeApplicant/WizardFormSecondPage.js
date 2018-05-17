@@ -94,7 +94,7 @@ class WizardFormSecondPage extends React.Component {
   }
   render() {
     const {handleSubmit} = this.props;
-    let help_text = "<p>You can find a list of the total amounts for Work and Income payments, including NZ Superannuation https://www.dia.govt.nz/diawebsite.nsf/Files/Benefit-Schedule-2016-17/$file/Benefit-Schedule-2016-17.pdf <br/><br/>You can get this from a few places, such as:<ul><li>Inland Revenue, by calling them on 0800 775 247 and asking for a Personal Tax Summary, or logging on to your MyIR account at IRD.govt.nz.</li><li>from Ministry of Social Development</li> <li>through your employer, accountant etc.</il></ul></p>";
+
     return (
       <Fragment>
         <div className="theme-main">
@@ -103,41 +103,52 @@ class WizardFormSecondPage extends React.Component {
           <form onSubmit={handleSubmit(this.saveFormData)}>
             {firstTimeApplication.map((field, key) => {
               let label = field.label['en'].text;
+              let name = field.isNested ? `has${camelCaser(label)}Checked` : field.field_name;
               let form_values = '';
-              return (<section className={field.theme} key={key}><div className="container"><Field
-                label={label}
-                name={field.isNested
-                ? `has${camelCaser(label)}Checked`
-                : field.field_name}
-                component={field.component}
-                instructions={field.instructions && field.instructions['en'].text}
-                instructionsSecondary={field.instructionsSecondary && field.instructionsSecondary['en'].text}
-                values={form_values && form_values}
-                accordianLabel={field.accordianLabel && field.accordianLabel['en'].text}
-                accordianText={field.accordianText && field.accordianText['en'].text}
-                checkboxLabel={field.checkboxLabel && field.checkboxLabel['en'].text}
-                checkboxText={field.checkboxText && field.checkboxText['en'].text}
-                options={field.options && field.options['en'].text}
-                childOptions={field.childOptions && field.childOptions['en'].text}
-                childLabel={field.childLabel && field.childLabel['en'].text}
-                childInstructions={field.childInstructions && field.childInstructions['en'].text}
-                optionsText={field.optionsText && field.optionsText['en'].text}
-                textFieldLabel={field.textFieldLabel && field.textFieldLabel['en'].text}
-                placeholder={field.placeholder && field.placeholder['en'].text}
-                hasAddressFinder={field.hasAddressFinder}
-                theme={field.theme && field.theme}
-                />
-                </div></section>);
+              return (
+                <section className={field.theme} key={key}>
+                  <div className="container">
+                    <Field
+                      label={label}
+                      name={name}
+                      component={field.component}
+                      instructions={field.instructions && field.instructions['en'].text}
+                      instructionsSecondary={field.instructionsSecondary && field.instructionsSecondary['en'].text}
+                      values={form_values && form_values}
+                      accordianLabel={field.accordianLabel && field.accordianLabel['en'].text}
+                      accordianText={field.accordianText && field.accordianText['en'].text}
+                      checkboxLabel={field.checkboxLabel && field.checkboxLabel['en'].text}
+                      checkboxText={field.checkboxText && field.checkboxText['en'].text}
+                      options={field.options && field.options['en'].text}
+                      childOptions={field.childOptions && field.childOptions['en'].text}
+                      childLabel={field.childLabel && field.childLabel['en'].text}
+                      childInstructions={field.childInstructions && field.childInstructions['en'].text}
+                      optionsText={field.optionsText && field.optionsText['en'].text}
+                      textFieldLabel={field.textFieldLabel && field.textFieldLabel['en'].text}
+                      placeholder={field.placeholder && field.placeholder['en'].text}
+                      hasAddressFinder={field.hasAddressFinder}
+                      theme={field.theme && field.theme}
+                      />
+                  </div>
+                  </section>
+                );
             })}
-            <section className="container"><div>
-            <Calculated rates_bill={this.ratesBill()} dependants={this.dependants()} income={this.props.storeValues.totalIncome} />
-            <Accordian
-            label="It is an offence to knowingly make a false statement in your application"
-            text={help_text}
-            />
-            </div>
+
+            <section className="container">
+              <div>
+                <Calculated
+                  rates_bill={this.ratesBill()}
+                  dependants={this.dependants()}
+                  income={this.props.storeValues.totalIncome} />
+
+                <Accordian
+                  label="It is an offence to knowingly make a false statement in your application"
+                  text="<p>You can find a list of the total amounts for Work and Income payments, including NZ Superannuation https://www.dia.govt.nz/diawebsite.nsf/Files/Benefit-Schedule-2016-17/$file/Benefit-Schedule-2016-17.pdf <br/><br/>You can get this from a few places, such as:<ul><li>Inland Revenue, by calling them on 0800 775 247 and asking for a Personal Tax Summary, or logging on to your MyIR account at IRD.govt.nz.</li><li>from Ministry of Social Development</li> <li>through your employer, accountant etc.</il></ul></p>"
+                  />
+              </div>
             <p>This will be applied to your rates account once your application has been fully proccessed.</p>
             </section>
+
             <Submit/>
             {this.state.complete && <Success/>}
             {this.state.complete_error && <Failed/>}
