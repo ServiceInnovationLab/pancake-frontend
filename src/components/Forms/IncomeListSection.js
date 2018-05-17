@@ -207,7 +207,7 @@ class IncomeList extends React.Component {
   render() {
     const list = [
       {
-        label: 'Super Annuation',
+        label: 'Superannuation',
         child: 'radio',
         options: ['Single - Living alone', 'Single - Sharing']
       }, {
@@ -339,7 +339,7 @@ class IncomeTotals extends React.Component {
         : 0;
     }
 
-    // SUPER ANNUATION
+    // SUPERANNUATION
     if (this.props.sa_checked) {
       if (dependants > 0) {
 
