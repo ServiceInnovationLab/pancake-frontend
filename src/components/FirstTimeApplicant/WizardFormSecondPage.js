@@ -20,7 +20,7 @@ class WizardFormSecondPage extends React.Component {
       lng: 'en',
       page: 2,
       shown: false,
-      complete: true,
+      complete: false,
       complete_error: false,
       sending: false,
       signature: '',
