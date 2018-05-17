@@ -31,15 +31,16 @@ export default class TextBoxWithAccordian extends React.Component {
 
   render() {
     let prepopulatedValue = this.props.prepopulatedValue ? this.props.prepopulatedValue[underscorize(this.props.label)] : null;
+    const showValue = prepopulatedValue ? prepopulatedValue : this.getValue();
     return (
       <fieldset className="field">
         <legend>
           {this.props.label}
         </legend>
         {this.props.type === 'number' ?
-          <NumberField {...this.props} value={prepopulatedValue ? prepopulatedValue : this.getValue()} />
+          <NumberField {...this.props} value={showValue} />
           : 
-          <input type="text" {...this.props.input} value={prepopulatedValue ? prepopulatedValue : this.getValue()} />
+          <input type="text" {...this.props.input} value={showValue} />
         }
 
         {this.props.instructions && <p dangerouslySetInnerHTML={{ __html: this.props.instructions }}></p>}
