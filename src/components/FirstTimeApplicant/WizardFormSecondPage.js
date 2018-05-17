@@ -234,7 +234,7 @@ class Calculated extends React.Component {
                 rates_bill={this.props.rates_bill}
                 income={this.props.income} />
         <p>This will be applied to your rates account once your application has been
-          fully proccessed.</p>
+          fully processed.</p>
       </Fragment>
     );
   }
