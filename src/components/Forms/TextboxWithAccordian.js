@@ -1,7 +1,6 @@
 import React from 'react';
 import ErrorMessage from '../../components/Forms/Error';
 import Accordian from '../../components/Forms/Accordian';
-import Instructions from '../../components/Forms/Instructions';
 import {underscorize} from '../../helpers/strings';
 
 export default class TextBoxWithAccordian extends React.Component {
@@ -32,8 +31,11 @@ export default class TextBoxWithAccordian extends React.Component {
           {this.props.label}
         </legend>
         <input type="text" {...this.props.input} value={prepopulatedValue ? prepopulatedValue : this.getValue()} />
-        <Instructions {...this.props} />
-        <Accordian {...this.props} />
+        {this.props.instructions && <p dangerouslySetInnerHTML={{ __html: this.props.instructions }}></p>}
+        {this.props.accordianText && <div>
+          <Accordian label={this.props.accordianLabel} text={this.props.accordianText} />
+        </div>
+        }
         <ErrorMessage fields={this.props.meta} />
       </fieldset>
     );
