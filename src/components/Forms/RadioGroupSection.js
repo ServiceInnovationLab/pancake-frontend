@@ -2,6 +2,7 @@ import React, {Fragment} from 'react';
 import Accordian from '../Forms/Accordian';
 import ErrorMessage from '../../components/Forms/Error';
 import '../../styles/RadioGroup.css';
+import {Field} from 'redux-form';
 
 export class RadioGroup extends React.Component {
 
@@ -54,13 +55,13 @@ export default class RadioGroupSection extends React.Component {
       <Fragment>
         {/* Parent Radio */}
         <div className={this.props.options && this.props.options.length > 2 ? 'radio-list' : 'radio-group'}>
-          <RadioGroup {...this.props} handleClick={this.handleClick} />
+          <Field component={RadioGroup} {...this.props} handleClick={this.handleClick} />
         </div>
 
         {/* Child Radio */}
         {this.props.childType === 'radio' && this.state.toggle &&
           <div className="radio-group">
-            <RadioGroup {...this.props} isChild={true} />
+            <Field component={RadioGroup} {...this.props} isChild={true} />
           </div>
         }
 
