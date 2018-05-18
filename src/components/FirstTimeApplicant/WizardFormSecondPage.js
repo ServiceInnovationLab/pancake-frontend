@@ -263,7 +263,8 @@ class Calculated extends React.Component {
       <Fragment>
         <p className="heading-paragraph">
           Based on a <strong>rates bill of ${this.props.rates_bill}
-          </strong> and <strong> income of ${this.props.income}</strong> and <strong>{this.props.dependants} dependants</strong>.
+          </strong> and <strong> income of ${this.props.income.toFixed(2)}
+          </strong> and <strong>{this.props.dependants} dependants</strong>.
         </p>
         <Rebate dependants={this.props.dependants}
                 rates_bill={this.props.rates_bill}
