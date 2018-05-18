@@ -50,7 +50,7 @@ class Sign extends React.Component {
   componentDidMount() {
     axios
       .get(`${config.API_ORIGIN}/api/v1/rebate_forms/${this.props.match.params.id}`)
-      .then(res => this.setState({fields: res.data.data.attributes.fields}))
+      .then(res => this.setState({fields: res.data.data.attributes.fields, rebate: res.data.data.attributes.rebate}))
       .catch(err => this.setState({error: true}));
   }
 
@@ -112,6 +112,10 @@ class Sign extends React.Component {
           <p>My 2017/2018 rates bill (including water) is $<strong>{this.state.fields.rates_bill}</strong>.</p>
           <p>I have {this.state.fields.dependants} dependant(s)</p>
           <p>The combined income of myself and joint-owners and partners living with me on 1 July 2017 was $<strong>{this.state.fields.income}</strong></p>
+
+          {this.state.rebate &&
+            <p>Your claimed rebate is ${this.state.rebate}</p>
+          }
 
           <h2>Sign here</h2>
 
