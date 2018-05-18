@@ -1,11 +1,11 @@
 import TextBoxWithAccordian from '../components/Forms/TextboxWithAccordian';
-import RadioWithRadio from '../components/Forms/RadioWithRadio';
+import RadioGroupSection from '../components/Forms/RadioGroupSection';
 import RadioWithTextField from '../components/Forms/RadioWithTextField';
 import IncomeListSection from '../components/Forms/IncomeListSection';
 
 var firstTimeApplication = [
   {
-    'component': RadioWithRadio,
+    'component': RadioGroupSection,
     'field_name': 'lived_here_before_july_2017',
     'label': {
       'en': {
@@ -23,18 +23,25 @@ var firstTimeApplication = [
         'text': ['yes', 'no']
       }
     },
-    'optionsText': {
+    'childType': 'radio',
+    'childFieldName':'were_you_living_in_another_property_sold_or_moved',
+    'childLabel': {
       'en': {
-        'text': [
-          '', 'Were you living in another property that you owned on 1 July 2017, have sold that property, and moved to the address of the property you are currently living in during the the current rating year (1 July 2017-30 June 2018)?'
-        ]
+        'text': 'Were you living in another property that you owned on 1 July 2017, have sold that property, and moved to the address of the property you are currently living in during the the current rating year (1 July 2017-30 June 2018)?'
       },
       'mi': {
-        'text': [
-          '', 'Were you living in another property that you owned on 1 July 2017, have sold that property, and moved to the address of the property you are currently living in during the the current rating year (1 July 2017-30 June 2018)?'
-        ]
+        'text': 'Were you living in another property that you owned on 1 July 2017, have sold that property, and moved to the address of the property you are currently living in during the the current rating year (1 July 2017-30 June 2018)?'
       }
     },
+    'childOptions': {
+      'en': {
+        'text': ['yes', 'no']
+      },
+      'mi': {
+        'text': ['yes', 'no']
+      }
+    },
+    'toggleByOption': 'No',
     'accordianLabel': {
       'en': {
         'text': 'What if I moved house during the rates year?'
@@ -188,7 +195,7 @@ var firstTimeApplication = [
         'text': ['ae', 'kaore']
       }
     },
-    'component': RadioWithTextField,
+    'component': RadioGroupSection,
     'field_name': 'has_home_business',
     'textFieldLabel': {
       'en': {
