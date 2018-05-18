@@ -6,6 +6,7 @@ import Accordian from '../Forms/Accordian';
 import Address from '../widgets/Address';
 import Income from '../widgets/Income';
 import Eligible from '../widgets/Eligible';
+import NumberField from '../Forms/NumberField';
 import 'react-select/dist/react-select.css';
 
 class WizardFormFirstPage extends React.Component {
@@ -108,8 +109,8 @@ class WizardFormFirstPage extends React.Component {
                 te whakahoki utu rānei, tae atu ki te $620 te rahi, mō ngā reiti whenua mā te kaupapa whakamāmā reiti. </span>
             </p>
             <Accordian
-              accordianLabel="<strong>What is a rates rebate?</strong> <br/><span>He aha te whakamāmā reiti?</span>"
-              accordianText="<p>Rates rebates are a subsidy that gives you a discount on the rates bill of your residential property.</p><p>Any homeowner may receive a rebate for the property they live in, as long as
+              label="<strong>What is a rates rebate?</strong> <br/><span>He aha te whakamāmā reiti?</span>"
+              text="<p>Rates rebates are a subsidy that gives you a discount on the rates bill of your residential property.</p><p>Any homeowner may receive a rebate for the property they live in, as long as
                 they meet the criteria. This is calculated by your property rates, your income
                 for the 2016 to 2017 tax year, and the number of dependants you have. If you have
                 dependants, the upper threshold of your income can be $500 more for each
@@ -145,11 +146,8 @@ class WizardFormFirstPage extends React.Component {
                 <label>I have
                   <Field
                     name="dependants"
+                    component={NumberField}
                     onChange={this.handleDependants}
-                    type="number"
-                    min="0"
-                    step="1"
-                    component={renderField}
                     />
                   dependants.
                 </label>

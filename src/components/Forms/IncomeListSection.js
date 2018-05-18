@@ -1,3 +1,5 @@
+import axios from 'axios';
+import config from '../../config';
 import RadioField from './RadioField';
 import RadioWithSelect from './RadioWithSelect';
 import React, {Fragment} from 'react';
@@ -70,7 +72,7 @@ class IncomeListSection extends React.Component {
               fontSize: '20px',
               fontWeight: '500'
             }}>What was your total income for the 2017/18 tax year?</label>
-            <p>You will need to know your total income for the 2016/2017 Tax year (1 March
+            <p>You will need to know your total income <strong>before tax</strong> for the 2016/2017 Tax year (1 March
               2016 - 31 March 2017) including rental income from any properties you own,
               interest and dividends, and overseas income (converted to $NZD).
             <br/>
@@ -204,7 +206,7 @@ class IncomeList extends React.Component {
   render() {
     const list = [
       {
-        label: 'Super Annuation',
+        label: 'NZ Superannuation',
         child: 'radio',
         options: ['Single - Living alone', 'Single - Sharing']
       }, {
@@ -225,6 +227,7 @@ class IncomeList extends React.Component {
       }
     ];
 
+    let dependants = document.getElementsByName('dependants')[0];
     return (
       <Fragment>
         {list.map((item, i) => {
@@ -334,7 +337,7 @@ class IncomeTotals extends React.Component {
         : 0;
     }
 
-    // SUPER ANNUATION
+    // SUPERANNUATION
     if (this.props.sa_checked) {
       if (dependants > 0) {
 
