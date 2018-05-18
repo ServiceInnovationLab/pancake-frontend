@@ -179,14 +179,6 @@ var firstTimeApplication = [
         'text': 'Do you earn money from home or run a business from home?'
       }
     },
-    'instructionsSecondary': {
-      'en': {
-        'text': 'If yes, and you deducted over 50% of your rates as expenses, you may not be able to get a rebate. If your property is mainly used for commercial activities, for example farming or business, you cannot apply for a rates rebate.'
-      },
-      'mi': {
-        'text': 'If yes, and you deducted over 50% of your rates as expenses, you may not be able to get a rebate. If your property is mainly used for commercial activities, for example farming or business, you cannot apply for a rates rebate.'
-      }
-    },
     'options': {
       'en': {
         'text': ['yes', 'no']
@@ -205,14 +197,25 @@ var firstTimeApplication = [
         'text': 'Please describe how you earn money or what business you run'
       }
     },
-    'placeholder': {
+    'childType': 'radio',
+    'childFieldName':'business_deducted_over_50',
+    'childLabel': {
       'en': {
-        'text': 'Enter the total amount'
+        'text': 'If yes, and you deducted over 50% of your rates as expenses, you may not be able to get a rebate. If your property is mainly used for commercial activities, for example farming or business, you cannot apply for a rates rebate.'
       },
       'mi': {
-        'text': 'Enter the total amount'
+        'text': 'If yes, and you deducted over 50% of your rates as expenses, you may not be able to get a rebate. If your property is mainly used for commercial activities, for example farming or business, you cannot apply for a rates rebate.'
       }
-    }
+    },
+    'childOptions': {
+      'en': {
+        'text': ['yes', 'no']
+      },
+      'mi': {
+        'text': ['yes', 'no']
+      }
+    },
+    'toggleByOption': 'Yes',
   },
   {
     'component': TextBoxWithAccordian,

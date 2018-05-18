@@ -87,8 +87,6 @@ const FieldText = props => {
   return (
     <div>
       {props.showYes && <div style={props.showYes}>
-        {props.prop.instructionsSecondary && <label style={{marginTop: '35px'}}>{props.prop.textFieldLabel}</label>}
-        <p>{props.prop.instructionsSecondary}</p>
         <input type="number" id={props.prop.input.name} name={`${props.prop.input.name}`} defaultValue={(props.submittedValue) ? (props.submittedValue) : ''} placeholder={props.prop.placeholder} />
       </div>}
     </div>
