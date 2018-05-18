@@ -11,9 +11,8 @@ const validate = values => {
     if(!values[item]) {
       errors[item] = 'This is a required field, please provide an answer';
     }
-
-    // Custom errors
   });
+
   return errors;
 };
 

@@ -1,8 +1,8 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 
 const Error = props => {
   const {fields} = props;
-  return <Fragment>
+  return (
     <div>
       {fields && fields.touched && fields.error &&
         <div>
@@ -10,7 +10,7 @@ const Error = props => {
         </div>
       }
     </div>
-  </Fragment>;
+  );
 };
 
 
