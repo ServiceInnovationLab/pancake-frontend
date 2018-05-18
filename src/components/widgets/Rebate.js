@@ -57,7 +57,7 @@ class Rebate extends React.Component {
     if (this.state.rebate !== null) {
       return (
         <p className="heading-paragraph">
-          You are eligible for
+          You could be eligible for
           <span> ${this.formatDollars(this.state.rebate)}</span>
         </p>
       );

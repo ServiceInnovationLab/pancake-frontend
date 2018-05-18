@@ -196,12 +196,12 @@ const Head = () => {
 }
 
 const AllSteps  = () => {
-  let help_text = "<p>You can find a list of the total amounts for Work and Income payments, including NZ Superannuation <a href=\"https://www.dia.govt.nz/diawebsite.nsf/Files/Benefit-Schedule-2016-17/$file/Benefit-Schedule-2016-17.pdf\">here</a></p><p>You can get this from a few places, such as:<ul><li>Inland Revenue, by calling them on 0800 775 247 and asking for a Personal Tax Summary, or logging on to your MyIR account at IRD.govt.nz.</li><li>from Ministry of Social Development, </li> <li>through your employer, accountant etc.</il></ul></p>";
+  let help_text = "<p>You can get this from a few places, such as:<ul><li>Inland Revenue, by calling them on 0800 775 247 and asking for a Personal Tax Summary, or logging on to your MyIR account at IRD.govt.nz.</li><li>from Ministry of Social Development, </li> <li>through your employer, accountant etc.</il></ul></p><p>You can find a list of the total amounts for Work and Income payments, including NZ Superannuation <a href=\"https://www.dia.govt.nz/diawebsite.nsf/Files/Benefit-Schedule-2016-17/$file/Benefit-Schedule-2016-17.pdf\">here</a></p>";
   return (
     <Fragment>
       <section>
         <h3 className="heading-secondary grey">Step One<br/>Mahi Tuatahi</h3>
-        <p>You will need to know your total income for the 2016/2017 Tax year (1 April
+        <p>You will need to know your total income before tax for the 2016/2017 Tax year (1 April
           2016 - 31 March 2017). This includes rental income from any properties you own,
           interest and dividends, and overseas income (converted to $NZD). </p>
         <Accordian
@@ -219,7 +219,7 @@ const AllSteps  = () => {
       <section>
         <h3 className="heading-secondary grey">Step Three<br/>Mahi Tuatoru</h3>
         <p>Visit the Tauranga City Council at 91 Willow Street and sign your application.<br/><br/>
-        Proof of income may be requested, especially for those with income sources other than superannuation or work and income benefits. <br/><br/>If you are self-employed, you must supply evidence with your application. Evidence of income helps to ensure you receive the correct rebate promptly.</p>
+        Proof of income may be requested for those with income sources other than superannuation or work and income benefits. <br/><br/>If you are self-employed, you must supply evidence with your application. Evidence of income helps to ensure you receive the correct rebate promptly.</p>
       </section>
     </Fragment>
   );
@@ -241,11 +241,13 @@ const Success = () => {
     <div className="container">
       <section>
         <h2 className="heading-secondary">Step Three: Get your application witnessed<br/> <span>Mahi Tuatoru: Mā te kaiwhakaatu e waitohu tō tono.</span> </h2>
-        <h3>You are almost there!</h3>
-        <h4>Your application form has been digitally sent to your local council.<br/> Now you need to visit the Tauranga Council at 91 Willow Street to finalise your rebate.</h4>
-        <p>
-          Proof of income may be requested, especially for those with income sources other than superannuation or work and income benefits. <br/><br/>If you are self-employed, you must supply evidence with your application. Evidence of income helps to ensure you receive the correct rebate promptly. <br/><br/>Tell the Service Centre staff you're there to sign your rates rebate application.
-        </p>
+      <h3>You are almost there!</h3>
+
+      <h4>Your application form has been digitally sent to your local council.<br/> Now you need to visit the Tauranga Council at 91 Willow Street to finalise your rebate.</h4>
+
+      <p>
+        Proof of income may be requested for those with income sources other than superannuation or work and income benefits. <br/><br/>If you are self-employed, you must supply evidence with your application. Evidence of income helps to ensure you receive the correct rebate promptly. <br/><br/>Tell the Service Centre staff you're there to sign your rates rebate application.
+      </p>
       </section>
     </div>
   );
@@ -264,7 +266,7 @@ class Calculated extends React.Component {
                 rates_bill={this.props.rates_bill}
                 income={this.props.income} />
         <p>This will be applied to your rates account once your application has been
-          fully proccessed.</p>
+          fully processed.</p>
       </Fragment>
     );
   }
