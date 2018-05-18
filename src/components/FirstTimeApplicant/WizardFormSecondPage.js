@@ -145,7 +145,9 @@ class WizardFormSecondPage extends React.Component {
 
                 <Accordian
                   accordianLabel="It is an offence to knowingly make a false statement in your application"
-                  accordianText="<p>You can find a list of the total amounts for Work and Income payments, including NZ Superannuation https://www.dia.govt.nz/diawebsite.nsf/Files/Benefit-Schedule-2016-17/$file/Benefit-Schedule-2016-17.pdf <br/><br/>You can get this from a few places, such as:<ul><li>Inland Revenue, by calling them on 0800 775 247 and asking for a Personal Tax Summary, or logging on to your MyIR account at IRD.govt.nz.</li><li>from Ministry of Social Development</li> <li>through your employer, accountant etc.</il></ul></p>"
+                  accordianText="Section 14 of the Rates Rebate Act 1973<br/>14. Offences <ul><li>(1) Every person commits an offence who
+                  for the purpose of obtaining any rates rebate under this Act, for himself or for any other person, makes any statement or declaration knowing it to be false in any particular, or wilfully misleads or attempts to mislead any person concerned in the administration of this Act or any other person whatsoever; or </li><li>(b) refuses or fails to comply with any requirement under section 11, or refuses or fails to answer any question put to him pursuant to that section, or knowingly gives any false or misleading answer to any such question.</li><li>(2) Every person who commits an offence against this Act is liable on conviction before a District Court Judge to imprisonment for a term not
+                  exceeding 12 months or to a fine not exceeding $500, or to both.</li></ul>"
                   />
               </div>
             <p>This will be applied to your rates account once your application has been fully proccessed.</p>
@@ -163,7 +165,7 @@ class WizardFormSecondPage extends React.Component {
 }
 
 const Head = () => {
-  let help_text = "<p>You can find a list of the total amounts for Work and Income payments, including NZ Superannuation <a href=\"https://www.dia.govt.nz/diawebsite.nsf/Files/Benefit-Schedule-2016-17/$file/Benefit-Schedule-2016-17.pdf\">here</a></p><p>You can get this from a few places, such as:<ul><li>Inland Revenue, by calling them on 0800 775 247 and asking for a Personal Tax Summary, or logging on to your MyIR account at IRD.govt.nz.</li><li>from Ministry of Social Development, </li> <li>through your employer, accountant etc.</il></ul></p>";
+  let help_text = "<p>You can get this from a few places, such as:<ul><li>Inland Revenue, by calling them on 0800 775 247 and asking for a Personal Tax Summary, or logging on to your MyIR account at IRD.govt.nz.</li><li>from Ministry of Social Development, </li> <li>through your employer, accountant etc.</il></ul></p><p>You can find a list of the total amounts for Work and Income payments, including NZ Superannuation <a href=\"https://www.dia.govt.nz/diawebsite.nsf/Files/Benefit-Schedule-2016-17/$file/Benefit-Schedule-2016-17.pdf\">here</a></p>";
   return (
     <div className="container">
       <a
@@ -181,7 +183,7 @@ const Head = () => {
       <h2 className="heading-secondary green">What you will need to do to apply for a rebate <br/><span>He aha ngā mahi e tonoa ai te whakamāmā reiti</span></h2>
       <section>
         <h3 className="heading-secondary grey">Step One<br/>Mahi Tuatahi</h3>
-        <p>You will need to know your total income for the 2016/2017 Tax year (1 April
+        <p>You will need to know your total income before tax for the 2016/2017 Tax year (1 April
           2016 - 31 March 2017). This includes rental income from any properties you own,
           interest and dividends, and overseas income (converted to $NZD). </p>
           <Accordian
