@@ -53,7 +53,7 @@ class Eligible extends React.Component {
 
   render() {
     if (this.state.rebate !== null) {
-      if (parseInt(this.state.rebate)> 0) {
+      if (parseInt(this.state.rebate, 0)> 0) {
         return (
           <Fragment>
             <div className="arrow-box secondary">

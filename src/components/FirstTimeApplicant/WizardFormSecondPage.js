@@ -108,27 +108,29 @@ class WizardFormSecondPage extends React.Component {
               return (
                 <section className={field.theme} key={key}>
                   <div className="container">
-                    <Field
-                      label={label}
-                      name={name}
-                      component={field.component}
-                      instructions={field.instructions && field.instructions['en'].text}
-                      instructionsSecondary={field.instructionsSecondary && field.instructionsSecondary['en'].text}
-                      values={form_values && form_values}
-                      accordianLabel={field.accordianLabel && field.accordianLabel['en'].text}
-                      accordianText={field.accordianText && field.accordianText['en'].text}
-                      checkboxLabel={field.checkboxLabel && field.checkboxLabel['en'].text}
-                      checkboxText={field.checkboxText && field.checkboxText['en'].text}
-                      options={field.options && field.options['en'].text}
-                      childOptions={field.childOptions && field.childOptions['en'].text}
-                      childLabel={field.childLabel && field.childLabel['en'].text}
-                      childInstructions={field.childInstructions && field.childInstructions['en'].text}
-                      optionsText={field.optionsText && field.optionsText['en'].text}
-                      textFieldLabel={field.textFieldLabel && field.textFieldLabel['en'].text}
-                      placeholder={field.placeholder && field.placeholder['en'].text}
-                      hasAddressFinder={field.hasAddressFinder}
-                      theme={field.theme && field.theme}
-                      />
+                  <Field
+                    label={label}
+                    name={name}
+                    component={field.component}
+                    instructions={field.instructions && field.instructions['en'].text}
+                    values={form_values && form_values}
+                    accordianLabel={field.accordianLabel && field.accordianLabel['en'].text}
+                    accordianText={field.accordianText && field.accordianText['en'].text}
+                    checkboxLabel={field.checkboxLabel && field.checkboxLabel['en'].text}
+                    checkboxText={field.checkboxText && field.checkboxText['en'].text}
+                    options={field.options && field.options['en'].text}
+                    childInstructions={field.childInstructions && field.childInstructions['en'].text}
+                    optionsText={field.optionsText && field.optionsText['en'].text}
+                    textFieldLabel={field.textFieldLabel && field.textFieldLabel['en'].text}
+                    placeholder={field.placeholder && field.placeholder['en'].text}
+                    field_name={field.field_name && field.field_name}
+                    childLabel={field.childLabel && field.childLabel['en'].text}
+                    childFieldName={field.childFieldName && field.childFieldName}
+                    childOptions={field.childOptions && field.childOptions['en'].text}
+                    childType={field.childType && field.childType}
+                    toggleByOption={field.toggleByOption && field.toggleByOption}
+                    theme={field.theme && field.theme}
+                    />
                   </div>
                   </section>
                 );
@@ -142,8 +144,8 @@ class WizardFormSecondPage extends React.Component {
                   income={this.props.storeValues.totalIncome} />
 
                 <Accordian
-                  label="It is an offence to knowingly make a false statement in your application"
-                  text="<p>You can find a list of the total amounts for Work and Income payments, including NZ Superannuation https://www.dia.govt.nz/diawebsite.nsf/Files/Benefit-Schedule-2016-17/$file/Benefit-Schedule-2016-17.pdf <br/><br/>You can get this from a few places, such as:<ul><li>Inland Revenue, by calling them on 0800 775 247 and asking for a Personal Tax Summary, or logging on to your MyIR account at IRD.govt.nz.</li><li>from Ministry of Social Development</li> <li>through your employer, accountant etc.</il></ul></p>"
+                  accordianLabel="It is an offence to knowingly make a false statement in your application"
+                  accordianText="<p>You can find a list of the total amounts for Work and Income payments, including NZ Superannuation https://www.dia.govt.nz/diawebsite.nsf/Files/Benefit-Schedule-2016-17/$file/Benefit-Schedule-2016-17.pdf <br/><br/>You can get this from a few places, such as:<ul><li>Inland Revenue, by calling them on 0800 775 247 and asking for a Personal Tax Summary, or logging on to your MyIR account at IRD.govt.nz.</li><li>from Ministry of Social Development</li> <li>through your employer, accountant etc.</il></ul></p>"
                   />
               </div>
             <p>This will be applied to your rates account once your application has been fully proccessed.</p>
@@ -183,8 +185,8 @@ const Head = () => {
           2016 - 31 March 2017). This includes rental income from any properties you own,
           interest and dividends, and overseas income (converted to $NZD). </p>
           <Accordian
-            label="Where can I get my income details?"
-            text={help_text} />
+            accordianLabel="Where can I get my income details?"
+            accordianText={help_text} />
 
       </section>
 
