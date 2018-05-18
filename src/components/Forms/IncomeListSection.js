@@ -1,3 +1,5 @@
+import axios from 'axios';
+import config from '../../config';
 import RadioField from './RadioField';
 import RadioWithSelect from './RadioWithSelect';
 import React, {Fragment} from 'react';
@@ -225,6 +227,7 @@ class IncomeList extends React.Component {
       }
     ];
 
+    let dependants = document.getElementsByName('dependants')[0];
     return (
       <Fragment>
         {list.map((item, i) => {
