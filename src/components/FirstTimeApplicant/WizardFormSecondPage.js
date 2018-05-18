@@ -107,22 +107,26 @@ class WizardFormSecondPage extends React.Component {
                 <Field
                   label={label}
                   name={name}
+                  component={field.component}
+                  instructions={field.instructions && field.instructions['en'].text}
                   values={form_values && form_values}
                   accordianLabel={field.accordianLabel && field.accordianLabel['en'].text}
                   accordianText={field.accordianText && field.accordianText['en'].text}
                   checkboxLabel={field.checkboxLabel && field.checkboxLabel['en'].text}
                   checkboxText={field.checkboxText && field.checkboxText['en'].text}
-                  childInstructions={field.childInstructions && field.childInstructions['en'].text}
-                  childLabel={field.childLabel && field.childLabel['en'].text}
-                  childOptions={field.childOptions && field.childOptions['en'].text}
-                  component={field.component}
-                  instructions={field.instructions && field.instructions['en'].text}
-                  instructionsSecondary={field.instructionsSecondary && field.instructionsSecondary['en'].text}
                   options={field.options && field.options['en'].text}
+                  childInstructions={field.childInstructions && field.childInstructions['en'].text}
                   optionsText={field.optionsText && field.optionsText['en'].text}
-                  placeholder={field.placeholder && field.placeholder['en'].text}
                   textFieldLabel={field.textFieldLabel && field.textFieldLabel['en'].text}
+                  placeholder={field.placeholder && field.placeholder['en'].text}
+                  field_name={field.field_name && field.field_name}
+                  childLabel={field.childLabel && field.childLabel['en'].text}
+                  childFieldName={field.childFieldName && field.childFieldName}
+                  childOptions={field.childOptions && field.childOptions['en'].text}
+                  childType={field.childType && field.childType}
+                  toggleByOption={field.toggleByOption && field.toggleByOption}
                   theme={field.theme && field.theme}
+                  type={field.type && field.type}
                   />
               </div>
               </section>
@@ -156,7 +160,6 @@ class WizardFormSecondPage extends React.Component {
       <Fragment>
         <div className="theme-main">
           <Head/>
-
             <form onSubmit={handleSubmit(this.saveFormData)}>
             {this.renderFields()}
             {this.state.complete && <Success/>}

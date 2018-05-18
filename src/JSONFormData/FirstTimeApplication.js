@@ -116,6 +116,7 @@ var firstTimeApplication = [
     'isRequired': true,
     'component': TextBoxWithAccordian,
     'field_name': 'dependants',
+    'type': 'number',
     'textFieldLabel': {
       'en': {
         'text': 'label'

@@ -6,6 +6,7 @@ import Accordian from '../Forms/Accordian';
 import Address from '../widgets/Address';
 import Income from '../widgets/Income';
 import Eligible from '../widgets/Eligible';
+import NumberField from '../Forms/NumberField';
 import 'react-select/dist/react-select.css';
 
 class WizardFormFirstPage extends React.Component {
@@ -145,11 +146,8 @@ class WizardFormFirstPage extends React.Component {
                 <label>I have
                   <Field
                     name="dependants"
+                    component={NumberField}
                     onChange={this.handleDependants}
-                    type="number"
-                    min="0"
-                    step="1"
-                    component={renderField}
                     />
                   dependants.
                 </label>
