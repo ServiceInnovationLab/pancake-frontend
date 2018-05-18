@@ -1,7 +1,6 @@
 import React from 'react';
 import ErrorMessage from '../../components/Forms/Error';
 import Accordian from '../../components/Forms/Accordian';
-import Instructions from '../../components/Forms/Instructions';
 import {underscorize} from '../../helpers/strings';
 import NumberField from '../Forms/NumberField';
 
@@ -40,7 +39,7 @@ export default class TextBoxWithAccordian extends React.Component {
         </legend>
         {this.props.type === 'number' ?
           <NumberField {...this.props} value={showValue} />
-          : 
+          :
           <input type="text" {...this.props.input} value={showValue} />
         }
 
