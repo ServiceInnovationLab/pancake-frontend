@@ -206,7 +206,7 @@ const AllSteps  = () => {
           interest and dividends, and overseas income (converted to $NZD). </p>
         <Accordian
           label="Where can I get my income details?"
-          text={help_text:} />
+          text={help_text} />
 
       </section>
 
