@@ -200,10 +200,10 @@ var firstTimeApplication = [
     'childFieldName':'business_deducted_over_50',
     'childLabel': {
       'en': {
-        'text': 'If yes, and you deducted over 50% of your rates as expenses, you may not be able to get a rebate. If your property is mainly used for commercial activities, for example farming or business, you cannot apply for a rates rebate.'
+        'text': 'Did you deduct over 50% of your rates as expenses for the 2016/2017 tax year?'
       },
       'mi': {
-        'text': 'If yes, and you deducted over 50% of your rates as expenses, you may not be able to get a rebate. If your property is mainly used for commercial activities, for example farming or business, you cannot apply for a rates rebate.'
+        'text': 'Did you deduct over 50% of your rates as expenses for the 2016/2017 tax year?'
       }
     },
     'childOptions': {
