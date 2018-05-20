@@ -27,21 +27,19 @@ class renderOtherIncome extends React.Component {
 
             <h4>Other income #{index + 1} </h4>
             <RemoveButton fields={fields} index={index} removeOtherOptionValues={this.props.removeOtherOptionValues}/>
-            <div className="select-wrapper">
-              <select name={`${income}.selectedOption`}>
-                <option>Wage or salary</option>
-                <option>Work and incomes supplements (e.g. Accommodation Supplement)</option>
-                <option>Personal Superannuation</option>
-                <option>Interest or dividends</option>
-                <option>Overseas income (converted to $NZD)</option>
-                <option>Net profit before tax from any business – enter ‘0’ if you sustained a loss</option>
-                <option>Rental income – enter ‘0’ if you sustained a loss</option>
-                <option>ACC earnings compensation</option>
-                <option>Working for Families Tax Credits (excludes Family Tax Credits)</option>
-                <option>Trust income paid to you</option>
-                <option>Income from other source (please identify)</option>
-              </select>
-            </div>
+            <select name={`${income}.selectedOption`}>
+              <option>Wage or salary</option>
+              <option>Work and incomes supplements (e.g. Accommodation Supplement)</option>
+              <option>Personal Superannuation</option>
+              <option>Interest or dividends</option>
+              <option>Overseas income (converted to $NZD)</option>
+              <option>Net profit before tax from any business – enter ‘0’ if you sustained a loss</option>
+              <option>Rental income – enter ‘0’ if you sustained a loss</option>
+              <option>ACC earnings compensation</option>
+              <option>Working for Families Tax Credits (excludes Family Tax Credits)</option>
+              <option>Trust income paid to you</option>
+              <option>Income from other source (please identify)</option>
+            </select>
 
             {this.state.other_source && <Field
               name={`${income}.incomeFrom`}

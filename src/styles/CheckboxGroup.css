@@ -4,13 +4,16 @@
   font-style: normal;
   src: url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?v=4.3.0");
   src: url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?#iefix&v=4.3.0") format("embedded-opentype"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff2?v=4.3.0") format("woff2"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff?v=4.3.0") format("woff"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.ttf?v=4.3.0") format("truetype"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular") format("svg"); }
+
 .checkbox-group h4 {
   display: inline-block;
   margin-right: 15px;
   vertical-align: sub;
   margin-bottom: 0; }
+
 .checkbox-group .radio-group {
   margin: 0; }
+
 .checkbox-group > label:not(.checkbox-radio) {
   position: relative;
   cursor: pointer;
@@ -58,9 +61,11 @@
 
 .checkbox-square .radio-group {
   margin: 0; }
+
 .checkbox-square input[type=checkbox] {
   position: absolute;
   left: -9999px; }
+
 .checkbox-square > label:not(.checkbox-radio) {
   position: relative;
   cursor: pointer;
@@ -123,12 +128,15 @@
 .checkbox-list li {
   list-style: none;
   margin-bottom: 30px; }
+
 .checkbox-list label {
   display: none !important; }
+
 .checkbox-list h4,
 .checkbox-list button {
   margin-bottom: 20px;
   display: inline-block; }
+
 .checkbox-list h4 {
   margin-right: 20px; }
 
@@ -137,22 +145,11 @@
   padding-left: 0; }
   .nested-list li {
     list-style: none; }
-  .nested-list .select-wrapper {
-    position: relative; }
-    .nested-list .select-wrapper::after {
-      content: "\f0d7";
-      font-family: 'FontAwesome';
-      color: #4f4b46;
-      display: inline-block;
-      position: absolute;
-      right: 20px;
-      top: 20px;
-      pointer-events: none; }
   .nested-list select {
     font-family: 'Fira Sans', sans-serif;
     font-size: 16px;
     display: inline-block;
-    margin-top: 10px;
+    margin: 10px 0;
     border-radius: 5px;
     padding: 8px 20px;
     background-color: #fff;
@@ -160,5 +157,3 @@
     line-height: 42px;
     height: 42px;
     width: 100%; }
-
-/*# sourceMappingURL=CheckboxGroup.css.map */
