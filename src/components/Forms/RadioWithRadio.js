@@ -29,7 +29,7 @@ export default class RadioWithRadio extends React.Component {
             <Radio props={this.props} fieldType="radio" />
           </div>
           {this.props.instructions && <p dangerouslySetInnerHTML={{ __html: this.props.instructions }}></p>}
-          <Accordian label={this.props.accordianLabel} text={this.props.accordianText} />
+          {this.props.accordianLabel && <Accordian label={this.props.accordianLabel} text={this.props.accordianText} />}
           <ErrorMessage fields={this.props.meta} />
         </fieldset>
       </div>

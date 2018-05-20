@@ -17,12 +17,11 @@ class Radio extends React.Component {
   }
 
   toggleSub(item) {
-    if(item === 'yes') {
-      this.setState({showYes: true, showNo: false});
+    if(item.toLowerCase() === this.props.props.toggleByOption.toLowerCase()) {
+      this.setState({show: true});
     } else {
-      this.setState({showYes: false, showNo: true});
+      this.setState({show: false});
     }
-    this.setState({showYes: item === 'yes' ? true : false});
   }
 
   componentWillMount() {
@@ -57,10 +56,8 @@ class Radio extends React.Component {
         {this.props.fieldType === 'radio' &&
           <Fragment>
             <FieldRadio
-              showYes={this.stateType('showYes')}
-              showNo={this.stateType('showNo')}
+              toggleByOption={this.state.show}
               prop={prop}
-              showSub={this.stateType('sub')}
             />
           </Fragment>
         }
@@ -74,10 +71,9 @@ class Radio extends React.Component {
 const FieldRadio = props => {
   return (
     <Fragment>
-      {<div style={props.showYes}>{props.prop.optionsText[0]}</div>}
-      {<div style={props.showNo}>
+      {props.toggleByOption && <div>{props.prop.optionsText[0]}</div>}
+      {props.toggleByOption && <div>
         <FieldSet prop={props.prop}/>
-        <p style={props.showSub}>A council officer will contact you about further information you will need to provide before processing your application.</p>
       </div>}
     </Fragment>
   );

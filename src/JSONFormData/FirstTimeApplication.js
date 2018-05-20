@@ -7,6 +7,7 @@ var firstTimeApplication = [
   {
     'component': RadioWithRadio,
     'field_name': 'lived_here_before_july_2017',
+    'toggleByOption': 'No',
     'label': {
       'en': {
         'text': 'Did you live here at 1 July 2017?'
@@ -189,14 +190,19 @@ var firstTimeApplication = [
         'text': ['ae', 'kaore']
       }
     },
-    'component': RadioWithTextField,
+    'component': RadioWithRadio,
     'field_name': 'has_home_business',
-    'textFieldLabel': {
+    'toggleByOption': 'Yes',
+    'optionsText': {
       'en': {
-        'text': 'Please describe how you earn money or what business you run'
+        'text': [
+          '', 'Did you deduct over 50% of your rates as expenses for the 2016/2017 tax year?'
+        ]
       },
       'mi': {
-        'text': 'Please describe how you earn money or what business you run'
+        'text': [
+          '', 'Did you deduct over 50% of your rates as expenses for the 2016/2017 tax year?'
+        ]
       }
     },
     'placeholder': {
