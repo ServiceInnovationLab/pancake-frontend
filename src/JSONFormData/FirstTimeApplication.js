@@ -6,6 +6,7 @@ var firstTimeApplication = [
   {
     'component': RadioWithRadio,
     'field_name': 'lived_here_before_july_2017',
+    'childFieldName': 'lived_other_owned_property',
     'toggleByOption': 'No',
     'label': {
       'en': {
@@ -192,6 +193,7 @@ var firstTimeApplication = [
     'component': RadioWithRadio,
     'field_name': 'has_home_business',
     'toggleByOption': 'Yes',
+    'childFieldName': 'deducts_over_half_rates',
     'optionsText': {
       'en': {
         'text': [

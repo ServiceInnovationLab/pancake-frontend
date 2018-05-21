@@ -47,7 +47,7 @@ class Radio extends React.Component {
             <div>
               <div>
                 {[ 'Yes', 'No' ].map((item, key)=>{
-                  return <label key={key}><Field name={`${this.props.input.name}_reponse`} component={renderField} item={item}/><span>{item}</span></label>;
+                  return <label key={key}><Field name={this.props.childFieldName} component={renderField} item={item}/><span>{item}</span></label>;
                 })}
               </div>
             </div>
