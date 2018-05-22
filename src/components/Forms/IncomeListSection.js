@@ -119,8 +119,8 @@ class IncomeList extends React.Component {
       ShowRadio: false,
       ShowTextField: false,
       ShowNestedGroup: false,
-      super_annuation_applicant: '',
-      super_annuation_partner: '',
+      nz_superannuation_applicant: '',
+      nz_superannuation_partner: '',
       sa_checked: false,
       jobseeker_support: 0,
       sole_parent_support: 0,
@@ -208,7 +208,7 @@ class IncomeList extends React.Component {
       {
         label: 'NZ Superannuation',
         child: 'radio',
-        options: ['Single - Living alone', 'Single - Sharing']
+        options: ['Single - Living alone', 'Single - Sharing', 'Partner with non-qualified spouse included', 'Partner both qualify']
       }, {
         label: 'Jobseeker Support',
         child: null
@@ -227,7 +227,6 @@ class IncomeList extends React.Component {
       }
     ];
 
-    let dependants = document.getElementsByName('dependants')[0];
     return (
       <Fragment>
         {list.map((item, i) => {
@@ -276,8 +275,8 @@ class IncomeList extends React.Component {
           dependants={document.getElementsByName('dependants')[0]}
           hasPartner={this.props.hasPartner}
           data={this.props}
-          super_annuation_applicant={this.state.super_annuation_applicant}
-          super_annuation_partner={this.state.super_annuation_partner}
+          nz_superannuation_applicant={this.state.nz_superannuation_applicant}
+          nz_superannuation_partner={this.state.nz_superannuation_partner}
           sa_checked={this.state.sa_checked}
           jobseeker_support={this.state.jobseeker_support}
           sole_parent_support={this.state.sole_parent_support}
@@ -325,6 +324,22 @@ class IncomeTotals extends React.Component {
       .bind(this);
   }
 
+  superAnnuation(type) {
+    let sa_total;
+    if (type.includes('alone')) {
+      sa_total = 23058.36;
+    } else if (type.includes('sharing')) {
+      sa_total = 21191.56;
+    } else if (type.includes('non_qualified')) {
+      sa_total = 17281.68;
+    } else if (type.includes('qualify')) {
+      sa_total = 18239.52;
+    } else {
+      sa_total = 0;
+    }
+    return sa_total;
+  }
+
   totalIncome() {
     let sa_total = 0;
     let jss_total = 0;
@@ -343,16 +358,10 @@ class IncomeTotals extends React.Component {
 
         if (this.props.hasPartner) {
           sa_total += 17458.48;
-        } // TODO: this value is empty in benefit schedule
+        }
 
         if(!this.props.hasPartner) {
-          if (this.props.super_annuation_applicant.includes('alone')) {
-            sa_total += 23058.36;
-          } else if (this.props.super_annuation_applicant.includes('sharing')) {
-            sa_total += 21191.56;
-          } else {
-            sa_total += 23058.36;
-          }
+          sa_total += this.superAnnuation(this.props.nz_superannuation_applicant);
         }
       } else { // no children
         if (this.props.hasPartner) {
@@ -360,13 +369,7 @@ class IncomeTotals extends React.Component {
         }
 
         if(!this.props.hasPartner) {
-          if (this.props.super_annuation_applicant.includes('alone')) {
-            sa_total += 23058.36;
-          } else if (this.props.super_annuation_applicant.includes('sharing')) {
-            sa_total += 21191.56;
-          } else {
-            sa_total += 23058.36;
-          }
+          sa_total += this.superAnnuation(this.props.nz_superannuation_partner);
         }
       }
     }
