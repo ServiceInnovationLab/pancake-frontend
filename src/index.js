@@ -16,8 +16,8 @@ import './styles/App.css';
 const store = createStore(combineReducers({
   reducers,
   form: formReducer
-// }), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-}), applyMiddleware(thunk));
+}), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+// }), applyMiddleware(thunk));
 
 class App extends React.Component {
   render(){

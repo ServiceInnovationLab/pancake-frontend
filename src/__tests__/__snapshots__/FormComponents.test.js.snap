@@ -10,3 +10,16 @@ exports[`components <RenderRadio /> renders correctly 1`] = `
   <div />
 </fieldset>
 `;
+
+exports[`components <TextField /> renders correctly 1`] = `
+<fieldset
+  className="field"
+>
+  <legend />
+  <input
+    type="text"
+    value={undefined}
+  />
+  <div />
+</fieldset>
+`;

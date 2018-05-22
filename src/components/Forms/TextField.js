@@ -23,11 +23,12 @@ export default class TextField extends React.Component {
   }
 
   getValue() {
-    if(this.props.input.name === this.props.values[this.props.input.name]) {
-      return this.props.values['this.props.input.name'];
+    if(this.props.input) {
+      if(this.props.input.name === this.props.values[this.props.input.name]) {
+        return this.props.values['this.props.input.name'];
+      }
+      return this.props.input.value;
     }
-    return this.props.input.value;
-
   }
 
   render() {
