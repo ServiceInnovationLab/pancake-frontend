@@ -3,21 +3,21 @@ import renderer from 'react-test-renderer';
 import RenderRadio from '../components/Forms/RenderRadio';
 import TextField from '../components/Forms/TextField';
 
+const Components = [
+  RenderRadio,
+  TextField
+];
+
+
 describe('components', function() {
-
-
-
-  describe('<RenderRadio />', function() {
-    it('renders correctly', function() {
-      let tree = renderer.create(<RenderRadio />).toJSON();
-      expect(tree).toMatchSnapshot();
-    });
-  });
-
-  describe('<TextField />', function() {
-    it('renders correctly', function() {
-      let tree = renderer.create(<TextField />).toJSON();
-      expect(tree).toMatchSnapshot();
+  'use strict';
+  Components.map(item=> {
+    describe(`<${item} />`, function() {
+      it('renders correctly', function() {
+        const TagName = item;
+        let tree = renderer.create(<TagName />).toJSON();
+        expect(tree).toMatchSnapshot();
+      });
     });
   });
 
