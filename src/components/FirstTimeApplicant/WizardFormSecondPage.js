@@ -127,8 +127,7 @@ class WizardFormSecondPage extends React.Component {
                   toggleByOption={field.toggleByOption && field.toggleByOption}
                   theme={field.theme && field.theme}
                   type={field.type && field.type}
-                  childFieldName={field.childFieldName && field.childFieldName}
-                  />
+                />
               </div>
               </section>
             );
