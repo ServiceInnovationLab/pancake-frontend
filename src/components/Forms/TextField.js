@@ -3,13 +3,14 @@ import ErrorMessage from '../../components/Forms/Error';
 import Accordian from '../../components/Forms/Accordian';
 import {underscorize} from '../../helpers/strings';
 import NumberField from '../Forms/NumberField';
+import {Field} from 'redux-form';
 
 /*
-  TextBoxWithAccordian
+  TextField
   type can be specified in FirstTimeApplication.js if you require number field instead of text
 */
 
-export default class TextBoxWithAccordian extends React.Component {
+export default class TextField extends React.Component {
   constructor(props) {
     super(props);
     this.state = { show: false };
@@ -43,7 +44,13 @@ export default class TextBoxWithAccordian extends React.Component {
           <input type="text" {...this.props.input} value={showValue} />
         }
 
-        {this.props.instructions && <p dangerouslySetInnerHTML={{ __html: this.props.instructions }}></p>}
+        {this.props.instructions && <p className="instructions" dangerouslySetInnerHTML={{ __html: this.props.instructions }}></p>}
+        {this.props.checkboxFieldName && 
+          <Field
+            component={Checkbox}
+            label={this.props.checkboxLabel}
+            name={this.props.checkboxFieldName}
+          />}
         {this.props.accordianText && <div>
           <Accordian label={this.props.accordianLabel} text={this.props.accordianText} />
         </div>
@@ -53,3 +60,16 @@ export default class TextBoxWithAccordian extends React.Component {
     );
   }
 }
+
+const Checkbox = props => {
+  return <div class="checkbox-group">
+    <div>
+      <div class="checkboxes">
+        <label>
+          <input type="checkbox" {...props.input} />
+          <span>{props.label}</span>
+        </label>
+      </div>
+    </div>
+  </div>;
+};
