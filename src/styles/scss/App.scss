@@ -584,7 +584,7 @@ a {
       font-size: 16px;
       padding-top: 3px;
       margin-top: 10px;
-  
+
       &::before {
         content: "";
         border: 1px solid $grey;
@@ -598,7 +598,7 @@ a {
         transform: translateY(-50%);
       }
     }
-    
+
     &[type=checkbox]:checked + span::after {
       content: "";
       position: absolute;
@@ -611,5 +611,4 @@ a {
       transform: rotate(45deg);
     }
   }
-
 }
