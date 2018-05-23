@@ -1,4 +1,4 @@
-import TextBoxWithAccordian from '../components/Forms/TextboxWithAccordian';
+import TextField from '../components/Forms/TextField';
 import RadioWithRadio from '../components/Forms/RadioWithRadio';
 import IncomeListSection from '../components/Forms/IncomeListSection';
 
@@ -53,7 +53,7 @@ var firstTimeApplication = [
       }
     }
   }, {
-    'component': TextBoxWithAccordian,
+    'component': TextField,
     'field_name': 'full_name',
     'theme': 'theme-sand',
     'label': {
@@ -115,7 +115,7 @@ var firstTimeApplication = [
       }
     },
     'isRequired': true,
-    'component': TextBoxWithAccordian,
+    'component': TextField,
     'field_name': 'dependants',
     'type': 'number',
     'textFieldLabel': {
@@ -216,8 +216,16 @@ var firstTimeApplication = [
     }
   },
   {
-    'component': TextBoxWithAccordian,
+    'component': TextField,
     'field_name': 'email',
+    'instructions': {
+      'en': {
+        'text': 'This email address will be used to send you a confirmation and instructions for this application. The phone number will be used to contact you if additional details are required.'
+      },
+      'mi': {
+        'text': 'This email address will be used to send you a confirmation and instructions for this application. The phone number will be used to contact you if additional details are required.'
+      }
+    },
     'label': {
       'en': {
         'text': 'What is your email address?'
@@ -227,8 +235,17 @@ var firstTimeApplication = [
       }
     }
   }, {
-    'component': TextBoxWithAccordian,
+    'component': TextField,
     'field_name': 'phone_number',
+    'checkboxFieldName': 'email_phone_can_be_used',
+    'checkboxLabel': {
+      'en': {
+        'text': 'Are you happy for the email address and/or phone number to be used for other Council communications?'
+      },
+      'mi': {
+        'text': 'Are you happy for the email address and/or phone number to be used for other Council communications?'
+      }
+    },
     'label': {
       'en': {
         'text': 'What is your phone number?'
