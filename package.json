@@ -1,6 +1,6 @@
 {
   "name": "pancake-frontend",
-  "homepage": "https://ratesrebates.services.govt.nz/app",
+  "homepage": "https://alpha.ratesrebates.services.govt.nz/app",
   "version": "0.1.0",
   "private": true,
   "repository": "git@github.com:ServiceInnovationLab/pancake-frontend.git",
