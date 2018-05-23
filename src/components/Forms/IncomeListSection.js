@@ -86,8 +86,8 @@ class IncomeListSection extends React.Component {
                 <IncomeList
                   name="applicant"
                   hasPartner={this.state.should_show_partner_options}
-                  showRadios={this.state.should_show_partner_options}
                   setTotalIncome={this.setApplicantTotalIncome}
+                  showRadios={true}
                 />
               </ul>
               <ul className="column list-stripped">
@@ -98,8 +98,8 @@ class IncomeListSection extends React.Component {
                   <IncomeList
                     name="partner"
                     hasPartner={this.state.should_show_partner_options}
-                    showRadios={this.state.should_show_partner_options}
                     setTotalIncome={this.setPartnerTotalIncome}
+                    showRadios={false}
                   />
                 </Fragment>}
               </ul>
@@ -121,10 +121,10 @@ class IncomeList extends React.Component {
       ShowNestedGroup: false,
       nz_superannuation_applicant: '',
       nz_superannuation_partner: '',
-      sa_checked: false,
-      jobseeker_support: 0,
-      sole_parent_support: 0,
-      supported_living: 0
+      hasSuperAnnuation: false,
+      hasJobSeekerSupport: 0,
+      hasSoleParentSupport: 0,
+      hasSupportedLiving: 0
     };
 
     this.handleChild = this
@@ -158,7 +158,7 @@ class IncomeList extends React.Component {
   handleChild(val, clicked) {
     switch (val.child) {
     case 'radio':
-      this.setState({sa_checked: !this.state.sa_checked});
+      this.setState({hasSuperAnnuation: !this.state.hasSuperAnnuation});
       this.setChild('ShowRadio');
       break;
     case 'text-field':
@@ -208,7 +208,8 @@ class IncomeList extends React.Component {
       {
         label: 'NZ Superannuation',
         child: 'radio',
-        options: ['Single - Living alone', 'Single - Sharing', 'Partner with non-qualified spouse included', 'Partner both qualify']
+        singleOptions: ['Single - Living alone', 'Single - Sharing'],
+        partnerOptions: ['Partner with non-qualified spouse included', 'Partner both qualify']
       }, {
         label: 'Jobseeker Support',
         child: null
@@ -244,10 +245,10 @@ class IncomeList extends React.Component {
                 </label>
               </li>
               <div>
-                {!this.props.showRadios && item.child === 'radio' && <RadioGroup
+                {this.props.showRadios && item.child === 'radio' && <RadioGroup
                   handleChildRadioClick={this.handleChildRadioClick}
                   name={`${underscorize(item.label)}_${this.props.name}`}
-                  options={item.options && item.options}
+                  options={!this.props.hasPartner ? item.singleOptions && item.singleOptions : item.singleOptions.concat(item.partnerOptions)}
                   type={this.state.ShowRadio ? 'radio' : 'hidden'}/>}
 
                 {item.child === 'text-field' && <Fragment>
@@ -277,10 +278,10 @@ class IncomeList extends React.Component {
           data={this.props}
           nz_superannuation_applicant={this.state.nz_superannuation_applicant}
           nz_superannuation_partner={this.state.nz_superannuation_partner}
-          sa_checked={this.state.sa_checked}
-          jobseeker_support={this.state.jobseeker_support}
-          sole_parent_support={this.state.sole_parent_support}
-          supported_living={this.state.supported_living}
+          hasSuperAnnuation={this.state.hasSuperAnnuation}
+          hasJobSeekerSupport={this.state.hasJobSeekerSupport}
+          hasSoleParentSupport={this.state.hasSoleParentSupport}
+          hasSupportedLiving={this.state.hasSupportedLiving}
           wos_total={this.wosTotal()}
           setTotalIncome={this.props.setTotalIncome}
         />
@@ -341,6 +342,7 @@ class IncomeTotals extends React.Component {
   }
 
   totalIncome() {
+
     let sa_total = 0;
     let jss_total = 0;
     let sps_total = 0;
@@ -353,29 +355,16 @@ class IncomeTotals extends React.Component {
     }
 
     // SUPERANNUATION
-    if (this.props.sa_checked) {
+    if (this.props.hasSuperAnnuation) {
       if (dependants > 0) {
-
-        if (this.props.hasPartner) {
-          sa_total += 17458.48;
-        }
-
-        if(!this.props.hasPartner) {
-          sa_total += this.superAnnuation(this.props.nz_superannuation_applicant);
-        }
+        sa_total += this.superAnnuation(this.props.nz_superannuation_applicant);
       } else { // no children
-        if (this.props.hasPartner) {
-          sa_total += 17458.48;
-        }
-
-        if(!this.props.hasPartner) {
-          sa_total += this.superAnnuation(this.props.nz_superannuation_partner);
-        }
+        sa_total += this.superAnnuation(this.props.nz_superannuation_partner);
       }
     }
 
     // JOB SEEKER SUPPORT
-    if (this.props.jobseeker_support) {
+    if (this.props.hasJobSeekerSupport) {
       if (dependants > 0) {
         if (this.props.hasPartner) {
           jss_total += 10899.72;
@@ -383,22 +372,18 @@ class IncomeTotals extends React.Component {
           jss_total += 19358.56;
         }
       } else { // no children
-        if (this.props.hasPartner) {
-          jss_total += 10173.28;
-        } else {
-          jss_total += 10173.28; // took first value: Single 18-19 years (away from home)
-        }
+        jss_total += 10173.28;
       }
     }
 
     // SOLE PARENT SUPPORT
-    if (this.props.sole_parent_support) {
+    if (this.props.hasSoleParentSupport) {
       if (dependants > 0) {
         sps_total += 19358.56;
       }
     }
 
-    if (this.props.supported_living) {
+    if (this.props.hasSupportedLiving) {
       if (dependants > 0) {
         if (this.props.hasPartner) {
           sa_total += 13442.00;
@@ -423,6 +408,7 @@ class IncomeTotals extends React.Component {
     const otherOptionValueStates = Object
       .keys(incomeListStates)
       .filter(state => /^otherOptionValue/.test(state));
+
     const otherOptionValues = [];
     for (const key in incomeListStates) {
       if (otherOptionValueStates.includes(key)) {
