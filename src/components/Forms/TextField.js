@@ -49,9 +49,9 @@ export default class TextField extends React.Component {
 }
 
 const Checkbox = props => {
-  return <div class="checkbox-group">
+  return <div className="checkbox-group">
     <div>
-      <div class="checkboxes">
+      <div className="checkboxes">
         <label>
           <input type="checkbox" {...props.input} />
           <span>{props.label}</span>
