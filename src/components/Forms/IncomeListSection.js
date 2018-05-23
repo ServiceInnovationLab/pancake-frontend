@@ -93,7 +93,7 @@ class IncomeListSection extends React.Component {
                   title="Partner/join homeowner's income"
                   name="partner"
                   hasPartner={this.state.should_show_partner_options}
-                  showRadios={true}
+                  showRadios={false}
                   setTotalIncome={this.setPartnerTotalIncome}
                 />}
               </ul>
@@ -367,12 +367,7 @@ class IncomeTotals extends React.Component {
 
     // SUPERANNUATION
     if (this.props.sa_checked) {
-      if (dependants > 0) {
-
-        sa_total += this.superAnnuation(this.props.nz_superannuation_applicant);
-      } else { // no children
-        sa_total += this.superAnnuation(this.props.nz_superannuation_partner);
-      }
+      sa_total += (this.superAnnuation(this.props.nz_superannuation_applicant) + this.superAnnuation(this.props.nz_superannuation_partner));
     }
 
     // JOB SEEKER SUPPORT
