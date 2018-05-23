@@ -80,9 +80,7 @@ class IncomeListSection extends React.Component {
               Select any that apply to you.</p>
             <div className="row">
               <ul className="column list-stripped">
-                <li>
-                  <h4>Your Income</h4>
-                </li>
+                <ListHeading title="Your Income" />
                 <IncomeList
                   name="applicant"
                   hasPartner={this.state.should_show_partner_options}
@@ -92,9 +90,7 @@ class IncomeListSection extends React.Component {
               </ul>
               <ul className="column list-stripped">
                 {this.state.should_show_partner_options && <Fragment>
-                  <li>
-                    <h4>Partner/join homeowner's income</h4>
-                  </li>
+                  <ListHeading title="Partner/join homeowner's income" />
                   <IncomeList
                     name="partner"
                     hasPartner={this.state.should_show_partner_options}
@@ -110,6 +106,12 @@ class IncomeListSection extends React.Component {
     );
   }
 }
+
+const ListHeading = props => {
+  return <li>
+    <h4>{props.title}</h4>
+  </li>;
+};
 
 class IncomeList extends React.Component {
 
