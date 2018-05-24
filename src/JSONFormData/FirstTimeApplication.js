@@ -214,7 +214,7 @@ var firstTimeApplication = [
         'text': ['yes', 'no']
       }
     },
-    'toggleByOption': 'Yes',
+    'toggleByOption': 'Yes'
   },
   {
     'component': TextBoxWithAccordian,
