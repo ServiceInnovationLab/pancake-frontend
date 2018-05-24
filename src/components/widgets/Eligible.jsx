@@ -77,7 +77,7 @@ class Eligible extends React.Component {
             </p>
           </div>
         </Fragment>
-        );
+      );
     }
 
     return '';
