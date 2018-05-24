@@ -16,10 +16,10 @@ var firstTimeApplication = [
     },
     'options': {
       'en': {
-        'text': ['yes', 'no']
+        'text': [ 'yes', 'no' ]
       },
       'mi': {
-        'text': ['yes', 'no']
+        'text': [ 'yes', 'no' ]
       }
     },
     'childType': 'radio',
@@ -34,10 +34,10 @@ var firstTimeApplication = [
     },
     'childOptions': {
       'en': {
-        'text': ['yes', 'no']
+        'text': [ 'yes', 'no' ]
       },
       'mi': {
-        'text': ['yes', 'no']
+        'text': [ 'yes', 'no' ]
       }
     },
     'toggleByOption': 'No',
@@ -113,10 +113,10 @@ var firstTimeApplication = [
     },
     'options': {
       'en': {
-        'text': ['yes', 'no']
+        'text': [ 'yes', 'no' ]
       },
       'mi': {
-        'text': ['ae', 'kaore']
+        'text': [ 'ae', 'kaore' ]
       }
     },
     'isRequired': true,
@@ -127,7 +127,7 @@ var firstTimeApplication = [
         'text': 'label'
       },
       'mi': {
-        'text': ['ae', 'kaore']
+        'text': [ 'ae', 'kaore' ]
       }
     },
     'placeholder': {
@@ -180,10 +180,10 @@ var firstTimeApplication = [
     },
     'options': {
       'en': {
-        'text': ['yes', 'no']
+        'text': [ 'yes', 'no' ]
       },
       'mi': {
-        'text': ['ae', 'kaore']
+        'text': [ 'ae', 'kaore' ]
       }
     },
     'component': RadioGroupSection,
@@ -208,10 +208,10 @@ var firstTimeApplication = [
     },
     'childOptions': {
       'en': {
-        'text': ['yes', 'no']
+        'text': [ 'yes', 'no' ]
       },
       'mi': {
-        'text': ['yes', 'no']
+        'text': [ 'yes', 'no' ]
       }
     },
     'toggleByOption': 'Yes',

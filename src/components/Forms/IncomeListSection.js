@@ -55,7 +55,7 @@ class IncomeListSection extends React.Component {
                 relationship with.</p>
               <div>
                 <div>
-                  <RadioField options={['yes', 'no']} handleRadioClick={this.handleRadioClick}/>
+                  <RadioField options={[ 'yes', 'no' ]} handleRadioClick={this.handleRadioClick}/>
                 </div>
               </div>
             </fieldset>
@@ -67,9 +67,9 @@ class IncomeListSection extends React.Component {
           <fieldset>
             <label
               style={{
-              fontSize: '20px',
-              fontWeight: '500'
-            }}>What was your total income for the 2017/18 tax year?</label>
+                fontSize: '20px',
+                fontWeight: '500'
+              }}>What was your total income for the 2017/18 tax year?</label>
             <p>You will need to know your total income for the 2016/2017 Tax year (1 March
               2016 - 31 March 2017) including rental income from any properties you own,
               interest and dividends, and overseas income (converted to $NZD).
@@ -206,7 +206,7 @@ class IncomeList extends React.Component {
       {
         label: 'Super Annuation',
         child: 'radio',
-        options: ['Single - Living alone', 'Single - Sharing']
+        options: [ 'Single - Living alone', 'Single - Sharing' ]
       }, {
         label: 'Jobseeker Support',
         child: null
