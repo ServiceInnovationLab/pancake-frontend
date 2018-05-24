@@ -17,10 +17,10 @@ var firstTimeApplication = [
     },
     'options': {
       'en': {
-        'text': ['yes', 'no']
+        'text': [ 'yes', 'no' ]
       },
       'mi': {
-        'text': ['yes', 'no']
+        'text': [ 'yes', 'no' ]
       }
     },
     'optionsText': {
@@ -107,10 +107,10 @@ var firstTimeApplication = [
     },
     'options': {
       'en': {
-        'text': ['yes', 'no']
+        'text': [ 'yes', 'no' ]
       },
       'mi': {
-        'text': ['ae', 'kaore']
+        'text': [ 'ae', 'kaore' ]
       }
     },
     'isRequired': true,
@@ -121,7 +121,7 @@ var firstTimeApplication = [
         'text': 'label'
       },
       'mi': {
-        'text': ['ae', 'kaore']
+        'text': [ 'ae', 'kaore' ]
       }
     },
     'placeholder': {
@@ -182,10 +182,10 @@ var firstTimeApplication = [
     },
     'options': {
       'en': {
-        'text': ['yes', 'no']
+        'text': [ 'yes', 'no' ]
       },
       'mi': {
-        'text': ['ae', 'kaore']
+        'text': [ 'ae', 'kaore' ]
       }
     },
     'component': RadioWithTextField,
