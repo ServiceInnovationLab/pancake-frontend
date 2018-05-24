@@ -39,7 +39,7 @@ class Rebate extends React.Component {
       axios
         .post(`${config.OPENFISCA_ORIGIN}`, data)
         .then(res => {
-          let rebate = res.data.properties.property_1.rates_rebate['2018']
+          let rebate = res.data.properties.property_1.rates_rebate['2018'];
           this.setState({rebate: rebate});
         })
         .catch(err => console.log('err fetching properties', err));
