@@ -21,7 +21,8 @@ class Sign extends React.Component {
       lng: 'en',
       page: 2,
       shown: false,
-      sig1: '',
+      signature_by_applicant: '',
+      signature_by_witness: '',
       signature: '',
       stage: '',
       witness_name: '',
@@ -66,17 +67,16 @@ class Sign extends React.Component {
 
   getData = sign_type => {
     let data = (sign_type === 'witness' ? {
-      "signature": this.state.sig2,
+      "signature": this.state.signature_by_witness,
       "role": this.state.witness_role,
       "name": this.state.witness_name,
       "type": sign_type
     } : {
-      "signature": this.state.sig1,
+      "signature": this.state.signature_by_applicant,
       "role": this.state.applicant_role,
       "name": this.state.fields.full_name,
       "type": sign_type
     });
-    console.log(this.state);
     return data;
   }
 
@@ -138,8 +138,9 @@ class Sign extends React.Component {
                   to be true and by virtue of the Oaths and Declarations Act 1957.
                 </p>
                 <SignatureCanvas
-                  onEnd={()=>this.setState({sig1: this.sigCanvas.toDataURL()})}
-                  penColor='black' ref={(ref) => { this.sigCanvas = ref }} canvasProps={{width: 500, height: 300, className: 'sigCanvas'}} />
+                  onEnd={()=>this.setState({signature_by_applicant: this.sigCanvas.toDataURL()})}
+                  penColor='black' ref={(ref) => { this.sigCanvas = ref }} canvasProps={{width: 500, height: 300, className: 'sigCanvas'}}
+                />
                 <div><button onClick={()=>{this.sigCanvas.clear()}}>Clear</button></div>
 
                 <h3>Witness</h3>
@@ -157,7 +158,7 @@ class Sign extends React.Component {
                   />
                 </div>
                 <SignatureCanvas
-                  onEnd={()=>this.setState({sig2: this.sigCanvas2.toDataURL()})}
+                  onEnd={()=>this.setState({signature_by_witness: this.sigCanvas2.toDataURL()})}
                   penColor='black' ref={(ref) => { this.sigCanvas2 = ref }} canvasProps={{width: 500, height: 300, className: 'sigCanvas'}} />
                 <div><button onClick={()=>{this.sigCanvas2.clear()}}>Clear</button></div>
                 <Submit/>
