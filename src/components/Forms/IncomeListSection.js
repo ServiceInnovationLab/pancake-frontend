@@ -80,28 +80,22 @@ class IncomeListSection extends React.Component {
               Select any that apply to you.</p>
             <div className="row">
               <ul className="column list-stripped">
-                <li>
-                  <h4>Your Income</h4>
-                </li>
-                <IncomeList
+                <ListColumn
+                  title="Your Income"
                   name="applicant"
                   hasPartner={this.state.should_show_partner_options}
-                  showRadios={this.state.should_show_partner_options}
+                  showRadios={false}
                   setTotalIncome={this.setApplicantTotalIncome}
                 />
               </ul>
               <ul className="column list-stripped">
-                {this.state.should_show_partner_options && <Fragment>
-                  <li>
-                    <h4>Partner/join homeowner's income</h4>
-                  </li>
-                  <IncomeList
-                    name="partner"
-                    hasPartner={this.state.should_show_partner_options}
-                    showRadios={this.state.should_show_partner_options}
-                    setTotalIncome={this.setPartnerTotalIncome}
-                  />
-                </Fragment>}
+                {this.state.should_show_partner_options && <ListColumn
+                  title="Partner/join homeowner's income"
+                  name="partner"
+                  hasPartner={this.state.should_show_partner_options}
+                  showRadios={false}
+                  setTotalIncome={this.setPartnerTotalIncome}
+                />}
               </ul>
             </div>
           </fieldset>
@@ -111,6 +105,24 @@ class IncomeListSection extends React.Component {
   }
 }
 
+const ListColumn = props => {
+  return <Fragment>
+    <ListHeading title={props.title} />
+    <IncomeList
+      name={props.name}
+      hasPartner={props.hasPartner}
+      showRadios={props.showRadios}
+      setTotalIncome={props.setTotalIncome}
+    />
+  </Fragment>;
+};
+
+const ListHeading = props => {
+  return <li>
+    <h4>{props.title}</h4>
+  </li>;
+};
+
 class IncomeList extends React.Component {
 
   constructor(props) {
@@ -119,8 +131,8 @@ class IncomeList extends React.Component {
       ShowRadio: false,
       ShowTextField: false,
       ShowNestedGroup: false,
-      super_annuation_applicant: '',
-      super_annuation_partner: '',
+      nz_superannuation_applicant: '',
+      nz_superannuation_partner: '',
       sa_checked: false,
       jobseeker_support: 0,
       sole_parent_support: 0,
@@ -208,7 +220,8 @@ class IncomeList extends React.Component {
       {
         label: 'NZ Superannuation',
         child: 'radio',
-        options: ['Single - Living alone', 'Single - Sharing']
+        singleOptions: ['Single - Living alone', 'Single - Sharing'],
+        partnerOptions: ['Partner with non-qualified spouse included', 'Partner both qualify']
       }, {
         label: 'Jobseeker Support',
         child: null
@@ -227,7 +240,6 @@ class IncomeList extends React.Component {
       }
     ];
 
-    let dependants = document.getElementsByName('dependants')[0];
     return (
       <Fragment>
         {list.map((item, i) => {
@@ -248,7 +260,7 @@ class IncomeList extends React.Component {
                 {!this.props.showRadios && item.child === 'radio' && <RadioGroup
                   handleChildRadioClick={this.handleChildRadioClick}
                   name={`${underscorize(item.label)}_${this.props.name}`}
-                  options={item.options && item.options}
+                  options={!this.props.hasPartner ? item.singleOptions && item.singleOptions : item.singleOptions && item.singleOptions.concat(item.partnerOptions)}
                   type={this.state.ShowRadio ? 'radio' : 'hidden'}/>}
 
                 {item.child === 'text-field' && <Fragment>
@@ -276,8 +288,8 @@ class IncomeList extends React.Component {
           dependants={document.getElementsByName('dependants')[0]}
           hasPartner={this.props.hasPartner}
           data={this.props}
-          super_annuation_applicant={this.state.super_annuation_applicant}
-          super_annuation_partner={this.state.super_annuation_partner}
+          nz_superannuation_applicant={this.state.nz_superannuation_applicant}
+          nz_superannuation_partner={this.state.nz_superannuation_partner}
           sa_checked={this.state.sa_checked}
           jobseeker_support={this.state.jobseeker_support}
           sole_parent_support={this.state.sole_parent_support}
@@ -325,6 +337,22 @@ class IncomeTotals extends React.Component {
       .bind(this);
   }
 
+  superAnnuation(type) {
+    let sa_total;
+    if (type.includes('alone')) {
+      sa_total = 23058.36;
+    } else if (type.includes('sharing')) {
+      sa_total = 21191.56;
+    } else if (type.includes('non_qualified')) {
+      sa_total = 17281.68;
+    } else if (type.includes('qualify')) {
+      sa_total = 18239.52;
+    } else {
+      sa_total = 0;
+    }
+    return sa_total;
+  }
+
   totalIncome() {
     let sa_total = 0;
     let jss_total = 0;
@@ -339,36 +367,7 @@ class IncomeTotals extends React.Component {
 
     // SUPERANNUATION
     if (this.props.sa_checked) {
-      if (dependants > 0) {
-
-        if (this.props.hasPartner) {
-          sa_total += 17458.48;
-        } // TODO: this value is empty in benefit schedule
-
-        if(!this.props.hasPartner) {
-          if (this.props.super_annuation_applicant.includes('alone')) {
-            sa_total += 23058.36;
-          } else if (this.props.super_annuation_applicant.includes('sharing')) {
-            sa_total += 21191.56;
-          } else {
-            sa_total += 23058.36;
-          }
-        }
-      } else { // no children
-        if (this.props.hasPartner) {
-          sa_total += 17458.48;
-        }
-
-        if(!this.props.hasPartner) {
-          if (this.props.super_annuation_applicant.includes('alone')) {
-            sa_total += 23058.36;
-          } else if (this.props.super_annuation_applicant.includes('sharing')) {
-            sa_total += 21191.56;
-          } else {
-            sa_total += 23058.36;
-          }
-        }
-      }
+      sa_total += (this.superAnnuation(this.props.nz_superannuation_applicant) + this.superAnnuation(this.props.nz_superannuation_partner));
     }
 
     // JOB SEEKER SUPPORT

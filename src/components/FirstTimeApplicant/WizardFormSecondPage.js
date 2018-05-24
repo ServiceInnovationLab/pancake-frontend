@@ -121,7 +121,6 @@ class WizardFormSecondPage extends React.Component {
                   placeholder={field.placeholder && field.placeholder['en'].text}
                   field_name={field.field_name && field.field_name}
                   childLabel={field.childLabel && field.childLabel['en'].text}
-                  childFieldName={field.childFieldName && field.childFieldName}
                   childOptions={field.childOptions && field.childOptions['en'].text}
                   childType={field.childType && field.childType}
                   toggleByOption={field.toggleByOption && field.toggleByOption}
