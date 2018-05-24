@@ -4,7 +4,7 @@ import {underscorize} from '../../helpers/strings';
 import RadioWithSelect from './RadioWithSelect';
 import axios from 'axios';
 import config from '../../config';
-import {sendTotalIncome} from '../../actions'
+import {sendTotalIncome} from '../../actions';
 // import { state } from 'fs';
 import RadioField from './RadioField';
 
@@ -66,13 +66,15 @@ class IncomeListSection extends React.Component {
         </section>
         <div style={{
           marginTop: '42px'
-        }}>
+        }}
+        >
           <fieldset>
             <label
               style={{
-              fontSize: '20px',
-              fontWeight: '500'
-            }}>What was your total income for the 2017/18 tax year?</label>
+                fontSize: '20px',
+                fontWeight: '500'
+              }}
+            >What was your total income for the 2017/18 tax year?</label>
             <p>You will need to know your total income for the 2016/2017 Tax year (1 March
               2016 - 31 March 2017) including rental income from any properties you own,
               interest and dividends, and overseas income (converted to $NZD).
@@ -239,7 +241,8 @@ class IncomeList extends React.Component {
                   <input
                     type="checkbox"
                     name={underscorize(item.label)}
-                    onClick={() => this.handleChild(item, underscorize(`${item.label}${this.props.hasPartner ? '1' : '0'}`))}/>
+                    onClick={() => this.handleChild(item, underscorize(`${item.label}${this.props.hasPartner ? '1' : '0'}`))}
+                  />
                   <div className="radio-list-multi">{item.label}
                     <span className="checkmark"></span>
                   </div>
@@ -250,7 +253,8 @@ class IncomeList extends React.Component {
                   handleChildRadioClick={this.handleChildRadioClick}
                   name={`${underscorize(item.label)}_${this.props.name}`}
                   options={item.options && item.options}
-                  type={this.state.ShowRadio ? 'radio' : 'hidden'}/>}
+                  type={this.state.ShowRadio ? 'radio' : 'hidden'}
+                />}
 
                 {item.child === 'text-field' && <Fragment>
                   <input
@@ -266,7 +270,8 @@ class IncomeList extends React.Component {
                   visible={this.state.ShowNestedGroup}
                   name={`${underscorize(item.label)}_${this.props.name}`}
                   getOtherOptionValues={this.getOtherOptionValues}
-                  removeOtherOptionValues={this.removeOtherOptionValues}/>}</div>
+                  removeOtherOptionValues={this.removeOtherOptionValues}
+                />}</div>
             </Fragment>
           );
         })}
@@ -299,7 +304,8 @@ const RadioGroup = props => {
           <input
             type="radio"
             name={props.name}
-            onClick={() => props.handleChildRadioClick(item, props.name)}/>
+            onClick={() => props.handleChildRadioClick(item, props.name)}
+          />
           <span>{item}</span>
         </label>
       </Fragment>)}
