@@ -114,7 +114,8 @@ class FieldList extends React.Component {
                 .map((item, i) => {
                   return <ListItem key={i} item={item} type="applicant" />;
                 })}
-              <li>Your total Income:</li></ul>
+              <li>Your total Income:</li>
+            </ul>
             {this.props.showYes && <ul style={this.props.showYes} className="column list-stripped">
               <li>
                 <h4>
@@ -125,7 +126,8 @@ class FieldList extends React.Component {
                 .map((item, i) => {
                   return <ListItem key={i} item={item} type="partner" />;
                 })}
-              <li>Partner's total Income:</li></ul>}
+              <li>Partner's total Income:</li>
+            </ul>}
           </div>
         </fieldset>
       </div>
