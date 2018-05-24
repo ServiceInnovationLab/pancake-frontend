@@ -8,7 +8,7 @@ const validate = values => {
 
 
   // HACK
-  let optionals = ['email', 'phone_number'];
+  let optionals = [ 'email', 'phone_number' ];
 
   const errors = {};
   arrayOfInputNames.forEach(item=>{
