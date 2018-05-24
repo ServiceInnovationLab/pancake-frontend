@@ -24,28 +24,9 @@ class Sign extends React.Component {
       signature_by_applicant: '',
       signature_by_witness: '',
       signature: '',
-      stage: '',
       witness_name: '',
       witness_role: ''
     };
-    this.nextPage = this
-      .nextPage
-      .bind(this);
-    this.previousPage = this
-      .previousPage
-      .bind(this);
-  }
-
-  nextPage = () => {
-    this.setState({
-      page: this.state.page + 1
-    });
-  }
-
-  previousPage = () => {
-    this.setState({
-      page: this.state.page - 1
-    });
   }
 
   componentDidMount() {
@@ -63,7 +44,6 @@ class Sign extends React.Component {
       this.setState({complete: true});
     })
   }
-
 
   getData = sign_type => {
     let data = (sign_type === 'witness' ? {
