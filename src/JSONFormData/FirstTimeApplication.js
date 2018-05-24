@@ -25,14 +25,10 @@ var firstTimeApplication = [
     },
     'optionsText': {
       'en': {
-        'text': [
-          '', 'Were you living in another property that you owned on 1 July 2017, have sold that property, and moved to the address of the property you are currently living in during the the current rating year (1 July 2017-30 June 2018)?'
-        ]
+        'text': ['', 'Were you living in another property that you owned on 1 July 2017, have sold that property, and moved to the address of the property you are currently living in during the the current rating year (1 July 2017-30 June 2018)?']
       },
       'mi': {
-        'text': [
-          '', 'Were you living in another property that you owned on 1 July 2017, have sold that property, and moved to the address of the property you are currently living in during the the current rating year (1 July 2017-30 June 2018)?'
-        ]
+        'text': ['', 'Were you living in another property that you owned on 1 July 2017, have sold that property, and moved to the address of the property you are currently living in during the the current rating year (1 July 2017-30 June 2018)?']
       }
     },
     'accordianLabel': {
