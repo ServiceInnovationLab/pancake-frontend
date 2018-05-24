@@ -141,7 +141,9 @@ class Sign extends React.Component {
                   onEnd={()=>this.setState({signature_by_witness: this.sigCanvas2.toDataURL()})}
                   penColor='black' ref={(ref) => { this.sigCanvas2 = ref }} canvasProps={{width: 500, height: 300, className: 'sigCanvas'}} />
                 <div><button onClick={()=>{this.sigCanvas2.clear()}}>Clear</button></div>
-                <Submit/>
+                {this.state.signature_by_applicant && this.state.signature_by_witness &&
+                  <Submit/>
+                }
                 </form>
               </Fragment>
             }
