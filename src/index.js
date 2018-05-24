@@ -10,6 +10,7 @@ import { HashRouter, Route } from 'react-router-dom';
 import { reducer as formReducer } from 'redux-form';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Modal from './components/Modal';
 import './styles/App.css';
 
 
@@ -20,6 +21,16 @@ const store = createStore(combineReducers({
 }), applyMiddleware(thunk));
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showPrivacyStatement: false
+    }
+  }
+  showPrivacyStatement() {
+    this.setState({showPrivacyStatement: !this.state.showPrivacyStatement})
+  }
+
   render(){
     return (
       <HashRouter>
@@ -29,7 +40,8 @@ class App extends React.Component {
             <Route exact={true} path="/" component={WizardForm} />
             <Route path="/:id" component={Sign}/>
           </main>
-          <Footer />
+          {this.state.showPrivacyStatement && <Modal />}
+          <Footer showPrivacyStatement={()=>this.showPrivacyStatement()} />
         </div>
       </HashRouter>
     );
