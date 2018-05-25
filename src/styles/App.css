@@ -222,7 +222,8 @@ main {
       margin-left: 110px;
       color: #6dca7f; }
 
-p {
+p,
+ul {
   font-size: 18px; }
 
 .accordian {
