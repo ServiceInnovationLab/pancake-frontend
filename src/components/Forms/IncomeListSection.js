@@ -54,10 +54,11 @@ class IncomeListSection extends React.Component {
             <fieldset className="field radio-group">
               <legend>Were you living with a partner or joint home owner(s) on July 1 2017?</legend>
               <p>'Partner' is a person you are married to/in a civil union, or de facto
-                relationship with.</p>
+                relationship with.
+              </p>
               <div>
                 <div>
-                  <RadioField options={['yes', 'no']} handleRadioClick={this.handleRadioClick}/>
+                  <RadioField options={[ 'yes', 'no' ]} handleRadioClick={this.handleRadioClick}/>
                 </div>
               </div>
             </fieldset>
@@ -73,13 +74,15 @@ class IncomeListSection extends React.Component {
                 fontSize: '20px',
                 fontWeight: '500'
               }}
-            >What was your total income for the 2017/18 tax year?</label>
+            >What was your total income for the 2017/18 tax year?
+            </label>
             <p>You will need to know your total income <strong>before tax</strong> for the 2016/2017 Tax year (1 March
               2016 - 31 March 2017) including rental income from any properties you own,
               interest and dividends, and overseas income (converted to $NZD).
             <br/>
             <br/>
-              Select any that apply to you.</p>
+              Select any that apply to you.
+            </p>
             <div className="row">
               <ul className="column list-stripped">
                 <ListColumn
@@ -222,8 +225,8 @@ class IncomeList extends React.Component {
       {
         label: 'NZ Superannuation',
         child: 'radio',
-        singleOptions: ['Single - Living alone', 'Single - Sharing'],
-        partnerOptions: ['Partner with non-qualified spouse included', 'Partner both qualify']
+        singleOptions: [ 'Single - Living alone', 'Single - Sharing' ],
+        partnerOptions: [ 'Partner with non-qualified spouse included', 'Partner both qualify' ]
       }, {
         label: 'Jobseeker Support',
         child: null
@@ -282,7 +285,8 @@ class IncomeList extends React.Component {
                   name={`${underscorize(item.label)}_${this.props.name}`}
                   getOtherOptionValues={this.getOtherOptionValues}
                   removeOtherOptionValues={this.removeOtherOptionValues}
-                />}</div>
+                />}
+              </div>
             </Fragment>
           );
         })}
@@ -308,7 +312,9 @@ class IncomeList extends React.Component {
 
   wosTotal() {
     let total = parseFloat(this.getWageOrSalary(`wos_${this.props.name}`), 0);
-    if (!total) total = 0;
+    if (!total) {
+      total = 0; 
+    }
     return total;
   }
 }
