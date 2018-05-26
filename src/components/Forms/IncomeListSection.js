@@ -57,7 +57,7 @@ class IncomeListSection extends React.Component {
                 relationship with.</p>
               <div>
                 <div>
-                  <RadioField options={['yes', 'no']} handleRadioClick={this.handleRadioClick}/>
+                  <RadioField options={[ 'yes', 'no' ]} handleRadioClick={this.handleRadioClick}/>
                 </div>
               </div>
             </fieldset>
@@ -222,8 +222,8 @@ class IncomeList extends React.Component {
       {
         label: 'NZ Superannuation',
         child: 'radio',
-        singleOptions: ['Single - Living alone', 'Single - Sharing'],
-        partnerOptions: ['Partner with non-qualified spouse included', 'Partner both qualify']
+        singleOptions: [ 'Single - Living alone', 'Single - Sharing' ],
+        partnerOptions: [ 'Partner with non-qualified spouse included', 'Partner both qualify' ]
       }, {
         label: 'Jobseeker Support',
         child: null
@@ -308,7 +308,9 @@ class IncomeList extends React.Component {
 
   wosTotal() {
     let total = parseFloat(this.getWageOrSalary(`wos_${this.props.name}`), 0);
-    if (!total) total = 0;
+    if (!total) {
+      total = 0; 
+    }
     return total;
   }
 }
