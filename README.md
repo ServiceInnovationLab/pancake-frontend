@@ -1,4 +1,7 @@
 [![Build Status](https://travis-ci.org/ServiceInnovationLab/pancake-frontend.svg?branch=master)](https://travis-ci.org/ServiceInnovationLab/pancake-frontend)
+[![AwesomeCode Status for ServiceInnovationLab/pancake-frontend](https://awesomecode.io/projects/b9288192-4edc-48ff-be22-df713e36b465/status)](https://awesomecode.io/projects/94)
+[![Maintainability](https://api.codeclimate.com/v1/badges/9b4186fc2b1213321ad2/maintainability)](https://codeclimate.com/github/ServiceInnovationLab/pancake-frontend/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/9b4186fc2b1213321ad2/test_coverage)](https://codeclimate.com/github/ServiceInnovationLab/pancake-frontend/test_coverage)
 [![Waffle.io - Columns and their card count](https://badge.waffle.io/ServiceInnovationLab/pancake-frontend.png?columns=all)](https://waffle.io/ServiceInnovationLab/pancake-frontend?utm_source=badge)
 
 ## Pancake Frontend.
