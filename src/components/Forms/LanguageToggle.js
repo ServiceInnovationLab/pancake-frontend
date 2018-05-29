@@ -13,15 +13,15 @@ let languages = [
 
 const LanguageToggle = props => {
   return (
-    <div className="container btn-group">
+    <div className = "container btn-group">
       {languages.map((lang, key) => {
         return (
           <LangBtn
-            key={key}
-            state={props.langState}
-            langAbbr={lang.abbr}
-            langName={lang.name}
-            handler={()=>{
+            key = {key}
+            state = {props.langState}
+            langAbbr = {lang.abbr}
+            langName = {lang.name}
+            handler = {()=>{
               props.handler(lang.abbr);
             }}
           />
@@ -34,8 +34,8 @@ const LanguageToggle = props => {
 const LangBtn = props => {
   return (
     <a
-      onClick={props.handler}
-      className={props.state === props.langAbbr ? 'btn active' : 'btn'}
+      onClick = {props.handler}
+      className = {props.state === props.langAbbr ? 'btn active' : 'btn'}
     >{props.langName}
     </a>
   );

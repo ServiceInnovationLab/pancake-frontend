@@ -26,8 +26,8 @@ class App extends React.Component {
         <div>
           <Header />
           <main>
-            <Route exact={true} path="/" component={WizardForm} />
-            <Route path="/:id" component={Sign}/>
+            <Route exact = {true} path = "/" component = {WizardForm} />
+            <Route path = "/:id" component = {Sign}/>
           </main>
           <Footer />
         </div>
@@ -36,4 +36,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
+ReactDOM.render(<Provider store = {store}><App /></Provider>, document.getElementById('root'));
