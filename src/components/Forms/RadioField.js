@@ -5,12 +5,12 @@ const RadioField = props => {
     <Fragment>
       {props
         .options
-        .map((item, i) => <Fragment key={i}>
+        .map((item, i) => <Fragment key = {i}>
           <label>
             <input
-              type="radio"
-              name="radio_fields"
-              onClick={() => props.handleRadioClick(item)}
+              type = "radio"
+              name = "radio_fields"
+              onClick = {() => props.handleRadioClick(item)}
             />
             <span>{item}</span>
           </label>

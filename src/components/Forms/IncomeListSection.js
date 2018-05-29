@@ -50,27 +50,27 @@ class IncomeListSection extends React.Component {
     return (
       <Fragment>
         <section>
-          <div className="container">
-            <fieldset className="field radio-group">
+          <div className = "container">
+            <fieldset className = "field radio-group">
               <legend>Were you living with a partner or joint home owner(s) on July 1 2017?</legend>
               <p>'Partner' is a person you are married to/in a civil union, or de facto
                 relationship with.
               </p>
               <div>
                 <div>
-                  <RadioField options={[ 'yes', 'no' ]} handleRadioClick={this.handleRadioClick}/>
+                  <RadioField options = {[ 'yes', 'no' ]} handleRadioClick = {this.handleRadioClick}/>
                 </div>
               </div>
             </fieldset>
           </div>
         </section>
-        <div style={{
+        <div style = {{
           marginTop: '42px'
         }}
         >
           <fieldset>
             <label
-              style={{
+              style = {{
                 fontSize: '20px',
                 fontWeight: '500'
               }}
@@ -83,23 +83,23 @@ class IncomeListSection extends React.Component {
             <br/>
               Select any that apply to you.
             </p>
-            <div className="row">
-              <ul className="column list-stripped">
+            <div className = "row">
+              <ul className = "column list-stripped">
                 <ListColumn
-                  title="Your Income"
-                  name="applicant"
-                  hasPartner={this.state.should_show_partner_options}
-                  showRadios={false}
-                  setTotalIncome={this.setApplicantTotalIncome}
+                  title = "Your Income"
+                  name = "applicant"
+                  hasPartner = {this.state.should_show_partner_options}
+                  showRadios = {false}
+                  setTotalIncome = {this.setApplicantTotalIncome}
                 />
               </ul>
-              <ul className="column list-stripped">
+              <ul className = "column list-stripped">
                 {this.state.should_show_partner_options && <ListColumn
-                  title="Partner/join homeowner's income"
-                  name="partner"
-                  hasPartner={this.state.should_show_partner_options}
-                  showRadios={false}
-                  setTotalIncome={this.setPartnerTotalIncome}
+                  title = "Partner/join homeowner's income"
+                  name = "partner"
+                  hasPartner = {this.state.should_show_partner_options}
+                  showRadios = {false}
+                  setTotalIncome = {this.setPartnerTotalIncome}
                 />}
               </ul>
             </div>
@@ -112,12 +112,12 @@ class IncomeListSection extends React.Component {
 
 const ListColumn = props => {
   return <Fragment>
-    <ListHeading title={props.title} />
+    <ListHeading title = {props.title} />
     <IncomeList
-      name={props.name}
-      hasPartner={props.hasPartner}
-      showRadios={props.showRadios}
-      setTotalIncome={props.setTotalIncome}
+      name = {props.name}
+      hasPartner = {props.hasPartner}
+      showRadios = {props.showRadios}
+      setTotalIncome = {props.setTotalIncome}
     />
   </Fragment>;
 };
@@ -249,42 +249,42 @@ class IncomeList extends React.Component {
       <Fragment>
         {list.map((item, i) => {
           return (
-            <Fragment key={i}>
+            <Fragment key = {i}>
               <li>
-                <label className="radio-list-container">
+                <label className = "radio-list-container">
                   <input
-                    type="checkbox"
-                    name={underscorize(item.label)}
-                    onClick={() => this.handleChild(item, underscorize(`${item.label}${this.props.hasPartner ? '1' : '0'}`))}
+                    type = "checkbox"
+                    name = {underscorize(item.label)}
+                    onClick = {() => this.handleChild(item, underscorize(`${item.label}${this.props.hasPartner ? '1' : '0'}`))}
                   />
-                  <div className="radio-list-multi">{item.label}
-                    <span className="checkmark"></span>
+                  <div className = "radio-list-multi">{item.label}
+                    <span className = "checkmark"></span>
                   </div>
                 </label>
               </li>
               <div>
                 {!this.props.showRadios && item.child === 'radio' && <RadioGroup
-                  handleChildRadioClick={this.handleChildRadioClick}
-                  name={`${underscorize(item.label)}_${this.props.name}`}
-                  options={!this.props.hasPartner ? item.singleOptions && item.singleOptions : item.singleOptions && item.singleOptions.concat(item.partnerOptions)}
-                  type={this.state.ShowRadio ? 'radio' : 'hidden'}
+                  handleChildRadioClick = {this.handleChildRadioClick}
+                  name = {`${underscorize(item.label)}_${this.props.name}`}
+                  options = {!this.props.hasPartner ? item.singleOptions && item.singleOptions : item.singleOptions && item.singleOptions.concat(item.partnerOptions)}
+                  type = {this.state.ShowRadio ? 'radio' : 'hidden'}
                 />}
 
                 {item.child === 'text-field' && <Fragment>
                   <input
-                    type={this.state.ShowTextField ? 'text' : 'hidden'}
-                    name={`wos_${this.props.name}`}
-                    onChange={e => {
+                    type = {this.state.ShowTextField ? 'text' : 'hidden'}
+                    name = {`wos_${this.props.name}`}
+                    onChange = {e => {
                       this.setState({[`wos_${this.props.name}`]: e.target.value});
                     }}
                   />
                 </Fragment>}
 
                 {this.state.ShowNestedGroup && item.child === 'nested-group' && <RadioWithSelect
-                  visible={this.state.ShowNestedGroup}
-                  name={`${underscorize(item.label)}_${this.props.name}`}
-                  getOtherOptionValues={this.getOtherOptionValues}
-                  removeOtherOptionValues={this.removeOtherOptionValues}
+                  visible = {this.state.ShowNestedGroup}
+                  name = {`${underscorize(item.label)}_${this.props.name}`}
+                  getOtherOptionValues = {this.getOtherOptionValues}
+                  removeOtherOptionValues = {this.removeOtherOptionValues}
                 />}
               </div>
             </Fragment>
@@ -293,18 +293,18 @@ class IncomeList extends React.Component {
 
 
         <IncomeTotals
-          incomeListStates={this.state}
-          dependants={document.getElementsByName('dependants')[0]}
-          hasPartner={this.props.hasPartner}
-          data={this.props}
-          nz_superannuation_applicant={this.state.nz_superannuation_applicant}
-          nz_superannuation_partner={this.state.nz_superannuation_partner}
-          sa_checked={this.state.sa_checked}
-          jobseeker_support={this.state.jobseeker_support}
-          sole_parent_support={this.state.sole_parent_support}
-          supported_living={this.state.supported_living}
-          wos_total={this.wosTotal()}
-          setTotalIncome={this.props.setTotalIncome}
+          incomeListStates = {this.state}
+          dependants = {document.getElementsByName('dependants')[0]}
+          hasPartner = {this.props.hasPartner}
+          data = {this.props}
+          nz_superannuation_applicant = {this.state.nz_superannuation_applicant}
+          nz_superannuation_partner = {this.state.nz_superannuation_partner}
+          sa_checked = {this.state.sa_checked}
+          jobseeker_support = {this.state.jobseeker_support}
+          sole_parent_support = {this.state.sole_parent_support}
+          supported_living = {this.state.supported_living}
+          wos_total = {this.wosTotal()}
+          setTotalIncome = {this.props.setTotalIncome}
         />
       </Fragment>
     );
@@ -321,13 +321,13 @@ class IncomeList extends React.Component {
 
 const RadioGroup = props => {
   return (
-    <div className="radio-list" style={props.type !== 'radio' ? { display: 'none' } : null}>
-      {props.options.map((item, i) => <Fragment key={i}>
+    <div className = "radio-list" style = {props.type !== 'radio' ? { display: 'none' } : null}>
+      {props.options.map((item, i) => <Fragment key = {i}>
         <label>
           <input
-            type="radio"
-            name={props.name}
-            onClick={() => props.handleChildRadioClick(item, props.name)}
+            type = "radio"
+            name = {props.name}
+            onClick = {() => props.handleChildRadioClick(item, props.name)}
           />
           <span>{item}</span>
         </label>

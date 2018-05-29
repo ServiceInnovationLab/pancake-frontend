@@ -79,16 +79,16 @@ class Address extends React.Component {
       <Fragment>
         <label>I live at
           <Select
-            name="location"
-            value={this.state.location}
-            onChange={this.handleSelectLocation}
-            onInputChange={this.handleChange}
-            clearable={this.state.clearable}
-            searchable={this.state.searchable}
-            isLoading={this.state.isLoadingExternally}
-            options={this.state.properties}
-            labelKey="location"
-            valueKey="id"
+            name = "location"
+            value = {this.state.location}
+            onChange = {this.handleSelectLocation}
+            onInputChange = {this.handleChange}
+            clearable = {this.state.clearable}
+            searchable = {this.state.searchable}
+            isLoading = {this.state.isLoadingExternally}
+            options = {this.state.properties}
+            labelKey = "location"
+            valueKey = "id"
           />
         in Tauranga
         </label>
