@@ -23,7 +23,7 @@ class RenderRadio extends React.Component {
           {label}
           {isRequired && <span className="aria-hidden">(required)</span>}
         </legend>}
-        {instructions && <p dangerouslySetInnerHTML={{ __html: instructions }}></p>}
+        {instructions && <p dangerouslySetInnerHTML={{ __html: instructions }} />}
         <div>
           <div>
             {options && options.map((item, key) => {

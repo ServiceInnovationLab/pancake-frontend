@@ -20,7 +20,7 @@ export default class RadioWithRadioList extends React.Component {
           {this.props.label && <legend>
             {this.props.label}
           </legend>}
-          {this.props.instructions && <p dangerouslySetInnerHTML={{ __html: this.props.instructions }}></p>}
+          {this.props.instructions && <p dangerouslySetInnerHTML={{ __html: this.props.instructions }} />}
           <div>
             <Radio props={this.props} submittedValue={this.props.input.value} fieldType="radioList" />
           </div>

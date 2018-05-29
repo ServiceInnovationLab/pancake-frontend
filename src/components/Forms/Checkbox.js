@@ -27,7 +27,7 @@ const Checkbox = props => (
                   <input type="checkbox" {...props.input} name={`total_income.applicant_${underscorize(item)}`}/>
                   <div className="radio-list-multi">
                     {item}
-                    <span className="checkmark"></span>
+                    <span className="checkmark" />
                   </div>
                 </label>
               </li>;
@@ -46,7 +46,7 @@ const Checkbox = props => (
                   <input type="checkbox" {...props.input} name={`total_income.partner_${underscorize(item)}`}/>
                   <div className="radio-list-multi">
                     {item}
-                    <span className="checkmark"></span>
+                    <span className="checkmark" />
                   </div>
                 </label>
               </li>;
