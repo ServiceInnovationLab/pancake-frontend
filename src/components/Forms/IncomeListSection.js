@@ -258,7 +258,7 @@ class IncomeList extends React.Component {
                     onClick={() => this.handleChild(item, underscorize(`${item.label}${this.props.hasPartner ? '1' : '0'}`))}
                   />
                   <div className="radio-list-multi">{item.label}
-                    <span className="checkmark"></span>
+                    <span className="checkmark" />
                   </div>
                 </label>
               </li>
