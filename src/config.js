@@ -9,7 +9,7 @@
 // };
 
 const production = {
-  API_ORIGIN: 'https://alpha.ratesrebates.services.govt.nz',
+  API_ORIGIN: 'http://localhost:3001',
   OPENFISCA_ORIGIN: 'https://openfisca.ratesrebates.services.govt.nz/calculate'
 };
 

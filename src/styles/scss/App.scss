@@ -247,8 +247,14 @@ main {
   padding-bottom: 20px;
   p {
     margin-top: 15px;
-    color: #fff;
+    color: $white;
     font-size: 30px;
+  }
+  .link {
+    color: $white;
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 

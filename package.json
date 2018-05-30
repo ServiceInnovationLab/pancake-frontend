@@ -42,6 +42,7 @@
     "build": "react-scripts build",
     "test": "jest",
     "eject": "react-scripts eject",
+    "build-css": "node-sass --include-path src/styles/scss/App.scss src/styles/App.css",
     "sass": "node-sass src/styles/scss src/styles/"
   },
   "devDependencies": {

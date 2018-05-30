@@ -199,6 +199,10 @@ main {
     margin-top: 15px;
     color: #fff;
     font-size: 30px; }
+  .footer .link {
+    color: #fff; }
+    .footer .link:hover {
+      cursor: pointer; }
 
 .main-header {
   text-align: left;

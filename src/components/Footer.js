@@ -4,17 +4,17 @@ import privacyStatement from '../data/privacyStatement';
 
 const customStyles = {
   content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
+    top                   : '5%',
+    left                  : '0',
+    right                 : '0',
     bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
+    marginLeft            : 'auto',
+    marginRight           : 'auto',
+    width                 : '80%',
+    height                : '500px',
+    overflowY             : 'scroll'
   }
 };
-
-// Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
-// Modal.setAppElement('#privacy');
 
 class Footer extends React.Component {
 
@@ -33,14 +33,13 @@ class Footer extends React.Component {
   }
 
   afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    // this.subtitle.style.color = '#f00';
+    document.querySelector('body').style.overflow = 'hidden';
   }
 
   closeModal() {
     this.setState({modalIsOpen: false});
   }
-  
+
   render() {
     return (
       <footer className="footer">
@@ -48,7 +47,7 @@ class Footer extends React.Component {
           <div>
             <img src="footer-logo-govt.png" srcSet="footer-logo-govt@2x.png 2x,footer-logo-govt.png 1x" width="240" height="46" alt="New Zealand Government" />
             <p>Alpha</p>
-            <span id="privacy" onClick={this.openModal}>Privacy Statement</span>
+            <span id="privacy" onClick={this.openModal} className="link">Privacy Statement</span>
             {this.state.modalIsOpen && <Modal
               isOpen={this.state.modalIsOpen}
               onAfterOpen={this.afterOpenModal}
@@ -56,7 +55,7 @@ class Footer extends React.Component {
               style={customStyles}
               contentLabel="Example Modal"
             >
-              <button onClick={this.closeModal}>close</button>
+              <button onClick={this.closeModal} style={{float: 'right', margin: '0 0 20px 0'}}>close</button>
               <div dangerouslySetInnerHTML={{ __html: privacyStatement.content.en.text }}></div>
             </Modal>}
           </div>
