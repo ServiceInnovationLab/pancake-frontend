@@ -252,6 +252,7 @@ main {
   }
   .link {
     color: $white;
+
     &:hover {
       cursor: pointer;
     }
@@ -275,7 +276,8 @@ main {
   }
   p {
     margin-top: 40px;
-      &.heading {
+
+    &.heading {
       font-size: 32px;
       font-weight: 800;
       display: inline-block;
