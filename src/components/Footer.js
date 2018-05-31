@@ -38,6 +38,7 @@ class Footer extends React.Component {
 
   closeModal() {
     this.setState({modalIsOpen: false});
+    document.querySelector('body').style.overflow = 'auto';
   }
 
   render() {
