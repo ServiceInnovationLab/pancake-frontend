@@ -14,7 +14,7 @@ class renderOtherIncome extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      other_source: false
+      other_source: false,
     };
   }
 

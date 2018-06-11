@@ -17,24 +17,24 @@ class Rebate extends React.Component {
         'persons': {
           'Tahi': {
             'salary': {
-              '2018': nextProps.income
+              '2018': nextProps.income,
             },
             'dependants': {
-              '2018': nextProps.dependants
-            }
-          }
+              '2018': nextProps.dependants,
+            },
+          },
         },
         'properties': {
           'property_1': {
             'owners': [ 'Tahi' ],
             'rates': {
-              '2018': nextProps.rates_bill
+              '2018': nextProps.rates_bill,
             },
             'rates_rebate': {
-              '2018': null
-            }
-          }
-        }
+              '2018': null,
+            },
+          },
+        },
       };
 
       axios
