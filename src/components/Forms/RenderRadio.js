@@ -11,7 +11,7 @@ class RenderRadio extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      openPanel: false
+      openPanel: false,
     };
   }
 

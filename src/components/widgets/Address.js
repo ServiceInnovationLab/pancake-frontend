@@ -10,7 +10,7 @@ class Address extends React.Component {
       clearable: true,
       location: {},
       rates_payers: [],
-      rates_bills: null
+      rates_bills: null,
     };
     this.handleSelectLocation = this.handleSelectLocation.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -30,7 +30,7 @@ class Address extends React.Component {
               return {id: i.id, location: i.attributes.location, valuationId: i.attributes.valuation_id};
             });
           this.setState({
-            properties
+            properties,
           }, () => this.setState({isLoadingExternally: false}));
         }
       })

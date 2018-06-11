@@ -8,12 +8,12 @@ class Accordian extends React.Component {
 
   toggle() {
     this.setState({
-      shown: !this.state.shown
+      shown: !this.state.shown,
     });
   }
   render() {
     let shown = {
-      display: this.state.shown ? 'block' : 'none'
+      display: this.state.shown ? 'block' : 'none',
     };
     return (
       <Fragment>
