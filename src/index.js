@@ -12,7 +12,6 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import './styles/App.css';
 
-
 const store = createStore(combineReducers({
   reducers,
   form: formReducer,
@@ -20,6 +19,7 @@ const store = createStore(combineReducers({
 }), applyMiddleware(thunk));
 
 class App extends React.Component {
+
   render(){
     return (
       <HashRouter>
