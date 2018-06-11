@@ -26,7 +26,7 @@ class App extends React.Component {
         <div>
           <Header />
           <main>
-            <Route exact={true} path="/" component={WizardForm} />
+            <Route exact path="/" component={WizardForm} />
             <Route path="/:id" component={Sign}/>
           </main>
           <Footer />
