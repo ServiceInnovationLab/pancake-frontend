@@ -46,7 +46,7 @@ class Radio extends React.Component {
             <legend>{this.props.optionsText[1]}</legend>
             <div>
               <div>
-                {[ 'Yes', 'No' ].map((item, key)=>{
+                {['Yes', 'No'].map((item, key)=>{
                   return <label key={key}><Field name={this.props.childFieldName} component={renderField} item={item}/><span>{item}</span></label>;
                 })}
               </div>

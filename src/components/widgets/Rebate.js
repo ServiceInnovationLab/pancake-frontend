@@ -26,7 +26,7 @@ class Rebate extends React.Component {
         },
         'properties': {
           'property_1': {
-            'owners': [ 'Tahi' ],
+            'owners': ['Tahi'],
             'rates': {
               '2018': nextProps.rates_bill
             },
