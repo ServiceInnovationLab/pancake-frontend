@@ -44,7 +44,7 @@ class Income extends React.Component {
         },
         'properties': {
           'property_1': {
-            'owners': [ 'Tui' ],
+            'owners': ['Tui'],
             'rates': {
               '2018': nextProps.rates_bill
             },
