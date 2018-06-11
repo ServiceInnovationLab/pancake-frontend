@@ -12,8 +12,8 @@ const customStyles = {
     marginRight           : 'auto',
     width                 : '80%',
     height                : '500px',
-    overflowY             : 'scroll'
-  }
+    overflowY             : 'scroll',
+  },
 };
 
 class Footer extends React.Component {
@@ -21,7 +21,7 @@ class Footer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modalIsOpen: false
+      modalIsOpen: false,
     };
     this.openModal = this.openModal.bind(this);
     this.afterOpenModal = this.afterOpenModal.bind(this);
