@@ -3,12 +3,12 @@ import React from 'react';
 let languages = [
   {
     'abbr': 'en',
-    'name': 'English'
+    'name': 'English',
   },
   {
     'abbr': 'mi',
-    'name': 'Māori'
-  }
+    'name': 'Māori',
+  },
 ];
 
 const LanguageToggle = props => {
