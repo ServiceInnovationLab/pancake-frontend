@@ -35,7 +35,9 @@ class selectField extends React.Component {
     const {input, label, touched, error, type, className } = this.props;
     return (
       <Fragment>
-        {label && <label className="subheading">{label}</label>}
+        {label && <label className="subheading">
+          {label}
+        </label>}
         <div style={{borderBottomColor: touched && error ? 'red': ''}}>
           <input
             {...input}
@@ -48,7 +50,9 @@ class selectField extends React.Component {
             <ul>
               {this.state.addresses.map((x, i) => {
                 const {location, suburb, town_city} = x.attributes;
-                return <li key={i} onClick={e=>this.handleClick(e)}>{`${location}, ${suburb}, ${town_city}`}</li>;
+                return <li key={i} onClick={e=>this.handleClick(e)}>
+                  {`${location}, ${suburb}, ${town_city}`}
+                </li>;
               })}
             </ul>
           }

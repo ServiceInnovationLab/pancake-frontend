@@ -59,12 +59,20 @@ class Eligible extends React.Component {
             <div className="arrow-box secondary">
               <p className="heading-paragraph">
                 You could be eligible for
-                <span> ${this.formatDollars(this.state.rebate)}</span>
+                <span>
+                  {' '}
+$
+                  {this.formatDollars(this.state.rebate)}
+                </span>
               </p>
-              <p className="help-text">(Assuming you meet the criteria)</p>
+              <p className="help-text">
+(Assuming you meet the criteria)
+              </p>
             </div>
             <div className="layout">
-              <button type="submit" className="btn-primary">Apply now</button>
+              <button type="submit" className="btn-primary">
+Apply now
+              </button>
             </div>
           </Fragment>
         );

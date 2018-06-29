@@ -25,20 +25,46 @@ class renderOtherIncome extends React.Component {
         {fields.map((income, index) => (
           <li key={index} style={{marginBottom: '15px'}}>
 
-            <h4>Other income #{index + 1} </h4>
+            <h4>
+Other income #
+              {index + 1}
+              {' '}
+            </h4>
             <RemoveButton fields={fields} index={index} removeOtherOptionValues={this.props.removeOtherOptionValues}/>
             <select name={`${income}.selectedOption`}>
-              <option>Wage or salary</option>
-              <option>Work and incomes supplements (e.g. Accommodation Supplement)</option>
-              <option>Personal Superannuation</option>
-              <option>Interest or dividends</option>
-              <option>Overseas income (converted to $NZD)</option>
-              <option>Net profit before tax from any business – enter ‘0’ if you sustained a loss</option>
-              <option>Rental income – enter ‘0’ if you sustained a loss</option>
-              <option>ACC earnings compensation</option>
-              <option>Working for Families Tax Credits (excludes Family Tax Credits)</option>
-              <option>Trust income paid to you</option>
-              <option>Income from other source (please identify)</option>
+              <option>
+Wage or salary
+              </option>
+              <option>
+Work and incomes supplements (e.g. Accommodation Supplement)
+              </option>
+              <option>
+Personal Superannuation
+              </option>
+              <option>
+Interest or dividends
+              </option>
+              <option>
+Overseas income (converted to $NZD)
+              </option>
+              <option>
+Net profit before tax from any business – enter ‘0’ if you sustained a loss
+              </option>
+              <option>
+Rental income – enter ‘0’ if you sustained a loss
+              </option>
+              <option>
+ACC earnings compensation
+              </option>
+              <option>
+Working for Families Tax Credits (excludes Family Tax Credits)
+              </option>
+              <option>
+Trust income paid to you
+              </option>
+              <option>
+Income from other source (please identify)
+              </option>
             </select>
 
             {this.state.other_source && <Field
@@ -67,7 +93,9 @@ class renderOtherIncome extends React.Component {
           <button type="button" onClick={() => fields.push({})}>
             + Add Income
           </button>
-          {submitFailed && error && <span>Error</span>}
+          {submitFailed && error && <span>
+Error
+          </span>}
         </li>
       </ul>
     );
@@ -76,10 +104,14 @@ class renderOtherIncome extends React.Component {
 
 const renderField = ({ input, label, type, meta: { touched, error } }) => (
   <div>
-    <span className="aria-hidden">{label}</span>
+    <span className="aria-hidden">
+      {label}
+    </span>
     <div>
       <input {...input} type={type} placeholder={label} style={{marginBottom: '5px'}} />
-      {touched && error && <span>{error}</span>}
+      {touched && error && <span>
+        {error}
+      </span>}
     </div>
   </div>
 );

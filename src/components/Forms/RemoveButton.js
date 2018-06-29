@@ -9,7 +9,8 @@ const RemoveButton = props => {
       props.removeOtherOptionValues(props.index);
       props.fields.remove(props.index);
     }}
-  >Remove income
+  >
+Remove income
   </button>;
 };
 

@@ -52,8 +52,11 @@ class IncomeListSection extends React.Component {
         <section>
           <div className="container">
             <fieldset className="field radio-group">
-              <legend>Were you living with a partner or joint home owner(s) on July 1 2017?</legend>
-              <p>'Partner' is a person you are married to/in a civil union, or de facto
+              <legend>
+Were you living with a partner or joint home owner(s) on July 1 2017?
+              </legend>
+              <p>
+'Partner' is a person you are married to/in a civil union, or de facto
                 relationship with.
               </p>
               <div>
@@ -74,13 +77,20 @@ class IncomeListSection extends React.Component {
                 fontSize: '20px',
                 fontWeight: '500',
               }}
-            >What was your total income for the 2017/18 tax year?
+            >
+What was your total income for the 2017/18 tax year?
             </label>
-            <p>You will need to know your total income <strong>before tax</strong> for the 2016/2017 Tax year (1 March
+            <p>
+You will need to know your total income
+              <strong>
+before tax
+              </strong>
+              {' '}
+for the 2016/2017 Tax year (1 March
               2016 - 31 March 2017) including rental income from any properties you own,
               interest and dividends, and overseas income (converted to $NZD).
-            <br/>
-            <br/>
+              <br/>
+              <br/>
               Select any that apply to you.
             </p>
             <div className="row">
@@ -124,7 +134,9 @@ const ListColumn = props => {
 
 const ListHeading = props => {
   return <li>
-    <h4>{props.title}</h4>
+    <h4>
+      {props.title}
+    </h4>
   </li>;
 };
 
@@ -257,7 +269,8 @@ class IncomeList extends React.Component {
                     name={underscorize(item.label)}
                     onClick={() => this.handleChild(item, underscorize(`${item.label}${this.props.hasPartner ? '1' : '0'}`))}
                   />
-                  <div className="radio-list-multi">{item.label}
+                  <div className="radio-list-multi">
+                    {item.label}
                     <span className="checkmark"></span>
                   </div>
                 </label>
@@ -329,7 +342,9 @@ const RadioGroup = props => {
             name={props.name}
             onClick={() => props.handleChildRadioClick(item, props.name)}
           />
-          <span>{item}</span>
+          <span>
+            {item}
+          </span>
         </label>
       </Fragment>)}
     </div>
@@ -451,7 +466,12 @@ class IncomeTotals extends React.Component {
   render() {
     return (
       <div>
-        <p>Income $<strong>{this.totalIncome()}</strong></p>
+        <p>
+Income $
+          <strong>
+            {this.totalIncome()}
+          </strong>
+        </p>
       </div>);
   }
 }

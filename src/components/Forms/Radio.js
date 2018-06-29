@@ -36,18 +36,27 @@ class Radio extends React.Component {
                   this.toggleSub(item);
                 }}
                 />
-                <span>{item}</span>
+                <span>
+                  {item}
+                </span>
               </label>;
             })
           }
         </div>
         {this.props.fieldType === 'radio' && this.state.show &&
           <fieldset className="field radio-group">
-            <legend>{this.props.optionsText[1]}</legend>
+            <legend>
+              {this.props.optionsText[1]}
+            </legend>
             <div>
               <div>
                 {['Yes', 'No'].map((item, key)=>{
-                  return <label key={key}><Field name={this.props.childFieldName} component={renderField} item={item}/><span>{item}</span></label>;
+                  return <label key={key}>
+                    <Field name={this.props.childFieldName} component={renderField} item={item}/>
+                    <span>
+                      {item}
+                    </span>
+                  </label>;
                 })}
               </div>
             </div>
