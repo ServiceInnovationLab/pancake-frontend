@@ -7,8 +7,6 @@ class HoldingPage extends Component {
     };
   }
   render() {
-    const { onSubmit } = this.props;
-    const { page } = this.state;
     return (
       <div>
         <p>
