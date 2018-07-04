@@ -21,9 +21,8 @@ class HoldingPage extends Component {
           who are eligible for the rebate, many of whom don’t even know it!
         </p>
 
-
         <p>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/hXoTlS9FIfg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+         <iframe width="560" height="315" src="https://www.youtube.com/embed/hXoTlS9FIfg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </p>
 
         <p>
