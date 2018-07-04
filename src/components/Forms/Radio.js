@@ -32,9 +32,10 @@ class Radio extends React.Component {
           {this.props.input.name === 'dependants' && this.state.hideButtons ? '' :
             this.props.options && this.props.options.map((item, key) => {
               return <label key={key}>
-                <input {...this.props.input} ref={i => this[`option${key+1}`] = i} type="radio" value={item} onClick={()=>{
-                  this.toggleSub(item);
-                }}
+                <input
+                  {...this.props.input} ref={i => this[`option${key+1}`] = i} type="radio" value={item} onClick={()=>{
+                    this.toggleSub(item);
+                  }}
                 />
                 <span>
                   {item}
