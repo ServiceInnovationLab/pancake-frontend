@@ -184,6 +184,9 @@ body {
   margin: 0;
   font-family: 'Fira Sans', sans-serif; }
 
+p {
+  margin: 1em;
+}
 main {
   overflow: auto; }
 
