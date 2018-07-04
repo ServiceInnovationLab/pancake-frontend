@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import WizardForm from './components/FirstTimeApplicant/WizardForm';
+// import WizardForm from './components/FirstTimeApplicant/WizardForm';
 import HoldingPage from './components/pages/HoldingPage';
-import Sign from './components/FirstTimeApplicant/Sign';
+// import Sign from './components/FirstTimeApplicant/Sign';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';

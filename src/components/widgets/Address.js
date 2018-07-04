@@ -34,7 +34,7 @@ class Address extends React.Component {
           }, () => this.setState({isLoadingExternally: false}));
         }
       })
-      .catch(err => console.log('err fetching properties', err));
+      .catch(err => err);
   }
 
   handleSelectLocation(selectedOption) {
@@ -64,7 +64,7 @@ class Address extends React.Component {
               rates_bills: rates_bills});
           }
         })
-        .catch(err => console.log('err fetching included properties', err));
+        .catch(err => err);
     } else {
       this.setState({location: {}});
       this.props.onSelection({
