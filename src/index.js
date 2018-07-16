@@ -28,7 +28,7 @@ class App extends React.Component {
           <Header />
           <main>
             <Route path="/" component={HoldingPage} />
-{/*            <Route exact={true} path="/" component={WizardForm} />
+            {/*            <Route exact={true} path="/" component={WizardForm} />
             <Route path="/:id" component={Sign}/>*/}
           </main>
           <Footer />
