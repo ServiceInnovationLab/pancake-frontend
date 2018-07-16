@@ -39,7 +39,7 @@ export default class TextField extends React.Component {
         <legend>{this.props.label}</legend>
         {this.props.type === 'number' ? <NumberField {...this.props} value={showValue} /> : <input type="text" {...this.props.input} value={showValue} />}
         {this.props.instructions && <p className="instructions" dangerouslySetInnerHTML={{ __html: this.props.instructions }}></p>}
-        {this.props.checkboxFieldName && 
+        {this.props.checkboxFieldName &&
           <Field component={Checkbox} label={this.props.checkboxLabel} name={this.props.checkboxFieldName} />}
         {this.props.accordianText && <div><Accordian label={this.props.accordianLabel} text={this.props.accordianText} /></div>}
         <ErrorMessage fields={this.props.meta} />
