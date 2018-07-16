@@ -13,7 +13,7 @@ class Accordian extends React.Component {
   }
 
   render() {
-    let shown = {
+    const shown = {
       display: this.state.shown ? 'block' : 'none',
     };
     return (

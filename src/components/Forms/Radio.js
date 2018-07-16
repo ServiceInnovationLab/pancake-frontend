@@ -11,7 +11,7 @@ class Radio extends React.Component {
   }
 
   stateType(type) {
-    let data = {
+    const data = {
       display: this.state[type] ? 'block' : 'none',
     };
     return data;

@@ -32,7 +32,7 @@ export default class TextField extends React.Component {
   }
 
   render() {
-    let prepopulatedValue = this.props.prepopulatedValue ? this.props.prepopulatedValue[underscorize(this.props.label)] : null;
+    const prepopulatedValue = this.props.prepopulatedValue ? this.props.prepopulatedValue[underscorize(this.props.label)] : null;
     const showValue = prepopulatedValue ? prepopulatedValue : this.getValue();
     return (
       <fieldset className="field">

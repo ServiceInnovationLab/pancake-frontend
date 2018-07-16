@@ -16,7 +16,7 @@ class selectField extends React.Component {
   }
 
   handleChange(e) {
-    let inputVal = e.target.value;
+    const inputVal = e.target.value;
     this.setState({ showList: true, value: inputVal });
 
     const results = axios

@@ -13,7 +13,7 @@ class Rebate extends React.Component {
     this.setState({ rebate: null });
     if (nextProps.dependants && nextProps.rates_bill && nextProps.income) {
 
-      let data = {
+      const data = {
         'persons': {
           'Tahi': {
             'salary': {
@@ -40,7 +40,7 @@ class Rebate extends React.Component {
       axios
         .post(`${config.OPENFISCA_ORIGIN}`, data)
         .then(res => {
-          let rebate = res.data.properties.property_1.rates_rebate['2018'];
+          const rebate = res.data.properties.property_1.rates_rebate['2018'];
           this.setState({ rebate: rebate });
         })
         .catch(err => err);

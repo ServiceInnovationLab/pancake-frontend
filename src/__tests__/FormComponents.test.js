@@ -15,7 +15,7 @@ describe('components', function() {
     describe(`<${item} />`, function() {
       it('renders correctly', function() {
         const TagName = item;
-        let tree = renderer.create(<TagName />).toJSON();
+        const tree = renderer.create(<TagName />).toJSON();
         expect(tree).toMatchSnapshot();
       });
     });

@@ -1,4 +1,4 @@
-let defaultState = { totalIncome: 0.0 };
+const defaultState = { totalIncome: 0.0 };
 
 const mainReducer = (state = defaultState, action) => {
   switch (action.type) {

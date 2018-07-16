@@ -31,7 +31,7 @@ class Income extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.dependants && nextProps.rates_bill) {
-      let data = {
+      const data = {
         'persons': {
           'Tui': {
             'salary': {
@@ -104,7 +104,7 @@ class Income extends React.Component {
 
   render() {
     if (this.state.minimum_income_for_no_rebate) {
-      let earnLessThan = this.getOptions();
+      const earnLessThan = this.getOptions();
       return (
         <div className="arrow-box primary">
           <label htmlFor="earn_less_than">

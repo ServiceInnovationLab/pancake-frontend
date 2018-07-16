@@ -369,7 +369,7 @@ class IncomeTotals extends React.Component {
     let sa_total = 0;
     let jss_total = 0;
     let sps_total = 0;
-    let spl_total = 0;
+    const spl_total = 0;
 
     if (typeof this.props.dependants !== 'undefined') {
       var dependants = this.props.dependants.value
