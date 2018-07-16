@@ -49,7 +49,7 @@ const firstTimeApplication = [
       },
     },
   },
-{
+  {
     'component': TextField,
     'field_name': 'full_name',
     'theme': 'theme-sand',
@@ -228,7 +228,7 @@ const firstTimeApplication = [
       },
     },
   },
-{
+  {
     'component': TextField,
     'field_name': 'phone_number',
     'checkboxFieldName': 'email_phone_can_be_used',
