@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import ErrorMessage from '../../components/Forms/Error';
 
-var _ = require('lodash');
+let _ = require('lodash');
 
 const isObject = (obj, key) => {
   return _.isObject(obj) ? obj[key] : obj;

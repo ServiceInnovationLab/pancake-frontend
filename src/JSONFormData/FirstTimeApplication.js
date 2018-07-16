@@ -2,7 +2,7 @@ import TextField from '../components/Forms/TextField';
 import RadioWithRadio from '../components/Forms/RadioWithRadio';
 import IncomeListSection from '../components/Forms/IncomeListSection';
 
-var firstTimeApplication = [
+let firstTimeApplication = [
   {
     'component': RadioWithRadio,
     'field_name': 'lived_here_before_july_2017',
