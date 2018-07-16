@@ -313,7 +313,7 @@ class IncomeList extends React.Component {
   wosTotal() {
     let total = parseFloat(this.getWageOrSalary(`wos_${this.props.name}`), 0);
     if (!total) {
-      total = 0; 
+      total = 0;
     }
     return total;
   }
