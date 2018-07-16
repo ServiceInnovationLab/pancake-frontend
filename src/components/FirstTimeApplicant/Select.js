@@ -17,11 +17,11 @@ class selectField extends React.Component {
 
   handleChange(e) {
     let inputVal = e.target.value;
-    this.setState({showList: true, value: inputVal});
+    this.setState({ showList: true, value: inputVal });
 
     const results = axios
       .get(`${config.API_ORIGIN}/api/v1/properties?q=${inputVal}`)
-      .then(res => this.setState({addresses: res.data.data}));
+      .then(res => this.setState({ addresses: res.data.data }));
 
     return results;
   }
@@ -34,11 +34,11 @@ class selectField extends React.Component {
   }
 
   render() {
-    const {input, label, touched, error, type, className } = this.props;
+    const { input, label, touched, error, type, className } = this.props;
     return (
       <Fragment>
         {label && <label className="subheading">{label}</label>}
-        <div style={{borderBottomColor: touched && error ? 'red': ''}}>
+        <div style={{ borderBottomColor: touched && error ? 'red': '' }}>
           <input
             {...input}
             type={type}
@@ -49,7 +49,7 @@ class selectField extends React.Component {
           {this.state.showList &&
             <ul>
               {this.state.addresses.map((x, i) => {
-                const {location, suburb, town_city} = x.attributes;
+                const { location, suburb, town_city } = x.attributes;
                 return <li key={i} onClick={e=>this.handleClick(e)}>{`${location}, ${suburb}, ${town_city}`}</li>;
               })}
             </ul>

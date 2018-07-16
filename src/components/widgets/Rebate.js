@@ -1,16 +1,16 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from 'react';
 import axios from 'axios';
 import config from '../../config';
 
 class Rebate extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {rebate: null};
+    this.state = { rebate: null };
   }
 
 
   componentWillReceiveProps(nextProps) {
-    this.setState({rebate: null});
+    this.setState({ rebate: null });
     if (nextProps.dependants && nextProps.rates_bill && nextProps.income) {
 
       let data = {
@@ -41,11 +41,11 @@ class Rebate extends React.Component {
         .post(`${config.OPENFISCA_ORIGIN}`, data)
         .then(res => {
           let rebate = res.data.properties.property_1.rates_rebate['2018'];
-          this.setState({rebate: rebate});
+          this.setState({ rebate: rebate });
         })
         .catch(err => err);
     } else {
-      this.setState({minimum_income_for_no_rebate: null, maximum_income_for_full_rebate: null});
+      this.setState({ minimum_income_for_no_rebate: null, maximum_income_for_full_rebate: null });
     }
   }
 

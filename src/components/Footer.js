@@ -29,7 +29,7 @@ class Footer extends React.Component {
   }
 
   openModal() {
-    this.setState({modalIsOpen: true});
+    this.setState({ modalIsOpen: true });
   }
 
   afterOpenModal() {
@@ -37,7 +37,7 @@ class Footer extends React.Component {
   }
 
   closeModal() {
-    this.setState({modalIsOpen: false});
+    this.setState({ modalIsOpen: false });
     document.querySelector('body').style.overflow = 'auto';
   }
 
@@ -56,7 +56,7 @@ class Footer extends React.Component {
               style={customStyles}
               contentLabel="Example Modal"
             >
-              <button onClick={this.closeModal} style={{float: 'right', margin: '0 0 20px 0'}}>close</button>
+              <button onClick={this.closeModal} style={{ float: 'right', margin: '0 0 20px 0' }}>close</button>
               <div dangerouslySetInnerHTML={{ __html: privacyStatement.content.en.text }}></div>
             </Modal>}
           </div>

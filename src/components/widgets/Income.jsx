@@ -1,20 +1,20 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from 'react';
 import axios from 'axios';
 import config from '../../config';
 import RenderRadio from '../../components/Forms/RenderRadio';
 import renderField from '../Forms/renderField';
-import {Field} from 'redux-form';
+import { Field } from 'redux-form';
 
 class Income extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {show_input: false};
+    this.state = { show_input: false };
     this.handleSelection = this.handleSelection.bind(this);
     this.handleManualIncome = this.handleManualIncome.bind(this);
   }
 
   handleManualIncome(event, newValue, previousValue, name) {
-    this.setState({income: newValue});
+    this.setState({ income: newValue });
     this.props.onSelection(newValue, 'exact');
   }
 
@@ -25,7 +25,7 @@ class Income extends React.Component {
     } else if (newValue === 'above') {
       income = this.state.minimum_income_for_no_rebate;
     }
-    this.setState({income: income, show_input: (newValue === 'between')});
+    this.setState({ income: income, show_input: (newValue === 'between') });
     this.props.onSelection(income, newValue);
   }
 
@@ -76,7 +76,7 @@ class Income extends React.Component {
         }))
         .catch(err => console.log('err fetching properties', err));
     } else {
-      this.setState({minimum_income_for_no_rebate: null, maximum_income_for_full_rebate: null});
+      this.setState({ minimum_income_for_no_rebate: null, maximum_income_for_full_rebate: null });
     }
   }
 
@@ -84,9 +84,9 @@ class Income extends React.Component {
     return {
       'options': {
         'en': [
-          {value: 'below', label: 'Less than $' + this.formatDollars(this.state.maximum_income_for_full_rebate)},
-          {value: 'between', label: 'Somewhere in the middle'},
-          {value: 'above', label: 'More than $' + this.formatDollars(this.state.minimum_income_for_no_rebate)},
+          { value: 'below', label: 'Less than $' + this.formatDollars(this.state.maximum_income_for_full_rebate) },
+          { value: 'between', label: 'Somewhere in the middle' },
+          { value: 'above', label: 'More than $' + this.formatDollars(this.state.minimum_income_for_no_rebate) },
         ],
       },
       'isRequired': true,

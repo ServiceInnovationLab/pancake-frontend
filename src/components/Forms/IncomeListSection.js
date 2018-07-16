@@ -2,10 +2,10 @@ import axios from 'axios';
 import config from '../../config';
 import RadioField from './RadioField';
 import RadioWithSelect from './RadioWithSelect';
-import React, {Fragment} from 'react';
-import {connect} from 'react-redux';
-import {sendTotalIncome} from '../../actions';
-import {underscorize} from '../../helpers/strings';
+import React, { Fragment } from 'react';
+import { connect } from 'react-redux';
+import { sendTotalIncome } from '../../actions';
+import { underscorize } from '../../helpers/strings';
 
 class IncomeListSection extends React.Component {
   constructor(props) {
@@ -27,18 +27,18 @@ class IncomeListSection extends React.Component {
   }
 
   handleRadioClick(val) {
-    this.setState({should_show_partner_options: val === 'yes'});
+    this.setState({ should_show_partner_options: val === 'yes' });
   }
 
   setApplicantTotalIncome(totalIncome) {
     if (this.state.total_applicant_income !== totalIncome) {
-      this.setState({total_applicant_income: totalIncome});
+      this.setState({ total_applicant_income: totalIncome });
     }
   }
 
   setPartnerTotalIncome(totalIncome) {
     if (this.state.total_partner_income !== totalIncome) {
-      this.setState({total_partner_income: totalIncome});
+      this.setState({ total_partner_income: totalIncome });
     }
   }
 
@@ -165,9 +165,9 @@ class IncomeList extends React.Component {
         document.getElementsByName('wos_partner')[0].value = 0;
       }
 
-      this.setState({[state]: !this.state[state] });
+      this.setState({ [state]: !this.state[state] });
     } else {
-      this.setState({[state]: !this.state[state] });
+      this.setState({ [state]: !this.state[state] });
     }
   }
 
@@ -175,7 +175,7 @@ class IncomeList extends React.Component {
   handleChild(val, clicked) {
     switch (val.child) {
     case 'radio':
-      this.setState({sa_checked: !this.state.sa_checked});
+      this.setState({ sa_checked: !this.state.sa_checked });
       this.setChild('ShowRadio');
       break;
     case 'text-field':
@@ -191,15 +191,15 @@ class IncomeList extends React.Component {
 
 
   handleChildRadioClick(e, name) {
-    this.setState({[name]: `${name}_${underscorize(e)}`});
+    this.setState({ [name]: `${name}_${underscorize(e)}` });
   }
 
   handleTextChange(e) {
     if (e.target.name === 'wage_or_salary_applicant') {
-      this.setState({wos_applicant: e.target.value});
+      this.setState({ wos_applicant: e.target.value });
     }
     if (e.target.name === 'wage_or_salary_partner') {
-      this.setState({wos_partner: e.target.value});
+      this.setState({ wos_partner: e.target.value });
     }
   }
 
@@ -210,7 +210,7 @@ class IncomeList extends React.Component {
   }
 
   removeOtherOptionValues(index) {
-    this.setState({[`otherOptionValue${index}`]: 0});
+    this.setState({ [`otherOptionValue${index}`]: 0 });
   }
 
   getOtherOptionValues(store, income, value, index) {
@@ -275,7 +275,7 @@ class IncomeList extends React.Component {
                     type={this.state.ShowTextField ? 'text' : 'hidden'}
                     name={`wos_${this.props.name}`}
                     onChange={e => {
-                      this.setState({[`wos_${this.props.name}`]: e.target.value});
+                      this.setState({ [`wos_${this.props.name}`]: e.target.value });
                     }}
                   />
                 </Fragment>}
@@ -427,7 +427,7 @@ class IncomeTotals extends React.Component {
     const firstTotal = (sa_total + jss_total + sps_total + spl_total + (this.props.wos_total || 0)) || 0;
 
     // OTHER INCOME
-    const {incomeListStates} = this.props;
+    const { incomeListStates } = this.props;
     const otherOptionValueStates = Object
       .keys(incomeListStates)
       .filter(state => /^otherOptionValue/.test(state));
