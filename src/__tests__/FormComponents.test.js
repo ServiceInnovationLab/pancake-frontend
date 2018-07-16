@@ -5,7 +5,7 @@ import TextField from '../components/Forms/TextField';
 
 const Components = [
   RenderRadio,
-  TextField
+  TextField,
 ];
 
 

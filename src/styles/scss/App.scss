@@ -247,8 +247,15 @@ main {
   padding-bottom: 20px;
   p {
     margin-top: 15px;
-    color: #fff;
+    color: $white;
     font-size: 30px;
+  }
+  .link {
+    color: $white;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 
@@ -269,17 +276,19 @@ main {
   }
   p {
     margin-top: 40px;
-  &.heading {
-  font-size: 32px;
-  font-weight: 800;
-  display: inline-block;
-  margin-left: 110px;
-  color: $green;
-}
+
+    &.heading {
+      font-size: 32px;
+      font-weight: 800;
+      display: inline-block;
+      margin-left: 110px;
+      color: $green;
+    }
   }
 }
 
-p {
+p,
+ul {
   font-size: 18px;
 }
 

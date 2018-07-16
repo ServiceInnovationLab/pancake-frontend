@@ -17,24 +17,24 @@ class Rebate extends React.Component {
         'persons': {
           'Tahi': {
             'salary': {
-              '2018': nextProps.income
+              '2018': nextProps.income,
             },
             'dependants': {
-              '2018': nextProps.dependants
-            }
-          }
+              '2018': nextProps.dependants,
+            },
+          },
         },
         'properties': {
           'property_1': {
-            'owners': [ 'Tahi' ],
+            'owners': ['Tahi'],
             'rates': {
-              '2018': nextProps.rates_bill
+              '2018': nextProps.rates_bill,
             },
             'rates_rebate': {
-              '2018': null
-            }
-          }
-        }
+              '2018': null,
+            },
+          },
+        },
       };
 
       axios
@@ -43,7 +43,7 @@ class Rebate extends React.Component {
           let rebate = res.data.properties.property_1.rates_rebate['2018'];
           this.setState({rebate: rebate});
         })
-        .catch(err => console.log('err fetching properties', err));
+        .catch(err => err);
     } else {
       this.setState({minimum_income_for_no_rebate: null, maximum_income_for_full_rebate: null});
     }

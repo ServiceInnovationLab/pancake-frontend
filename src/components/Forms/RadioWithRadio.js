@@ -8,13 +8,13 @@ export default class RadioWithRadio extends React.Component {
     super(props);
     this.state = {
       shown: false,
-      sub: false
+      sub: false,
     };
   }
 
   toggle() {
     this.setState({
-      shown: !this.state.shown
+      shown: !this.state.shown,
     });
   }
 

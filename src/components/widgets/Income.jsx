@@ -35,27 +35,27 @@ class Income extends React.Component {
         'persons': {
           'Tui': {
             'salary': {
-              '2018': null
+              '2018': null,
             },
             'dependants': {
-              '2018': nextProps.dependants
-            }
-          }
+              '2018': nextProps.dependants,
+            },
+          },
         },
         'properties': {
           'property_1': {
-            'owners': [ 'Tui' ],
+            'owners': ['Tui'],
             'rates': {
-              '2018': nextProps.rates_bill
+              '2018': nextProps.rates_bill,
             },
             'maximum_income_for_full_rebate': {
-              '2018': null
+              '2018': null,
             },
             'minimum_income_for_no_rebate': {
-              '2018': null
-            }
-          }
-        }
+              '2018': null,
+            },
+          },
+        },
       };
 
       axios
@@ -72,7 +72,7 @@ class Income extends React.Component {
             .properties
             .property_1
             .maximum_income_for_full_rebate['2018']
-            .toFixed(2)
+            .toFixed(2),
         }))
         .catch(err => console.log('err fetching properties', err));
     } else {
@@ -86,11 +86,11 @@ class Income extends React.Component {
         'en': [
           {value: 'below', label: 'Less than $' + this.formatDollars(this.state.maximum_income_for_full_rebate)},
           {value: 'between', label: 'Somewhere in the middle'},
-          {value: 'above', label: 'More than $' + this.formatDollars(this.state.minimum_income_for_no_rebate)}
-        ]
+          {value: 'above', label: 'More than $' + this.formatDollars(this.state.minimum_income_for_no_rebate)},
+        ],
       },
       'isRequired': true,
-      'component': RenderRadio
+      'component': RenderRadio,
     };
   }
 
