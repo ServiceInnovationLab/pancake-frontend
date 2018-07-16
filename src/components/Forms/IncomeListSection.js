@@ -158,10 +158,10 @@ class IncomeList extends React.Component {
 
   setChild(state, clicked) {
     if (this.state.ShowTextField) {
-      if(clicked === 'wage_or_salary0') {
+      if (clicked === 'wage_or_salary0') {
         document.getElementsByName('wos_applicant')[0].value = 0;
       }
-      if(clicked === 'wage_or_salary1') {
+      if (clicked === 'wage_or_salary1') {
         document.getElementsByName('wos_partner')[0].value = 0;
       }
 

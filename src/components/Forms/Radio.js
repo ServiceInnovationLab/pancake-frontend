@@ -18,7 +18,7 @@ class Radio extends React.Component {
   }
 
   toggleSub(item) {
-    if(item.toLowerCase() === this.props.toggleByOption.toLowerCase()) {
+    if (item.toLowerCase() === this.props.toggleByOption.toLowerCase()) {
       this.setState({show: true});
     } else {
       this.setState({show: false});
