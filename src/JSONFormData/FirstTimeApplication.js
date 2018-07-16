@@ -2,7 +2,7 @@ import TextField from '../components/Forms/TextField';
 import RadioWithRadio from '../components/Forms/RadioWithRadio';
 import IncomeListSection from '../components/Forms/IncomeListSection';
 
-var firstTimeApplication = [
+const firstTimeApplication = [
   {
     'component': RadioWithRadio,
     'field_name': 'lived_here_before_july_2017',
@@ -48,7 +48,8 @@ var firstTimeApplication = [
         'text': 'Get in touch with your local council. There are some situations where you can still get a rebate on your previous home after you moved. They will ask you some details including: <ul><li>the settlement date</li><li>what rates you paid for the current year.</li></ul>',
       },
     },
-  }, {
+  },
+  {
     'component': TextField,
     'field_name': 'full_name',
     'theme': 'theme-sand',
@@ -226,7 +227,8 @@ var firstTimeApplication = [
         'text': 'What is your email address?',
       },
     },
-  }, {
+  },
+  {
     'component': TextField,
     'field_name': 'phone_number',
     'checkboxFieldName': 'email_phone_can_be_used',

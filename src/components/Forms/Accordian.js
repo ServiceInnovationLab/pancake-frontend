@@ -11,8 +11,9 @@ class Accordian extends React.Component {
       shown: !this.state.shown,
     });
   }
+
   render() {
-    let shown = {
+    const shown = {
       display: this.state.shown ? 'block' : 'none',
     };
     return (

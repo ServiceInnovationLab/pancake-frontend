@@ -1,7 +1,7 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from 'react';
 import ErrorMessage from '../../components/Forms/Error';
 
-var _ = require('lodash');
+const _ = require('lodash');
 
 const isObject = (obj, key) => {
   return _.isObject(obj) ? obj[key] : obj;
@@ -16,7 +16,7 @@ class RenderRadio extends React.Component {
   }
 
   render() {
-    const {label, isRequired, instructions, options, input} = this.props;
+    const { label, isRequired, instructions, options, input } = this.props;
     return <Fragment>
       <fieldset className={options && options.length > 2 ? 'radio-list' : 'field radio-group'}>
         {label && <legend>
@@ -29,7 +29,7 @@ class RenderRadio extends React.Component {
             {options && options.map((item, key) => {
               return <label key={key} className={this.props.className && this.props.className}>
                 <input {...input} type="radio" value={isObject(item, 'value')} />
-                <span style={{border: '1px solid black'}}>{isObject(item, 'label')}</span>
+                <span style={{ border: '1px solid black' }}>{isObject(item, 'label')}</span>
               </label>;
             })}
           </div>

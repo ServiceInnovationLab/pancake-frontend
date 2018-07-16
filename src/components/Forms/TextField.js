@@ -1,9 +1,9 @@
 import React from 'react';
 import ErrorMessage from '../../components/Forms/Error';
 import Accordian from '../../components/Forms/Accordian';
-import {underscorize} from '../../helpers/strings';
+import { underscorize } from '../../helpers/strings';
 import NumberField from '../Forms/NumberField';
-import {Field} from 'redux-form';
+import { Field } from 'redux-form';
 
 /*
   TextField
@@ -23,8 +23,8 @@ export default class TextField extends React.Component {
   }
 
   getValue() {
-    if(this.props.input) {
-      if(this.props.input.name === this.props.values[this.props.input.name]) {
+    if (this.props.input) {
+      if (this.props.input.name === this.props.values[this.props.input.name]) {
         return this.props.values['this.props.input.name'];
       }
       return this.props.input.value;
@@ -32,7 +32,7 @@ export default class TextField extends React.Component {
   }
 
   render() {
-    let prepopulatedValue = this.props.prepopulatedValue ? this.props.prepopulatedValue[underscorize(this.props.label)] : null;
+    const prepopulatedValue = this.props.prepopulatedValue ? this.props.prepopulatedValue[underscorize(this.props.label)] : null;
     const showValue = prepopulatedValue ? prepopulatedValue : this.getValue();
     return (
       <fieldset className="field">

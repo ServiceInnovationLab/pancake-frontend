@@ -6,6 +6,7 @@ class HoldingPage extends Component {
     this.state = {
     };
   }
+
   render() {
     return (
       <div className="container">

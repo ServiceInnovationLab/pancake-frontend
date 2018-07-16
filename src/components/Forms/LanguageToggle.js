@@ -1,6 +1,6 @@
 import React from 'react';
 
-let languages = [
+const languages = [
   {
     'abbr': 'en',
     'name': 'English',

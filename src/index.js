@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 // import WizardForm from './components/FirstTimeApplicant/WizardForm';
 import HoldingPage from './components/pages/HoldingPage';
 // import Sign from './components/FirstTimeApplicant/Sign';
-import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import reducers from './reducers/index';
@@ -28,7 +28,7 @@ class App extends React.Component {
           <Header />
           <main>
             <Route path="/" component={HoldingPage} />
-{/*            <Route exact={true} path="/" component={WizardForm} />
+            {/*            <Route exact={true} path="/" component={WizardForm} />
             <Route path="/:id" component={Sign}/>*/}
           </main>
           <Footer />

@@ -3,10 +3,7 @@ import renderer from 'react-test-renderer';
 import RenderRadio from '../components/Forms/RenderRadio';
 import TextField from '../components/Forms/TextField';
 
-const Components = [
-  RenderRadio,
-  TextField,
-];
+const Components = [RenderRadio, TextField];
 
 
 describe('components', function() {
@@ -15,7 +12,7 @@ describe('components', function() {
     describe(`<${item} />`, function() {
       it('renders correctly', function() {
         const TagName = item;
-        let tree = renderer.create(<TagName />).toJSON();
+        const tree = renderer.create(<TagName />).toJSON();
         expect(tree).toMatchSnapshot();
       });
     });
