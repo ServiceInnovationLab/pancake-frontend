@@ -1,7 +1,7 @@
 const privacyStatement = {
-  'content': {
-    'en': {
-      'text': `<h2>Privacy Statement:</h2>
+  content: {
+    en: {
+      text: `<h2>Privacy Statement:</h2>
       <p>We collect personal information from you, including information about your:</p>
       <ul>
       <li>name;</li>

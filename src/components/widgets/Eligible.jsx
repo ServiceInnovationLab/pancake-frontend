@@ -13,24 +13,24 @@ class Eligible extends React.Component {
     this.setState({ rebate: null });
     if (nextProps.dependants && nextProps.rates_bill && nextProps.income) {
       const data = {
-        'persons': {
-          'Tahi': {
-            'salary': {
-              '2018': nextProps.income,
+        persons: {
+          Tahi: {
+            salary: {
+              2018: nextProps.income,
             },
-            'dependants': {
-              '2018': nextProps.dependants,
+            dependants: {
+              2018: nextProps.dependants,
             },
           },
         },
-        'properties': {
-          'property_1': {
-            'owners': ['Tahi'],
-            'rates': {
-              '2018': nextProps.rates_bill,
+        properties: {
+          property_1: {
+            owners: ['Tahi'],
+            rates: {
+              2018: nextProps.rates_bill,
             },
-            'rates_rebate': {
-              '2018': null,
+            rates_rebate: {
+              2018: null,
             },
           },
         },
