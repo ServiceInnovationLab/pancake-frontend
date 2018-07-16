@@ -77,7 +77,8 @@ class Address extends React.Component {
   render() {
     return (
       <Fragment>
-        <label>I live at
+        <label>
+I live at
           <Select
             name="location"
             value={this.state.location}

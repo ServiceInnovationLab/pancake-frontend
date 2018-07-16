@@ -108,7 +108,15 @@ class Income extends React.Component {
       return (
         <div className="arrow-box primary">
           <label htmlFor="earn_less_than">
-            From 1 April {this.getCurrentFinancialYear(0, 2)} to 31 March {this.getCurrentFinancialYear(0, 1)} I earned
+            From 1 April 
+            {' '}
+            {this.getCurrentFinancialYear(0, 2)}
+            {' '}
+to 31 March 
+            {' '}
+            {this.getCurrentFinancialYear(0, 1)}
+            {' '}
+I earned
           </label>
 
           <Field
@@ -120,7 +128,9 @@ class Income extends React.Component {
 
           {this.state.show_input &&
             <Fragment>
-              <label>My annual income was</label>
+              <label>
+My annual income was
+              </label>
               <Field
                 name="annual_income_entered_on_first_page"
                 onChange={this.handleManualIncome}
@@ -129,7 +139,8 @@ class Income extends React.Component {
               />
               <p className="help-text">
                 Approximate values are fine.
-                <br/>You'll need the real values if you choose to apply
+                <br/>
+You'll need the real values if you choose to apply
               </p>
             </Fragment>
           }

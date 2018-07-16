@@ -58,7 +58,11 @@ class Rebate extends React.Component {
       return (
         <p className="heading-paragraph">
           You could be eligible for
-          <span> ${this.formatDollars(this.state.rebate)}</span>
+          <span>
+            {' '}
+$
+            {this.formatDollars(this.state.rebate)}
+          </span>
         </p>
       );
     }

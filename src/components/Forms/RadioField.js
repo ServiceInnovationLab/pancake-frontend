@@ -12,7 +12,9 @@ const RadioField = props => {
               name="radio_fields"
               onClick={() => props.handleRadioClick(item)}
             />
-            <span>{item}</span>
+            <span>
+              {item}
+            </span>
           </label>
         </Fragment>)}
     </Fragment>

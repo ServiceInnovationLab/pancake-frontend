@@ -36,12 +36,16 @@ export default class TextField extends React.Component {
     const showValue = prepopulatedValue ? prepopulatedValue : this.getValue();
     return (
       <fieldset className="field">
-        <legend>{this.props.label}</legend>
+        <legend>
+          {this.props.label}
+        </legend>
         {this.props.type === 'number' ? <NumberField {...this.props} value={showValue} /> : <input type="text" {...this.props.input} value={showValue} />}
         {this.props.instructions && <p className="instructions" dangerouslySetInnerHTML={{ __html: this.props.instructions }}></p>}
         {this.props.checkboxFieldName && 
           <Field component={Checkbox} label={this.props.checkboxLabel} name={this.props.checkboxFieldName} />}
-        {this.props.accordianText && <div><Accordian label={this.props.accordianLabel} text={this.props.accordianText} /></div>}
+        {this.props.accordianText && <div>
+          <Accordian label={this.props.accordianLabel} text={this.props.accordianText} />
+        </div>}
         <ErrorMessage fields={this.props.meta} />
       </fieldset>
     );
@@ -54,7 +58,9 @@ const Checkbox = props => {
       <div className="checkboxes">
         <label>
           <input type="checkbox" {...props.input} />
-          <span>{props.label}</span>
+          <span>
+            {props.label}
+          </span>
         </label>
       </div>
     </div>
