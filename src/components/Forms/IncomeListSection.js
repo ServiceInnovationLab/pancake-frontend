@@ -227,19 +227,24 @@ class IncomeList extends React.Component {
         child: 'radio',
         singleOptions: ['Single - Living alone', 'Single - Sharing'],
         partnerOptions: ['Partner with non-qualified spouse included', 'Partner both qualify'],
-      }, {
+      },
+{
         label: 'Jobseeker Support',
         child: null,
-      }, {
+      },
+{
         label: 'Sole parent support',
         child: null,
-      }, {
+      },
+{
         label: 'Supported Living',
         child: null,
-      }, {
+      },
+{
         label: 'Wage or Salary',
         child: 'text-field',
-      }, {
+      },
+{
         label: 'Other',
         child: 'nested-group',
       },

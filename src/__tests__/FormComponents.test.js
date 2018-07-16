@@ -4,8 +4,7 @@ import RenderRadio from '../components/Forms/RenderRadio';
 import TextField from '../components/Forms/TextField';
 
 const Components = [
-  RenderRadio,
-  TextField,
+  RenderRadio, TextField,
 ];
 
 
