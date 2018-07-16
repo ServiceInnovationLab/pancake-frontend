@@ -14,6 +14,7 @@ class selectField extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
+
   handleChange(e) {
     let inputVal = e.target.value;
     this.setState({showList: true, value: inputVal});
@@ -31,6 +32,7 @@ class selectField extends React.Component {
       showList: false,
     });
   }
+
   render() {
     const {input, label, touched, error, type, className } = this.props;
     return (
