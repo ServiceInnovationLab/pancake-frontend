@@ -32,27 +32,27 @@ class Income extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.dependants && nextProps.rates_bill) {
       const data = {
-        'persons': {
-          'Tui': {
-            'salary': {
-              '2018': null,
+        persons: {
+          Tui: {
+            salary: {
+              2018: null,
             },
-            'dependants': {
-              '2018': nextProps.dependants,
+            dependants: {
+              2018: nextProps.dependants,
             },
           },
         },
-        'properties': {
-          'property_1': {
-            'owners': ['Tui'],
-            'rates': {
-              '2018': nextProps.rates_bill,
+        properties: {
+          property_1: {
+            owners: ['Tui'],
+            rates: {
+              2018: nextProps.rates_bill,
             },
-            'maximum_income_for_full_rebate': {
-              '2018': null,
+            maximum_income_for_full_rebate: {
+              2018: null,
             },
-            'minimum_income_for_no_rebate': {
-              '2018': null,
+            minimum_income_for_no_rebate: {
+              2018: null,
             },
           },
         },
@@ -82,11 +82,11 @@ class Income extends React.Component {
 
   getOptions(){
     return {
-      'options': {
-        'en': [{ value: 'below', label: 'Less than $' + this.formatDollars(this.state.maximum_income_for_full_rebate) }, { value: 'between', label: 'Somewhere in the middle' }, { value: 'above', label: 'More than $' + this.formatDollars(this.state.minimum_income_for_no_rebate) }],
+      options: {
+        en: [{ value: 'below', label: 'Less than $' + this.formatDollars(this.state.maximum_income_for_full_rebate) }, { value: 'between', label: 'Somewhere in the middle' }, { value: 'above', label: 'More than $' + this.formatDollars(this.state.minimum_income_for_no_rebate) }],
       },
-      'isRequired': true,
-      'component': RenderRadio,
+      isRequired: true,
+      component: RenderRadio,
     };
   }
 

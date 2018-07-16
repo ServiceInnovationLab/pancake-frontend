@@ -2,12 +2,12 @@ import React from 'react';
 
 const languages = [
   {
-    'abbr': 'en',
-    'name': 'English',
+    abbr: 'en',
+    name: 'English',
   },
   {
-    'abbr': 'mi',
-    'name': 'Māori',
+    abbr: 'mi',
+    name: 'Māori',
   },
 ];
 
