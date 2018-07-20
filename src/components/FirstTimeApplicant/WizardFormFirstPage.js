@@ -1,12 +1,12 @@
 import React, {Fragment} from 'react';
-// import {Field, reduxForm} from 'redux-form';
-// import renderField from '../Forms/renderField';
-// import {scrollToFirstError} from '../../components/Forms/FormScroll';
+import {reduxForm} from 'redux-form';
+import renderField from '../Forms/renderField';
+import {scrollToFirstError} from '../../components/Forms/FormScroll';
 import Accordian from '../Forms/Accordian';
 import Address from '../widgets/Address';
 import Income from '../widgets/Income';
 import Eligible from '../widgets/Eligible';
-// import NumberField from '../Forms/NumberField';
+import NumberField from '../Forms/NumberField';
 import 'react-select/dist/react-select.css';
 
 class WizardFormFirstPage extends React.Component {
@@ -178,4 +178,8 @@ class WizardFormFirstPage extends React.Component {
   }
 }
 
-export default WizardFormFirstPage;
+export default reduxForm({
+  form: 'wizard', destroyOnUnmount: false, forceUnregisterOnUnmount: true,
+  // validate,
+  onSubmitFail: (errors) => scrollToFirstError(errors)
+})(WizardFormFirstPage);
