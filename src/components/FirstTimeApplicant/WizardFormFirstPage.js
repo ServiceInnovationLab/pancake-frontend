@@ -1,12 +1,12 @@
 import React, {Fragment} from 'react';
-import {Field, reduxForm} from 'redux-form';
-import renderField from '../Forms/renderField';
-import {scrollToFirstError} from '../../components/Forms/FormScroll';
+// import {Field, reduxForm} from 'redux-form';
+// import renderField from '../Forms/renderField';
+// import {scrollToFirstError} from '../../components/Forms/FormScroll';
 import Accordian from '../Forms/Accordian';
 import Address from '../widgets/Address';
 import Income from '../widgets/Income';
 import Eligible from '../widgets/Eligible';
-import NumberField from '../Forms/NumberField';
+// import NumberField from '../Forms/NumberField';
 import 'react-select/dist/react-select.css';
 
 class WizardFormFirstPage extends React.Component {
@@ -74,6 +74,7 @@ class WizardFormFirstPage extends React.Component {
   }
 
   handleDependants(event, newValue, previousValue, name) {
+    newValue = event.target.value
     if (newValue) {
       let dependants = (newValue >= 0 ? newValue : 0);
       this.setState({dependants});
@@ -128,8 +129,8 @@ class WizardFormFirstPage extends React.Component {
             <div className="arrow-box primary">
                 <Address onSelection={this.handleAddressSelection} />
 
-                <Field name="rates_bill" type="hidden" component={renderField}/>
-                <Field name="valuation_id" type="hidden" component={renderField}/>
+                <input name="rates_bill" type="hidden"/>
+                <input name="valuation_id" type="hidden"/>
                 {this.state.rates_bill && this.state.rating_year && <Fragment>
                   <p className="select-results">
                     My {this.state.rating_year - 1} to {this.state.rating_year} rates
@@ -144,9 +145,11 @@ class WizardFormFirstPage extends React.Component {
             {this.state.rates_bill && <Fragment>
               <div className="arrow-box primary">
                 <label>I have
-                  <Field
+                  <input
                     name="dependants"
-                    component={NumberField}
+                    type="number"
+                    min="0"
+                    step="1"
                     onChange={this.handleDependants}
                     />
                   dependants.
@@ -175,8 +178,4 @@ class WizardFormFirstPage extends React.Component {
   }
 }
 
-export default reduxForm({
-  form: 'wizard', destroyOnUnmount: false, forceUnregisterOnUnmount: true,
-  // validate,
-  onSubmitFail: (errors) => scrollToFirstError(errors)
-})(WizardFormFirstPage);
+export default WizardFormFirstPage;
