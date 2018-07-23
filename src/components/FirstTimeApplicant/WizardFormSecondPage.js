@@ -53,6 +53,9 @@ class WizardFormSecondPage extends React.Component {
     });
   }
 
+  getName() {
+    return this.props.formState.form.wizard.values['dependants'];
+  }
   dependants() {
     return this.props.formState.form.wizard.values['dependants'];
   }
@@ -60,7 +63,7 @@ class WizardFormSecondPage extends React.Component {
     return this.props.formState.form.wizard.values['rates_bill'];
   }
   saveFormData() {
-    console.log('saveform', this.props)
+    // console.log('saveform', fields)
     let fields = this.props.formState.form.wizard.values;
     fields['income'] = this.props.storeValues.totalIncome;
     let data = {
@@ -73,10 +76,10 @@ class WizardFormSecondPage extends React.Component {
 
     this.setState({sending: true});
 
-    axios
-      .post(`${config.API_ORIGIN}/api/v1/rebate_forms`, {data})
-      .then(res => this.setState({complete: true, sending: false}))
-      .catch(err => this.setState({complete_error: true, complete: false, sending: false}));
+    // axios
+    //   .post(`${config.API_ORIGIN}/api/v1/rebate_forms`, {data})
+    //   .then(res => this.setState({complete: true, sending: false}))
+    //   .catch(err => this.setState({complete_error: true, complete: false, sending: false}));
 
   }
   goHome() {
