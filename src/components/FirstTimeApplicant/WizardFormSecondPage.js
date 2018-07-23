@@ -60,6 +60,7 @@ class WizardFormSecondPage extends React.Component {
     return this.props.formState.form.wizard.values['rates_bill'];
   }
   saveFormData() {
+    console.log('saveform', this.props)
     let fields = this.props.formState.form.wizard.values;
     fields['income'] = this.props.storeValues.totalIncome;
     let data = {
@@ -126,7 +127,7 @@ class WizardFormSecondPage extends React.Component {
         </section>
         <section>
           <div className="container">
-            <TextField
+            {/* <TextField
               field_name='dependants'
               type='number'
               label='Do you have dependants?'
@@ -135,7 +136,27 @@ class WizardFormSecondPage extends React.Component {
               isRequired={true}
               textFieldLabel='label'
               placeholder='Enter the total amount'
-            />
+              value={this.props.formState.form.wizard.values['dependants']}
+            /> */}
+            <fieldset className="field">
+              <legend>Do you have dependants?</legend>
+              <input
+                name="dependants"
+                type="number"
+                min="0"
+                step="1"
+                value={this.props.formState.form.wizard.values['dependants']}
+                readOnly
+              />
+              <div className="instructions">
+                Dependants are: <br/>
+                <ul>
+                  <li>children you care and provide for under the age of 18 on 1 July 2017 and who at this time were not married and for whom you were not receiving payments under section 363 of the Children, Young Persons, and their Families Act 1989</li>
+                  <li>relatives in receipt of a benefit (but not NZ Superannuation) on 1 July 2017.</li>
+                </ul>
+              </div>
+              {/* // <ErrorMessage fields={this.props.meta} /> */}
+            </fieldset>
           </div>
         </section>
         <section className="theme-sand">
@@ -218,6 +239,7 @@ class WizardFormSecondPage extends React.Component {
             {this.renderFields()}
             {this.state.complete && <Success/>}
             {this.state.complete_error && <Failed/>}
+            {console.log(this.state)}
 
           </form>
         </div>
