@@ -10,6 +10,7 @@ import IncomeListSection from '../Forms/IncomeListSection';
 import Error from '../Forms/Error';
 import { underscorize } from '../../helpers/strings';
 import RadioWithSelect from '../Forms/RadioWithSelect';
+import Rebate from '../widgets/Rebate';
 
 class WizardForm extends Component {
   constructor(props) {
@@ -39,15 +40,15 @@ class WizardForm extends Component {
     [
       {
         name: 'Step 1',
-        component: <Step1
+        component: <Step1 handleChange={this.handleChange} />
+      },
+      {
+        name: 'Step 2',
+        component: <Step2
           handleChange={this.handleChange}
           handleToggle={this.handleToggle}
           state={this.state}
         />
-      },
-      {
-        name: 'Step 2',
-        component: <Step2 handleChange={this.handleChange} />
       },
       // {name: 'Step 3', component: <Step3 />},
       // {name: 'Step 4', component: <Step4 />},
@@ -61,7 +62,7 @@ class WizardForm extends Component {
   }
 }
 
-const Step1 = props => {
+const Step2 = props => {
   const incomeFields = [
     {
       label: 'NZ Superannuation',
@@ -92,6 +93,7 @@ const Step1 = props => {
   ];
 
   return <Fragment>
+    <Head/>
     <div className="container">
       <fieldset class="field radio-group">
         <legend>Did you live here at 1 July 2017?</legend>
@@ -291,11 +293,29 @@ const Step1 = props => {
         </fieldset>
       </div>
     </div>
+
+    <section className="container">
+      <div>
+        {/* <Calculated
+          rates_bill={this.ratesBill()}
+          dependants={this.dependants()}
+          income={this.props.storeValues.totalIncome} /> */}
+
+        <Accordian
+          label="It is an offence to knowingly make a false statement in your application"
+          text="<p>You can find a list of the total amounts for Work and Income payments, including NZ Superannuation https://www.dia.govt.nz/diawebsite.nsf/Files/Benefit-Schedule-2016-17/$file/Benefit-Schedule-2016-17.pdf <br/><br/>You can get this from a few places, such as:<ul><li>Inland Revenue, by calling them on 0800 775 247 and asking for a Personal Tax Summary, or logging on to your MyIR account at IRD.govt.nz.</li><li>from Ministry of Social Development</li> <li>through your employer, accountant etc.</il></ul></p>"
+        />
+      </div>
+      <p>This will be applied to your rates account once your application has been fully processed.</p>
+    </section>
   </Fragment>;
 };
 
-const Step2 = () => {
-  return (<p>this is step 2</p>);
+const Step1 = () => {
+  return <Fragment>
+    <div>
+    </div>
+  </Fragment>;
 };
 
 const Radio = props => {
@@ -342,5 +362,126 @@ const Checkbox = props => {
     </div>
   </div>;
 };
+
+const Head = () => {
+  return (
+    <div className="container">
+      <a
+        onClick={() => {
+        window
+          .location
+          .reload()
+        }}
+        style={{
+        'color': '#aaa',
+        'marginTop': '15px',
+        'marginBottom': '60px',
+        'display': 'inline-block'
+      }}><span className="arrow left"></span>Home</a>
+      <h2 className="heading-secondary green">What you will need to do to apply for a rebate <br/><span>He aha ngā mahi e tonoa ai te whakamāmā reiti</span></h2>
+
+      <AllSteps />
+
+      <hr/>
+      <h2 className="heading-secondary green">Step Two: Apply for a rates rebate<br/> <span>Mahi Tuarua: Tonoa te whakamāmā reiti</span></h2>
+      <h3 className="heading-primary grey">This is for the 1 July 2017 - 30 June 2018 rating year</h3>
+    </div>
+  );
+}
+
+const AllSteps  = () => {
+  let help_text = "<p>You can get this from a few places, such as:<ul><li>Inland Revenue, by calling them on 0800 775 247 and asking for a Personal Tax Summary, or logging on to your MyIR account at IRD.govt.nz.</li><li>from Ministry of Social Development, </li> <li>through your employer, accountant etc.</il></ul></p><p>You can find a list of the total amounts for Work and Income payments, including NZ Superannuation <a href=\"https://www.dia.govt.nz/diawebsite.nsf/Files/Benefit-Schedule-2016-17/$file/Benefit-Schedule-2016-17.pdf\">here</a></p>";
+  return (
+    <Fragment>
+      <section>
+        <h3 className="heading-secondary grey">Step One<br/>Mahi Tuatahi</h3>
+        <p>You will need to know your total income before tax for the 2016/2017 Tax year (1 April
+          2016 - 31 March 2017). This includes rental income from any properties you own,
+          interest and dividends, and overseas income (converted to $NZD). </p>
+        <Accordian
+          label="Where can I get my income details?"
+          text={help_text} />
+
+      </section>
+
+      <section>
+        <h3 className="heading-secondary grey">Step Two<br/>Mahi Tuarua</h3>
+        <p>Fill out this form online and push the send button.
+          This will send your application to your local council.</p>
+      </section>
+
+      <section>
+        <h3 className="heading-secondary grey">Step Three<br/>Mahi Tuatoru</h3>
+        <p>Visit the Tauranga City Council at 91 Willow Street and sign your application.<br/><br/>
+        Proof of income may be requested for those with income sources other than superannuation or work and income benefits. <br/><br/>If you are self-employed, you must supply evidence with your application. Evidence of income helps to ensure you receive the correct rebate promptly.</p>
+      </section>
+    </Fragment>
+  );
+}
+
+const Success = () => {
+  return (
+    <div className="container">
+      <section>
+        <h2 className="heading-secondary">Step Three: Get your application witnessed<br/> <span>Mahi Tuatoru: Mā te kaiwhakaatu e waitohu tō tono.</span> </h2>
+        <h3>You are almost there!</h3>
+        <p>
+          Proof of income may be requested for those with income sources other than superannuation or work and income benefits. <br/><br/>If you are self-employed, you must supply evidence with your application. Evidence of income helps to ensure you receive the correct rebate promptly. <br/><br/>Tell the Service Centre staff you're there to sign your rates rebate application.
+        </p>
+      </section>
+    </div>
+  );
+};
+
+const Failed = () => {
+  return (
+    <div className="container">
+      <section>
+        <h2>Something went wrong :(</h2>
+        <p>Please contact us on 07 5777 000 or ratesrebates@tauranga.govt.nz</p>
+      </section>
+    </div>
+  );
+};
+
+class Calculated extends React.Component {
+
+  render() {
+    return (
+      <Fragment>
+        <p className="heading-paragraph">
+          Based on a <strong>rates bill of ${this.props.rates_bill}
+          </strong> and <strong> income of ${this.props.income.toFixed(2)}
+          </strong> and <strong>{this.props.dependants} dependants</strong>.
+        </p>
+        <Rebate
+          dependants={this.props.dependants}
+          rates_bill={this.props.rates_bill}
+          income={this.props.income} />
+        <p>This will be applied to your rates account once your application has been
+          fully processed.</p>
+      </Fragment>
+    );
+  }
+}
+
+class Submit extends React.Component {
+  render() {
+    if (this.props.sending) {
+      return (
+        <div className="container layout">
+          Sending....
+        </div>
+      );
+    }
+    return (
+      <div className="container layout">
+        <button type="submit" className="next btn-primary">
+          Send Application
+        </button>
+      </div>
+    );
+  }
+}
 
 export default WizardForm;
