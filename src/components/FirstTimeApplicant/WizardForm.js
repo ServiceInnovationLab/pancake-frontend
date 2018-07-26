@@ -244,6 +244,35 @@ const Step1 = props => {
         </div>
       </fieldset>
     </div>
+
+    {/* Component */}
+    <div className="container">
+      <fieldset class="field radio-group">
+        <legend>Do you earn money from home or run a business from home?</legend>
+        <div>
+          <div>
+            <Radio
+              name="has_home_business"
+              options={['yes', 'no']}
+              handleToggle={props.handleToggle}
+            />
+          </div>
+          <p className="instructions">If yes, and you deducted over 50% of your rates as expenses, you may not be able to get a rebate. If your property is mainly used for commercial activities, for example farming or business, you cannot apply for a rates rebate.</p>
+        </div>
+      </fieldset>
+      {props.state.has_home_business_toggle && <fieldset class="field radio-group">
+        <legend>Were you living in another property that you owned on 1 July 2017, have sold that property, and moved to the address of the property you are currently living in during the the current rating year (1 July 2017-30 June 2018)?</legend>
+        <div>
+          <div>
+            <Radio
+              name="deducts_over_half_rates"
+              options={['yes', 'no']}
+              handleToggle={props.handleToggle}
+            />
+          </div>
+        </div>
+      </fieldset>}
+    </div>
   </Fragment>;
 };
 
