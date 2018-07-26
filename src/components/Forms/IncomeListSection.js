@@ -48,64 +48,26 @@ class IncomeListSection extends React.Component {
 
   render() {
     return (
-      <Fragment>
-        <section>
-          <div className="container">
-            <fieldset className="field radio-group">
-              <legend>Were you living with a partner or joint home owner(s) on July 1 2017?</legend>
-              <p>'Partner' is a person you are married to/in a civil union, or de facto
-                relationship with.
-              </p>
-              <div>
-                <div>
-                  <RadioField options={['yes', 'no']} handleRadioClick={this.handleRadioClick}/>
-                </div>
-              </div>
-            </fieldset>
-          </div>
-        </section>
-        <div style={{
-          marginTop: '42px',
-        }}
-        >
-          <fieldset>
-            <label
-              style={{
-                fontSize: '20px',
-                fontWeight: '500',
-              }}
-            >What was your total income for the 2017/18 tax year?
-            </label>
-            <p>You will need to know your total income <strong>before tax</strong> for the 2016/2017 Tax year (1 March
-              2016 - 31 March 2017) including rental income from any properties you own,
-              interest and dividends, and overseas income (converted to $NZD).
-            <br/>
-            <br/>
-              Select any that apply to you.
-            </p>
-            <div className="row">
-              <ul className="column list-stripped">
-                <ListColumn
-                  title="Your Income"
-                  name="applicant"
-                  hasPartner={this.state.should_show_partner_options}
-                  showRadios={false}
-                  setTotalIncome={this.setApplicantTotalIncome}
-                />
-              </ul>
-              <ul className="column list-stripped">
-                {this.state.should_show_partner_options && <ListColumn
-                  title="Partner/join homeowner's income"
-                  name="partner"
-                  hasPartner={this.state.should_show_partner_options}
-                  showRadios={false}
-                  setTotalIncome={this.setPartnerTotalIncome}
-                />}
-              </ul>
-            </div>
-          </fieldset>
-        </div>
-      </Fragment>
+      <div className="row">
+        <ul className="column list-stripped">
+          <ListColumn
+            title="Your Income"
+            name="applicant"
+            hasPartner={this.state.should_show_partner_options}
+            showRadios={false}
+            setTotalIncome={this.setApplicantTotalIncome}
+          />
+        </ul>
+        <ul className="column list-stripped">
+          {this.state.should_show_partner_options && <ListColumn
+            title="Partner/join homeowner's income"
+            name="partner"
+            hasPartner={this.state.should_show_partner_options}
+            showRadios={false}
+            setTotalIncome={this.setPartnerTotalIncome}
+          />}
+        </ul>
+      </div>
     );
   }
 }

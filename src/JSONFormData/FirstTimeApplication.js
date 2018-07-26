@@ -6,52 +6,6 @@ const firstTimeApplication = [
   {
     label: {
       en: {
-        text: 'Do you have dependants?',
-      },
-      mi: {
-        text: 'Do you have dependants?',
-      },
-    },
-    instructions: {
-      en: {
-        text: 'Dependants are: <br/><ul><li>children you care and provide for under the age of 18 on 1 July 2017 and who at this time were not married and for whom you were not receiving payments under section 363 of the Children, Young Persons, and their Families Act 1989</li><li>relatives in receipt of a benefit (but not NZ Superannuation) on 1 July 2017.</li></ul>',
-      },
-      mi: {
-        text: 'Dependants are: <br/><ul><li>children you care and provide for under the age of 18 on 1 July 2017 and who at this time were not married and for whom you were not receiving payments under section 363 of the Children, Young Persons, and their Families Act 1989</li><li>relatives in receipt of a benefit (but not NZ Superannuation) on 1 July 2017.</li></ul>',
-      },
-    },
-    options: {
-      en: {
-        text: ['yes', 'no'],
-      },
-      mi: {
-        text: ['ae', 'kaore'],
-      },
-    },
-    isRequired: true,
-    component: TextField,
-    field_name: 'dependants',
-    type: 'number',
-    textFieldLabel: {
-      en: {
-        text: 'label',
-      },
-      mi: {
-        text: ['ae', 'kaore'],
-      },
-    },
-    placeholder: {
-      en: {
-        text: 'Enter the total amount',
-      },
-      mi: {
-        text: 'Enter the total amount',
-      },
-    },
-  },
-  {
-    label: {
-      en: {
         text: 'Were you living with a partner or joint home owner(s) on July 1 2017?',
       },
       mi: {
