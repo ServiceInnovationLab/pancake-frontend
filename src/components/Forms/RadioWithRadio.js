@@ -26,6 +26,7 @@ export default class RadioWithRadio extends React.Component {
             {this.props.label}
           </legend>}
           <div>
+            {console.log(...this.props)}
             <Radio {...this.props} fieldType="radio" />
           </div>
           {this.props.instructions && <p dangerouslySetInnerHTML={{ __html: this.props.instructions }}></p>}
