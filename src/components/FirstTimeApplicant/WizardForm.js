@@ -11,8 +11,6 @@ import Error from '../Forms/Error';
 class WizardForm extends Component {
   constructor(props) {
     super(props);
-    // this.nextPage = this.nextPage.bind(this);
-    // this.previousPage = this.previousPage.bind(this);
     this.state = {
       full_name: '',
       toggle: false
@@ -22,51 +20,45 @@ class WizardForm extends Component {
     this.handleToggle = this.handleToggle.bind(this);
   }
 
-  // nextPage() {
-  //   this.setState({ page: this.state.page + 1 });
-  // }
-
-  // previousPage() {
-  //   this.setState({ page: this.state.page - 1 });
-  // }
 
   handleChange(e) {
-    // console.log(e.target.name)
     this.setState({[e.target.name]: e.target.value});
-    // console.log('state', this.state);
   }
 
   handleToggle(e) {
     const val = e.target.value === 'yes' ? false : true;
     this.setState({[`${e.target.name}_toggle`]: !val});
-    // console.log(e.currentTarget)
-    // alert
   }
 
   render() {
     const steps =
     [
-      {name: 'Step 1', component: <Step1
-        handleChange={this.handleChange}
-        handleToggle={this.handleToggle}
-        state={this.state}
-      />},
-      {name: 'Step 2', component: <Step2 handleChange={this.handleChange} />},
+      {
+        name: 'Step 1',
+        component: <Step1
+          handleChange={this.handleChange}
+          handleToggle={this.handleToggle}
+          state={this.state}
+        />
+      },
+      {
+        name: 'Step 2',
+        component: <Step2 handleChange={this.handleChange} />
+      },
       // {name: 'Step 3', component: <Step3 />},
       // {name: 'Step 4', component: <Step4 />},
       // {name: 'Step 5', component: <Step5 />}
     ];
+
     return (<div className="container">
       <StepZilla steps={steps}/>
-
     </div>
     );
   }
 }
 
 const Step1 = props => {
-  // return <fieldset className="field radio-group">
-  //     <legend>Did you live here at 1 July 2017?</legend>
+
   return <Fragment>
     <fieldset class="field radio-group">
       <legend>Did you live here at 1 July 2017?</legend>
@@ -78,6 +70,10 @@ const Step1 = props => {
             handleToggle={props.handleToggle}
           />
         </div>
+        <Accordian
+          label="What if I moved house during the rates year?"
+          text="Get in touch with your local council. There are some situations where you can still get a rebate on your previous home after you moved. They will ask you some details including: <ul><li>the settlement date</li><li>what rates you paid for the current year.</li></ul>"
+        />
       </div>
     </fieldset>
     {props.state.lived_here_before_july_2017_toggle && <fieldset class="field radio-group">
@@ -94,6 +90,7 @@ const Step1 = props => {
     </fieldset>}
   </Fragment>;
 };
+
 const Step2 = () => {
   return (<p>this is step 2</p>);
 };
@@ -116,8 +113,8 @@ const Radio = props => {
 // const RadioWithRadio = props => {
 //   return (
 //     <div>
-//       <fieldset className="field radio-group">
-//         {props.label && <legend>
+  //       <fieldset className="field radio-group">
+  //         {props.label && <legend>
 //           {props.label}
 //         </legend>}
 //         <div>
