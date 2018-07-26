@@ -272,6 +272,25 @@ const Step1 = props => {
         </div>
       </fieldset>}
     </div>
+
+    {/* Component */}
+    <div className="theme-sand">
+      <div className="container">
+        <fieldset className="field">
+          <legend>What is your email address?</legend>
+          <p className="instructions">This email address will be used to send you a confirmation and instructions for this application. The phone number will be used to contact you if additional details are required.</p>
+          <input
+            type="text"
+            name="email"
+            onChange={this.handleChange}
+          />
+          <Checkbox
+            name="email_phone_can_be_used"
+            label="Are you happy for the email address and/or phone number to be used for other Council communications?"
+          />
+        </fieldset>
+      </div>
+    </div>
   </Fragment>;
 };
 
@@ -309,6 +328,19 @@ const RadioGroup = props => {
       </Fragment>)}
     </div>
   );
+};
+
+const Checkbox = props => {
+  return <div className="checkbox-group">
+    <div>
+      <div className="checkboxes">
+        <label>
+          <input type="checkbox" name={props.name} />
+          <span>{props.label}</span>
+        </label>
+      </div>
+    </div>
+  </div>;
 };
 
 export default WizardForm;
