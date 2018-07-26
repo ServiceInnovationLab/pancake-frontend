@@ -60,6 +60,7 @@ class WizardForm extends Component {
 const Step1 = props => {
 
   return <Fragment>
+
     <fieldset class="field radio-group">
       <legend>Did you live here at 1 July 2017?</legend>
       <div>
@@ -88,6 +89,24 @@ const Step1 = props => {
         </div>
       </div>
     </fieldset>}
+
+    {/* Component */}
+    <fieldset className="field">
+      <legend>What is your full name?</legend>
+      <input
+        type="text"
+        name="full_name"
+        onChange={this.handleChange}
+      />
+      <p className="instructions">Your name must be on the title for the property you are applying for on the Rating Information Database (RID) at your local council.</p>
+      <Accordian
+        label="What if I live in a retirement village or company share flat/apartment?"
+        text='<p>If you are eligible for a rebate under the Rates Rebate (Retirement Village Residents) Amendment Act 2018 you will be able to apply for a rebate in the new rating year after 1 July 2018.</p><p>If the property you own is part of owner/occupier flats (often referred to as company share flats or apartments), you will need to fill in an additional declaration form and bring it with you when visiting the council.</a> This can be found <a href="https://www.dia.govt.nz/Pubforms.nsf/URL/OwnerOccupierDeclarationFormJuly2011.pdf/$file/OwnerOccupierDeclarationFormJuly2011.pdf">here</a></p>'
+      />
+    </fieldset>
+
+
+    
   </Fragment>;
 };
 
