@@ -11,13 +11,20 @@ import Error from '../Forms/Error';
 import { underscorize } from '../../helpers/strings';
 import RadioWithSelect from '../Forms/RadioWithSelect';
 import Rebate from '../widgets/Rebate';
+import Address from '../widgets/Address';
 
 class WizardForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       full_name: '',
-      toggle: false
+      toggle: false,
+      dependants: null,
+      isEligible: false,
+      page: 1,
+      properties: [],
+      rate_payers: [],
+      selectedRatesPayer: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -34,7 +41,47 @@ class WizardForm extends Component {
     this.setState({[`${e.target.name}_toggle`]: !val});
     console.log(val)
   }
+  getValues(e) {
+    this.setState({value: e.target.value});
+  }
 
+  handleAddressSelection(state) {
+    this.setState(state);
+    this.props.change('address', state.location.location);
+    this.props.change('valuation_id', this.state.location.valuation_id);
+
+    if (state['rates_bills']) {
+      let attributes = state['rates_bills'][0]['attributes'];
+      this.setState({
+        'rates_bill': attributes['total_bill'],
+        'rating_year': attributes['rating_year']
+      });
+      this.props.change('rates_bill', attributes['total_bill']);
+    }
+    else {
+      this.setState({rates_bills: null, rating_year: null});
+      this.props.change('rates_bill', null);
+    }
+  }
+
+  handleDependants(event, newValue, previousValue, name) {
+    if (newValue) {
+      let dependants = (newValue >= 0 ? newValue : 0);
+      this.setState({dependants});
+      this.props.change('dependants', dependants);
+    }
+  }
+
+  handleIncome(income, direction) {
+    // note: direction is above, between, below
+    this.setState({income, direction});
+  }
+
+  handleKeyPress = (event) => {
+    if(event.key === 'Enter'){
+      event.preventDefault()
+    }
+  }
   render() {
     const steps =
     [
@@ -338,6 +385,27 @@ const Step1 = () => {
         </h2>
         <p><strong>Use our online calculator.</strong><br/>
         This calculator uses public information on property rates. <br/>Any information you enter is not stored. <br/>If you choose to apply, the information from the calculator will be used to pre-fill part of your application for you. </p>
+      </section>
+
+      <section>
+        <div className="arrow-box primary">
+          <Address onSelection={this.handleAddressSelection} />
+
+          {/* Component */}
+          <input name="rates_bill" type="hidden" />
+          <input name="valuation_id" type="hidden" />
+
+          {/* {this.state.rates_bill && this.state.rating_year && <Fragment> */}
+          <Fragment>
+            <p className="select-results">
+              My {this.state.rating_year - 1} to {this.state.rating_year} rates
+              are <strong>${this.state.rates_bill}.
+              </strong>
+            </p>
+            <p className="help-text">This includes water rates, as provided by Tauranga City Council.</p>
+          </Fragment>
+          {/* } */}
+        </div>
       </section>
     </div>
   </Fragment>;
