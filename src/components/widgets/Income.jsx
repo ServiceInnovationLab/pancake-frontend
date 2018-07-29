@@ -35,10 +35,10 @@ class Income extends React.Component {
         persons: {
           Tui: {
             salary: {
-              2018: null,
+              2019: null,
             },
             dependants: {
-              2018: nextProps.dependants,
+              2019: nextProps.dependants,
             },
           },
         },
@@ -46,13 +46,13 @@ class Income extends React.Component {
           property_1: {
             owners: ['Tui'],
             rates: {
-              2018: nextProps.rates_bill,
+              2019: nextProps.rates_bill,
             },
             maximum_income_for_full_rebate: {
-              2018: null,
+              2019: null,
             },
             minimum_income_for_no_rebate: {
-              2018: null,
+              2019: null,
             },
           },
         },
@@ -65,13 +65,13 @@ class Income extends React.Component {
             .data
             .properties
             .property_1
-            .minimum_income_for_no_rebate['2018']
+            .minimum_income_for_no_rebate['2019']
             .toFixed(2),
           maximum_income_for_full_rebate: res
             .data
             .properties
             .property_1
-            .maximum_income_for_full_rebate['2018']
+            .maximum_income_for_full_rebate['2019']
             .toFixed(2),
         }))
         .catch(err => console.log('err fetching properties', err));

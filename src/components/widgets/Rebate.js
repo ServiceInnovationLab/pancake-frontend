@@ -17,10 +17,10 @@ class Rebate extends React.Component {
         persons: {
           Tahi: {
             salary: {
-              2018: nextProps.income,
+              2019: nextProps.income,
             },
             dependants: {
-              2018: nextProps.dependants,
+              2019: nextProps.dependants,
             },
           },
         },
@@ -28,10 +28,10 @@ class Rebate extends React.Component {
           property_1: {
             owners: ['Tahi'],
             rates: {
-              2018: nextProps.rates_bill,
+              2019: nextProps.rates_bill,
             },
             rates_rebate: {
-              2018: null,
+              2019: null,
             },
           },
         },
@@ -40,7 +40,7 @@ class Rebate extends React.Component {
       axios
         .post(`${config.OPENFISCA_ORIGIN}`, data)
         .then(res => {
-          const rebate = res.data.properties.property_1.rates_rebate['2018'];
+          const rebate = res.data.properties.property_1.rates_rebate['2019'];
           this.setState({ rebate: rebate });
         })
         .catch(err => err);
