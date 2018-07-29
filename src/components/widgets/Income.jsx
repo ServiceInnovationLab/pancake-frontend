@@ -72,7 +72,7 @@ class Income extends React.Component {
             .properties
             .property_1
             .maximum_income_for_full_rebate['2019']
-            .toFixed(2)
+            .toFixed(2),
         }))
         .catch(err => console.log('err fetching properties', err));
     } else {
