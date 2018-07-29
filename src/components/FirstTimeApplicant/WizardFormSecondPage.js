@@ -206,8 +206,8 @@ const AllSteps  = () => {
     <Fragment>
       <section>
         <h3 className="heading-secondary grey">Step One<br/>Mahi Tuatahi</h3>
-        <p>You will need to know your total income before tax for the 2016/2017 Tax year (1 April
-          2016 - 31 March 2017). This includes rental income from any properties you own,
+        <p>You will need to know your total income before tax for the 2017/2018 Tax year (1 April
+          2017 - 31 March 2018). This includes rental income from any properties you own,
           interest and dividends, and overseas income (converted to $NZD). </p>
         <Accordian
           label="Where can I get my income details?"

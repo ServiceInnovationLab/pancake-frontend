@@ -10,10 +10,10 @@ const firstTimeApplication = [
     toggleByOption: 'No',
     label: {
       en: {
-        text: 'Did you live here at 1 July 2017?',
+        text: 'Did you live here at 1 July 2018?',
       },
       mi: {
-        text: 'Did you live here at 1 July 2017?',
+        text: 'Did you live here at 1 July 2018?',
       },
     },
     options: {
@@ -26,10 +26,10 @@ const firstTimeApplication = [
     },
     optionsText: {
       en: {
-        text: ['', 'Were you living in another property that you owned on 1 July 2017, have sold that property, and moved to the address of the property you are currently living in during the the current rating year (1 July 2018-30 June 2019)?'],
+        text: ['', 'Were you living in another property that you owned on 1 July 2018, have sold that property, and moved to the address of the property you are currently living in during the the current rating year (1 July 2018-30 June 2019)?'],
       },
       mi: {
-        text: ['', 'Were you living in another property that you owned on 1 July 2017, have sold that property, and moved to the address of the property you are currently living in during the the current rating year (1 July 2018-30 June 2019)?'],
+        text: ['', 'Were you living in another property that you owned on 1 July 2018, have sold that property, and moved to the address of the property you are currently living in during the the current rating year (1 July 2018-30 June 2019)?'],
       },
     },
     accordianLabel: {
@@ -97,10 +97,10 @@ const firstTimeApplication = [
     },
     instructions: {
       en: {
-        text: 'Dependants are: <br/><ul><li>children you care and provide for under the age of 18 on 1 July 2017 and who at this time were not married and for whom you were not receiving payments under section 363 of the Children, Young Persons, and their Families Act 1989</li><li>relatives in receipt of a benefit (but not NZ Superannuation) on 1 July 2017.</li></ul>',
+        text: 'Dependants are: <br/><ul><li>children you care and provide for under the age of 18 on 1 July 2018 and who at this time were not married and for whom you were not receiving payments under section 363 of the Children, Young Persons, and their Families Act 1989</li><li>relatives in receipt of a benefit (but not NZ Superannuation) on 1 July 2018.</li></ul>',
       },
       mi: {
-        text: 'Dependants are: <br/><ul><li>children you care and provide for under the age of 18 on 1 July 2017 and who at this time were not married and for whom you were not receiving payments under section 363 of the Children, Young Persons, and their Families Act 1989</li><li>relatives in receipt of a benefit (but not NZ Superannuation) on 1 July 2017.</li></ul>',
+        text: 'Dependants are: <br/><ul><li>children you care and provide for under the age of 18 on 1 July 2018 and who at this time were not married and for whom you were not receiving payments under section 363 of the Children, Young Persons, and their Families Act 1989</li><li>relatives in receipt of a benefit (but not NZ Superannuation) on 1 July 2018.</li></ul>',
       },
     },
     options: {
@@ -135,10 +135,10 @@ const firstTimeApplication = [
   {
     label: {
       en: {
-        text: 'Were you living with a partner or joint home owner(s) on July 1 2017?',
+        text: 'Were you living with a partner or joint home owner(s) on July 1 2018?',
       },
       mi: {
-        text: 'Were you living with a partner or joint home owner(s) on July 1 2017?',
+        text: 'Were you living with a partner or joint home owner(s) on July 1 2018?',
       },
     },
     instructions: {
@@ -193,10 +193,10 @@ const firstTimeApplication = [
     childFieldName: 'deducts_over_half_rates',
     optionsText: {
       en: {
-        text: ['', 'Did you deduct over 50% of your rates as expenses for the 2016/2017 tax year?'],
+        text: ['', 'Did you deduct over 50% of your rates as expenses for the 2017/2018 tax year?'],
       },
       mi: {
-        text: ['', 'Did you deduct over 50% of your rates as expenses for the 2016/2017 tax year?'],
+        text: ['', 'Did you deduct over 50% of your rates as expenses for the 2017/2018 tax year?'],
       },
     },
     placeholder: {

@@ -86,7 +86,7 @@ class Sign extends React.Component {
     return (
       <Fragment>
         {!this.state.error && <div className="container">
-          <h2>Rates Rebates application for 2017/2018</h2>
+          <h2>Rates Rebates application for 2018/2019</h2>
           <p>My name is <strong>{this.state.fields.full_name}</strong>.</p>
           <p>My Address is <strong>{this.state.fields.address}</strong> and I lived here on 1 July 2018.</p>
           <p>My 2018/2019 rates bill (including water) is $<strong>{this.state.fields.rates_bill}</strong>.</p>
