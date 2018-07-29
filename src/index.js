@@ -23,7 +23,6 @@ const store = createStore(combineReducers({
 class App extends React.Component {
 
   render(){
-    const show_holding_path = false;
     return (
       <HashRouter>
         <div>
