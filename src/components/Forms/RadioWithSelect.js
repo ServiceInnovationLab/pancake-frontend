@@ -23,7 +23,7 @@ class renderOtherIncome extends React.Component {
     return (
       <ul className="nested-list">
         {fields.map((income, index) => (
-          <li key={index} style={{marginBottom: '15px'}}>
+          <li key={index} style={{ marginBottom: '15px' }}>
 
             <h4>Other income #{index + 1} </h4>
             <RemoveButton fields={fields} index={index} removeOtherOptionValues={this.props.removeOtherOptionValues}/>
@@ -78,7 +78,7 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => (
   <div>
     <span className="aria-hidden">{label}</span>
     <div>
-      <input {...input} type={type} placeholder={label} style={{marginBottom: '5px'}} />
+      <input {...input} type={type} placeholder={label} style={{ marginBottom: '5px' }} />
       {touched && error && <span>{error}</span>}
     </div>
   </div>

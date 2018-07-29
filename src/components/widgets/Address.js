@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from 'react';
 import Select from 'react-select';
 import axios from 'axios';
 import config from '../../config';
@@ -18,7 +18,7 @@ class Address extends React.Component {
 
 
   handleChange(inputText) {
-    this.setState({isLoadingExternally: true});
+    this.setState({ isLoadingExternally: true });
     axios
       .get(`${config.API_ORIGIN}/api/v1/properties?q=${inputText}`)
       .then(res => {
@@ -27,19 +27,19 @@ class Address extends React.Component {
             .data
             .data
             .map(i => {
-              return {id: i.id, location: i.attributes.location, valuationId: i.attributes.valuation_id};
+              return { id: i.id, location: i.attributes.location, valuationId: i.attributes.valuation_id };
             });
           this.setState({
             properties,
-          }, () => this.setState({isLoadingExternally: false}));
+          }, () => this.setState({ isLoadingExternally: false }));
         }
       })
-      .catch(err => console.log('err fetching properties', err));
+      .catch(err => err);
   }
 
   handleSelectLocation(selectedOption) {
     if (selectedOption) {
-      this.setState({location: selectedOption});
+      this.setState({ location: selectedOption });
       axios
         .get(`${config.API_ORIGIN}/api/v1/properties/${selectedOption.id}`)
         .then(res => {
@@ -61,16 +61,16 @@ class Address extends React.Component {
             this.props.onSelection({
               location: res.data.data.attributes,
               rates_payers: rates_payers,
-              rates_bills: rates_bills});
+              rates_bills: rates_bills });
           }
         })
-        .catch(err => console.log('err fetching included properties', err));
+        .catch(err => err);
     } else {
-      this.setState({location: {}});
+      this.setState({ location: {} });
       this.props.onSelection({
         location: {},
         rates_payers: [],
-        rates_bill: null});
+        rates_bill: null });
     }
   }
 

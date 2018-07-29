@@ -1,13 +1,13 @@
 import React from 'react';
 
-let languages = [
+const languages = [
   {
-    'abbr': 'en',
-    'name': 'English',
+    abbr: 'en',
+    name: 'English',
   },
   {
-    'abbr': 'mi',
-    'name': 'Māori',
+    abbr: 'mi',
+    name: 'Māori',
   },
 ];
 

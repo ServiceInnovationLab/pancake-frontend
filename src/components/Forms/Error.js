@@ -1,7 +1,7 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from 'react';
 
 const Error = props => {
-  const {fields} = props;
+  const { fields } = props;
   return <Fragment>
     <div>
       {fields && fields.touched && fields.error &&

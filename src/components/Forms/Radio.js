@@ -1,6 +1,6 @@
-import React, {Fragment} from 'react';
-import {Field} from 'redux-form';
-import {underscorize} from '../../helpers/strings';
+import React, { Fragment } from 'react';
+import { Field } from 'redux-form';
+import { underscorize } from '../../helpers/strings';
 class Radio extends React.Component {
   constructor(props) {
     super(props);
@@ -11,17 +11,17 @@ class Radio extends React.Component {
   }
 
   stateType(type) {
-    let data = {
+    const data = {
       display: this.state[type] ? 'block' : 'none',
     };
     return data;
   }
 
   toggleSub(item) {
-    if(item.toLowerCase() === this.props.toggleByOption.toLowerCase()) {
-      this.setState({show: true});
+    if (item.toLowerCase() === this.props.toggleByOption.toLowerCase()) {
+      this.setState({ show: true });
     } else {
-      this.setState({show: false});
+      this.setState({ show: false });
     }
   }
 
