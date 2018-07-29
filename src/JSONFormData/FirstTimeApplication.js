@@ -5,16 +5,16 @@ import IncomeListSection from '../components/Forms/IncomeListSection';
 var firstTimeApplication = [
   {
     'component': RadioWithRadio,
-    'field_name': 'lived_here_before_july_2017',
+    'field_name': 'lived_here_before_july_2019',
     'childFieldName': 'lived_other_owned_property',
     'toggleByOption': 'No',
     'label': {
       'en': {
-        'text': 'Did you live here at 1 July 2017?',
+        'text': 'Did you live here at 1 July 2019?'
       },
       'mi': {
-        'text': 'Did you live here at 1 July 2017?',
-      },
+        'text': 'Did you live here at 1 July 2019?'
+      }
     },
     'options': {
       'en': {
@@ -26,11 +26,15 @@ var firstTimeApplication = [
     },
     'optionsText': {
       'en': {
-        'text': ['', 'Were you living in another property that you owned on 1 July 2017, have sold that property, and moved to the address of the property you are currently living in during the the current rating year (1 July 2017-30 June 2018)?'],
+        'text': [
+          '', 'Were you living in another property that you owned on 1 July 2019, have sold that property, and moved to the address of the property you are currently living in during the the current rating year (1 July 2019-30 June 2019)?'
+        ]
       },
       'mi': {
-        'text': ['', 'Were you living in another property that you owned on 1 July 2017, have sold that property, and moved to the address of the property you are currently living in during the the current rating year (1 July 2017-30 June 2018)?'],
-      },
+        'text': [
+          '', 'Were you living in another property that you owned on 1 July 2019, have sold that property, and moved to the address of the property you are currently living in during the the current rating year (1 July 2019-30 June 2019)?'
+        ]
+      }
     },
     'accordianLabel': {
       'en': {
@@ -96,11 +100,11 @@ var firstTimeApplication = [
     },
     'instructions': {
       'en': {
-        'text': 'Dependants are: <br/><ul><li>children you care and provide for under the age of 18 on 1 July 2017 and who at this time were not married and for whom you were not receiving payments under section 363 of the Children, Young Persons, and their Families Act 1989</li><li>relatives in receipt of a benefit (but not NZ Superannuation) on 1 July 2017.</li></ul>',
+        'text': 'Dependants are: <br/><ul><li>children you care and provide for under the age of 18 on 1 July 2019 and who at this time were not married and for whom you were not receiving payments under section 363 of the Children, Young Persons, and their Families Act 1989</li><li>relatives in receipt of a benefit (but not NZ Superannuation) on 1 July 2019.</li></ul>'
       },
       'mi': {
-        'text': 'Dependants are: <br/><ul><li>children you care and provide for under the age of 18 on 1 July 2017 and who at this time were not married and for whom you were not receiving payments under section 363 of the Children, Young Persons, and their Families Act 1989</li><li>relatives in receipt of a benefit (but not NZ Superannuation) on 1 July 2017.</li></ul>',
-      },
+        'text': 'Dependants are: <br/><ul><li>children you care and provide for under the age of 18 on 1 July 2019 and who at this time were not married and for whom you were not receiving payments under section 363 of the Children, Young Persons, and their Families Act 1989</li><li>relatives in receipt of a benefit (but not NZ Superannuation) on 1 July 2019.</li></ul>'
+      }
     },
     'options': {
       'en': {
@@ -134,11 +138,11 @@ var firstTimeApplication = [
   {
     'label': {
       'en': {
-        'text': 'Were you living with a partner or joint home owner(s) on July 1 2017?',
+        'text': 'Were you living with a partner or joint home owner(s) on July 1 2019?'
       },
       'mi': {
-        'text': 'Were you living with a partner or joint home owner(s) on July 1 2017?',
-      },
+        'text': 'Were you living with a partner or joint home owner(s) on July 1 2019?'
+      }
     },
     'instructions': {
       'en': {
@@ -192,11 +196,15 @@ var firstTimeApplication = [
     'childFieldName': 'deducts_over_half_rates',
     'optionsText': {
       'en': {
-        'text': ['', 'Did you deduct over 50% of your rates as expenses for the 2016/2017 tax year?'],
+        'text': [
+          '', 'Did you deduct over 50% of your rates as expenses for the 2017/2019 tax year?'
+        ]
       },
       'mi': {
-        'text': ['', 'Did you deduct over 50% of your rates as expenses for the 2016/2017 tax year?'],
-      },
+        'text': [
+          '', 'Did you deduct over 50% of your rates as expenses for the 2017/2019 tax year?'
+        ]
+      }
     },
     'placeholder': {
       'en': {

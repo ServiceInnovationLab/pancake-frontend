@@ -5,10 +5,10 @@ const Checkbox = props => (
   <Fragment>
     <fieldset className="field">
       <legend>
-        What was your total income for the 2017/18 tax year?
+        What was your total income for the 2018/2019 tax year?
       </legend>
 
-      <p>You will need to know your total income for the 2016/2017 Tax year (1 March 2016 - 31 March 2017) \
+      <p>You will need to know your total income for the 2017/2018 Tax year (1 March 2017 - 31 March 2018) \
       including rental income from any properties you own, interest and dividends, and overseas income (converted to\
       $NZD). <br/> <br/> Select any that apply to you.
       </p>

@@ -86,12 +86,12 @@ class Sign extends React.Component {
     return (
       <Fragment>
         {!this.state.error && <div className="container">
-          <h2>Rates Rebates application for 2017/2018</h2>
+          <h2>Rates Rebates application for 2018/2019</h2>
           <p>My name is <strong>{this.state.fields.full_name}</strong>.</p>
-          <p>My Address is <strong>{this.state.fields.address}</strong> and I lived here on 1 July 2017.</p>
-          <p>My 2017/2018 rates bill (including water) is $<strong>{this.state.fields.rates_bill}</strong>.</p>
+          <p>My Address is <strong>{this.state.fields.address}</strong> and I lived here on 1 July 2018.</p>
+          <p>My 2018/2019 rates bill (including water) is $<strong>{this.state.fields.rates_bill}</strong>.</p>
           <p>I have {this.state.fields.dependants} dependant(s)</p>
-          <p>The combined income of myself and joint-owners and partners living with me on 1 July 2017 was $<strong>{this.state.fields.income}</strong></p>
+          <p>The combined income of myself and joint-owners and partners living with me on 1 July 2018 was $<strong>{this.state.fields.income}</strong></p>
 
           {this.state.rebate &&
             <Fragment>

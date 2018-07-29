@@ -52,7 +52,7 @@ class IncomeListSection extends React.Component {
         <section>
           <div className="container">
             <fieldset className="field radio-group">
-              <legend>Were you living with a partner or joint home owner(s) on July 1 2017?</legend>
+              <legend>Were you living with a partner or joint home owner(s) on July 1 2018?</legend>
               <p>'Partner' is a person you are married to/in a civil union, or de facto
                 relationship with.
               </p>
@@ -71,13 +71,11 @@ class IncomeListSection extends React.Component {
           <fieldset>
             <label
               style={{
-                fontSize: '20px',
-                fontWeight: '500',
-              }}
-            >What was your total income for the 2017/18 tax year?
-            </label>
-            <p>You will need to know your total income <strong>before tax</strong> for the 2016/2017 Tax year (1 March
-              2016 - 31 March 2017) including rental income from any properties you own,
+              fontSize: '20px',
+              fontWeight: '500'
+            }}>What was your total income for the 2018/2019 tax year?</label>
+            <p>You will need to know your total income <strong>before tax</strong> for the 2017/2018 Tax year (1 March
+              2017 - 31 March 2018) including rental income from any properties you own,
               interest and dividends, and overseas income (converted to $NZD).
             <br/>
             <br/>
@@ -313,7 +311,7 @@ class IncomeList extends React.Component {
   wosTotal() {
     let total = parseFloat(this.getWageOrSalary(`wos_${this.props.name}`), 0);
     if (!total) {
-      total = 0; 
+      total = 0;
     }
     return total;
   }

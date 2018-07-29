@@ -195,7 +195,7 @@ const Head = () => {
 
       <hr/>
       <h2 className="heading-secondary green">Step Two: Apply for a rates rebate<br/> <span>Mahi Tuarua: Tonoa te whakamāmā reiti</span></h2>
-      <h3 className="heading-primary grey">This is for the 1 July 2017 - 30 June 2018 rating year</h3>
+      <h3 className="heading-primary grey">This is for the 1 July 2018 - 30 June 2019 rating year</h3>
     </div>
   );
 }
@@ -206,8 +206,8 @@ const AllSteps  = () => {
     <Fragment>
       <section>
         <h3 className="heading-secondary grey">Step One<br/>Mahi Tuatahi</h3>
-        <p>You will need to know your total income before tax for the 2016/2017 Tax year (1 April
-          2016 - 31 March 2017). This includes rental income from any properties you own,
+        <p>You will need to know your total income before tax for the 2017/2018 Tax year (1 April
+          2017 - 31 March 2018). This includes rental income from any properties you own,
           interest and dividends, and overseas income (converted to $NZD). </p>
         <Accordian
           label="Where can I get my income details?"
