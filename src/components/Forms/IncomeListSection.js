@@ -68,8 +68,8 @@ class IncomeListSection extends React.Component {
           <fieldset>
             <label
               style={{
-              fontSize: '20px',
-              fontWeight: '500'
+                fontSize: '20px',
+                fontWeight: '500'
               }}>What was your total income for the 2018/2019 tax year?</label>
             <p>
               You will need to know your total income <strong>before tax</strong> for the 2017/2018 Tax year (1 March
