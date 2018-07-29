@@ -195,7 +195,7 @@ const Head = () => {
 
       <hr/>
       <h2 className="heading-secondary green">Step Two: Apply for a rates rebate<br/> <span>Mahi Tuarua: Tonoa te whakamāmā reiti</span></h2>
-      <h3 className="heading-primary grey">This is for the 1 July 2017 - 30 June 2018 rating year</h3>
+      <h3 className="heading-primary grey">This is for the 1 July 2018 - 30 June 2019 rating year</h3>
     </div>
   );
 }
