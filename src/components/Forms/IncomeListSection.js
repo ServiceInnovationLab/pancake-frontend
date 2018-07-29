@@ -71,11 +71,12 @@ class IncomeListSection extends React.Component {
               fontSize: '20px',
               fontWeight: '500'
             }}>What was your total income for the 2018/2019 tax year?</label>
-            <p>You will need to know your total income <strong>before tax</strong> for the 2017/2018 Tax year (1 March
+            <p>
+              You will need to know your total income <strong>before tax</strong> for the 2017/2018 Tax year (1 March
               2017 - 31 March 2018) including rental income from any properties you own,
               interest and dividends, and overseas income (converted to $NZD).
-            <br/>
-            <br/>
+              <br/>
+              <br/>
               Select any that apply to you.
             </p>
             <div className="row">
