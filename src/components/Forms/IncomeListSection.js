@@ -353,8 +353,6 @@ class IncomeTotals extends React.Component {
   }
 
   superAnnuation(type) {
-
-    console.log(type)
     let sa_total;
     if (type.includes('alone')) {
       sa_total = 23405.20;
