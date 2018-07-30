@@ -1,1 +1,1 @@
-/Users/danaiti/dia/pancake-frontend/src/config-dev.js
+/Users/danaiti/dia/pancake-frontend/src/config-staging.js
