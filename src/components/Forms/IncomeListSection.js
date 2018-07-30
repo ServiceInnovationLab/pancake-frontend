@@ -64,12 +64,12 @@ class IncomeListSection extends React.Component {
             </fieldset>
           </div>
         </section>
-        <div style={{marginTop: '42px',}}>
+        <div style={{marginTop: '42px'}}>
           <fieldset>
             <label
               style={{
                 fontSize: '20px',
-                fontWeight: '500'
+                fontWeight: '500',
               }}>
               What was your total income for the 2018/2019 tax year?
             </label>
