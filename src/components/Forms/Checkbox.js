@@ -5,7 +5,7 @@ const Checkbox = props => (
   <Fragment>
     <fieldset className="field">
       <legend>
-        What was your total income for the 2017/18 tax year?
+        What was your total income for the 2018/2019 tax year?
       </legend>
 
       <p>You will need to know your total income for the 2017/2018 Tax year (1 March 2017 - 31 March 2018) \

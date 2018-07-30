@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import WizardForm from './components/FirstTimeApplicant/WizardForm';
+import WizardForm from './components/FirstTimeApplicant/WizardForm';
 import HoldingPage from './components/pages/HoldingPage';
-// import Sign from './components/FirstTimeApplicant/Sign';
+import Sign from './components/FirstTimeApplicant/Sign';
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
@@ -11,6 +11,7 @@ import { HashRouter, Route } from 'react-router-dom';
 import { reducer as formReducer } from 'redux-form';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import config from './config';
 import './styles/App.css';
 
 const store = createStore(combineReducers({
@@ -26,11 +27,16 @@ class App extends React.Component {
       <HashRouter>
         <div>
           <Header />
-          <main>
-            <Route path="/" component={HoldingPage} />
-            {/*            <Route exact={true} path="/" component={WizardForm} />
-            <Route path="/:id" component={Sign}/>*/}
-          </main>
+            { config.show_holding_path ?
+              <main>
+                <Route path="/" component={HoldingPage} />
+              </main>
+                :
+              <main>
+                <Route exact={true} path="/" component={WizardForm} />
+                <Route path="/:id" component={Sign}/>
+              </main>
+            }
           <Footer />
         </div>
       </HashRouter>

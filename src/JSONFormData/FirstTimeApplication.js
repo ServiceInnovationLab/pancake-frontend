@@ -5,7 +5,7 @@ import IncomeListSection from '../components/Forms/IncomeListSection';
 const firstTimeApplication = [
   {
     component: RadioWithRadio,
-    field_name: 'lived_here_before_july_2017',
+    field_name: 'lived_here_before_july_2018',
     childFieldName: 'lived_other_owned_property',
     toggleByOption: 'No',
     label: {
