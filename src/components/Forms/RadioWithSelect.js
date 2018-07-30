@@ -46,7 +46,7 @@ class renderOtherIncome extends React.Component {
               type="text"
               component={renderField}
               label="Where did this income come from?"
-              onChange={e=> {
+              onChange={e => {
                 store[`${income}.incomeFrom`] = e.target.value;
               }}
             />}
@@ -56,7 +56,7 @@ class renderOtherIncome extends React.Component {
               type="number"
               component={renderField}
               label="Enter the total amount"
-              onChange={e=>{
+              onChange={e => {
                 this.props.getOtherOptionValues(store, income, e.target.value, index);
                 //store[`${income}.totalAmount`] = e.target.value;
               }}
