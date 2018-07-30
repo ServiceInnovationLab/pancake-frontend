@@ -12,7 +12,9 @@ import Accordian from '../Forms/Accordian';
 import axios from 'axios';
 import config from '../../config';
 import Rebate from '../widgets/Rebate';
-
+import RadioWithRadio from '../Forms/RadioWithRadio';
+import TextField from '../Forms/TextField';
+import IncomeListSection from '../Forms/IncomeListSection';
 class WizardFormSecondPage extends React.Component {
   constructor(props) {
     super(props);
@@ -51,6 +53,9 @@ class WizardFormSecondPage extends React.Component {
     });
   }
 
+  getName() {
+    return this.props.formState.form.wizard.values['dependants'];
+  }
   dependants() {
     return this.props.formState.form.wizard.values['dependants'];
   }
@@ -58,6 +63,7 @@ class WizardFormSecondPage extends React.Component {
     return this.props.formState.form.wizard.values['rates_bill'];
   }
   saveFormData() {
+    // console.log('saveform', fields)
     let fields = this.props.formState.form.wizard.values;
     fields['income'] = this.props.storeValues.totalIncome;
     let data = {
@@ -70,10 +76,10 @@ class WizardFormSecondPage extends React.Component {
 
     this.setState({sending: true});
 
-    axios
-      .post(`${config.API_ORIGIN}/api/v1/rebate_forms`, {data})
-      .then(res => this.setState({complete: true, sending: false}))
-      .catch(err => this.setState({complete_error: true, complete: false, sending: false}));
+    // axios
+    //   .post(`${config.API_ORIGIN}/api/v1/rebate_forms`, {data})
+    //   .then(res => this.setState({complete: true, sending: false}))
+    //   .catch(err => this.setState({complete_error: true, complete: false, sending: false}));
 
   }
   goHome() {
@@ -97,43 +103,113 @@ class WizardFormSecondPage extends React.Component {
     return (
       <Fragment>
         {this.renderAddress()}
-        {firstTimeApplication.map((field, key) => {
-          let label = field.label['en'].text;
-          let name = field.isNested ? `has${camelCaser(label)}Checked` : field.field_name;
-          let form_values = '';
-          return (
-            <section className={field.theme} key={key}>
-              <div className="container">
-                <Field
-                  label={label}
-                  name={name}
-                  component={field.component}
-                  instructions={field.instructions && field.instructions['en'].text}
-                  values={form_values && form_values}
-                  accordianLabel={field.accordianLabel && field.accordianLabel['en'].text}
-                  accordianText={field.accordianText && field.accordianText['en'].text}
-                  checkboxLabel={field.checkboxLabel && field.checkboxLabel['en'].text}
-                  checkboxText={field.checkboxText && field.checkboxText['en'].text}
-                  options={field.options && field.options['en'].text}
-                  childInstructions={field.childInstructions && field.childInstructions['en'].text}
-                  optionsText={field.optionsText && field.optionsText['en'].text}
-                  textFieldLabel={field.textFieldLabel && field.textFieldLabel['en'].text}
-                  placeholder={field.placeholder && field.placeholder['en'].text}
-                  field_name={field.field_name && field.field_name}
-                  childLabel={field.childLabel && field.childLabel['en'].text}
-                  childOptions={field.childOptions && field.childOptions['en'].text}
-                  childType={field.childType && field.childType}
-                  toggleByOption={field.toggleByOption && field.toggleByOption}
-                  theme={field.theme && field.theme}
-                  type={field.type && field.type}
-                  childFieldName={field.childFieldName && field.childFieldName}
-                  checkboxFieldName={field.checkboxFieldName && field.checkboxFieldName}
-                  checkboxLabel={field.checkboxLabel && field.checkboxLabel['en'].text}
-                  />
+        <section>
+          <div className="container">
+            <RadioWithRadio
+              field_name='lived_here_before_july_2017'
+              childFieldName='lived_other_owned_property'
+              toggleByOption='No'
+              label='Did you live here at 1 July 2017?'
+              options={['yes', 'no']}
+              optionsText={['', 'Were you living in another property that you owned on 1 July 2017, have sold that property, and moved to the address of the property you are currently living in during the the current rating year (1 July 2017-30 June 2018)?']}
+              accordianLabel='What if I moved house during the rates year?'
+              accordianText='Get in touch with your local council. There are some situations where you can still get a rebate on your previous home after you moved. They will ask you some details including: <ul><li>the settlement date</li><li>what rates you paid for the current year.</li></ul>'
+              />
+          </div>
+        </section>
+        <section className="theme-sand">
+          <div className="container">
+            <TextField
+              field_name='full_name'
+              label='What is your full name?'
+              instructions='Your name must be on the title for the property you are applying for on the Rating Information Database (RID) at your local council.'
+              accordianLabel='What if I live in a retirement village or company share flat/apartment?'
+              accordianText='<p>If you are eligible for a rebate under the Rates Rebate (Retirement Village Residents) Amendment Act 2018 you will be able to apply for a rebate in the new rating year after 1 July 2018.</p><p>If the property you own is part of owner/occupier flats (often referred to as company share flats or apartments), you will need to fill in an additional declaration form and bring it with you when visiting the council.</a> This can be found <a href="https://www.dia.govt.nz/Pubforms.nsf/URL/OwnerOccupierDeclarationFormJuly2011.pdf/$file/OwnerOccupierDeclarationFormJuly2011.pdf">here</a></p>'
+            />
+          </div>
+        </section>
+        <section>
+          <div className="container">
+            {/* <TextField
+              field_name='dependants'
+              type='number'
+              label='Do you have dependants?'
+              instructions='Dependants are: <br/><ul><li>children you care and provide for under the age of 18 on 1 July 2017 and who at this time were not married and for whom you were not receiving payments under section 363 of the Children, Young Persons, and their Families Act 1989</li><li>relatives in receipt of a benefit (but not NZ Superannuation) on 1 July 2017.</li></ul>'
+              options={['yes', 'no']}
+              isRequired={true}
+              textFieldLabel='label'
+              placeholder='Enter the total amount'
+              value={this.props.formState.form.wizard.values['dependants']}
+            /> */}
+            <fieldset className="field">
+              <legend>Do you have dependants?</legend>
+              <input
+                name="dependants"
+                type="number"
+                min="0"
+                step="1"
+                value={this.props.formState.form.wizard.values['dependants']}
+                readOnly
+              />
+              <div className="instructions">
+                Dependants are: <br/>
+                <ul>
+                  <li>children you care and provide for under the age of 18 on 1 July 2017 and who at this time were not married and for whom you were not receiving payments under section 363 of the Children, Young Persons, and their Families Act 1989</li>
+                  <li>relatives in receipt of a benefit (but not NZ Superannuation) on 1 July 2017.</li>
+                </ul>
               </div>
-              </section>
-            );
-        })}
+              {/* // <ErrorMessage fields={this.props.meta} /> */}
+            </fieldset>
+          </div>
+        </section>
+        <section className="theme-sand">
+          <div className="container">
+            <IncomeListSection
+              field_name='income_page_2'
+              type='number'
+              label='Were you living with a partner or joint home owner(s) on July 1 2017?'
+              instructions="\'Partner\' is a person you are married to/in a civil union, or de facto relationship with."
+              options={['yes', 'no']}
+              isRequired={true}
+            />
+          </div>
+        </section>
+
+        <section>
+          <div className="container">
+            <RadioWithRadio
+              field_name='has_home_business'
+              toggleByOption='Yes'
+              childFieldName='deducts_over_half_rates'
+              label='Do you earn money from home or run a business from home?'
+              instructionsSecondary="If yes, and you deducted over 50% of your rates as expenses, you may not be able to get a rebate. If your property is mainly used for commercial activities, for example farming or business, you cannot apply for a rates rebate."
+              options={['yes', 'no']}
+              optionsText={['', 'Did you deduct over 50% of your rates as expenses for the 2016/2017 tax year?']}
+              placeholder='Enter the total amount'
+            />
+          </div>
+        </section>
+
+        <section className="theme-sand">
+          <div className="container">
+            <TextField
+              field_name='email'
+              label='What is your email address?'
+              instructions="This email address will be used to send you a confirmation and instructions for this application. The phone number will be used to contact you if additional details are required."
+            />
+          </div>
+        </section>
+
+        <section>
+          <div className="container">
+            <TextField
+              field_name='phone_number'
+              checkboxFieldName='email_phone_can_be_used'
+              checkboxLabel='Are you happy for the email address and/or phone number to be used for other Council communications?'
+              label='What is your phone number?'
+            />
+          </div>
+        </section>
 
         <section className="container">
           <div>
@@ -166,6 +242,7 @@ class WizardFormSecondPage extends React.Component {
             {this.renderFields()}
             {this.state.complete && <Success/>}
             {this.state.complete_error && <Failed/>}
+            {console.log(this.state)}
 
           </form>
         </div>
