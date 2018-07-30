@@ -13,7 +13,7 @@ export const scrollToFirstError = errors => {
 
 const getErrorFieldNames = (obj, name = '') => {
   const errorArr = [];
-  errorArr.push(Object.keys(obj).map((key) => {
+  errorArr.push(Object.keys(obj).map(key => {
     const next = obj[key];
     if (next) {
       if (typeof next === 'string') {
