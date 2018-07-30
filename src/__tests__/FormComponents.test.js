@@ -8,7 +8,7 @@ const Components = [RenderRadio, TextField];
 
 describe('components', function() {
   'use strict';
-  Components.map(item=> {
+  Components.map(item => {
     describe(`<${item} />`, function() {
       it('renders correctly', function() {
         const TagName = item;

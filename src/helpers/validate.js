@@ -11,7 +11,7 @@ const validate = values => {
   const optionals = ['email', 'phone_number', 'email_phone_can_be_used'];
 
   const errors = {};
-  arrayOfInputNames.forEach(item=>{
+  arrayOfInputNames.forEach(item => {
     if (!values[item] && ! optionals.includes(item)) {
       errors[item] = 'This is a required field, please provide an answer';
     }

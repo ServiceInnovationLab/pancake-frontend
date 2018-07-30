@@ -21,7 +21,7 @@ const LanguageToggle = props => {
             state={props.langState}
             langAbbr={lang.abbr}
             langName={lang.name}
-            handler={()=>{
+            handler={() => {
               props.handler(lang.abbr);
             }}
           />

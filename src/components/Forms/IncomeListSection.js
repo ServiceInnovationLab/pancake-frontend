@@ -64,7 +64,7 @@ class IncomeListSection extends React.Component {
             </fieldset>
           </div>
         </section>
-        <div style={{marginTop: '42px'}}>
+        <div style={{ marginTop: '42px' }}>
           <fieldset>
             <label
               style={{
