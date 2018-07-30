@@ -1,5 +1,5 @@
 import axios from 'axios';
-import config from '../../config-staging';
+import config from '../../config';
 import RadioField from './RadioField';
 import RadioWithSelect from './RadioWithSelect';
 import React, { Fragment } from 'react';
