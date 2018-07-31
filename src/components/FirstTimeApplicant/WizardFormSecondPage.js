@@ -251,7 +251,16 @@ const Success = () => {
       <h4>Your application form has been digitally sent to your local council.<br/> Now you need to visit the Tauranga Council at 91 Willow Street to finalise your rebate.</h4>
 
       <p>
-        Proof of income may be requested for those with income sources other than superannuation or work and income benefits. <br/><br/>If you are self-employed, you must supply evidence with your application. Evidence of income helps to ensure you receive the correct rebate promptly. <br/><br/>Tell the Service Centre staff you're there to sign your rates rebate application.
+        Proof of income may be requested for those with income sources other than superannuation or work and income benefits.
+        <br/>
+        <br/>
+        If you are self-employed, you must supply evidence with your application. Evidence of income helps to ensure you receive the correct rebate promptly.
+        <br/>
+        <br/>
+        If you are a retirement village resident, you will need to get your operator to provide a Rates Rebate declaration certificate Resident of a retirement village unit form.
+        <br />
+        <br />
+        Tell the Service Centre staff you're there to sign your rates rebate application.
       </p>
       </section>
     </div>
