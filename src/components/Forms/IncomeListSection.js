@@ -418,8 +418,8 @@ class IncomeTotals extends React.Component {
         if (!this.props.hasPartner) {
           sa_total += 22391.72;
         }
-      } else if(dependants === 1) {
-        if(this.props.hasPartner) {
+      } else if (dependants === 1) {
+        if (this.props.hasPartner) {
           sa_total += 27180.40;
         }
       } else { // no children
