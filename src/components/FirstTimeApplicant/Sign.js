@@ -91,7 +91,7 @@ class Sign extends React.Component {
           <p>My Address is <strong>{this.state.fields.address}</strong> and I lived here on 1 July 2018.</p>
           <p>My 2018/2019 rates bill (including water) is $<strong>{this.state.fields.rates_bill}</strong>.</p>
           <p>I have {this.state.fields.dependants} dependant(s)</p>
-          <p>The combined income of myself and joint-owners and partners living with me on 1 July 2018 was $<strong>{this.state.fields.income}</strong></p>
+          <p>The combined income of myself and joint-owners and partners living with me on 1 July 2018 for the 2017/2018 tax year was $<strong>{this.state.fields.income}</strong></p>
 
           {this.state.rebate &&
             <Fragment>
