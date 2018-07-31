@@ -176,7 +176,7 @@ class IncomeList extends React.Component {
       this.setState({ sa_checked: !this.state.sa_checked });
       this.setChild('ShowRadio');
       break;
-    case 'text-field':
+    case 'number-field':
       this.setChild('ShowTextField', clicked);
       break;
     case 'nested-group':
@@ -240,7 +240,7 @@ class IncomeList extends React.Component {
       },
       {
         label: 'Wage or Salary',
-        child: 'text-field',
+        child: 'number-field',
       },
       {
         label: 'Other',
@@ -273,10 +273,12 @@ class IncomeList extends React.Component {
                   type={this.state.ShowRadio ? 'radio' : 'hidden'}
                 />}
 
-                {item.child === 'text-field' && <Fragment>
+                {item.child === 'number-field' && <Fragment>
                   <input
-                    type={this.state.ShowTextField ? 'text' : 'hidden'}
+                    type={this.state.ShowTextField ? 'number' : 'hidden'}
                     name={`wos_${this.props.name}`}
+                    min="0"
+                    step="1"
                     onChange={e => {
                       this.setState({ [`wos_${this.props.name}`]: e.target.value });
                     }}
@@ -443,7 +445,6 @@ class IncomeTotals extends React.Component {
     const total = firstTotal + (otherOptionValues.length
       ? otherOptionValues.reduce((a, b) => a + b, 0)
       : 0);
-
     return total;
   }
 
