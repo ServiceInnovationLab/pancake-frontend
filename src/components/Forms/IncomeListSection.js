@@ -355,13 +355,13 @@ class IncomeTotals extends React.Component {
   superAnnuation(type) {
     let sa_total;
     if (type.includes('alone')) {
-      sa_total = 23058.36;
+      sa_total = 23405.20;
     } else if (type.includes('sharing')) {
-      sa_total = 21191.56;
+      sa_total = 21484.32;
     } else if (type.includes('non_qualified')) {
-      sa_total = 17281.68;
+      sa_total = 16784.56;
     } else if (type.includes('qualify')) {
-      sa_total = 18239.52;
+      sa_total = 17721.60;
     } else {
       sa_total = 0;
     }
@@ -387,17 +387,18 @@ class IncomeTotals extends React.Component {
 
     // JOB SEEKER SUPPORT
     if (this.props.jobseeker_support) {
+      // has children
       if (dependants > 0) {
         if (this.props.hasPartner) {
-          jss_total += 10899.72;
+          jss_total += 11019.84;
         } else {
-          jss_total += 19358.56;
+          jss_total += 19585.28;
         }
       } else { // no children
         if (this.props.hasPartner) {
-          jss_total += 10173.28;
+          jss_total += 10285.60;
         } else {
-          jss_total += 10173.28; // took first value: Single 18-19 years (away from home)
+          jss_total += 10285.60; // took first value: Single 18-19 years (away from home)
         }
       }
     }
@@ -405,24 +406,27 @@ class IncomeTotals extends React.Component {
     // SOLE PARENT SUPPORT
     if (this.props.sole_parent_support) {
       if (dependants > 0) {
-        sps_total += 19358.56;
+        sps_total += 19585.28;
       }
     }
 
     if (this.props.supported_living) {
-      if (dependants > 0) {
+      if (dependants > 1) {
         if (this.props.hasPartner) {
-          sa_total += 13442.00;
+          sa_total += 13590.20;
         }
         if (!this.props.hasPartner) {
-          sa_total += 22134.84;
+          sa_total += 22391.72;
         }
-
+      } else if(dependants === 1) {
+        if(this.props.hasPartner) {
+          sa_total += 27180.40;
+        }
       } else { // no children
         if (this.props.hasPartner) {
-          sa_total += 12716.08;
+          sa_total += 12855.96;
         } else { // SINGLE
-          sa_total += 15366.52;
+          sa_total += 15549.04;
         }
       }
     }
