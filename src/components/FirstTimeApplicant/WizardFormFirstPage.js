@@ -103,10 +103,10 @@ class WizardFormFirstPage extends React.Component {
             </h2>
 
             <p><strong>If you are a low-income homeowner you could get
-              a discount or partial refund of up to $620 on your property rates with a rates
+              a discount or partial refund of up to $630 on your property rates with a rates
               rebate.</strong><br/>
               <span>Mehemea he tangata whai whare koe e iti ana ngā whiwhinga moni, ka taea pea te whakamāmā,
-                te whakahoki utu rānei, tae atu ki te $620 te rahi, mō ngā reiti whenua mā te kaupapa whakamāmā reiti. </span>
+                te whakahoki utu rānei, tae atu ki te $630 te rahi, mō ngā reiti whenua mā te kaupapa whakamāmā reiti. </span>
             </p>
             <Accordian
               label="<strong>What is a rates rebate?</strong> <br/><span>He aha te whakamāmā reiti?</span>"
