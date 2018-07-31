@@ -1,1 +1,0 @@
-/Users/danaiti/dia/pancake-frontend/src/config-prod.js
