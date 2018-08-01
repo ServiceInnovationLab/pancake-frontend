@@ -27,7 +27,7 @@ class App extends React.Component {
       <HashRouter>
         <div>
           <Header />
-          { config.show_holding_path ?
+          {/* { config.show_holding_path ?
             <main>
               <Route path="/" component={HoldingPage} />
             </main>
@@ -36,7 +36,10 @@ class App extends React.Component {
               <Route exact={true} path="/" component={WizardForm} />
               <Route path="/:id" component={Sign}/>
             </main>
-          }
+          } */}
+          <main>
+            <Route path="/" component={HoldingPage} />
+          </main>
           <Footer />
         </div>
       </HashRouter>
