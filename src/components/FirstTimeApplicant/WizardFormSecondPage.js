@@ -59,7 +59,11 @@ class WizardFormSecondPage extends React.Component {
   }
   saveFormData() {
     let fields = this.props.formState.form.wizard.values;
+    // let hasPartner = this.props.formState.form.wizard.values['has_a_partner'] = true;
     fields['income'] = this.props.storeValues.totalIncome;
+    fields['hasPartner'] = true;
+
+    console.log(document.getElementById)
     let data = {
       "type": "rebate-forms",
       "attributes": {
@@ -68,12 +72,15 @@ class WizardFormSecondPage extends React.Component {
       }
     };
 
-    this.setState({sending: true});
+    // {console.log('the props', this.props.formState.form.wizard.fields.has_)}
+    // this.props.change('has_a_partner', this.state.location.valuation_id);
 
-    axios
-      .post(`${config.API_ORIGIN}/api/v1/rebate_forms`, {data})
-      .then(res => this.setState({complete: true, sending: false}))
-      .catch(err => this.setState({complete_error: true, complete: false, sending: false}));
+    this.setState({sending: true});
+    console.log({data})
+    // axios
+    //   .post(`${config.API_ORIGIN}/api/v1/rebate_forms`, {data})
+    //   .then(res => this.setState({complete: true, sending: false}))
+    //   .catch(err => this.setState({complete_error: true, complete: false, sending: false}));
 
   }
   goHome() {
@@ -98,7 +105,7 @@ class WizardFormSecondPage extends React.Component {
       <Fragment>
         {this.renderAddress()}
         {firstTimeApplication.map((field, key) => {
-          let label = field.label['en'].text;
+          let label = field.label && field.label['en'].text;
           let name = field.isNested ? `has${camelCaser(label)}Checked` : field.field_name;
           let form_values = '';
           return (
@@ -129,10 +136,10 @@ class WizardFormSecondPage extends React.Component {
                   childFieldName={field.childFieldName && field.childFieldName}
                   checkboxFieldName={field.checkboxFieldName && field.checkboxFieldName}
                   checkboxLabel={field.checkboxLabel && field.checkboxLabel['en'].text}
-                  />
+                />
               </div>
-              </section>
-            );
+            </section>
+          );
         })}
 
         <section className="container">
@@ -163,6 +170,7 @@ class WizardFormSecondPage extends React.Component {
         <div className="theme-main">
           <Head/>
             <form onSubmit={handleSubmit(this.saveFormData)}>
+            <input type="hidden" name="has_a_partner" value="no" />
             {this.renderFields()}
             {this.state.complete && <Success/>}
             {this.state.complete_error && <Failed/>}
