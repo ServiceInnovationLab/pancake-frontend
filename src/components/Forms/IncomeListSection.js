@@ -356,13 +356,13 @@ class IncomeTotals extends React.Component {
 
   superAnnuation(type) {
     let sa_total;
-    if (type.includes('alone')) {
+    if (type.indexOf('alone') >= 0) {
       sa_total = 23405.20;
-    } else if (type.includes('sharing')) {
+    } else if (type.indexOf('sharing') >= 0) {
       sa_total = 21484.32;
-    } else if (type.includes('non_qualified')) {
+    } else if (type.indexOf('non_qualified') >= 0) {
       sa_total = 16784.56;
-    } else if (type.includes('qualify')) {
+    } else if (type.indexOf('qualify') >= 0) {
       sa_total = 17721.60;
     } else {
       sa_total = 0;
@@ -442,7 +442,7 @@ class IncomeTotals extends React.Component {
       .filter(state => /^otherOptionValue/.test(state));
     const otherOptionValues = [];
     for (const key in incomeListStates) {
-      if (otherOptionValueStates.includes(key)) {
+      if (otherOptionValueStates.indexOf(key) >= 0) {
         otherOptionValues.push(parseInt(incomeListStates[key], 0));
       }
     }
