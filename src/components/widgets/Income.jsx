@@ -83,7 +83,7 @@ class Income extends React.Component {
   getOptions(){
     return {
       options: {
-        en: [{ value: 'below', label: `Less than $${  this.formatDollars(this.state.maximum_income_for_full_rebate)}` }, { value: 'between', label: 'Somewhere in the middle' }, { value: 'above', label: `More than $${  this.formatDollars(this.state.minimum_income_for_no_rebate)}` }],
+        en: [{ value: 'below', label: `Less than $${this.formatDollars(this.state.maximum_income_for_full_rebate)}` }, { value: 'between', label: 'Somewhere in the middle' }, { value: 'above', label: `More than $${this.formatDollars(this.state.minimum_income_for_no_rebate)}` }],
       },
       isRequired: true,
       component: RenderRadio,
@@ -104,7 +104,8 @@ class Income extends React.Component {
       return (
         <div className="arrow-box primary">
           <label htmlFor="earn_less_than">
-            From 1 April {this.getCurrentFinancialYear(0, 2)} to 31 March {this.getCurrentFinancialYear(0, 1)} I earned
+            {/* From 1 April {this.getCurrentFinancialYear(0, 2)} to 31 March {this.getCurrentFinancialYear(0, 1)} I earned */}
+            From 1 April 2017 to 31 March 2018 I earned
           </label>
 
           <Field
