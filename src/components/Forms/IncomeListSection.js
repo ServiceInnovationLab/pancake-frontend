@@ -58,7 +58,12 @@ class IncomeListSection extends React.Component {
               </p>
               <div>
                 <div>
-                  <RadioField options={['yes', 'no']} name="has_a_partner" handleRadioClick={this.handleRadioClick}/>
+                  <RadioField
+                    options={['yes', 'no']}
+                    name="has_a_partner"
+                    handleRadioClick={this.handleRadioClick}
+                    handlePartner={this.props.handlePartner}
+                  />
                 </div>
               </div>
             </fieldset>
