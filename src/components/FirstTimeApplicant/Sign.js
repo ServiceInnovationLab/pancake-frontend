@@ -121,7 +121,7 @@ class Sign extends React.Component {
                   onEnd={()=>this.setState({signature_by_applicant: this.sigCanvas.toDataURL()})}
                   penColor='black' ref={(ref) => { this.sigCanvas = ref }} canvasProps={{width: 500, height: 300, className: 'sigCanvas'}}
                 />
-                <div><button onClick={()=>{this.sigCanvas.clear()}}>Clear</button></div>
+                <div><a onClick={()=>{this.sigCanvas.clear()}}>Clear</a></div>
 
                 <h3>Witness</h3>
                 <p>Declared at {new Date().toLocaleString()} before me</p>
@@ -140,7 +140,7 @@ class Sign extends React.Component {
                 <SignatureCanvas
                   onEnd={()=>this.setState({signature_by_witness: this.sigCanvas2.toDataURL()})}
                   penColor='black' ref={(ref) => { this.sigCanvas2 = ref }} canvasProps={{width: 500, height: 300, className: 'sigCanvas'}} />
-                <div><button onClick={()=>{this.sigCanvas2.clear()}}>Clear</button></div>
+                <div><a onClick={()=>{this.sigCanvas2.clear()}}>Clear</a></div>
                 {this.state.signature_by_applicant && this.state.signature_by_witness &&
                   <Submit/>
                 }
