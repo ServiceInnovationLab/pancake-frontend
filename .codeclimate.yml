@@ -1,0 +1,30 @@
+engines:
+  scss-lint:
+    enabled: true
+  shellcheck:
+    enabled: true
+  eslint:
+    enabled: true
+    channel: "eslint-4"
+    config:
+      config: '.eslintrc.json'
+      extensions:
+        - .js
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - javascript
+  fixme:
+    enabled: true
+  nodesecurity:
+    enabled: true
+
+ratings:
+  paths:
+  - "**.css"
+  - "**.js"
+  - "**.scss"
+  - "**.yml"
+  - "package.json"
+

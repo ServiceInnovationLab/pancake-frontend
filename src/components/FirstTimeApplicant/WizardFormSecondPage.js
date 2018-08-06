@@ -128,7 +128,6 @@ class WizardFormSecondPage extends React.Component {
                   type={field.type && field.type}
                   childFieldName={field.childFieldName && field.childFieldName}
                   checkboxFieldName={field.checkboxFieldName && field.checkboxFieldName}
-                  checkboxLabel={field.checkboxLabel && field.checkboxLabel['en'].text}
                   />
               </div>
               </section>

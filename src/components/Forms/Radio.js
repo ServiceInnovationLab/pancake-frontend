@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { Field } from 'redux-form';
-import { underscorize } from '../../helpers/strings';
+
 class Radio extends React.Component {
   constructor(props) {
     super(props);
