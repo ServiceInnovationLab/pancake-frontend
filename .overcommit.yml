@@ -33,6 +33,7 @@ PreCommit:
     enabled: true
   EsLint:
     enabled: true
+    command: ['eslint', '--config', '.eslintrc.json', 'src/']
   MergeConflicts:
     enabled: true
   YamlLint:
