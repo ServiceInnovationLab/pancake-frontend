@@ -1,8 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import {connect} from 'react-redux';
 import * as actionCreators from '../actions/index';
-// import '../styles/App.css';
-// import '../styles/Button.css';
 import {Link} from 'react-router-dom';
 
 export class App extends Component {
