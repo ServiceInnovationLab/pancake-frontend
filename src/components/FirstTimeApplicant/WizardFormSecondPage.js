@@ -1,5 +1,4 @@
 import React, {Fragment} from 'react';
-import ReactDOM from 'react-dom';
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
 import validate from '../../helpers/validate'
@@ -161,7 +160,7 @@ class WizardFormSecondPage extends React.Component {
       <Fragment>
         <div className="theme-main">
           <Head/>
-            <form id="jumpTo"onSubmit={handleSubmit(this.saveFormData)}>
+            <form id="jumpTo" onSubmit={handleSubmit(this.saveFormData)}>
             {this.renderFields()}
             {this.state.complete && <Success/>}
             {this.state.complete && document.getElementById('jumpTo').scrollIntoView()}
@@ -265,11 +264,6 @@ const Success = () => {
         </p>
         </section>
       </div>
-      <span id="step_3">hi</span>
-      {window.onload = function(){
-        alert('window loaded!')
-        console.log('does this element exist', document.getElementById('step3'))
-      }}
     </Fragment>
   );
 }
