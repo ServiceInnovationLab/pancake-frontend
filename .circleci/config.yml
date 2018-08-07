@@ -7,7 +7,7 @@ version: 2
 jobs:
   test:
     docker:
-      - image: circleci/node:9.11.1
+      - image: circleci/node:9.11.2
     working_directory: ~/repo
 
     steps:
@@ -29,7 +29,7 @@ jobs:
 
   build:
     docker:
-      - image: circleci/node:9.11.1
+      - image: circleci/node:9.11.2
     steps:
       - checkout
       - restore_cache:
@@ -38,6 +38,9 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
       - run: npm install
+      - run:
+          name: Config
+          command: ln -s "config-staging.js" "src/config.js"
       - run: npm run build
 
 workflows:
