@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import RadioGroup from './RadioGroup';
 
 describe('<RadioGroup />', () => {
-  it('renders an radio group', () => {
+  it('renders a radio group', () => {
     const input = shallow(
       <RadioGroup
         radios={['yes', 'no', 'maybe']}
