@@ -160,13 +160,14 @@ class WizardFormSecondPage extends React.Component {
       <Fragment>
         <div className="theme-main">
           <Head/>
-            <form id="jumpTo" onSubmit={handleSubmit(this.saveFormData)}>
-            {this.renderFields()}
-            {this.state.complete && <Success/>}
-            {this.state.complete && document.getElementById('jumpTo').scrollIntoView()}
-            {this.state.complete_error && <Failed/>}
-
-          </form>
+          <div id="jumpTo">
+            <form onSubmit={handleSubmit(this.saveFormData)}>
+              {this.renderFields()}
+              {this.state.complete && <Success/>}
+              {this.state.complete && document.getElementById('jumpTo').scrollIntoView()}
+              {this.state.complete_error && <Failed/>}
+            </form>
+          </div>
         </div>
       </Fragment>
     );

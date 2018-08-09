@@ -184,9 +184,6 @@ body {
   margin: 0;
   font-family: 'Fira Sans', sans-serif; }
 
-p {
-  margin: 1em;
-}
 main {
   overflow: auto; }
 
@@ -495,3 +492,6 @@ a:hover {
       border: solid #4f4b46;
       border-width: 0 4px 4px 0;
       transform: rotate(45deg); }
+
+#jumpTo {
+  padding-top: 30px; }

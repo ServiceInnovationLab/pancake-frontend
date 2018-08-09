@@ -198,6 +198,7 @@ h4 {
     font-size: 24px;
     font-weight: 500;
   }
+
   input {
     box-sizing: border-box;
     margin-bottom: 10px;
@@ -291,8 +292,6 @@ p,
 ul {
   font-size: 18px;
 }
-
-
 
 .accordian {
   margin: 30px 0 20px;
@@ -620,4 +619,8 @@ a {
       transform: rotate(45deg);
     }
   }
+}
+
+#jumpTo {
+  padding-top: 30px;
 }
