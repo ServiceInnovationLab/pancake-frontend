@@ -160,7 +160,7 @@ class WizardFormSecondPage extends React.Component {
       <Fragment>
         <div className="theme-main">
           <Head/>
-          <div id="jumpTo">
+          <div id="jumpTo" class="jumpTo">
             <form onSubmit={handleSubmit(this.saveFormData)}>
               {this.renderFields()}
               {this.state.complete && <Success/>}
