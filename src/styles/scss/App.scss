@@ -7,6 +7,10 @@ body {
 .container {
   max-width: 680px;
   margin: 0 auto;
+
+  @media (min-width: 320px) and (max-width: 767px) {
+    margin: 0 15px;
+  }
 }
 
 .layout {
@@ -438,6 +442,9 @@ input[type=number]::-webkit-outer-spin-button {
 
 .row {
   display: flex;
+  @media (min-width: 320px) and (max-width: 767px) {
+    display: block;
+  }
 }
 
 .column {
@@ -447,6 +454,14 @@ input[type=number]::-webkit-outer-spin-button {
   }
   &:last-child {
     padding-left: 10px;
+  }
+  @media (min-width: 320px) and (max-width: 767px) {
+    &:first-child {
+      padding-right: 0;
+    }
+    &:last-child {
+      padding-left: 0;
+    }
   }
 }
 
