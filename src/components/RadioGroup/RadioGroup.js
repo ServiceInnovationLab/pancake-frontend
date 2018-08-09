@@ -31,7 +31,7 @@ class RadioGroup extends React.Component {
           </label>
         )}
         {this.state.showSection &&
-          <div>
+          <div className="test">
             {this.props.toggledRadios.map(item =>
               <label key={item}>{item}
                 <InputField
