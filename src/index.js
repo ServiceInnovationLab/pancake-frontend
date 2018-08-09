@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import WizardForm from './components/FirstTimeApplicant/WizardForm';
-import HoldingPage from './components/pages/HoldingPage';
-import Sign from './components/FirstTimeApplicant/Sign';
+// import WizardForm from './components/FirstTimeApplicant/WizardForm';
+// import HoldingPage from './components/pages/HoldingPage';
+// import Sign from './components/FirstTimeApplicant/Sign';
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
@@ -13,7 +13,8 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import config from './config';
 import './styles/App.css';
-
+import InputField from './components/InputField/InputField';
+import RadioGroup from './components/RadioGroup/RadioGroup';
 const store = createStore(combineReducers({
   reducers,
   form: formReducer,
@@ -22,6 +23,10 @@ const store = createStore(combineReducers({
 
 class App extends React.Component {
 
+  handleRadioGroup() {
+    console.log(this.props)
+  }
+
   render(){
     return (
       <HashRouter>
@@ -29,12 +34,25 @@ class App extends React.Component {
           <Header />
           { config.show_holding_path ?
             <main>
-              <Route path="/" component={HoldingPage} />
+              {/* <Route path="/" component={HoldingPage} /> */}
             </main>
             :
             <main>
-              <Route exact={true} path="/" component={WizardForm} />
-              <Route path="/:id" component={Sign}/>
+              <div className="container">
+
+                <RadioGroup
+                  name="question_1"
+                  radios={['yes', 'no']}
+                  toggleBy="yes"
+                  toggledRadios={['yes', 'no']}
+                  toggledName="question_2"
+                />
+
+                <InputField
+                  type="text"
+                  name="full_name"
+                />
+              </div>
             </main>
           }
           <Footer />
