@@ -4,6 +4,9 @@ body {
 .container {
   max-width: 680px;
   margin: 0 auto; }
+  @media (min-width: 320px) and (max-width: 767px) {
+    .container {
+      margin: 0 15px; } }
 
 .layout {
   text-align: center; }
@@ -184,9 +187,6 @@ body {
   margin: 0;
   font-family: 'Fira Sans', sans-serif; }
 
-p {
-  margin: 1em;
-}
 main {
   overflow: auto; }
 
@@ -352,6 +352,9 @@ input[type=number]::-webkit-outer-spin-button {
 
 .row {
   display: flex; }
+  @media (min-width: 320px) and (max-width: 767px) {
+    .row {
+      display: block; } }
 
 .column {
   flex: 50%; }
@@ -359,6 +362,11 @@ input[type=number]::-webkit-outer-spin-button {
     padding-right: 10px; }
   .column:last-child {
     padding-left: 10px; }
+  @media (min-width: 320px) and (max-width: 767px) {
+    .column:first-child {
+      padding-right: 0; }
+    .column:last-child {
+      padding-left: 0; } }
 
 .list-stripped {
   padding-left: 0;
@@ -495,3 +503,6 @@ a:hover {
       border: solid #4f4b46;
       border-width: 0 4px 4px 0;
       transform: rotate(45deg); }
+
+.jumpTo {
+  padding-top: 30px; }
