@@ -15,6 +15,7 @@ import config from './config';
 import './styles/App.css';
 import InputField from './components/InputField/InputField';
 import RadioGroup from './components/RadioGroup/RadioGroup';
+import Accordian from './components/Accordian/Accordian';
 const store = createStore(combineReducers({
   reducers,
   form: formReducer,
@@ -39,7 +40,10 @@ class App extends React.Component {
             :
             <main>
               <div className="container">
-
+                <Accordian
+                  header="test"
+                  body="body"
+                />
                 <RadioGroup
                   name="question_1"
                   radios={['yes', 'no']}

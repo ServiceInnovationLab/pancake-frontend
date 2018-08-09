@@ -11,5 +11,6 @@ describe('<RadioGroup />', () => {
     );
     expect(input.find('InputField').length).toEqual(3);
   });
+
 });
-g
+
