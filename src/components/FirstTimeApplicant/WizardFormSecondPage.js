@@ -35,7 +35,6 @@ class WizardFormSecondPage extends React.Component {
     this.ratesBill = this.ratesBill.bind(this);
     this.dependants = this.dependants.bind(this);
     this.handlePartner = this.handlePartner.bind(this);
-
   }
 
   componentDidMount() {
@@ -172,13 +171,16 @@ class WizardFormSecondPage extends React.Component {
       <Fragment>
         <div className="theme-main">
           <Head/>
+          <div id="jumpTo" class="jumpTo">
             <form onSubmit={handleSubmit(this.saveFormData)}>
             <input type="hidden" name="has_a_partner" value="no" />
             {this.renderFields()}
             {this.state.complete && <Success/>}
+            {this.state.complete && document.getElementById('jumpTo').scrollIntoView()}
             {this.state.complete_error && <Failed/>}
 
-          </form>
+            </form>
+          </div>
         </div>
       </Fragment>
     );
@@ -254,27 +256,29 @@ const Failed = () => {
 
 const Success = () => {
   return (
-    <div className="container">
-      <section>
-        <h2 className="heading-secondary">Step Three: Get your application witnessed<br/> <span>Mahi Tuatoru: Mā te kaiwhakaatu e waitohu tō tono.</span> </h2>
-      <h3>You are almost there!</h3>
+    <Fragment>
+      <div className="container">
+        <section>
+          <h2 className="heading-secondary">Step Three: Get your application witnessed<br/> <span>Mahi Tuatoru: Mā te kaiwhakaatu e waitohu tō tono.</span> </h2>
+        <h3>You are almost there!</h3>
 
-      <h4>Your application form has been digitally sent to your local council.<br/> Now you need to visit the Tauranga Council at 91 Willow Street to finalise your rebate.</h4>
+        <h4>Your application form has been digitally sent to your local council.<br/> Now you need to visit the Tauranga Council at 91 Willow Street to finalise your rebate.</h4>
 
-      <p>
-        Proof of income may be requested for those with income sources other than superannuation or work and income benefits.
-        <br/>
-        <br/>
-        If you are self-employed, you must supply evidence with your application. Evidence of income helps to ensure you receive the correct rebate promptly.
-        <br/>
-        <br/>
-        If you are a retirement village resident, you will need to get your operator to provide a Rates Rebate declaration certificate Resident of a retirement village unit form.
-        <br />
-        <br />
-        Tell the Service Centre staff you're there to sign your rates rebate application.
-      </p>
-      </section>
-    </div>
+        <p>
+          Proof of income may be requested for those with income sources other than superannuation or work and income benefits.
+          <br/>
+          <br/>
+          If you are self-employed, you must supply evidence with your application. Evidence of income helps to ensure you receive the correct rebate promptly.
+          <br/>
+          <br/>
+          If you are a retirement village resident, you will need to get your operator to provide a Rates Rebate declaration certificate Resident of a retirement village unit form.
+          <br />
+          <br />
+          Tell the Service Centre staff you're there to sign your rates rebate application.
+        </p>
+        </section>
+      </div>
+    </Fragment>
   );
 }
 
