@@ -58,7 +58,6 @@ class renderOtherIncome extends React.Component {
               label="Enter the total amount"
               onChange={e => {
                 this.props.getOtherOptionValues(store, income, e.target.value, index);
-                //store[`${income}.totalAmount`] = e.target.value;
               }}
             />
           </li>
@@ -78,7 +77,14 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => (
   <div>
     <span className="aria-hidden">{label}</span>
     <div>
-      <input {...input} type={type} placeholder={label} style={{ marginBottom: '5px' }} />
+      <input
+        {...input}
+        type={type}
+        min="0"
+        step="1"
+        placeholder={label}
+        style={{ marginBottom: '5px' }}
+      />
       {touched && error && <span>{error}</span>}
     </div>
   </div>

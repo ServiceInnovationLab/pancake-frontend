@@ -30,13 +30,17 @@ class IncomeListSection extends React.Component {
 
   setApplicantTotalIncome(totalIncome) {
     if (this.state.total_applicant_income !== totalIncome) {
-      this.setState({ total_applicant_income: totalIncome });
+      if(!isNaN(totalIncome)) {
+        this.setState({ total_applicant_income: totalIncome });
+      }
     }
   }
 
   setPartnerTotalIncome(totalIncome) {
     if (this.state.total_partner_income !== totalIncome) {
-      this.setState({ total_partner_income: totalIncome });
+      if(!isNaN(totalIncome)) {
+        this.setState({ total_partner_income: totalIncome });
+      }
     }
   }
 
