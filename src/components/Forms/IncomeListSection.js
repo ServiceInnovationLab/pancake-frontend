@@ -9,6 +9,7 @@ class IncomeListSection extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      should_show_applicant_options: true,
       should_show_partner_options: false,
       total_applicant_income: 0,
       total_partner_income: 0,
@@ -19,6 +20,17 @@ class IncomeListSection extends React.Component {
     this.setIncome = this
       .setIncome
       .bind(this);
+
+    this.incomeList = [
+      {
+        title: 'Your Income',
+        type: 'applicant'
+      },
+      {
+        title: 'Partner/join homeowner\'s income',
+        type: 'partner'
+      }
+    ];
   }
 
   handleRadioClick(val) {
@@ -73,24 +85,17 @@ class IncomeListSection extends React.Component {
               Select any that apply to you.
             </p>
             <div className="row">
-              <ul className="column list-stripped">
-                <ListColumn
-                  title="Your Income"
-                  name="applicant"
-                  hasPartner={this.state.should_show_partner_options}
-                  showRadios={false}
-                  setTotalIncome={e => this.setIncome(e, 'applicant')}
-                />
-              </ul>
-              <ul className="column list-stripped">
-                {this.state.should_show_partner_options && <ListColumn
-                  title="Partner/join homeowner's income"
-                  name="partner"
-                  hasPartner={this.state.should_show_partner_options}
-                  showRadios={false}
-                  setTotalIncome={e => this.setIncome(e, 'partner')}
-                />}
-              </ul>
+              {this.incomeList.map(item => {
+                return <ul key={item.type} className="column list-stripped">
+                  {this.state[`should_show_${item.type}_options`] && <ListColumn
+                    title={item.title}
+                    name={item.type}
+                    hasPartner={this.state[`should_show_${item.type}_options`]}
+                    showRadios={false}
+                    setTotalIncome={e => this.setIncome(e, item.type)}
+                  />}
+                </ul>
+              })}
             </div>
           </fieldset>
         </div>
