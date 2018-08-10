@@ -4,3 +4,10 @@ export const sendTotalIncome = totalIncome => {
     payload: totalIncome,
   };
 };
+
+export const sendPartnerStatus = val => {
+  return {
+    type: 'SEND_PARTNER_STATUS',
+    payload: val,
+  };
+};

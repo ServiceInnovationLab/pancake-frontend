@@ -24,8 +24,7 @@ class WizardFormSecondPage extends React.Component {
       complete_error: false,
       sending: false,
       signature: '',
-      stage: '',
-      hasPartner: ''
+      stage: ''
     };
 
     this.nextPage = this.nextPage.bind(this);
@@ -34,7 +33,6 @@ class WizardFormSecondPage extends React.Component {
     this.saveFormData = this.saveFormData.bind(this);
     this.ratesBill = this.ratesBill.bind(this);
     this.dependants = this.dependants.bind(this);
-    this.handlePartner = this.handlePartner.bind(this);
   }
 
   componentDidMount() {
@@ -62,7 +60,7 @@ class WizardFormSecondPage extends React.Component {
   saveFormData() {
     let fields = this.props.formState.form.wizard.values;
     fields['income'] = this.props.storeValues.totalIncome;
-    fields['lived_with_partner'] = this.state.hasPartner;
+    fields['lived_with_partner'] = this.props.storeValues.partnerStatus;
 
     let data = {
       "type": "rebate-forms",
@@ -81,12 +79,6 @@ class WizardFormSecondPage extends React.Component {
 
   goHome() {
     return window.location = '#/';
-  }
-
-  handlePartner(e) {
-    if(e) {
-      this.setState({hasPartner: e});
-    }
   }
 
   renderAddress(){
@@ -137,7 +129,6 @@ class WizardFormSecondPage extends React.Component {
                   childFieldName={field.childFieldName && field.childFieldName}
                   checkboxFieldName={field.checkboxFieldName && field.checkboxFieldName}
                   checkboxLabel={field.checkboxLabel && field.checkboxLabel['en'].text}
-                  handlePartner={this.handlePartner}
                 />
               </div>
             </section>
@@ -171,9 +162,9 @@ class WizardFormSecondPage extends React.Component {
       <Fragment>
         <div className="theme-main">
           <Head/>
-          <div id="jumpTo" class="jumpTo">
+          <div id="jumpTo" className="jumpTo">
             <form onSubmit={handleSubmit(this.saveFormData)}>
-            <input type="hidden" name="has_a_partner" value="no" />
+            <input type="hidden" name="lived_with_partner" value="no" />
             {this.renderFields()}
             {this.state.complete && <Success/>}
             {this.state.complete && document.getElementById('jumpTo').scrollIntoView()}

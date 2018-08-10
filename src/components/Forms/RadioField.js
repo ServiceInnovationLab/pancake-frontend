@@ -10,7 +10,7 @@ const RadioField = props => {
             <input
               type="radio"
               name={props.name ? props.name : 'radio_fields'}
-              onClick={() => props.handlePartner(item)}
+              onClick={() => props.handleRadioClick(item)}
             />
             <span>{item}</span>
           </label>
