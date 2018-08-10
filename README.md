@@ -8,16 +8,14 @@
 
 Javascript web client to the pancake server. Presents form to apply for a Rates Rebate. To be used anywhere, but most commonly inside a City Council office.
 
-# Example deployment:
+# Production URL:
 
-https://serviceinnovationlab.github.io/pancake-frontend/
+https://ratesrebates.services.govt.nz
 
 ## Deployment
 
-To deploy to github pages, checkout the branch you want to deploy and then run
-```
-npm run deploy
-```
+This app is deploy along with (pancake-backedn)[https://github.com/ServiceInnovationLab/pancake-backend/]. When the backend tests pass on a deploy branch, the master branch of the front end is deployed.
+
 
 ## Development
 
