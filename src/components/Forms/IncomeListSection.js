@@ -94,7 +94,7 @@ class IncomeListSection extends React.Component {
                     showRadios={false}
                     setTotalIncome={e => this.setIncome(e, item.type)}
                   />}
-                </ul>
+                </ul>;
               })}
             </div>
           </fieldset>
