@@ -16,11 +16,8 @@ class IncomeListSection extends React.Component {
     this.handleRadioClick = this
       .handleRadioClick
       .bind(this);
-    this.setApplicantTotalIncome = this
-      .setApplicantTotalIncome
-      .bind(this);
-    this.setPartnerTotalIncome = this
-      .setPartnerTotalIncome
+    this.setIncome = this
+      .setIncome
       .bind(this);
   }
 
@@ -28,18 +25,10 @@ class IncomeListSection extends React.Component {
     this.setState({ should_show_partner_options: val === 'yes' });
   }
 
-  setApplicantTotalIncome(totalIncome) {
-    if (this.state.total_applicant_income !== totalIncome) {
+  setIncome(totalIncome, type) {
+    if (this.state[`total_${type}_income`] !== totalIncome) {
       if(!isNaN(totalIncome)) {
-        this.setState({ total_applicant_income: totalIncome });
-      }
-    }
-  }
-
-  setPartnerTotalIncome(totalIncome) {
-    if (this.state.total_partner_income !== totalIncome) {
-      if(!isNaN(totalIncome)) {
-        this.setState({ total_partner_income: totalIncome });
+        this.setState({ [`total_${type}_income`]: totalIncome });
       }
     }
   }
@@ -90,7 +79,7 @@ class IncomeListSection extends React.Component {
                   name="applicant"
                   hasPartner={this.state.should_show_partner_options}
                   showRadios={false}
-                  setTotalIncome={this.setApplicantTotalIncome}
+                  setTotalIncome={e => this.setIncome(e, 'applicant')}
                 />
               </ul>
               <ul className="column list-stripped">
@@ -99,7 +88,7 @@ class IncomeListSection extends React.Component {
                   name="partner"
                   hasPartner={this.state.should_show_partner_options}
                   showRadios={false}
-                  setTotalIncome={this.setPartnerTotalIncome}
+                  setTotalIncome={e => this.setIncome(e, 'partner')}
                 />}
               </ul>
             </div>
