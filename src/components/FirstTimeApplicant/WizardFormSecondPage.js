@@ -61,6 +61,9 @@ class WizardFormSecondPage extends React.Component {
     let fields = this.props.formState.form.wizard.values;
     fields['income'] = this.props.storeValues.totalIncome;
     fields['lived_with_partner'] = this.props.storeValues.partnerStatus;
+    delete fields['address'];
+    delete fields['income_range'];
+    delete fields['valuation_id'];
 
     let data = {
       "type": "rebate-forms",
