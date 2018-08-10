@@ -41,7 +41,11 @@ class IncomeListSection extends React.Component {
   }
 
   componentDidUpdate() {
-    this.props.dispatch(sendTotalIncome(this.state.total_applicant_income + this.state.total_partner_income));
+    const singleIncome = this.state.total_applicant_income;
+    const combinedIncome = singleIncome + this.state.total_partner_income;
+    const incomeTotal = !this.state.should_show_partner_options ? singleIncome : combinedIncome;
+
+    this.props.dispatch(sendTotalIncome(incomeTotal));
     this.props.dispatch(sendPartnerStatus(this.state.should_show_partner_options));
   }
 
