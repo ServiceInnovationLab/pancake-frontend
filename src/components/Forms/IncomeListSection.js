@@ -2,7 +2,7 @@ import RadioField from './RadioField';
 import RadioWithSelect from './RadioWithSelect';
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { sendTotalIncome } from '../../actions';
+import { sendTotalIncome, sendPartnerStatus } from '../../actions';
 import { underscorize } from '../../helpers/strings';
 
 class IncomeListSection extends React.Component {
@@ -41,7 +41,12 @@ class IncomeListSection extends React.Component {
   }
 
   componentDidUpdate() {
-    this.props.dispatch(sendTotalIncome(this.state.total_applicant_income + this.state.total_partner_income));
+    const singleIncome = this.state.total_applicant_income;
+    const combinedIncome = singleIncome + this.state.total_partner_income;
+    const incomeTotal = !this.state.should_show_partner_options ? singleIncome : combinedIncome;
+
+    this.props.dispatch(sendTotalIncome(incomeTotal));
+    this.props.dispatch(sendPartnerStatus(this.state.should_show_partner_options));
   }
 
   render() {
@@ -56,7 +61,11 @@ class IncomeListSection extends React.Component {
               </p>
               <div>
                 <div>
-                  <RadioField options={['yes', 'no']} handleRadioClick={this.handleRadioClick}/>
+                  <RadioField
+                    options={['yes', 'no']}
+                    name="lived_with_partner"
+                    handleRadioClick={this.handleRadioClick}
+                  />
                 </div>
               </div>
             </fieldset>
@@ -84,7 +93,7 @@ class IncomeListSection extends React.Component {
                 <ListColumn
                   title="Your Income"
                   name="applicant"
-                  hasPartner={this.state.should_show_partner_options}
+                  livedWithPartner={this.state.should_show_partner_options}
                   showRadios={false}
                   setTotalIncome={this.setApplicantTotalIncome}
                 />
@@ -93,7 +102,7 @@ class IncomeListSection extends React.Component {
                 {this.state.should_show_partner_options && <ListColumn
                   title="Partner/join homeowner's income"
                   name="partner"
-                  hasPartner={this.state.should_show_partner_options}
+                  livedWithPartner={this.state.should_show_partner_options}
                   showRadios={false}
                   setTotalIncome={this.setPartnerTotalIncome}
                 />}
@@ -111,7 +120,7 @@ const ListColumn = props => {
     <ListHeading title={props.title} />
     <IncomeList
       name={props.name}
-      hasPartner={props.hasPartner}
+      livedWithPartner={props.livedWithPartner}
       showRadios={props.showRadios}
       setTotalIncome={props.setTotalIncome}
     />
@@ -256,7 +265,7 @@ class IncomeList extends React.Component {
                   <input
                     type="checkbox"
                     name={underscorize(item.label)}
-                    onClick={() => this.handleChild(item, underscorize(`${item.label}${this.props.hasPartner ? '1' : '0'}`))}
+                    onClick={() => this.handleChild(item, underscorize(`${item.label}${this.props.livedWithPartner ? '1' : '0'}`))}
                   />
                   <div className="radio-list-multi">{item.label}
                     <span className="checkmark"></span>
@@ -267,7 +276,7 @@ class IncomeList extends React.Component {
                 {!this.props.showRadios && item.child === 'radio' && <RadioGroup
                   handleChildRadioClick={this.handleChildRadioClick}
                   name={`${underscorize(item.label)}_${this.props.name}`}
-                  options={!this.props.hasPartner ? item.singleOptions && item.singleOptions : item.singleOptions && item.singleOptions.concat(item.partnerOptions)}
+                  options={!this.props.livedWithPartner ? item.singleOptions && item.singleOptions : item.singleOptions && item.singleOptions.concat(item.partnerOptions)}
                   type={this.state.ShowRadio ? 'radio' : 'hidden'}
                 />}
 
@@ -296,7 +305,7 @@ class IncomeList extends React.Component {
         <IncomeTotals
           incomeListStates={this.state}
           dependants={document.getElementsByName('dependants')[0]}
-          hasPartner={this.props.hasPartner}
+          livedWithPartner={this.props.livedWithPartner}
           data={this.props}
           nz_superannuation_applicant={this.state.nz_superannuation_applicant}
           nz_superannuation_partner={this.state.nz_superannuation_partner}
@@ -387,13 +396,13 @@ class IncomeTotals extends React.Component {
     if (this.props.jobseeker_support) {
       // has children
       if (dependants > 0) {
-        if (this.props.hasPartner) {
+        if (this.props.livedWithPartner) {
           jss_total += 11019.84;
         } else {
           jss_total += 19585.28;
         }
       } else { // no children
-        if (this.props.hasPartner) {
+        if (this.props.livedWithPartner) {
           jss_total += 10285.60;
         } else {
           jss_total += 10285.60; // took first value: Single 18-19 years (away from home)
@@ -410,18 +419,18 @@ class IncomeTotals extends React.Component {
 
     if (this.props.supported_living) {
       if (dependants > 1) {
-        if (this.props.hasPartner) {
+        if (this.props.livedWithPartner) {
           sa_total += 13590.20;
         }
-        if (!this.props.hasPartner) {
+        if (!this.props.livedWithPartner) {
           sa_total += 22391.72;
         }
       } else if (dependants === 1) {
-        if (this.props.hasPartner) {
+        if (this.props.livedWithPartner) {
           sa_total += 27180.40;
         }
       } else { // no children
-        if (this.props.hasPartner) {
+        if (this.props.livedWithPartner) {
           sa_total += 12855.96;
         } else { // SINGLE
           sa_total += 15549.04;

@@ -26,6 +26,7 @@ class WizardFormSecondPage extends React.Component {
       signature: '',
       stage: ''
     };
+
     this.nextPage = this.nextPage.bind(this);
     this.previousPage = this.previousPage.bind(this);
     this.renderFields = this.renderFields.bind(this);
@@ -59,6 +60,9 @@ class WizardFormSecondPage extends React.Component {
   saveFormData() {
     let fields = this.props.formState.form.wizard.values;
     fields['income'] = this.props.storeValues.totalIncome;
+    fields['lived_with_partner'] = this.props.storeValues.partnerStatus;
+    delete fields['address'];
+
     let data = {
       "type": "rebate-forms",
       "attributes": {
@@ -68,13 +72,12 @@ class WizardFormSecondPage extends React.Component {
     };
 
     this.setState({sending: true});
-
     axios
       .post(`${config.API_ORIGIN}/api/v1/rebate_forms`, {data})
       .then(res => this.setState({complete: true, sending: false}))
       .catch(err => this.setState({complete_error: true, complete: false, sending: false}));
-
   }
+
   goHome() {
     return window.location = '#/';
   }
@@ -97,7 +100,7 @@ class WizardFormSecondPage extends React.Component {
       <Fragment>
         {this.renderAddress()}
         {firstTimeApplication.map((field, key) => {
-          let label = field.label['en'].text;
+          let label = field.label && field.label['en'].text;
           let name = field.isNested ? `has${camelCaser(label)}Checked` : field.field_name;
           let form_values = '';
           return (
@@ -111,7 +114,6 @@ class WizardFormSecondPage extends React.Component {
                   values={form_values && form_values}
                   accordianLabel={field.accordianLabel && field.accordianLabel['en'].text}
                   accordianText={field.accordianText && field.accordianText['en'].text}
-                  checkboxLabel={field.checkboxLabel && field.checkboxLabel['en'].text}
                   checkboxText={field.checkboxText && field.checkboxText['en'].text}
                   options={field.options && field.options['en'].text}
                   childInstructions={field.childInstructions && field.childInstructions['en'].text}
@@ -127,10 +129,11 @@ class WizardFormSecondPage extends React.Component {
                   type={field.type && field.type}
                   childFieldName={field.childFieldName && field.childFieldName}
                   checkboxFieldName={field.checkboxFieldName && field.checkboxFieldName}
-                  />
+                  checkboxLabel={field.checkboxLabel && field.checkboxLabel['en'].text}
+                />
               </div>
-              </section>
-            );
+            </section>
+          );
         })}
 
         <section className="container">
@@ -160,12 +163,14 @@ class WizardFormSecondPage extends React.Component {
       <Fragment>
         <div className="theme-main">
           <Head/>
-          <div id="jumpTo" class="jumpTo">
+          <div id="jumpTo" className="jumpTo">
             <form onSubmit={handleSubmit(this.saveFormData)}>
-              {this.renderFields()}
-              {this.state.complete && <Success/>}
-              {this.state.complete && document.getElementById('jumpTo').scrollIntoView()}
-              {this.state.complete_error && <Failed/>}
+            <input type="hidden" name="lived_with_partner" value="no" />
+            {this.renderFields()}
+            {this.state.complete && <Success/>}
+            {this.state.complete && document.getElementById('jumpTo').scrollIntoView()}
+            {this.state.complete_error && <Failed/>}
+
             </form>
           </div>
         </div>
