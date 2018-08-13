@@ -4,6 +4,7 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { sendTotalIncome, sendPartnerStatus } from '../../actions';
 import { underscorize } from '../../helpers/strings';
+import filterE from '../../helpers/numbers';
 
 class IncomeListSection extends React.Component {
   constructor(props) {
@@ -284,8 +285,11 @@ class IncomeList extends React.Component {
                     name={`wos_${this.props.name}`}
                     min="0"
                     step="1"
+                    pattern="\d+"
                     onChange={e => {
-                      this.setState({ [`wos_${this.props.name}`]: e.target.value });
+                      if(!filterE(e)) {
+                        this.setState({ [`wos_${this.props.name}`]: e.target.value });
+                      }
                     }}
                   />
                 </Fragment>}
@@ -464,7 +468,7 @@ class IncomeTotals extends React.Component {
   render() {
     return (
       <div>
-        <p>Income $<strong>{this.totalIncome()}</strong></p>
+        <p>Income $<strong>{this.totalIncome().toString()}</strong></p>
       </div>);
   }
 }
