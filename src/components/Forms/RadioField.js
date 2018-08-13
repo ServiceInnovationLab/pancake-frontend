@@ -9,7 +9,7 @@ const RadioField = props => {
           <label>
             <input
               type="radio"
-              name="radio_fields"
+              name={props.name ? props.name : 'radio_fields'}
               onClick={() => props.handleRadioClick(item)}
             />
             <span>{item}</span>
