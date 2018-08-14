@@ -39,6 +39,10 @@ class WizardFormSecondPage extends React.Component {
     window.scrollTo(0, 0)
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.prop !== nextProps || this.state !== nextState;
+  }
+
   nextPage = () => {
     this.setState({
       page: this.state.page + 1

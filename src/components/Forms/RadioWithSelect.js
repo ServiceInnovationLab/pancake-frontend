@@ -2,7 +2,7 @@ import React from 'react';
 import { Field, FieldArray } from 'redux-form';
 import RemoveButton from './RemoveButton';
 import store from '../../store';
-
+import filterE from '../../helpers/numbers';
 
 export default class RadioWithSelect extends React.Component {
   render() {
@@ -57,8 +57,9 @@ class renderOtherIncome extends React.Component {
               component={renderField}
               label="Enter the total amount"
               onChange={e => {
-                this.props.getOtherOptionValues(store, income, e.target.value, index);
-                //store[`${income}.totalAmount`] = e.target.value;
+                if(!filterE(e)) {
+                  this.props.getOtherOptionValues(store, income, e.target.value, index);
+                }
               }}
             />
           </li>
@@ -78,7 +79,14 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => (
   <div>
     <span className="aria-hidden">{label}</span>
     <div>
-      <input {...input} type={type} placeholder={label} style={{ marginBottom: '5px' }} />
+      <input
+        {...input}
+        type={type}
+        min="0"
+        step="1"
+        placeholder={label}
+        style={{ marginBottom: '5px' }}
+      />
       {touched && error && <span>{error}</span>}
     </div>
   </div>

@@ -4,11 +4,13 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { sendTotalIncome, sendPartnerStatus } from '../../actions';
 import { underscorize } from '../../helpers/strings';
+import filterE from '../../helpers/numbers';
 
 class IncomeListSection extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      should_show_applicant_options: true,
       should_show_partner_options: false,
       total_applicant_income: 0,
       total_partner_income: 0,
@@ -16,27 +18,31 @@ class IncomeListSection extends React.Component {
     this.handleRadioClick = this
       .handleRadioClick
       .bind(this);
-    this.setApplicantTotalIncome = this
-      .setApplicantTotalIncome
+    this.setIncome = this
+      .setIncome
       .bind(this);
-    this.setPartnerTotalIncome = this
-      .setPartnerTotalIncome
-      .bind(this);
+
+    this.incomeList = [
+      {
+        title: 'Your Income',
+        type: 'applicant'
+      },
+      {
+        title: 'Partner/join homeowner\'s income',
+        type: 'partner'
+      }
+    ];
   }
 
   handleRadioClick(val) {
     this.setState({ should_show_partner_options: val === 'yes' });
   }
 
-  setApplicantTotalIncome(totalIncome) {
-    if (this.state.total_applicant_income !== totalIncome) {
-      this.setState({ total_applicant_income: totalIncome });
-    }
-  }
-
-  setPartnerTotalIncome(totalIncome) {
-    if (this.state.total_partner_income !== totalIncome) {
-      this.setState({ total_partner_income: totalIncome });
+  setIncome(totalIncome, type) {
+    if (this.state[`total_${type}_income`] !== totalIncome) {
+      if(!isNaN(totalIncome)) {
+        this.setState({ [`total_${type}_income`]: totalIncome });
+      }
     }
   }
 
@@ -89,24 +95,17 @@ class IncomeListSection extends React.Component {
               Select any that apply to you.
             </p>
             <div className="row">
-              <ul className="column list-stripped">
-                <ListColumn
-                  title="Your Income"
-                  name="applicant"
-                  livedWithPartner={this.state.should_show_partner_options}
-                  showRadios={false}
-                  setTotalIncome={this.setApplicantTotalIncome}
-                />
-              </ul>
-              <ul className="column list-stripped">
-                {this.state.should_show_partner_options && <ListColumn
-                  title="Partner/join homeowner's income"
-                  name="partner"
-                  livedWithPartner={this.state.should_show_partner_options}
-                  showRadios={false}
-                  setTotalIncome={this.setPartnerTotalIncome}
-                />}
-              </ul>
+              {this.incomeList.map(item => {
+                return <ul key={item.type} className="column list-stripped">
+                  {this.state[`should_show_${item.type}_options`] && <ListColumn
+                    title={item.title}
+                    name={item.type}
+                    hasPartner={this.state[`should_show_${item.type}_options`]}
+                    showRadios={false}
+                    setTotalIncome={e => this.setIncome(e, item.type)}
+                  />}
+                </ul>;
+              })}
             </div>
           </fieldset>
         </div>
@@ -183,7 +182,7 @@ class IncomeList extends React.Component {
       this.setState({ sa_checked: !this.state.sa_checked });
       this.setChild('ShowRadio');
       break;
-    case 'text-field':
+    case 'number-field':
       this.setChild('ShowTextField', clicked);
       break;
     case 'nested-group':
@@ -247,7 +246,7 @@ class IncomeList extends React.Component {
       },
       {
         label: 'Wage or Salary',
-        child: 'text-field',
+        child: 'number-field',
       },
       {
         label: 'Other',
@@ -280,12 +279,17 @@ class IncomeList extends React.Component {
                   type={this.state.ShowRadio ? 'radio' : 'hidden'}
                 />}
 
-                {item.child === 'text-field' && <Fragment>
+                {item.child === 'number-field' && <Fragment>
                   <input
-                    type={this.state.ShowTextField ? 'text' : 'hidden'}
+                    type={this.state.ShowTextField ? 'number' : 'hidden'}
                     name={`wos_${this.props.name}`}
+                    min="0"
+                    step="1"
+                    pattern="\d+"
                     onChange={e => {
-                      this.setState({ [`wos_${this.props.name}`]: e.target.value });
+                      if(!filterE(e)) {
+                        this.setState({ [`wos_${this.props.name}`]: e.target.value });
+                      }
                     }}
                   />
                 </Fragment>}
@@ -454,7 +458,6 @@ class IncomeTotals extends React.Component {
     const total = firstTotal + (otherOptionValues.length
       ? otherOptionValues.reduce((a, b) => a + b, 0)
       : 0);
-
     return total;
   }
 
@@ -465,7 +468,7 @@ class IncomeTotals extends React.Component {
   render() {
     return (
       <div>
-        <p>Income $<strong>{this.totalIncome()}</strong></p>
+        <p>Income $<strong>{this.totalIncome().toString()}</strong></p>
       </div>);
   }
 }
