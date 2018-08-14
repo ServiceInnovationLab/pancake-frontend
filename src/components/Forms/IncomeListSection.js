@@ -13,7 +13,7 @@ class IncomeListSection extends React.Component {
             should_show_applicant_options: true,
             should_show_partner_options: false,
             total_applicant_income: 0,
-            total_partner_income: 0,
+            total_partner_income: 0
         };
         this.handleRadioClick = this
             .handleRadioClick
@@ -82,7 +82,7 @@ class IncomeListSection extends React.Component {
                         <label
                             style={{
                                 fontSize: "20px",
-                                fontWeight: "500",
+                                fontWeight: "500"
                             }}>
               What was your total income for the 2017/2018 tax year?
                         </label>
@@ -145,7 +145,7 @@ class IncomeList extends React.Component {
             sa_checked: false,
             jobseeker_support: 0,
             sole_parent_support: 0,
-            supported_living: 0,
+            supported_living: 0
         };
 
         this.handleChild = this
@@ -230,28 +230,28 @@ class IncomeList extends React.Component {
                 label: "NZ Superannuation",
                 child: "radio",
                 singleOptions: ["Single - Living alone", "Single - Sharing"],
-                partnerOptions: ["Partner with non-qualified spouse included", "Partner both qualify"],
+                partnerOptions: ["Partner with non-qualified spouse included", "Partner both qualify"]
             },
             {
                 label: "Jobseeker Support",
-                child: null,
+                child: null
             },
             {
                 label: "Sole parent support",
-                child: null,
+                child: null
             },
             {
                 label: "Supported Living",
-                child: null,
+                child: null
             },
             {
                 label: "Wage or Salary",
-                child: "number-field",
+                child: "number-field"
             },
             {
                 label: "Other",
-                child: "nested-group",
-            },
+                child: "nested-group"
+            }
         ];
 
         return (
@@ -355,7 +355,7 @@ class IncomeTotals extends React.Component {
         super();
         this.state = {
             income: null,
-            totalIncome: 0,
+            totalIncome: 0
         };
 
         this.totalIncome = this

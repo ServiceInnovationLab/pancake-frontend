@@ -9,7 +9,7 @@ class selectField extends React.Component {
             showList: false,
             value: "",
             addresses: [],
-            selectedAddress: "",
+            selectedAddress: ""
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
@@ -29,7 +29,7 @@ class selectField extends React.Component {
     handleClick(e) {
         this.setState({
             selectedAddress: e.target.innerHTML,
-            showList: false,
+            showList: false
         });
     }
 

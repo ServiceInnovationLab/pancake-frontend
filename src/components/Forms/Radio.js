@@ -6,13 +6,13 @@ class Radio extends React.Component {
         super(props);
 
         this.state = {
-            hideButtons: false,
+            hideButtons: false
         };
     }
 
     stateType(type) {
         const data = {
-            display: this.state[type] ? "block" : "none",
+            display: this.state[type] ? "block" : "none"
         };
         return data;
     }
