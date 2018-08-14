@@ -1,18 +1,18 @@
-import React from 'react';
-import Modal from 'react-modal';
-import privacyStatement from '../data/privacyStatement';
+import React from "react";
+import Modal from "react-modal";
+import privacyStatement from "../data/privacyStatement";
 
 const customStyles = {
   content : {
-    top                   : '5%',
-    left                  : '0',
-    right                 : '0',
-    bottom                : 'auto',
-    marginLeft            : 'auto',
-    marginRight           : 'auto',
-    width                 : '80%',
-    height                : '500px',
-    overflowY             : 'scroll',
+    top                   : "5%",
+    left                  : "0",
+    right                 : "0",
+    bottom                : "auto",
+    marginLeft            : "auto",
+    marginRight           : "auto",
+    width                 : "80%",
+    height                : "500px",
+    overflowY             : "scroll",
   },
 };
 
@@ -33,12 +33,12 @@ class Footer extends React.Component {
   }
 
   afterOpenModal() {
-    document.querySelector('body').style.overflow = 'hidden';
+    document.querySelector("body").style.overflow = "hidden";
   }
 
   closeModal() {
     this.setState({ modalIsOpen: false });
-    document.querySelector('body').style.overflow = 'auto';
+    document.querySelector("body").style.overflow = "auto";
   }
 
   render() {
@@ -56,7 +56,7 @@ class Footer extends React.Component {
               style={customStyles}
               contentLabel="Example Modal"
             >
-              <button onClick={this.closeModal} style={{ float: 'right', margin: '0 0 20px 0' }}>close</button>
+              <button onClick={this.closeModal} style={{ float: "right", margin: "0 0 20px 0" }}>close</button>
               <div dangerouslySetInnerHTML={{ __html: privacyStatement.content.en.text }}></div>
             </Modal>}
           </div>

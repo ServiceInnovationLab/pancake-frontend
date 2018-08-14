@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react';
-import axios from 'axios';
-import config from '../../config';
+import React, { Fragment } from "react";
+import axios from "axios";
+import config from "../../config";
 
 class Eligible extends React.Component {
   constructor(props) {
@@ -25,7 +25,7 @@ class Eligible extends React.Component {
         },
         properties: {
           property_1: {
-            owners: ['Tahi'],
+            owners: ["Tahi"],
             rates: {
               2019: nextProps.rates_bill,
             },
@@ -39,16 +39,16 @@ class Eligible extends React.Component {
       axios
         .post(`${config.OPENFISCA_ORIGIN}`, data)
         .then(res => {
-          this.setState({ rebate: res.data.properties.property_1.rates_rebate['2019'] });
+          this.setState({ rebate: res.data.properties.property_1.rates_rebate["2019"] });
         })
-        .catch(err => console.log('err fetching properties', err));
+        .catch(err => console.log("err fetching properties", err));
     } else {
       this.setState({ minimum_income_for_no_rebate: null, maximum_income_for_full_rebate: null });
     }
   }
 
   formatDollars(number) {
-    return number.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return number.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
   render() {
@@ -80,7 +80,7 @@ class Eligible extends React.Component {
       );
     }
 
-    return '';
+    return "";
 
   }
 }

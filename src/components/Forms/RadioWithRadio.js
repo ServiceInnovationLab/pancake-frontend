@@ -1,7 +1,7 @@
-import React from 'react';
-import ErrorMessage from '../../components/Forms/Error';
-import Accordian from '../../components/Forms/Accordian';
-import Radio from '../../components/Forms/Radio';
+import React from "react";
+import ErrorMessage from "../../components/Forms/Error";
+import Accordian from "../../components/Forms/Accordian";
+import Radio from "../../components/Forms/Radio";
 
 export default class RadioWithRadio extends React.Component {
   constructor(props) {

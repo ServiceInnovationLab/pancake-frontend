@@ -1,6 +1,6 @@
-import React from 'react';
-import ErrorMessage from '../../components/Forms/Error';
-import Radio from '../../components/Forms/Radio';
+import React from "react";
+import ErrorMessage from "../../components/Forms/Error";
+import Radio from "../../components/Forms/Radio";
 
 export default class RadioWithTextField extends React.Component {
   constructor(props) {
@@ -9,7 +9,7 @@ export default class RadioWithTextField extends React.Component {
   }
 
   toggle(item) {
-    this.setState({ showYes: item === 'yes' });
+    this.setState({ showYes: item === "yes" });
   }
 
   render() {
@@ -25,7 +25,7 @@ export default class RadioWithTextField extends React.Component {
             <Radio props={this.props} submittedValue={this.props.input.value} fieldType="text" />
           </div>
           <ErrorMessage fields={this.props.meta} />
-          {this.props.input.name === 'do_you_have_dependants' && <p>If you have dependants, the upper threshold of your income can be $500 more for each dependant in your care. For example, if you have 2 children, the top limit of how much you could earn to be entitled to the full rebate would be $1000 more than someone with no dependants.</p>}
+          {this.props.input.name === "do_you_have_dependants" && <p>If you have dependants, the upper threshold of your income can be $500 more for each dependant in your care. For example, if you have 2 children, the top limit of how much you could earn to be entitled to the full rebate would be $1000 more than someone with no dependants.</p>}
         </fieldset>
       </div>
     );

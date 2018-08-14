@@ -1,5 +1,5 @@
 const validate = values => {
-  const x = document.getElementsByTagName('input');
+  const x = document.getElementsByTagName("input");
   const arrayOfInputNames = [];
 
   for ( const i in x ) {
@@ -8,12 +8,12 @@ const validate = values => {
 
 
   // HACK
-  const optionals = ['email', 'phone_number', 'email_phone_can_be_used', 'lived_with_partner'];
+  const optionals = ["email", "phone_number", "email_phone_can_be_used", "lived_with_partner"];
 
   const errors = {};
   arrayOfInputNames.forEach(item => {
     if (!values[item] && ! optionals.includes(item)) {
-      errors[item] = 'This is a required field, please provide an answer';
+      errors[item] = "This is a required field, please provide an answer";
     }
 
     // Custom errors

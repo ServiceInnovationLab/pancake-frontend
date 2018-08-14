@@ -1,6 +1,6 @@
-import React from 'react';
-import axios from 'axios';
-import config from '../../config';
+import React from "react";
+import axios from "axios";
+import config from "../../config";
 
 class Rebate extends React.Component {
   constructor(props) {
@@ -25,7 +25,7 @@ class Rebate extends React.Component {
         },
         properties: {
           property_1: {
-            owners: ['Tahi'],
+            owners: ["Tahi"],
             rates: {
               2019: nextProps.rates_bill,
             },
@@ -39,7 +39,7 @@ class Rebate extends React.Component {
       axios
         .post(`${config.OPENFISCA_ORIGIN}`, data)
         .then(res => {
-          const rebate = res.data.properties.property_1.rates_rebate['2019'];
+          const rebate = res.data.properties.property_1.rates_rebate["2019"];
           this.setState({ rebate: rebate });
         })
         .catch(err => err);
@@ -49,7 +49,7 @@ class Rebate extends React.Component {
   }
 
   formatDollars(number) {
-    return number.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return number.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
   render() {
@@ -61,7 +61,7 @@ class Rebate extends React.Component {
         </p>
       );
     }
-    return '';
+    return "";
   }
 }
 

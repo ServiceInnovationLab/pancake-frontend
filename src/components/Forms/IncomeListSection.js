@@ -1,10 +1,10 @@
-import RadioField from './RadioField';
-import RadioWithSelect from './RadioWithSelect';
-import React, { Fragment } from 'react';
-import { connect } from 'react-redux';
-import { sendTotalIncome, sendPartnerStatus } from '../../actions';
-import { underscorize } from '../../helpers/strings';
-import filterE from '../../helpers/numbers';
+import RadioField from "./RadioField";
+import RadioWithSelect from "./RadioWithSelect";
+import React, { Fragment } from "react";
+import { connect } from "react-redux";
+import { sendTotalIncome, sendPartnerStatus } from "../../actions";
+import { underscorize } from "../../helpers/strings";
+import filterE from "../../helpers/numbers";
 
 class IncomeListSection extends React.Component {
   constructor(props) {
@@ -24,18 +24,18 @@ class IncomeListSection extends React.Component {
 
     this.incomeList = [
       {
-        title: 'Your Income',
-        type: 'applicant'
+        title: "Your Income",
+        type: "applicant"
       },
       {
-        title: 'Partner/join homeowner\'s income',
-        type: 'partner'
+        title: "Partner/join homeowner's income",
+        type: "partner"
       }
     ];
   }
 
   handleRadioClick(val) {
-    this.setState({ should_show_partner_options: val === 'yes' });
+    this.setState({ should_show_partner_options: val === "yes" });
   }
 
   setIncome(totalIncome, type) {
@@ -68,7 +68,7 @@ class IncomeListSection extends React.Component {
               <div>
                 <div>
                   <RadioField
-                    options={['yes', 'no']}
+                    options={["yes", "no"]}
                     name="lived_with_partner"
                     handleRadioClick={this.handleRadioClick}
                   />
@@ -77,12 +77,12 @@ class IncomeListSection extends React.Component {
             </fieldset>
           </div>
         </section>
-        <div style={{ marginTop: '42px' }}>
+        <div style={{ marginTop: "42px" }}>
           <fieldset>
             <label
               style={{
-                fontSize: '20px',
-                fontWeight: '500',
+                fontSize: "20px",
+                fontWeight: "500",
               }}>
               What was your total income for the 2017/2018 tax year?
             </label>
@@ -140,8 +140,8 @@ class IncomeList extends React.Component {
       ShowRadio: false,
       ShowTextField: false,
       ShowNestedGroup: false,
-      nz_superannuation_applicant: '',
-      nz_superannuation_partner: '',
+      nz_superannuation_applicant: "",
+      nz_superannuation_partner: "",
       sa_checked: false,
       jobseeker_support: 0,
       sole_parent_support: 0,
@@ -162,11 +162,11 @@ class IncomeList extends React.Component {
 
   setChild(state, clicked) {
     if (this.state.ShowTextField) {
-      if (clicked === 'wage_or_salary0') {
-        document.getElementsByName('wos_applicant')[0].value = 0;
+      if (clicked === "wage_or_salary0") {
+        document.getElementsByName("wos_applicant")[0].value = 0;
       }
-      if (clicked === 'wage_or_salary1') {
-        document.getElementsByName('wos_partner')[0].value = 0;
+      if (clicked === "wage_or_salary1") {
+        document.getElementsByName("wos_partner")[0].value = 0;
       }
 
       this.setState({ [state]: !this.state[state] });
@@ -178,15 +178,15 @@ class IncomeList extends React.Component {
 
   handleChild(val, clicked) {
     switch (val.child) {
-    case 'radio':
+    case "radio":
       this.setState({ sa_checked: !this.state.sa_checked });
-      this.setChild('ShowRadio');
+      this.setChild("ShowRadio");
       break;
-    case 'number-field':
-      this.setChild('ShowTextField', clicked);
+    case "number-field":
+      this.setChild("ShowTextField", clicked);
       break;
-    case 'nested-group':
-      this.setChild('ShowNestedGroup');
+    case "nested-group":
+      this.setChild("ShowNestedGroup");
       break;
     default:
       this.setChild(underscorize(val.label));
@@ -199,16 +199,16 @@ class IncomeList extends React.Component {
   }
 
   handleTextChange(e) {
-    if (e.target.name === 'wage_or_salary_applicant') {
+    if (e.target.name === "wage_or_salary_applicant") {
       this.setState({ wos_applicant: e.target.value });
     }
-    if (e.target.name === 'wage_or_salary_partner') {
+    if (e.target.name === "wage_or_salary_partner") {
       this.setState({ wos_partner: e.target.value });
     }
   }
 
   getWageOrSalary(name) {
-    return typeof document.getElementsByName(name)[0] !== 'undefined'
+    return typeof document.getElementsByName(name)[0] !== "undefined"
       ? document.getElementsByName(name)[0].value
       : 0;
   }
@@ -227,30 +227,30 @@ class IncomeList extends React.Component {
   render() {
     const list = [
       {
-        label: 'NZ Superannuation',
-        child: 'radio',
-        singleOptions: ['Single - Living alone', 'Single - Sharing'],
-        partnerOptions: ['Partner with non-qualified spouse included', 'Partner both qualify'],
+        label: "NZ Superannuation",
+        child: "radio",
+        singleOptions: ["Single - Living alone", "Single - Sharing"],
+        partnerOptions: ["Partner with non-qualified spouse included", "Partner both qualify"],
       },
       {
-        label: 'Jobseeker Support',
+        label: "Jobseeker Support",
         child: null,
       },
       {
-        label: 'Sole parent support',
+        label: "Sole parent support",
         child: null,
       },
       {
-        label: 'Supported Living',
+        label: "Supported Living",
         child: null,
       },
       {
-        label: 'Wage or Salary',
-        child: 'number-field',
+        label: "Wage or Salary",
+        child: "number-field",
       },
       {
-        label: 'Other',
-        child: 'nested-group',
+        label: "Other",
+        child: "nested-group",
       },
     ];
 
@@ -264,7 +264,7 @@ class IncomeList extends React.Component {
                   <input
                     type="checkbox"
                     name={underscorize(item.label)}
-                    onClick={() => this.handleChild(item, underscorize(`${item.label}${this.props.livedWithPartner ? '1' : '0'}`))}
+                    onClick={() => this.handleChild(item, underscorize(`${item.label}${this.props.livedWithPartner ? "1" : "0"}`))}
                   />
                   <div className="radio-list-multi">{item.label}
                     <span className="checkmark"></span>
@@ -272,16 +272,16 @@ class IncomeList extends React.Component {
                 </label>
               </li>
               <div>
-                {!this.props.showRadios && item.child === 'radio' && <RadioGroup
+                {!this.props.showRadios && item.child === "radio" && <RadioGroup
                   handleChildRadioClick={this.handleChildRadioClick}
                   name={`${underscorize(item.label)}_${this.props.name}`}
                   options={!this.props.livedWithPartner ? item.singleOptions && item.singleOptions : item.singleOptions && item.singleOptions.concat(item.partnerOptions)}
-                  type={this.state.ShowRadio ? 'radio' : 'hidden'}
+                  type={this.state.ShowRadio ? "radio" : "hidden"}
                 />}
 
-                {item.child === 'number-field' && <Fragment>
+                {item.child === "number-field" && <Fragment>
                   <input
-                    type={this.state.ShowTextField ? 'number' : 'hidden'}
+                    type={this.state.ShowTextField ? "number" : "hidden"}
                     name={`wos_${this.props.name}`}
                     min="0"
                     step="1"
@@ -294,7 +294,7 @@ class IncomeList extends React.Component {
                   />
                 </Fragment>}
 
-                {this.state.ShowNestedGroup && item.child === 'nested-group' && <RadioWithSelect
+                {this.state.ShowNestedGroup && item.child === "nested-group" && <RadioWithSelect
                   visible={this.state.ShowNestedGroup}
                   name={`${underscorize(item.label)}_${this.props.name}`}
                   getOtherOptionValues={this.getOtherOptionValues}
@@ -308,7 +308,7 @@ class IncomeList extends React.Component {
 
         <IncomeTotals
           incomeListStates={this.state}
-          dependants={document.getElementsByName('dependants')[0]}
+          dependants={document.getElementsByName("dependants")[0]}
           livedWithPartner={this.props.livedWithPartner}
           data={this.props}
           nz_superannuation_applicant={this.state.nz_superannuation_applicant}
@@ -335,7 +335,7 @@ class IncomeList extends React.Component {
 
 const RadioGroup = props => {
   return (
-    <div className="radio-list" style={props.type !== 'radio' ? { display: 'none' } : null}>
+    <div className="radio-list" style={props.type !== "radio" ? { display: "none" } : null}>
       {props.options.map((item, i) => <Fragment key={i}>
         <label>
           <input
@@ -365,13 +365,13 @@ class IncomeTotals extends React.Component {
 
   superAnnuation(type) {
     let sa_total;
-    if (type.indexOf('alone') >= 0) {
+    if (type.indexOf("alone") >= 0) {
       sa_total = 23405.20;
-    } else if (type.indexOf('sharing') >= 0) {
+    } else if (type.indexOf("sharing") >= 0) {
       sa_total = 21484.32;
-    } else if (type.indexOf('non_qualified') >= 0) {
+    } else if (type.indexOf("non_qualified") >= 0) {
       sa_total = 16784.56;
-    } else if (type.indexOf('qualify') >= 0) {
+    } else if (type.indexOf("qualify") >= 0) {
       sa_total = 17721.60;
     } else {
       sa_total = 0;
@@ -385,7 +385,7 @@ class IncomeTotals extends React.Component {
     let sps_total = 0;
     const spl_total = 0;
 
-    if (typeof this.props.dependants !== 'undefined') {
+    if (typeof this.props.dependants !== "undefined") {
       var dependants = this.props.dependants.value
         ? this.props.dependants.value
         : 0;

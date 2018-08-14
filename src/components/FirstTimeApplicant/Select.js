@@ -1,15 +1,15 @@
-import React, { Fragment } from 'react';
-import axios from 'axios';
-import config from '../../config';
+import React, { Fragment } from "react";
+import axios from "axios";
+import config from "../../config";
 
 class selectField extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       showList: false,
-      value: '',
+      value: "",
       addresses: [],
-      selectedAddress: '',
+      selectedAddress: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -38,7 +38,7 @@ class selectField extends React.Component {
     return (
       <Fragment>
         {label && <label className="subheading">{label}</label>}
-        <div style={{ borderBottomColor: touched && error ? 'red': '' }}>
+        <div style={{ borderBottomColor: touched && error ? "red": "" }}>
           <input
             {...input}
             type={type}

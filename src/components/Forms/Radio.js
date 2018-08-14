@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
-import { Field } from 'redux-form';
+import React, { Fragment } from "react";
+import { Field } from "redux-form";
 
 class Radio extends React.Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class Radio extends React.Component {
 
   stateType(type) {
     const data = {
-      display: this.state[type] ? 'block' : 'none',
+      display: this.state[type] ? "block" : "none",
     };
     return data;
   }
@@ -29,7 +29,7 @@ class Radio extends React.Component {
     return (
       <Fragment>
         <div>
-          {this.props.input.name === 'dependants' && this.state.hideButtons ? '' :
+          {this.props.input.name === "dependants" && this.state.hideButtons ? "" :
             this.props.options && this.props.options.map((item, key) => {
               return <label key={key}>
                 <input
@@ -42,12 +42,12 @@ class Radio extends React.Component {
             })
           }
         </div>
-        {this.props.fieldType === 'radio' && this.state.show &&
+        {this.props.fieldType === "radio" && this.state.show &&
           <fieldset className="field radio-group">
             <legend>{this.props.optionsText[1]}</legend>
             <div>
               <div>
-                {['Yes', 'No'].map((item, key) => {
+                {["Yes", "No"].map((item, key) => {
                   return <label key={key}><Field name={this.props.childFieldName} component={renderField} item={item}/><span>{item}</span></label>;
                 })}
               </div>

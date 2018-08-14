@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment } from "react";
 
 const RadioField = props => {
   return (
@@ -9,7 +9,7 @@ const RadioField = props => {
           <label>
             <input
               type="radio"
-              name={props.name ? props.name : 'radio_fields'}
+              name={props.name ? props.name : "radio_fields"}
               onClick={() => props.handleRadioClick(item)}
             />
             <span>{item}</span>

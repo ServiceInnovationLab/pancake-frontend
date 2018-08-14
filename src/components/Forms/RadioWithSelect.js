@@ -1,12 +1,12 @@
-import React from 'react';
-import { Field, FieldArray } from 'redux-form';
-import RemoveButton from './RemoveButton';
-import store from '../../store';
-import filterE from '../../helpers/numbers';
+import React from "react";
+import { Field, FieldArray } from "redux-form";
+import RemoveButton from "./RemoveButton";
+import store from "../../store";
+import filterE from "../../helpers/numbers";
 
 export default class RadioWithSelect extends React.Component {
   render() {
-    return <FieldArray removeOtherOptionValues={this.props.removeOtherOptionValues} getOtherOptionValues={this.props.getOtherOptionValues} name={this.props.name ? this.props.name : 'otherIncome'} component={renderOtherIncome} />;
+    return <FieldArray removeOtherOptionValues={this.props.removeOtherOptionValues} getOtherOptionValues={this.props.getOtherOptionValues} name={this.props.name ? this.props.name : "otherIncome"} component={renderOtherIncome} />;
   }
 }
 
@@ -23,7 +23,7 @@ class renderOtherIncome extends React.Component {
     return (
       <ul className="nested-list">
         {fields.map((income, index) => (
-          <li key={index} style={{ marginBottom: '15px' }}>
+          <li key={index} style={{ marginBottom: "15px" }}>
 
             <h4>Other income #{index + 1} </h4>
             <RemoveButton fields={fields} index={index} removeOtherOptionValues={this.props.removeOtherOptionValues}/>
@@ -85,7 +85,7 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => (
         min="0"
         step="1"
         placeholder={label}
-        style={{ marginBottom: '5px' }}
+        style={{ marginBottom: "5px" }}
       />
       {touched && error && <span>{error}</span>}
     </div>

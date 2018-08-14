@@ -1,18 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import WizardForm from './components/FirstTimeApplicant/WizardForm';
-import HoldingPage from './components/pages/HoldingPage';
-import Sign from './components/FirstTimeApplicant/Sign';
-import { applyMiddleware, combineReducers, createStore } from 'redux';
-import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
-import reducers from './reducers/index';
-import { HashRouter, Route } from 'react-router-dom';
-import { reducer as formReducer } from 'redux-form';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import config from './config';
-import './styles/App.css';
+import React from "react";
+import ReactDOM from "react-dom";
+import WizardForm from "./components/FirstTimeApplicant/WizardForm";
+import HoldingPage from "./components/pages/HoldingPage";
+import Sign from "./components/FirstTimeApplicant/Sign";
+import { applyMiddleware, combineReducers, createStore } from "redux";
+import { Provider } from "react-redux";
+import thunk from "redux-thunk";
+import reducers from "./reducers/index";
+import { HashRouter, Route } from "react-router-dom";
+import { reducer as formReducer } from "redux-form";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import config from "./config";
+import "./styles/App.css";
 
 const store = createStore(combineReducers({
   reducers,
@@ -44,4 +44,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
+ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById("root"));
