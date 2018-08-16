@@ -167,7 +167,6 @@ class WizardFormSecondPage extends React.Component {
             component={RadioWithRadio}
             field_name='lived_here_before_july_2018'
             childFieldName='lived_other_owned_property'
-            toggleByOption='No'
             options={["yes", "no"]}
             optionsText={["", "Were you living in another property that you owned on 1 July 2018, have sold that property, and moved to the address of the property you are currently living in during the the current rating year (1 July 2018-30 June 2019)?"]}
             accordianLabel={"What if I moved house during the rates year?"}
@@ -227,8 +226,10 @@ class WizardFormSecondPage extends React.Component {
                   childLabel={field.childLabel && field.childLabel['en'].text}
                   childOptions={field.childOptions && field.childOptions['en'].text}
                   childType={field.childType && field.childType}
+                  toggleByOption={field.toggleByOption && field.toggleByOption}
                   theme={field.theme && field.theme}
                   type={field.type && field.type}
+                  childFieldName={field.childFieldName && field.childFieldName}
                   checkboxFieldName={field.checkboxFieldName && field.checkboxFieldName}
                   checkboxLabel={field.checkboxLabel && field.checkboxLabel['en'].text}
                 />

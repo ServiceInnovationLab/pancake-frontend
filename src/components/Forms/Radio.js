@@ -18,10 +18,12 @@ class Radio extends React.Component {
   }
 
   toggleSub(item) {
-    if (item.toLowerCase() === this.props.toggleByOption.toLowerCase()) {
-      this.setState({ show: true });
-    } else {
-      this.setState({ show: false });
+    if(this.props.toggleByOption) {
+      if (item.toLowerCase() === this.props.toggleByOption.toLowerCase()) {
+        this.setState({ show: true });
+      } else {
+        this.setState({ show: false });
+      }
     }
   }
 
@@ -33,10 +35,12 @@ class Radio extends React.Component {
             this.props.options && this.props.options.map((item, key) => {
               return <label key={key}>
                 <input
-                  {...this.props.input} ref={i => this[`option${key+1}`] = i} type="radio" value={item} onClick={() => {
+                  {...this.props.input} ref={i => this[`option${key+1}`] = i} type="radio" value={item} onClick={e => {
                     this.toggleSub(item);
+                    if(this.props.handleLivingSituation) {
+                      this.props.handleLivingSituation && this.props.handleLivingSituation(e);
+                    }
                   }}
-                  onClick={e=>this.props.handleLivingSituation(e)}
                 />
                 <span>{item}</span>
               </label>;
