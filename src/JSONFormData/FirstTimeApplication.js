@@ -249,7 +249,6 @@ const firstTimeApplication = [
             }
         }
     }
-  }
 ];
 
 export default firstTimeApplication;
