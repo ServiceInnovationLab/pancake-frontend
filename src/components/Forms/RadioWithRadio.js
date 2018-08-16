@@ -21,7 +21,7 @@ export default class RadioWithRadio extends React.Component {
   render() {
     return (
       <div>
-        <fieldset className="field radio-group">
+        <fieldset className='field radio-group'>
           {this.props.label && <legend>
             {this.props.label}
           </legend>}

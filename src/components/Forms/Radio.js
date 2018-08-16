@@ -65,6 +65,6 @@ class Radio extends React.Component {
 }
 
 
-const renderField = field => <input {...field.input} type="radio" value={field.item.toLowerCase()} />;
+const renderField = field => <input {...field.input} type='radio' value={field.item.toLowerCase()} />;
 
 export default Radio;

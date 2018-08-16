@@ -1,6 +1,6 @@
-import TextField from "../components/Forms/TextField";
-import RadioWithRadio from "../components/Forms/RadioWithRadio";
-import IncomeListSection from "../components/Forms/IncomeListSection";
+import TextField from '../components/Forms/TextField';
+import RadioWithRadio from '../components/Forms/RadioWithRadio';
+import IncomeListSection from '../components/Forms/IncomeListSection';
 
 const firstTimeApplication = [
     // {
@@ -249,6 +249,7 @@ const firstTimeApplication = [
             }
         }
     }
+  }
 ];
 
 export default firstTimeApplication;
