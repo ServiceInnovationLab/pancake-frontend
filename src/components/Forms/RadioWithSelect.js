@@ -21,7 +21,7 @@ class renderOtherIncome extends React.Component {
   render() {
     const { fields, meta: { error, submitFailed } } = this.props;
     return (
-      <ul className="nested-list">
+      <ul className='nested-list'>
         {fields.map((income, index) => (
           <li key={index} style={{ marginBottom: '15px' }}>
 
@@ -43,9 +43,9 @@ class renderOtherIncome extends React.Component {
 
             {this.state.other_source && <Field
               name={`${income}.incomeFrom`}
-              type="text"
+              type='text'
               component={renderField}
-              label="Where did this income come from?"
+              label='Where did this income come from?'
               onChange={e => {
                 store[`${income}.incomeFrom`] = e.target.value;
               }}
@@ -53,9 +53,9 @@ class renderOtherIncome extends React.Component {
 
             <Field
               name={`${income}.totalAmount`}
-              type="number"
+              type='number'
               component={renderField}
-              label="Enter the total amount"
+              label='Enter the total amount'
               onChange={e => {
                 if(!filterE(e)) {
                   this.props.getOtherOptionValues(store, income, e.target.value, index);
@@ -65,7 +65,7 @@ class renderOtherIncome extends React.Component {
           </li>
         ))}
         <li>
-          <button type="button" onClick={() => fields.push({})}>
+          <button type='button' onClick={() => fields.push({})}>
             + Add Income
           </button>
           {submitFailed && error && <span>Error</span>}
@@ -77,13 +77,13 @@ class renderOtherIncome extends React.Component {
 
 const renderField = ({ input, label, type, meta: { touched, error } }) => (
   <div>
-    <span className="aria-hidden">{label}</span>
+    <span className='aria-hidden'>{label}</span>
     <div>
       <input
         {...input}
         type={type}
-        min="0"
-        step="1"
+        min='0'
+        step='1'
         placeholder={label}
         style={{ marginBottom: '5px' }}
       />

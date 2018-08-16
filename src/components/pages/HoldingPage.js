@@ -9,7 +9,7 @@ class HoldingPage extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className='container'>
         <p>
           This service is still in testing and development phase (Alpha) and is
           currently having some improvements made. Come back in a week or two. :-D
@@ -23,8 +23,8 @@ class HoldingPage extends Component {
         </p>
 
         <p>
-          <iframe title="Screen cast of app" width="560" height="315" src="https://www.youtube.com/embed/hXoTlS9FIfg"
-            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <iframe title='Screen cast of app' width='560' height='315' src='https://www.youtube.com/embed/hXoTlS9FIfg'
+            frameborder='0' allow='autoplay; encrypted-media' allowfullscreen></iframe>
         </p>
 
         <p>
@@ -40,7 +40,7 @@ class HoldingPage extends Component {
 
         <p>
           If you are in a Council and are interested in participating in the extended
-          Alpha in August/September, please contact <a href="mailto:Siobhan.mccarthy@dia.govt.nz">Siobhan.mccarthy@dia.govt.nz.</a>
+          Alpha in August/September, please contact <a href='mailto:Siobhan.mccarthy@dia.govt.nz'>Siobhan.mccarthy@dia.govt.nz.</a>
         </p>
       </div>
     );

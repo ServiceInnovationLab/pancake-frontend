@@ -8,7 +8,7 @@ const RadioField = props => {
         .map((item, i) => <Fragment key={i}>
           <label>
             <input
-              type="radio"
+              type='radio'
               name={props.name ? props.name : 'radio_fields'}
               onClick={() => props.handleRadioClick(item)}
             />

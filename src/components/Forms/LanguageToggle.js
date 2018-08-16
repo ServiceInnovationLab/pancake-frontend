@@ -13,7 +13,7 @@ const languages = [
 
 const LanguageToggle = props => {
   return (
-    <div className="container btn-group">
+    <div className='container btn-group'>
       {languages.map((lang, key) => {
         return (
           <LangBtn

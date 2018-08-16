@@ -29,12 +29,12 @@ class App extends React.Component {
           <Header />
           { config.show_holding_path ?
             <main>
-              <Route path="/" component={HoldingPage} />
+              <Route path='/' component={HoldingPage} />
             </main>
             :
             <main>
-              <Route exact={true} path="/" component={WizardForm} />
-              <Route path="/:id" component={Sign}/>
+              <Route exact={true} path='/' component={WizardForm} />
+              <Route path='/:id' component={Sign}/>
             </main>
           }
           <Footer />
