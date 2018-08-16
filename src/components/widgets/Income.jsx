@@ -1,9 +1,9 @@
-import React, { Fragment } from "react";
-import axios from "axios";
-import config from "../../config";
-import RenderRadio from "../../components/Forms/RenderRadio";
-import renderField from "../Forms/renderField";
-import { Field } from "redux-form";
+import React, { Fragment } from 'react';
+import axios from 'axios';
+import config from '../../config';
+import RenderRadio from '../../components/Forms/RenderRadio';
+import renderField from '../Forms/renderField';
+import { Field } from 'redux-form';
 
 class Income extends React.Component {
     constructor(props) {
@@ -15,17 +15,17 @@ class Income extends React.Component {
 
     handleManualIncome(event, newValue, previousValue, name) {
         this.setState({ income: newValue });
-        this.props.onSelection(newValue, "exact");
+        this.props.onSelection(newValue, 'exact');
     }
 
     handleSelection(event, newValue, previousValue, name) {
         let income;
-        if (newValue === "below") {
+        if (newValue === 'below') {
             income = this.state.maximum_income_for_full_rebate;
-        } else if (newValue === "above") {
+        } else if (newValue === 'above') {
             income = this.state.minimum_income_for_no_rebate;
         }
-        this.setState({ income: income, show_input: (newValue === "between") });
+        this.setState({ income: income, show_input: (newValue === 'between') });
         this.props.onSelection(income, newValue);
     }
 
@@ -44,7 +44,7 @@ class Income extends React.Component {
                 },
                 properties: {
                     property_1: {
-                        owners: ["Tui"],
+                        owners: ['Tui'],
                         rates: {
                             2019: nextProps.rates_bill
                         },
@@ -65,16 +65,16 @@ class Income extends React.Component {
                         .data
                         .properties
                         .property_1
-                        .minimum_income_for_no_rebate["2019"]
+                        .minimum_income_for_no_rebate['2019']
                         .toFixed(2),
                     maximum_income_for_full_rebate: res
                         .data
                         .properties
                         .property_1
-                        .maximum_income_for_full_rebate["2019"]
+                        .maximum_income_for_full_rebate['2019']
                         .toFixed(2)
                 }))
-                .catch(err => console.log("err fetching properties", err));
+                .catch(err => console.log('err fetching properties', err));
         } else {
             this.setState({ minimum_income_for_no_rebate: null, maximum_income_for_full_rebate: null });
         }
@@ -83,7 +83,7 @@ class Income extends React.Component {
     getOptions(){
         return {
             options: {
-                en: [{ value: "below", label: `Less than $${this.formatDollars(this.state.maximum_income_for_full_rebate)}` }, { value: "between", label: "Somewhere in the middle" }, { value: "above", label: `More than $${this.formatDollars(this.state.minimum_income_for_no_rebate)}` }]
+                en: [{ value: 'below', label: `Less than $${this.formatDollars(this.state.maximum_income_for_full_rebate)}` }, { value: 'between', label: 'Somewhere in the middle' }, { value: 'above', label: `More than $${this.formatDollars(this.state.minimum_income_for_no_rebate)}` }]
             },
             isRequired: true,
             component: RenderRadio
@@ -91,7 +91,7 @@ class Income extends React.Component {
     }
 
     formatDollars(number) {
-        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     }
 
     getCurrentFinancialYear(add, subtract) {
@@ -111,7 +111,7 @@ class Income extends React.Component {
                     <Field
                         name="income_range"
                         component={RenderRadio}
-                        options={earnLessThan.options && earnLessThan.options["en"]}
+                        options={earnLessThan.options && earnLessThan.options['en']}
                         onChange={this.handleSelection}
                     />
 
@@ -136,7 +136,7 @@ class Income extends React.Component {
             );
         }
 
-        return "";
+        return '';
 
     }
 }

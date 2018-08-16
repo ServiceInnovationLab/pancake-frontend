@@ -1,7 +1,7 @@
-import React, { Fragment } from "react";
-import Select from "react-select";
-import axios from "axios";
-import config from "../../config";
+import React, { Fragment } from 'react';
+import Select from 'react-select';
+import axios from 'axios';
+import config from '../../config';
 
 class Address extends React.Component {
     constructor(props) {
@@ -47,14 +47,14 @@ class Address extends React.Component {
                         const rates_payers = res
                             .data
                             .included
-                            .filter(i => i.type === "rates_payers")
+                            .filter(i => i.type === 'rates_payers')
                             .map(p => {
                                 return p;
                             });
                         const rates_bills = res
                             .data
                             .included
-                            .filter(i => i.type === "rates_bills")
+                            .filter(i => i.type === 'rates_bills')
                             .map(p => {
                                 return p;
                             });

@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 
 const languages = [
     {
-        abbr: "en",
-        name: "English"
+        abbr: 'en',
+        name: 'English'
     },
     {
-        abbr: "mi",
-        name: "Māori"
+        abbr: 'mi',
+        name: 'Māori'
     }
 ];
 
@@ -35,7 +35,7 @@ const LangBtn = props => {
     return (
         <a
             onClick={props.handler}
-            className={props.state === props.langAbbr ? "btn active" : "btn"}
+            className={props.state === props.langAbbr ? 'btn active' : 'btn'}
         >{props.langName}
         </a>
     );

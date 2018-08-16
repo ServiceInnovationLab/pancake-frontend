@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment } from 'react';
 
 class Accordian extends React.Component {
     constructor(props) {
@@ -14,7 +14,7 @@ class Accordian extends React.Component {
 
     render() {
         const shown = {
-            display: this.state.shown ? "block" : "none"
+            display: this.state.shown ? 'block' : 'none'
         };
         return (
             <Fragment>

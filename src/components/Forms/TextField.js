@@ -1,9 +1,9 @@
-import React from "react";
-import ErrorMessage from "../../components/Forms/Error";
-import Accordian from "../../components/Forms/Accordian";
-import { underscorize } from "../../helpers/strings";
-import NumberField from "../Forms/NumberField";
-import { Field } from "redux-form";
+import React from 'react';
+import ErrorMessage from '../../components/Forms/Error';
+import Accordian from '../../components/Forms/Accordian';
+import { underscorize } from '../../helpers/strings';
+import NumberField from '../Forms/NumberField';
+import { Field } from 'redux-form';
 
 /*
   TextField
@@ -25,7 +25,7 @@ export default class TextField extends React.Component {
     getValue() {
         if (this.props.input) {
             if (this.props.input.name === this.props.values[this.props.input.name]) {
-                return this.props.values["this.props.input.name"];
+                return this.props.values['this.props.input.name'];
             }
             return this.props.input.value;
         }
@@ -37,7 +37,7 @@ export default class TextField extends React.Component {
         return (
             <fieldset className="field">
                 <legend>{this.props.label}</legend>
-                {this.props.type === "number" ? <NumberField {...this.props} value={showValue} /> : <input type="text" {...this.props.input} value={showValue} />}
+                {this.props.type === 'number' ? <NumberField {...this.props} value={showValue} /> : <input type="text" {...this.props.input} value={showValue} />}
                 {this.props.instructions && <p className="instructions" dangerouslySetInnerHTML={{ __html: this.props.instructions }}></p>}
                 {this.props.checkboxFieldName &&
           <Field component={Checkbox} label={this.props.checkboxLabel} name={this.props.checkboxFieldName} />}

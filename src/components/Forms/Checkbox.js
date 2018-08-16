@@ -1,5 +1,5 @@
-import React, { Fragment } from "react";
-import { underscorize } from "../../helpers/strings";
+import React, { Fragment } from 'react';
+import { underscorize } from '../../helpers/strings';
 
 const Checkbox = props => (
     <Fragment>
