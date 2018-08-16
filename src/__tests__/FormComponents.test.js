@@ -7,15 +7,15 @@ const Components = [RenderRadio, TextField];
 
 
 describe('components', function() {
-    'use strict';
-    Components.map(item => {
-        describe(`<${item} />`, function() {
-            it('renders correctly', function() {
-                const TagName = item;
-                const tree = renderer.create(<TagName />).toJSON();
-                expect(tree).toMatchSnapshot();
-            });
-        });
+  'use strict';
+  Components.map(item => {
+    describe(`<${item} />`, function() {
+      it('renders correctly', function() {
+        const TagName = item;
+        const tree = renderer.create(<TagName />).toJSON();
+        expect(tree).toMatchSnapshot();
+      });
     });
+  });
 
 });
