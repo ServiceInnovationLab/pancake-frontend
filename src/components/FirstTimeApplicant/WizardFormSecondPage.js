@@ -251,7 +251,6 @@ class WizardFormSecondPage extends React.Component {
                   text="<p>You can find a list of the total amounts for Work and Income payments, including NZ Superannuation https://www.dia.govt.nz/diawebsite.nsf/Files/Benefit-Schedule-2016-17/$file/Benefit-Schedule-2016-17.pdf <br/><br/>You can get this from a few places, such as:<ul><li>Inland Revenue, by calling them on 0800 775 247 and asking for a Personal Tax Summary, or logging on to your MyIR account at IRD.govt.nz.</li><li>from Ministry of Social Development</li> <li>through your employer, accountant etc.</il></ul></p>"
                   />
               </div>
-            <p>This will be applied to your rates account once your application has been fully proccessed.</p>
             </section>
 
             <Submit sending={this.state.sending} />
