@@ -36,6 +36,7 @@ class Radio extends React.Component {
                   {...this.props.input} ref={i => this[`option${key+1}`] = i} type="radio" value={item} onClick={() => {
                     this.toggleSub(item);
                   }}
+                  onClick={e=>this.props.handleLivingSituation(e)}
                 />
                 <span>{item}</span>
               </label>;

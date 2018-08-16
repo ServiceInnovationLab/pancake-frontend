@@ -13,6 +13,27 @@ import axios from 'axios';
 import config from '../../config';
 import Rebate from '../widgets/Rebate';
 
+import Modal from 'react-modal';
+
+import RadioWithRadio from '../../components/Forms/RadioWithRadio';
+
+const customStyles = {
+  content : {
+    top                   : '50%',
+    left                  : '50%',
+    right                 : 'auto',
+    bottom                : 'auto',
+    marginRight           : '-50%',
+    transform             : 'translate(-50%, -50%)',
+    padding               : '0',
+    borderRadius          : '14px',
+    border                : 'none',
+    background            : 'rgb(238,238,238)',
+    width                 : '80%'
+  }
+};
+
+
 class WizardFormSecondPage extends React.Component {
   constructor(props) {
     super(props);
@@ -24,7 +45,10 @@ class WizardFormSecondPage extends React.Component {
       complete_error: false,
       sending: false,
       signature: '',
-      stage: ''
+      stage: '',
+      hasLivedHere: '',
+      showModal: false,
+      modalIsOpen: true
     };
 
     this.nextPage = this.nextPage.bind(this);
@@ -33,6 +57,10 @@ class WizardFormSecondPage extends React.Component {
     this.saveFormData = this.saveFormData.bind(this);
     this.ratesBill = this.ratesBill.bind(this);
     this.dependants = this.dependants.bind(this);
+    this.handleLivingSituation = this.handleLivingSituation.bind(this);
+    this.openModal = this.openModal.bind(this);
+    this.afterOpenModal = this.afterOpenModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   componentDidMount() {
@@ -53,6 +81,34 @@ class WizardFormSecondPage extends React.Component {
     this.setState({
       page: this.state.page - 1
     });
+  }
+
+  handleLivingSituation(e) {
+    this.setState({
+      hasLivedHere: e.target.value,
+      showModal: true
+    });
+  }
+
+  openModal() {
+    this.setState({modalIsOpen: true});
+  }
+
+  afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    //heading
+    this.heading.style.color = '#fff';
+    this.heading.style.margin = '0';
+    this.heading.style.fontSize = '43px';
+
+    this.subtitle.style.color = '#fff';
+    this.subtitle.style.fontSize = '30px';
+
+
+  }
+
+  closeModal() {
+    this.setState({modalIsOpen: false});
   }
 
   dependants() {
@@ -103,7 +159,50 @@ class WizardFormSecondPage extends React.Component {
     return (
       <Fragment>
         {this.renderAddress()}
-        {firstTimeApplication.map((field, key) => {
+
+        <div className="container">
+          <Field
+            name='lived_here_before_july_2018'
+            label="Did you live here at 1 July 2018?"
+            component={RadioWithRadio}
+            field_name='lived_here_before_july_2018'
+            childFieldName='lived_other_owned_property'
+            toggleByOption='No'
+            options={["yes", "no"]}
+            optionsText={["", "Were you living in another property that you owned on 1 July 2018, have sold that property, and moved to the address of the property you are currently living in during the the current rating year (1 July 2018-30 June 2019)?"]}
+            accordianLabel={"What if I moved house during the rates year?"}
+            accordianText={"Get in touch with your local council. There are some situations where you can still get a rebate on your previous home after you moved. They will ask you some details including: <ul><li>the settlement date</li><li>what rates you paid for the current year.</li></ul>"}
+            handleLivingSituation={this.handleLivingSituation}
+          />
+          {this.state.hasLivedHere === 'no' &&
+            <div style={{position: 'relative'}}>
+              <Modal
+                isOpen={this.state.modalIsOpen}
+                onAfterOpen={this.afterOpenModal}
+                onRequestClose={this.closeModal}
+                style={customStyles}
+                contentLabel="Example Modal"
+              >
+              <div className="modal-header" style={{background: 'rgb(255, 83, 83)', padding: '40px 40px 15px'}}>
+                <h2 ref={heading => this.heading = heading}>Sorry</h2>
+                <p ref={subtitle => this.subtitle = subtitle}>Based on what you've just told us, you are not eligible for a Rates Rebate this year</p>
+              </div>
+              <div className="modal-body" style={{padding: '15px 40px'}}>
+                <p style={{fontSize: '24px'}}>You must have been living at the property on 1 July 2018 to be eligible for a rates rebate for this rating year.</p>
+              </div>
+                <span onClick={this.closeModal} style={{
+                  position: 'absolute',
+                  top: '8px',
+                  right: '13px',
+                  color: 'white',
+                  fontSize: '30px',
+                  fontWeight: 'bold'
+                }}>X</span>
+              </Modal>
+            </div>
+          }
+        </div>
+        {this.state.hasLivedHere === 'yes' && firstTimeApplication.map((field, key) => {
           let label = field.label && field.label['en'].text;
           let name = field.isNested ? `has${camelCaser(label)}Checked` : field.field_name;
           let form_values = '';
@@ -128,10 +227,8 @@ class WizardFormSecondPage extends React.Component {
                   childLabel={field.childLabel && field.childLabel['en'].text}
                   childOptions={field.childOptions && field.childOptions['en'].text}
                   childType={field.childType && field.childType}
-                  toggleByOption={field.toggleByOption && field.toggleByOption}
                   theme={field.theme && field.theme}
                   type={field.type && field.type}
-                  childFieldName={field.childFieldName && field.childFieldName}
                   checkboxFieldName={field.checkboxFieldName && field.checkboxFieldName}
                   checkboxLabel={field.checkboxLabel && field.checkboxLabel['en'].text}
                 />

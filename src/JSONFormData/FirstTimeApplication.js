@@ -3,52 +3,52 @@ import RadioWithRadio from "../components/Forms/RadioWithRadio";
 import IncomeListSection from "../components/Forms/IncomeListSection";
 
 const firstTimeApplication = [
-    {
-        component: RadioWithRadio,
-        field_name: "lived_here_before_july_2018",
-        childFieldName: "lived_other_owned_property",
-        toggleByOption: "No",
-        label: {
-            en: {
-                text: "Did you live here at 1 July 2018?"
-            },
-            mi: {
-                text: "Did you live here at 1 July 2018?"
-            }
-        },
-        options: {
-            en: {
-                text: ["yes", "no"]
-            },
-            mi: {
-                text: ["yes", "no"]
-            }
-        },
-        optionsText: {
-            en: {
-                text: ["", "Were you living in another property that you owned on 1 July 2018, have sold that property, and moved to the address of the property you are currently living in during the the current rating year (1 July 2018-30 June 2019)?"]
-            },
-            mi: {
-                text: ["", "Were you living in another property that you owned on 1 July 2018, have sold that property, and moved to the address of the property you are currently living in during the the current rating year (1 July 2018-30 June 2019)?"]
-            }
-        },
-        accordianLabel: {
-            en: {
-                text: "What if I moved house during the rates year?"
-            },
-            mi: {
-                text: "What if I moved house during the rates year?"
-            }
-        },
-        accordianText: {
-            en: {
-                text: "Get in touch with your local council. There are some situations where you can still get a rebate on your previous home after you moved. They will ask you some details including: <ul><li>the settlement date</li><li>what rates you paid for the current year.</li></ul>"
-            },
-            mi: {
-                text: "Get in touch with your local council. There are some situations where you can still get a rebate on your previous home after you moved. They will ask you some details including: <ul><li>the settlement date</li><li>what rates you paid for the current year.</li></ul>"
-            }
-        }
-    },
+    // {
+    //     component: RadioWithRadio,
+    //     field_name: "lived_here_before_july_2018",
+    //     childFieldName: "lived_other_owned_property",
+    //     toggleByOption: "No",
+    //     label: {
+    //         en: {
+    //             text: "Did you live here at 1 July 2018?"
+    //         },
+    //         mi: {
+    //             text: "Did you live here at 1 July 2018?"
+    //         }
+    //     },
+    //     options: {
+    //         en: {
+    //             text: ["yes", "no"]
+    //         },
+    //         mi: {
+    //             text: ["yes", "no"]
+    //         }
+    //     },
+    //     optionsText: {
+    //         en: {
+    //             text: ["", "Were you living in another property that you owned on 1 July 2018, have sold that property, and moved to the address of the property you are currently living in during the the current rating year (1 July 2018-30 June 2019)?"]
+    //         },
+    //         mi: {
+    //             text: ["", "Were you living in another property that you owned on 1 July 2018, have sold that property, and moved to the address of the property you are currently living in during the the current rating year (1 July 2018-30 June 2019)?"]
+    //         }
+    //     },
+    //     accordianLabel: {
+    //         en: {
+    //             text: "What if I moved house during the rates year?"
+    //         },
+    //         mi: {
+    //             text: "What if I moved house during the rates year?"
+    //         }
+    //     },
+    //     accordianText: {
+    //         en: {
+    //             text: "Get in touch with your local council. There are some situations where you can still get a rebate on your previous home after you moved. They will ask you some details including: <ul><li>the settlement date</li><li>what rates you paid for the current year.</li></ul>"
+    //         },
+    //         mi: {
+    //             text: "Get in touch with your local council. There are some situations where you can still get a rebate on your previous home after you moved. They will ask you some details including: <ul><li>the settlement date</li><li>what rates you paid for the current year.</li></ul>"
+    //         }
+    //     }
+    // },
     {
         component: TextField,
         field_name: "full_name",

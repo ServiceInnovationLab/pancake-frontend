@@ -26,7 +26,7 @@ export default class RadioWithRadio extends React.Component {
                         {this.props.label}
                     </legend>}
                     <div>
-                        <Radio {...this.props} fieldType="radio" />
+                        <Radio {...this.props} handleLivingSituation={this.props.handleLivingSituation} fieldType="radio" />
                     </div>
                     {this.props.instructions && <p dangerouslySetInnerHTML={{ __html: this.props.instructions }}></p>}
                     {this.props.accordianLabel && <Accordian label={this.props.accordianLabel} text={this.props.accordianText} />}
