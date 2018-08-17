@@ -43,7 +43,7 @@
     "test": "jest",
     "eject": "react-scripts eject",
     "build-css": "node-sass --include-path src/styles/scss/App.scss src/styles/App.css",
-    "sass": "node-sass src/styles/scss src/styles/"
+    "sass": "node-sass src/styles/scss/App.scss src/styles/App.css"
   },
   "devDependencies": {
     "babel-core": "6.26.3",

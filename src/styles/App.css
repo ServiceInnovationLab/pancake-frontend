@@ -506,3 +506,28 @@ a:hover {
 
 .jumpTo {
   padding-top: 30px; }
+
+.modal-header {
+  background: #ff5353;
+  padding: 40px 40px 15px; }
+  .modal-header h2 {
+    margin: 0;
+    font-size: 43px; }
+  .modal-header p {
+    font-size: 30px; }
+  .modal-header h2,
+  .modal-header p {
+    color: #fff; }
+
+.modal-body {
+  padding: 15px 40px; }
+  .modal-body p {
+    font-size: 24px; }
+
+.modal-exit {
+  position: absolute;
+  top: 8px;
+  right: 13px;
+  color: white;
+  font-size: 30px;
+  font-weight: bold; }

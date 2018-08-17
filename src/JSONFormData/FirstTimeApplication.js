@@ -1,5 +1,5 @@
 import TextField from '../components/Forms/TextField';
-import RadioWithRadio from '../components/Forms/RadioWithRadio';
+// import RadioWithRadio from '../components/Forms/RadioWithRadio';
 import IncomeListSection from '../components/Forms/IncomeListSection';
 
 const firstTimeApplication = [
@@ -161,53 +161,53 @@ const firstTimeApplication = [
         component: IncomeListSection,
         field_name: "income_page_2"
     },
-    {
-        theme: "theme-sand",
-        label: {
-            en: {
-                text: "Do you earn money from home or run a business from home?"
-            },
-            mi: {
-                text: "Do you earn money from home or run a business from home?"
-            }
-        },
-        instructionsSecondary: {
-            en: {
-                text: "If yes, and you deducted over 50% of your rates as expenses, you may not be able to get a rebate. If your property is mainly used for commercial activities, for example farming or business, you cannot apply for a rates rebate."
-            },
-            mi: {
-                text: "If yes, and you deducted over 50% of your rates as expenses, you may not be able to get a rebate. If your property is mainly used for commercial activities, for example farming or business, you cannot apply for a rates rebate."
-            }
-        },
-        options: {
-            en: {
-                text: ["yes", "no"]
-            },
-            mi: {
-                text: ["ae", "kaore"]
-            }
-        },
-        component: RadioWithRadio,
-        field_name: "has_home_business",
-        toggleByOption: "Yes",
-        childFieldName: "deducts_over_half_rates",
-        optionsText: {
-            en: {
-                text: ["", "Did you deduct over 50% of your rates as expenses for the 2017/2018 tax year?"]
-            },
-            mi: {
-                text: ["", "Did you deduct over 50% of your rates as expenses for the 2017/2018 tax year?"]
-            }
-        },
-        placeholder: {
-            en: {
-                text: "Enter the total amount"
-            },
-            mi: {
-                text: "Enter the total amount"
-            }
-        }
-    },
+    // {
+    //     theme: "theme-sand",
+    //     label: {
+    //         en: {
+    //             text: "Do you earn money from home or run a business from home?"
+    //         },
+    //         mi: {
+    //             text: "Do you earn money from home or run a business from home?"
+    //         }
+    //     },
+    //     instructionsSecondary: {
+    //         en: {
+    //             text: "If yes, and you deducted over 50% of your rates as expenses, you may not be able to get a rebate. If your property is mainly used for commercial activities, for example farming or business, you cannot apply for a rates rebate."
+    //         },
+    //         mi: {
+    //             text: "If yes, and you deducted over 50% of your rates as expenses, you may not be able to get a rebate. If your property is mainly used for commercial activities, for example farming or business, you cannot apply for a rates rebate."
+    //         }
+    //     },
+    //     options: {
+    //         en: {
+    //             text: ["yes", "no"]
+    //         },
+    //         mi: {
+    //             text: ["ae", "kaore"]
+    //         }
+    //     },
+    //     component: RadioWithRadio,
+    //     field_name: "has_home_business",
+    //     toggleByOption: "Yes",
+    //     childFieldName: "deducts_over_half_rates",
+    //     optionsText: {
+    //         en: {
+    //             text: ["", "Did you deduct over 50% of your rates as expenses for the 2017/2018 tax year?"]
+    //         },
+    //         mi: {
+    //             text: ["", "Did you deduct over 50% of your rates as expenses for the 2017/2018 tax year?"]
+    //         }
+    //     },
+    //     placeholder: {
+    //         en: {
+    //             text: "Enter the total amount"
+    //         },
+    //         mi: {
+    //             text: "Enter the total amount"
+    //         }
+    //     }
+    // },
     {
         component: TextField,
         field_name: "email",

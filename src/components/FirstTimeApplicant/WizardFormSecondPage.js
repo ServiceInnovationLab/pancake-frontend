@@ -48,7 +48,9 @@ class WizardFormSecondPage extends React.Component {
       stage: '',
       hasLivedHere: '',
       showModal: false,
-      modalIsOpen: true
+      modalIsOpen: true,
+      hasBusiness: '',
+      businessModalIsOpen: true
     };
 
     this.nextPage = this.nextPage.bind(this);
@@ -61,6 +63,7 @@ class WizardFormSecondPage extends React.Component {
     this.openModal = this.openModal.bind(this);
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.handleBusiness = this.handleBusiness.bind(this);
   }
 
   componentDidMount() {
@@ -90,25 +93,22 @@ class WizardFormSecondPage extends React.Component {
     });
   }
 
+  handleBusiness(e) {
+    this.setState({
+      hasBusiness: e.target.value,
+      showModal: true
+    });
+  }
+
   openModal() {
     this.setState({modalIsOpen: true});
   }
 
   afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    //heading
-    this.heading.style.color = '#fff';
-    this.heading.style.margin = '0';
-    this.heading.style.fontSize = '43px';
-
-    this.subtitle.style.color = '#fff';
-    this.subtitle.style.fontSize = '30px';
-
-
   }
 
   closeModal() {
-    this.setState({modalIsOpen: false});
+    this.setState({modalIsOpen: false, businessModalIsOpen: false});
   }
 
   dependants() {
@@ -158,6 +158,7 @@ class WizardFormSecondPage extends React.Component {
 
     return (
       <Fragment>
+        {console.log(this.state)}
         {this.renderAddress()}
 
         <div className="container">
@@ -173,7 +174,24 @@ class WizardFormSecondPage extends React.Component {
             accordianText={"Get in touch with your local council. There are some situations where you can still get a rebate on your previous home after you moved. They will ask you some details including: <ul><li>the settlement date</li><li>what rates you paid for the current year.</li></ul>"}
             handleLivingSituation={this.handleLivingSituation}
           />
-          {this.state.hasLivedHere === 'no' &&
+        </div>
+
+        {this.state.hasBusiness === 'yes' &&
+          <div style={{position: 'relative'}}>
+            <Modal
+              isOpen={this.state.businessModalIsOpen}
+              onAfterOpen={this.afterOpenModal}
+              onRequestClose={this.closeModal}
+              style={customStyles}
+              contentLabel="Modal"
+              ariaHideApp={false}
+            >
+            <ModalBody bodyText='You must have been living at the property on 1 July 2018 to be eligible for a rates rebate for this rating year.'/>
+            </Modal>
+          </div>
+        }
+
+        {this.state.hasLivedHere === 'no' &&
             <div style={{position: 'relative'}}>
               <Modal
                 isOpen={this.state.modalIsOpen}
@@ -181,26 +199,13 @@ class WizardFormSecondPage extends React.Component {
                 onRequestClose={this.closeModal}
                 style={customStyles}
                 contentLabel="Example Modal"
+                // ariaHideApp={false}
               >
-              <div className="modal-header" style={{background: 'rgb(255, 83, 83)', padding: '40px 40px 15px'}}>
-                <h2 ref={heading => this.heading = heading}>Sorry</h2>
-                <p ref={subtitle => this.subtitle = subtitle}>Based on what you've just told us, you are not eligible for a Rates Rebate this year</p>
-              </div>
-              <div className="modal-body" style={{padding: '15px 40px'}}>
-                <p style={{fontSize: '24px'}}>You must have been living at the property on 1 July 2018 to be eligible for a rates rebate for this rating year.</p>
-              </div>
-                <span onClick={this.closeModal} style={{
-                  position: 'absolute',
-                  top: '8px',
-                  right: '13px',
-                  color: 'white',
-                  fontSize: '30px',
-                  fontWeight: 'bold'
-                }}>X</span>
+              <ModalBody bodyText='You must have been living at the property on 1 July 2018 to be eligible for a rates rebate for this rating year.'/>
               </Modal>
             </div>
           }
-        </div>
+
         {this.state.hasLivedHere === 'yes' && firstTimeApplication.map((field, key) => {
           let label = field.label && field.label['en'].text;
           let name = field.isNested ? `has${camelCaser(label)}Checked` : field.field_name;
@@ -208,6 +213,23 @@ class WizardFormSecondPage extends React.Component {
           return (
             <section className={field.theme} key={key}>
               <div className="container">
+
+              {/* has a home business */}
+              {field.field_name === 'email' &&
+                <Field
+                  name='has_home_business'
+                  label="Do you earn money from home or run a business from home?"
+                  component={RadioWithRadio}
+                  instructionsSecondary={'If yes, and you deducted over 50% of your rates as expenses, you may not be able to get a rebate. If your property is mainly used for commercial activities, for example farming or business, you cannot apply for a rates rebate.'}
+                  toggleByOption='Yes'
+                  field_name='has_home_business'
+                  childFieldName='deducts_over_half_rates'
+                  options={["yes", "no"]}
+                  optionsText={["", "Did you deduct over 50% of your rates as expenses for the 2017/2018 tax year?"]}
+                  placeholder={'Enter the total amount'}
+                  handleBusiness={this.handleBusiness}
+              />
+              }
                 <Field
                   label={label}
                   name={name}
@@ -417,7 +439,18 @@ class Submit extends React.Component {
   }
 }
 
-
+const ModalBody = props => {
+  return <Fragment>
+    <div className="modal-header">
+      <h2>Sorry</h2>
+      <p>Based on what you've just told us, you are not eligible for a Rates Rebate this year</p>
+    </div>
+    <div className="modal-body">
+      <p>{props.bodyText}</p>
+    </div>
+      <span className="modal-exit" onClick={this.closeModal}>X</span>
+  </Fragment>
+}
 
 
 WizardFormSecondPage = reduxForm({

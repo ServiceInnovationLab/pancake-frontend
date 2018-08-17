@@ -29,8 +29,11 @@ export default class RadioWithRadio extends React.Component {
             {this.props.handleLivingSituation &&
               <Radio {...this.props} handleLivingSituation={this.props.handleLivingSituation} fieldType="radio" />
             }
-            {!this.props.handleLivingSituation &&
+            {!this.props.handleLivingSituation && !this.props.handleBusiness &&
               <Radio {...this.props} fieldType="radio" />
+            }
+            {this.props.handleBusiness &&
+              <Radio {...this.props} fieldType="radio" handleBusiness={this.props.handleBusiness} />
             }
           </div>
           {this.props.instructions && <p dangerouslySetInnerHTML={{ __html: this.props.instructions }}></p>}

@@ -639,3 +639,39 @@ a {
 .jumpTo {
   padding-top: 30px;
 }
+
+.modal-header {
+  background: rgb(255, 83, 83);
+  padding: 40px 40px 15px;
+
+  h2 {
+    margin: 0;
+    font-size: 43px;
+  }
+
+  p {
+    font-size: 30px;
+  }
+
+  h2,
+  p {
+    color: $white;
+  }
+}
+
+.modal-body {
+  padding: 15px 40px;
+
+  p {
+    font-size: 24px;
+  }
+}
+
+.modal-exit {
+  position: absolute;
+  top: 8px;
+  right: 13px;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+}
