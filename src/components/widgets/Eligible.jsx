@@ -56,23 +56,23 @@ class Eligible extends React.Component {
       if (parseInt(this.state.rebate, 10)> 0) {
         return (
           <Fragment>
-            <div className='arrow-box secondary'>
-              <p className='heading-paragraph'>
+            <div className="arrow-box secondary">
+              <p className="heading-paragraph">
                 You could be eligible for
                 <span> ${this.formatDollars(this.state.rebate)}</span>
               </p>
-              <p className='help-text'>(Assuming you meet the criteria)</p>
+              <p className="help-text">(Assuming you meet the criteria)</p>
             </div>
-            <div className='layout'>
-              <button type='submit' className='btn-primary'>Apply now</button>
+            <div className="layout">
+              <button type="submit" className="btn-primary">Apply now</button>
             </div>
           </Fragment>
         );
       }
       return (
         <Fragment>
-          <div className='arrow-box secondary'>
-            <p className='heading-paragraph'>
+          <div className="arrow-box secondary">
+            <p className="heading-paragraph">
               Based on what you've just told us, you are not eligible for a Rates Rebate this year.
             </p>
           </div>

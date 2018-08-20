@@ -37,7 +37,7 @@ class selectField extends React.Component {
     const { input, label, touched, error, type, className } = this.props;
     return (
       <Fragment>
-        {label && <label className='subheading'>{label}</label>}
+        {label && <label className="subheading">{label}</label>}
         <div style={{ borderBottomColor: touched && error ? 'red': '' }}>
           <input
             {...input}

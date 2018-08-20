@@ -59,8 +59,8 @@ class IncomeListSection extends React.Component {
     return (
       <Fragment>
         <section>
-          <div className='container'>
-            <fieldset className='field radio-group'>
+          <div className="container">
+            <fieldset className="field radio-group">
               <legend>Were you living with a partner or joint home owner(s) on July 1 2018?</legend>
               <p>'Partner' is a person you are married to/in a civil union, or de facto
                 relationship with.
@@ -69,7 +69,7 @@ class IncomeListSection extends React.Component {
                 <div>
                   <RadioField
                     options={['yes', 'no']}
-                    name='lived_with_partner'
+                    name="lived_with_partner"
                     handleRadioClick={this.handleRadioClick}
                   />
                 </div>
@@ -94,9 +94,9 @@ class IncomeListSection extends React.Component {
               <br/>
               Select any that apply to you.
             </p>
-            <div className='row'>
+            <div className="row">
               {this.incomeList.map(item => {
-                return <ul key={item.type} className='column list-stripped'>
+                return <ul key={item.type} className="column list-stripped">
                   {this.state[`should_show_${item.type}_options`] && <ListColumn
                     title={item.title}
                     name={item.type}
@@ -260,14 +260,14 @@ class IncomeList extends React.Component {
           return (
             <Fragment key={i}>
               <li>
-                <label className='radio-list-container'>
+                <label className="radio-list-container">
                   <input
-                    type='checkbox'
+                    type="checkbox"
                     name={underscorize(item.label)}
                     onClick={() => this.handleChild(item, underscorize(`${item.label}${this.props.livedWithPartner ? '1' : '0'}`))}
                   />
-                  <div className='radio-list-multi'>{item.label}
-                    <span className='checkmark'></span>
+                  <div className="radio-list-multi">{item.label}
+                    <span className="checkmark"></span>
                   </div>
                 </label>
               </li>
@@ -283,9 +283,9 @@ class IncomeList extends React.Component {
                   <input
                     type={this.state.ShowTextField ? 'number' : 'hidden'}
                     name={`wos_${this.props.name}`}
-                    min='0'
-                    step='1'
-                    pattern='\d+'
+                    min="0"
+                    step="1"
+                    pattern="\d+"
                     onChange={e => {
                       if(!filterE(e)) {
                         this.setState({ [`wos_${this.props.name}`]: e.target.value });
@@ -335,11 +335,11 @@ class IncomeList extends React.Component {
 
 const RadioGroup = props => {
   return (
-    <div className='radio-list' style={props.type !== 'radio' ? { display: 'none' } : null}>
+    <div className="radio-list" style={props.type !== 'radio' ? { display: 'none' } : null}>
       {props.options.map((item, i) => <Fragment key={i}>
         <label>
           <input
-            type='radio'
+            type="radio"
             name={props.name}
             onClick={() => props.handleChildRadioClick(item, props.name)}
           />

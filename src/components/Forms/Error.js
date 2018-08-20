@@ -6,7 +6,7 @@ const Error = props => {
     <div>
       {fields && fields.touched && fields.error &&
         <div>
-          <span className='error'><strong>Error: </strong>{fields.error}</span>
+          <span className="error"><strong>Error: </strong>{fields.error}</span>
         </div>
       }
     </div>

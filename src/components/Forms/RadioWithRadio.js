@@ -21,12 +21,12 @@ export default class RadioWithRadio extends React.Component {
   render() {
     return (
       <div>
-        <fieldset className='field radio-group'>
+        <fieldset className="field radio-group">
           {this.props.label && <legend>
             {this.props.label}
           </legend>}
           <div>
-            <Radio {...this.props} fieldType='radio' />
+            <Radio {...this.props} fieldType="radio" />
           </div>
           {this.props.instructions && <p dangerouslySetInnerHTML={{ __html: this.props.instructions }}></p>}
           {this.props.accordianLabel && <Accordian label={this.props.accordianLabel} text={this.props.accordianText} />}

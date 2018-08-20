@@ -102,14 +102,14 @@ class Income extends React.Component {
     if (this.state.minimum_income_for_no_rebate) {
       const earnLessThan = this.getOptions();
       return (
-        <div className='arrow-box primary'>
-          <label htmlFor='earn_less_than'>
+        <div className="arrow-box primary">
+          <label htmlFor="earn_less_than">
             {/* From 1 April {this.getCurrentFinancialYear(0, 2)} to 31 March {this.getCurrentFinancialYear(0, 1)} I earned */}
             From 1 April 2017 to 31 March 2018 I earned
           </label>
 
           <Field
-            name='income_range'
+            name="income_range"
             component={RenderRadio}
             options={earnLessThan.options && earnLessThan.options['en']}
             onChange={this.handleSelection}
@@ -119,12 +119,12 @@ class Income extends React.Component {
             <Fragment>
               <label>My annual income was</label>
               <Field
-                name='annual_income_entered_on_first_page'
+                name="annual_income_entered_on_first_page"
                 onChange={this.handleManualIncome}
-                type='text'
+                type="text"
                 component={renderField}
               />
-              <p className='help-text'>
+              <p className="help-text">
                 Approximate values are fine.
                 <br/>You'll need the real values if you choose to apply
               </p>
