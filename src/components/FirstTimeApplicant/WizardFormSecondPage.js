@@ -61,8 +61,10 @@ class WizardFormSecondPage extends React.Component {
     this.dependants = this.dependants.bind(this);
     this.handleLivingSituation = this.handleLivingSituation.bind(this);
     this.openModal = this.openModal.bind(this);
+    this.businessOpenModal = this.businessOpenModal.bind(this);
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.businessCloseModal = this.businessCloseModal.bind(this);
     this.handleBusiness = this.handleBusiness.bind(this);
   }
 
@@ -104,19 +106,29 @@ class WizardFormSecondPage extends React.Component {
     this.setState({modalIsOpen: true});
   }
 
+  businessOpenModal() {
+    this.setState({businessModalIsOpen: true});
+  }
+
   afterOpenModal() {
   }
 
   closeModal() {
-    this.setState({modalIsOpen: false, businessModalIsOpen: false});
+    this.setState({modalIsOpen: false});
+  }
+
+  businessCloseModal() {
+    this.setState({businessModalIsOpen: false});
   }
 
   dependants() {
     return this.props.formState.form.wizard.values['dependants'];
   }
+
   ratesBill() {
     return this.props.formState.form.wizard.values['rates_bill'];
   }
+
   saveFormData() {
     let fields = this.props.formState.form.wizard.values;
     fields['income'] = this.props.storeValues.totalIncome;
@@ -181,12 +193,12 @@ class WizardFormSecondPage extends React.Component {
             <Modal
               isOpen={this.state.businessModalIsOpen}
               onAfterOpen={this.afterOpenModal}
-              onRequestClose={this.closeModal}
+              onRequestClose={this.businessCloseModal}
               style={customStyles}
               contentLabel="Modal"
               ariaHideApp={false}
             >
-            <ModalBody bodyText='You must have been living at the property on 1 July 2018 to be eligible for a rates rebate for this rating year.'/>
+            <ModalBody bodyText='If you deducted over 50% of your rates as expenses, you are not eligible for a rates rebate for this rating year.' button='Cancel application'/>
             </Modal>
           </div>
         }
@@ -199,7 +211,6 @@ class WizardFormSecondPage extends React.Component {
                 onRequestClose={this.closeModal}
                 style={customStyles}
                 contentLabel="Example Modal"
-                // ariaHideApp={false}
               >
               <ModalBody bodyText='You must have been living at the property on 1 July 2018 to be eligible for a rates rebate for this rating year.'/>
               </Modal>
@@ -447,6 +458,8 @@ const ModalBody = props => {
     </div>
     <div className="modal-body">
       <p>{props.bodyText}</p>
+      {props.button && <p className="centered">
+        <button className="btn-cancel">{props.button}</button></p>}
     </div>
       <span className="modal-exit" onClick={this.closeModal}>X</span>
   </Fragment>
