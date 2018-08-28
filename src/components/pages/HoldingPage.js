@@ -24,7 +24,8 @@ class HoldingPage extends Component {
 
         <p>
           <iframe title="Screen cast of app" width="560" height="315" src="https://www.youtube.com/embed/hXoTlS9FIfg"
-            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+          </iframe>
         </p>
 
         <p>
