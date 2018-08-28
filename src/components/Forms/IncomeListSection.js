@@ -83,7 +83,8 @@ class IncomeListSection extends React.Component {
               style={{
                 fontSize: '20px',
                 fontWeight: '500'
-              }}>
+              }}
+            >
               What was your total income for the 2017/2018 tax year?
             </label>
             <p>
