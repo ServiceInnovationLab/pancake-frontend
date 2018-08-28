@@ -38,7 +38,7 @@ class Radio extends React.Component {
                   }}
                 />
                 <span>{item}</span>
-              </label>;
+                     </label>;
             })
           }
         </div>
