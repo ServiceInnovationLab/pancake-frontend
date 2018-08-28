@@ -19,7 +19,7 @@ export default class RadioWithRadioList extends React.Component {
         <fieldset className="field radio-group">
           {this.props.label && <legend>
             {this.props.label}
-                               </legend>}
+          </legend>}
           {this.props.instructions && <p dangerouslySetInnerHTML={{ __html: this.props.instructions }}></p>}
           <div>
             <Radio props={this.props} submittedValue={this.props.input.value} fieldType="radioList" />
