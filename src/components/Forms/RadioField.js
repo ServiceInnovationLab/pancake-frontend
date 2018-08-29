@@ -14,7 +14,7 @@ const RadioField = props => {
             />
             <span>{item}</span>
           </label>
-                          </Fragment>)}
+        </Fragment>)}
     </Fragment>
   );
 };
