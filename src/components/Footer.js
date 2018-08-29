@@ -58,7 +58,7 @@ class Footer extends React.Component {
             >
               <button onClick={this.closeModal} style={{ float: 'right', margin: '0 0 20px 0' }}>close</button>
               <div dangerouslySetInnerHTML={{ __html: privacyStatement.content.en.text }}></div>
-                                       </Modal>}
+            </Modal>}
           </div>
         </div>
       </footer>);
