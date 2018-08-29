@@ -32,7 +32,7 @@ class WizardForm extends Component {
         />
       )}
 
-    </div>
+            </div>
     );
   }
 }
