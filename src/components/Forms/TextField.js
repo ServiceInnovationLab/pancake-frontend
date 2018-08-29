@@ -58,5 +58,5 @@ const Checkbox = props => {
         </label>
       </div>
     </div>
-  </div>;
+         </div>;
 };
