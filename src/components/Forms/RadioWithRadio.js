@@ -24,7 +24,7 @@ export default class RadioWithRadio extends React.Component {
         <fieldset className="field radio-group">
           {this.props.label && <legend>
             {this.props.label}
-          </legend>}
+                               </legend>}
           <div>
             <Radio {...this.props} fieldType="radio" />
           </div>
