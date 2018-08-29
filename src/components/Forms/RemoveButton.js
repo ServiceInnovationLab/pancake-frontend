@@ -10,7 +10,7 @@ const RemoveButton = props => {
       props.fields.remove(props.index);
     }}
   >Remove income
-  </button>;
+         </button>;
 };
 
 export default RemoveButton;
