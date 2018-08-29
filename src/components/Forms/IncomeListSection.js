@@ -105,7 +105,7 @@ class IncomeListSection extends React.Component {
                     showRadios={false}
                     setTotalIncome={e => this.setIncome(e, item.type)}
                   />}
-                       </ul>;
+                </ul>;
               })}
             </div>
           </fieldset>
@@ -124,13 +124,13 @@ const ListColumn = props => {
       showRadios={props.showRadios}
       setTotalIncome={props.setTotalIncome}
     />
-         </Fragment>;
+  </Fragment>;
 };
 
 const ListHeading = props => {
   return <li>
     <h4>{props.title}</h4>
-         </li>;
+  </li>;
 };
 
 class IncomeList extends React.Component {
@@ -293,7 +293,7 @@ class IncomeList extends React.Component {
                       }
                     }}
                   />
-                                                  </Fragment>}
+                </Fragment>}
 
                 {this.state.ShowNestedGroup && item.child === 'nested-group' && <RadioWithSelect
                   visible={this.state.ShowNestedGroup}
@@ -346,7 +346,7 @@ const RadioGroup = props => {
           />
           <span>{item}</span>
         </label>
-                                      </Fragment>)}
+      </Fragment>)}
     </div>
   );
 };
