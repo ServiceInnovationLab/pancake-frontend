@@ -22,7 +22,7 @@ class RenderRadio extends React.Component {
         {label && <legend>
           {label}
           {isRequired && <span className="aria-hidden">(required)</span>}
-        </legend>}
+                  </legend>}
         {instructions && <p dangerouslySetInnerHTML={{ __html: instructions }}></p>}
         <div>
           <div>
@@ -30,7 +30,7 @@ class RenderRadio extends React.Component {
               return <label key={key} className={this.props.className && this.props.className}>
                 <input {...input} type="radio" value={isObject(item, 'value')} />
                 <span style={{ border: '1px solid black' }}>{isObject(item, 'label')}</span>
-              </label>;
+                     </label>;
             })}
           </div>
         </div>
@@ -39,7 +39,7 @@ class RenderRadio extends React.Component {
 
       {/* <Checkbox props={this.props.options}/> */}
 
-    </Fragment>;
+           </Fragment>;
   }
 }
 
