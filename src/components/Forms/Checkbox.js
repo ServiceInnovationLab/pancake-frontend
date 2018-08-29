@@ -30,7 +30,7 @@ const Checkbox = props => (
                     <span className="checkmark"></span>
                   </div>
                 </label>
-                     </li>;
+              </li>;
             })}
         </ul>
         <ul className="column list-stripped">
@@ -49,7 +49,7 @@ const Checkbox = props => (
                     <span className="checkmark"></span>
                   </div>
                 </label>
-                     </li>;
+              </li>;
             })}
         </ul>
       </div>
