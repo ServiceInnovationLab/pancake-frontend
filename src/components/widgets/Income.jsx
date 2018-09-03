@@ -137,7 +137,6 @@ class Income extends React.Component {
     }
 
     return '';
-
   }
 }
 
