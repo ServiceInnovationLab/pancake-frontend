@@ -33,7 +33,7 @@ export default class TextField extends React.Component {
 
   render() {
     const prepopulatedValue = this.props.prepopulatedValue ? this.props.prepopulatedValue[underscorize(this.props.label)] : null;
-    const showValue = prepopulatedValue ? prepopulatedValue : this.getValue();
+    const showValue = prepopulatedValue || this.getValue();
     return (
       <fieldset className="field">
         <legend>{this.props.label}</legend>
