@@ -1,6 +1,6 @@
 import React from 'react';
-import ErrorMessage from '../../components/Forms/Error';
-import Radio from '../../components/Forms/Radio';
+import ErrorMessage from "./Error";
+import Radio from "./Radio";
 
 export default class RadioWithRadioList extends React.Component {
   constructor(props) {

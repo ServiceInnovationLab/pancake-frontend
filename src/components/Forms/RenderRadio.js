@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import ErrorMessage from '../../components/Forms/Error';
+import ErrorMessage from "./Error";
 
 const _ = require('lodash');
 

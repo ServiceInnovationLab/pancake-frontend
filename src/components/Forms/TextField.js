@@ -1,8 +1,8 @@
 import React from 'react';
-import ErrorMessage from '../../components/Forms/Error';
-import Accordian from '../../components/Forms/Accordian';
+import ErrorMessage from "./Error";
+import Accordian from "./Accordian";
 import { underscorize } from '../../helpers/strings';
-import NumberField from '../Forms/NumberField';
+import NumberField from "./NumberField";
 import { Field } from 'redux-form';
 
 /*
