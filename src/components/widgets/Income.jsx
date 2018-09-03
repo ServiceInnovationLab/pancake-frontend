@@ -25,7 +25,7 @@ class Income extends React.Component {
     } else if (newValue === 'above') {
       income = this.state.minimum_income_for_no_rebate;
     }
-    this.setState({ income: income, show_input: (newValue === 'between') });
+    this.setState({ income, show_input: (newValue === 'between') });
     this.props.onSelection(income, newValue);
   }
 
