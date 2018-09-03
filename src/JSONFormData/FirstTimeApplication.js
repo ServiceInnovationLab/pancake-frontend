@@ -151,7 +151,7 @@ const firstTimeApplication = [
     },
     options: {
       en: {
-        text: ['yes','no']
+        text: ['yes', 'no']
       },
       mi: {
         text: ['ae', 'kaore']

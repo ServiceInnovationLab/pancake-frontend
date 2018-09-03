@@ -13,7 +13,6 @@ export default class RadioWithTextField extends React.Component {
   }
 
   render() {
-
     return (
       <div>
         <fieldset className="field radio-group">

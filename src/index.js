@@ -21,7 +21,6 @@ const store = createStore(combineReducers({
 }), applyMiddleware(thunk));
 
 class App extends React.Component {
-
   render(){
     return (
       <HashRouter>
