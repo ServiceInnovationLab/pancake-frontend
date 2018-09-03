@@ -11,7 +11,6 @@ export const camelCaser = string => {
     return splitStr.join('');
   }
   return 'Unknown value';
-
 };
 
 export const removeUnderscore = string => {

@@ -81,7 +81,6 @@ class Eligible extends React.Component {
     }
 
     return '';
-
   }
 }
 
