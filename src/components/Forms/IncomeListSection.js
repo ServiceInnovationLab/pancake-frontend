@@ -134,7 +134,6 @@ const ListHeading = props => {
 };
 
 class IncomeList extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {

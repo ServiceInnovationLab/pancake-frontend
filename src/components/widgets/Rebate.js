@@ -11,7 +11,6 @@ class Rebate extends React.Component {
   componentWillReceiveProps(nextProps) {
     this.setState({ rebate: null });
     if (nextProps.dependants && nextProps.rates_bill && nextProps.income) {
-
       const data = {
         persons: {
           Tahi: {
