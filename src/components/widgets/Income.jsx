@@ -111,7 +111,7 @@ class Income extends React.Component {
           <Field
             name="income_range"
             component={RenderRadio}
-            options={earnLessThan.options && earnLessThan.options['en']}
+            options={earnLessThan.options && earnLessThan.options.en}
             onChange={this.handleSelection}
           />
 
