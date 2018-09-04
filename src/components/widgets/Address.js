@@ -60,8 +60,8 @@ class Address extends React.Component {
               });
             this.props.onSelection({
               location: res.data.data.attributes,
-              rates_payers: rates_payers,
-              rates_bills: rates_bills });
+              rates_payers,
+              rates_bills });
           }
         })
         .catch(err => err);
