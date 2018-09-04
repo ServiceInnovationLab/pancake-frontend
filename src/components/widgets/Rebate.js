@@ -39,7 +39,7 @@ class Rebate extends React.Component {
         .post(`${config.OPENFISCA_ORIGIN}`, data)
         .then(res => {
           const rebate = res.data.properties.property_1.rates_rebate['2019'];
-          this.setState({ rebate: rebate });
+          this.setState({ rebate });
         })
         .catch(err => err);
     } else {
