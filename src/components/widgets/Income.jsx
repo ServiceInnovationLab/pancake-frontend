@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import axios from 'axios';
 import config from '../../config';
-import RenderRadio from '../../components/Forms/RenderRadio';
+import RenderRadio from "../Forms/RenderRadio";
 import renderField from '../Forms/renderField';
 import { Field } from 'redux-form';
 
