@@ -103,7 +103,7 @@ class WizardFormFirstPage extends React.Component {
 
           <section>
             <div className="arrow-box primary">
-                <Address onSelection={this.handleAddressSelection} />
+                <Address onSelection={this.handleAddressSelection} council_name={this.props.council_name} />
 
                 <Field name="rates_bill" type="hidden" component={renderField}/>
                 <Field name="valuation_id" type="hidden" component={renderField}/>
@@ -113,7 +113,7 @@ class WizardFormFirstPage extends React.Component {
                     are <strong>${this.state.rates_bill}.
                     </strong>
                   </p>
-                  <p className="help-text">This includes water rates, as provided by Tauranga City Council.</p>
+                  <p className="help-text">This includes water rates, as provided by {this.props.council_name} City Council.</p>
                 </Fragment>
                 }
             </div>
