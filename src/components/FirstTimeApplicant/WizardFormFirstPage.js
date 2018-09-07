@@ -98,7 +98,7 @@ class WizardFormFirstPage extends React.Component {
       <div className="container autocomplete-form">
 
         <form onSubmit={handleSubmit} onKeyPress={this.handleKeyPress}>
-          <Intro />
+          {this.props.council_name == 'Tauranga' && <Intro /> }
 
           <section>
             <div className="arrow-box primary">
