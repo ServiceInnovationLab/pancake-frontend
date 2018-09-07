@@ -2,7 +2,6 @@ import React, {Fragment} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import renderField from '../Forms/renderField';
 import {scrollToFirstError} from '../../components/Forms/FormScroll';
-import Accordian from '../Forms/Accordian';
 import Address from '../widgets/Address';
 import Income from '../widgets/Income';
 import Eligible from '../widgets/Eligible';
