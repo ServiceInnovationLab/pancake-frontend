@@ -18,8 +18,10 @@ class WizardForm extends Component {
   }
 
   fetchCouncil() {
+    let council = getUrlVars()['council']
+    if (! council) { council = 'TCC '}
     axios
-      .get(`${config.API_ORIGIN}/api/v1/councils/ACC`)
+      .get(`${config.API_ORIGIN}/api/v1/councils/${council}`)
       .then(res => {
         this.setState({council_name: res.data.data.attributes.name});
         this.setState({council_id: res.data.data.id});
@@ -60,5 +62,15 @@ class WizardForm extends Component {
     );
   }
 }
+
+
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+
 
 export default WizardForm;
