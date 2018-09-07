@@ -8,7 +8,6 @@ class Intro extends React.Component {
       <section>
         <h2 className="heading-secondary">Online rates rebates applications are now open exclusively for Tauranga residents<br/>
         </h2>
-
         <p><strong>If you are a low-income homeowner you could get
           a discount or partial refund of up to $630 on your property rates with a rates
           rebate.</strong><br/>
