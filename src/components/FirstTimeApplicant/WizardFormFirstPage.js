@@ -103,7 +103,7 @@ class WizardFormFirstPage extends React.Component {
 
           <section>
             <div className="arrow-box primary">
-                <Address onSelection={this.handleAddressSelection} council_name={this.props.council_name} />
+                <Address onSelection={this.handleAddressSelection} council_id={this.props.council_id} council_name={this.props.council_name} />
 
                 <Field name="rates_bill" type="hidden" component={renderField}/>
                 <Field name="valuation_id" type="hidden" component={renderField}/>
