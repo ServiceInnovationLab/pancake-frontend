@@ -47,7 +47,7 @@ class WizardForm extends Component {
           onSubmit={this.nextPage}
           council_name={this.state.council_name}
           council_id={this.state.council_id}
-          />
+        />
       )}
       {page === 2 && (
         <WizardFormSecondPage
