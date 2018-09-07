@@ -66,7 +66,7 @@ class WizardForm extends Component {
 
 function getUrlVars() {
     var vars = {};
-    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(_m,key,value) {
+    window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(_m,key,value) {
         vars[key] = value;
     });
     return vars;
