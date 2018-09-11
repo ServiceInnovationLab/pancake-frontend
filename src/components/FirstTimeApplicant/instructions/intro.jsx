@@ -34,4 +34,4 @@ class Intro extends React.Component {
 }
 
 
-export default Intro;;
+export default Intro;
