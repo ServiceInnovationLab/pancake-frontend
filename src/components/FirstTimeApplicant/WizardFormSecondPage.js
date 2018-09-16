@@ -166,7 +166,7 @@ class WizardFormSecondPage extends React.Component {
     return (
       <Fragment>
         <div className="theme-main">
-          <Head/>
+          {this.props.council_name === 'Tauranga' && <Head/> }
           <div id="jumpTo" className="jumpTo">
             <form onSubmit={handleSubmit(this.saveFormData)}>
             <input type="hidden" name="lived_with_partner" value="no" />

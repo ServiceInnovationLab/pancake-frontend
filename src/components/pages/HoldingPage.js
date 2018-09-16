@@ -50,4 +50,3 @@ class HoldingPage extends Component {
 }
 
 export default HoldingPage;
-

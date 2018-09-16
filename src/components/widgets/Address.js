@@ -20,7 +20,7 @@ class Address extends React.Component {
   handleChange(inputText) {
     this.setState({ isLoadingExternally: true });
     axios
-      .get(`${config.API_ORIGIN}/api/v1/properties?q=${inputText}`)
+      .get(`${config.API_ORIGIN}/api/v1/properties?q=${inputText}&council_id=${this.props.council_id}`)
       .then(res => {
         if (res && res.data && res.data.data.length) {
           const properties = res
@@ -90,7 +90,7 @@ class Address extends React.Component {
             labelKey="location"
             valueKey="id"
           />
-        in Tauranga
+        in {this.props.council_name}
         </label>
       </Fragment>
     );
