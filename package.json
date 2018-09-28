@@ -56,7 +56,7 @@
     "eslint-plugin-react": "7.11.1",
     "expect": "22.4.3",
     "identity-obj-proxy": "3.0.0",
-    "jest": "22.4.4"
+    "jest": "23.6.0"
   },
   "jest": {
     "moduleNameMapper": {
