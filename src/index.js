@@ -26,7 +26,7 @@ class App extends React.Component {
       <HashRouter>
         <div>
           <Header />
-          { config.show_holding_path ?
+          { config.SHOW_HOLDING_PATH ?
             <main>
               <Route path="/" component={HoldingPage} />
             </main>
