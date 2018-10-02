@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import WizardForm from './components/FirstTimeApplicant/WizardForm';
-import HoldingPage from './components/pages/HoldingPage';
 import Sign from './components/FirstTimeApplicant/Sign';
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -11,7 +10,6 @@ import { HashRouter, Route } from 'react-router-dom';
 import { reducer as formReducer } from 'redux-form';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import config from './config';
 import './styles/App.css';
 
 const store = createStore(combineReducers({
