@@ -10,7 +10,7 @@ class HoldingPage extends Component {
   render() {
     return (
       <div className="container">
-        <h2>The trial of online applications for Rates Rebates has ended.</h2>
+        <h2>The trial of online applications for Rates Rebates has ended</h2>
         <p>
           If you have sent an application but have not visited your
           Council Service Centre to sign and submit your application,
