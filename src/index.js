@@ -26,16 +26,14 @@ class App extends React.Component {
       <HashRouter>
         <div>
           <Header />
-          { config.SHOW_HOLDING_PATH ?
-            <main>
+          <main>
+            { config.SHOW_HOLDING_PATH ?
               <Route path="/" component={HoldingPage} />
-            </main>
-            :
-            <main>
+              :
               <Route exact path="/" component={WizardForm} />
-              <Route path="/:id" component={Sign}/>
-            </main>
-          }
+            }
+            <Route path="/:id" component={Sign}/>
+          </main>
           <Footer />
         </div>
       </HashRouter>
