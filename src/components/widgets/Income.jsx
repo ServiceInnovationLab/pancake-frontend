@@ -25,7 +25,7 @@ class Income extends React.Component {
     } else if (newValue === 'above') {
       income = this.state.minimum_income_for_no_rebate;
     }
-    this.setState({ income, show_input: (newValue === 'between') });
+    this.setState({ income, show_input: newValue === 'between' });
     this.props.onSelection(income, newValue);
   }
 
@@ -35,58 +35,71 @@ class Income extends React.Component {
         persons: {
           Tui: {
             salary: {
-              2019: null
+              2019: null,
             },
             dependants: {
-              2019: nextProps.dependants
-            }
-          }
+              2019: nextProps.dependants,
+            },
+          },
         },
         properties: {
           property_1: {
             owners: ['Tui'],
             rates: {
-              2019: nextProps.rates_bill
+              2019: nextProps.rates_bill,
             },
             maximum_income_for_full_rebate: {
-              2019: null
+              2019: null,
             },
             minimum_income_for_no_rebate: {
-              2019: null
-            }
-          }
-        }
+              2019: null,
+            },
+          },
+        },
       };
 
       axios
         .post(`${config.OPENFISCA_ORIGIN}`, data)
-        .then(res => this.setState({
-          minimum_income_for_no_rebate: res
-            .data
-            .properties
-            .property_1
-            .minimum_income_for_no_rebate['2019']
-            .toFixed(2),
-          maximum_income_for_full_rebate: res
-            .data
-            .properties
-            .property_1
-            .maximum_income_for_full_rebate['2019']
-            .toFixed(2)
-        }))
+        .then(res =>
+          this.setState({
+            minimum_income_for_no_rebate: res.data.properties.property_1.minimum_income_for_no_rebate[
+              '2019'
+            ].toFixed(2),
+            maximum_income_for_full_rebate: res.data.properties.property_1.maximum_income_for_full_rebate[
+              '2019'
+            ].toFixed(2),
+          }),
+        )
         .catch(err => console.log('err fetching properties', err));
     } else {
-      this.setState({ minimum_income_for_no_rebate: null, maximum_income_for_full_rebate: null });
+      this.setState({
+        minimum_income_for_no_rebate: null,
+        maximum_income_for_full_rebate: null,
+      });
     }
   }
 
-  getOptions(){
+  getOptions() {
     return {
       options: {
-        en: [{ value: 'below', label: `Less than $${this.formatDollars(this.state.maximum_income_for_full_rebate)}` }, { value: 'between', label: 'Somewhere in the middle' }, { value: 'above', label: `More than $${this.formatDollars(this.state.minimum_income_for_no_rebate)}` }]
+        en: [
+          {
+            value: 'below',
+            label: `Less than $${this.formatDollars(
+              this.state.maximum_income_for_full_rebate,
+            )}`,
+          },
+          { value: 'between', label: 'Somewhere in the middle' },
+          {
+            value: 'above',
+            label: `More than $${this.formatDollars(
+              this.state.minimum_income_for_no_rebate,
+            )}`,
+          },
+        ],
       },
       isRequired: true,
-      component: RenderRadio
+      component: RenderRadio,
     };
   }
 
@@ -95,7 +108,7 @@ class Income extends React.Component {
   }
 
   getCurrentFinancialYear(add, subtract) {
-    return (new Date().getFullYear() - (add !== 0 ? add : subtract));
+    return new Date().getFullYear() - (add !== 0 ? add : subtract);
   }
 
   render() {
@@ -115,7 +128,7 @@ class Income extends React.Component {
             onChange={this.handleSelection}
           />
 
-          {this.state.show_input &&
+          {this.state.show_input && (
             <Fragment>
               <label>My annual income was</label>
               <Field
@@ -126,12 +139,11 @@ class Income extends React.Component {
               />
               <p className="help-text">
                 Approximate values are fine.
-                <br/>You'll need the real values if you choose to apply
+                <br />
+                You'll need the real values if you choose to apply
               </p>
             </Fragment>
-          }
-
-
+          )}
         </div>
       );
     }

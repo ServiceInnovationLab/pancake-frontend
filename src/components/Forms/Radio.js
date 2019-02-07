@@ -6,13 +6,13 @@ class Radio extends React.Component {
     super(props);
 
     this.state = {
-      hideButtons: false
+      hideButtons: false,
     };
   }
 
   stateType(type) {
     const data = {
-      display: this.state[type] ? 'block' : 'none'
+      display: this.state[type] ? 'block' : 'none',
     };
     return data;
   }
@@ -29,37 +29,54 @@ class Radio extends React.Component {
     return (
       <Fragment>
         <div>
-          {this.props.input.name === 'dependants' && this.state.hideButtons ? '' :
-            this.props.options && this.props.options.map((item, key) => {
-              return <label key={key}>
-                <input
-                  {...this.props.input} ref={i => this[`option${key+1}`] = i} type="radio" value={item} onClick={() => {
-                    this.toggleSub(item);
-                  }}
-                />
-                <span>{item}</span>
-              </label>;
-            })
-          }
+          {this.props.input.name === 'dependants' && this.state.hideButtons
+            ? ''
+            : this.props.options &&
+              this.props.options.map((item, key) => {
+                return (
+                  <label key={key}>
+                    <input
+                      {...this.props.input}
+                      ref={i => (this[`option${key + 1}`] = i)}
+                      type="radio"
+                      value={item}
+                      onClick={() => {
+                        this.toggleSub(item);
+                      }}
+                    />
+                    <span>{item}</span>
+                  </label>
+                );
+              })}
         </div>
-        {this.props.fieldType === 'radio' && this.state.show &&
+        {this.props.fieldType === 'radio' && this.state.show && (
           <fieldset className="field radio-group">
             <legend>{this.props.optionsText[1]}</legend>
             <div>
               <div>
                 {['Yes', 'No'].map((item, key) => {
-                  return <label key={key}><Field name={this.props.childFieldName} component={renderField} item={item}/><span>{item}</span></label>;
+                  return (
+                    <label key={key}>
+                      <Field
+                        name={this.props.childFieldName}
+                        component={renderField}
+                        item={item}
+                      />
+                      <span>{item}</span>
+                    </label>
+                  );
                 })}
               </div>
             </div>
           </fieldset>
-        }
+        )}
       </Fragment>
     );
   }
 }
 
-
-const renderField = field => <input {...field.input} type="radio" value={field.item.toLowerCase()} />;
+const renderField = field => (
+  <input {...field.input} type="radio" value={field.item.toLowerCase()} />
+);
 
 export default Radio;

@@ -9,7 +9,7 @@ class selectField extends React.Component {
       showList: false,
       value: '',
       addresses: [],
-      selectedAddress: ''
+      selectedAddress: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -29,7 +29,7 @@ class selectField extends React.Component {
   handleClick(e) {
     this.setState({
       selectedAddress: e.target.innerHTML,
-      showList: false
+      showList: false,
     });
   }
 
@@ -38,22 +38,31 @@ class selectField extends React.Component {
     return (
       <Fragment>
         {label && <label className="subheading">{label}</label>}
-        <div style={{ borderBottomColor: touched && error ? 'red': '' }}>
+        <div style={{ borderBottomColor: touched && error ? 'red' : '' }}>
           <input
             {...input}
             type={type}
             className={className}
             onChange={e => this.handleChange(e)}
-            value={this.state.selectedAddress ? this.state.selectedAddress : this.state.value}
+            value={
+              this.state.selectedAddress
+                ? this.state.selectedAddress
+                : this.state.value
+            }
           />
-          {this.state.showList &&
+          {this.state.showList && (
             <ul>
               {this.state.addresses.map((x, i) => {
                 const { location, suburb, town_city } = x.attributes;
-                return <li key={i} onClick={e => this.handleClick(e)}>{`${location}, ${suburb}, ${town_city}`}</li>;
+                return (
+                  <li
+                    key={i}
+                    onClick={e => this.handleClick(e)}
+                  >{`${location}, ${suburb}, ${town_city}`}</li>
+                );
               })}
             </ul>
-          }
+          )}
         </div>
       </Fragment>
     );
