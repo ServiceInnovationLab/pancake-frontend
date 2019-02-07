@@ -7,7 +7,7 @@
 
     > li {
       padding-left: 3rem;
-      margin: .5rem 0;
+      margin: 0.5rem 0;
       line-height: 1.25;
       position: relative;
       counter-increment: clause;
@@ -20,16 +20,17 @@
       }
     }
 
-    ol { counter-reset:clause; }
+    ol {
+      counter-reset: clause;
+    }
   }
 }
-
 
 .terms > li {
   counter-increment: section;
 
   &::before {
-    content: counter(section) ' ';
+    content: counter(section) " ";
   }
 }
 

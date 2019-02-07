@@ -6,15 +6,20 @@ $label-not-radio-color: #efefef;
 $black: #000;
 
 @font-face {
-font-family: "FontAwesome";
-font-weight: normal;
-font-style : normal;
+  font-family: "FontAwesome";
+  font-weight: normal;
+  font-style: normal;
   src: url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?v=4.3.0");
-  src: url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?#iefix&v=4.3.0") format("embedded-opentype"),
-    url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff2?v=4.3.0") format("woff2"),
-    url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff?v=4.3.0") format("woff"),
-    url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.ttf?v=4.3.0") format("truetype"),
-    url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular") format("svg");
+  src: url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?#iefix&v=4.3.0")
+      format("embedded-opentype"),
+    url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff2?v=4.3.0")
+      format("woff2"),
+    url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff?v=4.3.0")
+      format("woff"),
+    url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.ttf?v=4.3.0")
+      format("truetype"),
+    url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular")
+      format("svg");
 }
 .checkbox-group {
   h4 {
@@ -41,7 +46,7 @@ font-style : normal;
     &:hover {
       background-color: darken($label-not-radio-color, 4%);
     }
-    @media(min-width: 768px) {
+    @media (min-width: 768px) {
       width: 366px;
     }
     span {
@@ -82,7 +87,7 @@ font-style : normal;
   .radio-group {
     margin: 0;
   }
-  input[type=checkbox] {
+  input[type="checkbox"] {
     position: absolute;
     left: -9999px;
   }
@@ -103,7 +108,7 @@ font-style : normal;
       font-weight: 500;
     }
     :not(:checked) + span::after {
-      font-family: 'FontAwesome';
+      font-family: "FontAwesome";
       font-size: 21px;
       content: "\f067";
       position: absolute;
@@ -124,7 +129,7 @@ font-style : normal;
     }
 
     :checked + span::before {
-      font-family: 'FontAwesome';
+      font-family: "FontAwesome";
       font-size: 21px;
       content: "\f068";
       position: absolute;
@@ -136,7 +141,7 @@ font-style : normal;
     }
 
     :checked + span::after {
-      font-family: 'FontAwesome';
+      font-family: "FontAwesome";
       font-size: 21px;
       content: "\f068";
       position: absolute;
@@ -150,7 +155,7 @@ font-style : normal;
 }
 .checkbox-group,
 .checkbox-square {
-  input[type=checkbox] {
+  input[type="checkbox"] {
     position: absolute;
     left: -9999px;
   }
@@ -160,13 +165,17 @@ font-style : normal;
     list-style: none;
     margin-bottom: 30px;
   }
-  label { display: none !important; }
+  label {
+    display: none !important;
+  }
   h4,
   button {
     margin-bottom: 20px;
     display: inline-block;
   }
-  h4 {margin-right: 20px;}
+  h4 {
+    margin-right: 20px;
+  }
 }
 .nested-list {
   list-style: none;
@@ -176,7 +185,7 @@ font-style : normal;
   }
 
   select {
-    font-family: 'Fira Sans', sans-serif;
+    font-family: "Fira Sans", sans-serif;
     font-size: 16px;
     display: inline-block;
     margin: 10px 0;

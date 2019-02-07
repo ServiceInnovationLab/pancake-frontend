@@ -8,19 +8,27 @@ class Accordian extends React.Component {
 
   toggle() {
     this.setState({
-      shown: !this.state.shown
+      shown: !this.state.shown,
     });
   }
 
   render() {
     const shown = {
-      display: this.state.shown ? 'block' : 'none'
+      display: this.state.shown ? 'block' : 'none',
     };
     return (
       <Fragment>
         <div className="accordian">
-          <div className="accordian-header" onClick={this.toggle.bind(this)} dangerouslySetInnerHTML={{ __html: this.props.label }}></div>
-          <div className="accordian-body" style={shown} dangerouslySetInnerHTML={{ __html: this.props.text }}></div>
+          <div
+            className="accordian-header"
+            onClick={this.toggle.bind(this)}
+            dangerouslySetInnerHTML={{ __html: this.props.label }}
+          />
+          <div
+            className="accordian-body"
+            style={shown}
+            dangerouslySetInnerHTML={{ __html: this.props.text }}
+          />
         </div>
       </Fragment>
     );

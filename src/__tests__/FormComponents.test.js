@@ -5,7 +5,6 @@ import TextField from '../components/Forms/TextField';
 
 const Components = [RenderRadio, TextField];
 
-
 describe('components', () => {
   'use strict';
   Components.map(item => {

@@ -3,9 +3,8 @@ import React, { Fragment } from 'react';
 const RadioField = props => {
   return (
     <Fragment>
-      {props
-        .options
-        .map((item, i) => <Fragment key={i}>
+      {props.options.map((item, i) => (
+        <Fragment key={i}>
           <label>
             <input
               type="radio"
@@ -14,7 +13,8 @@ const RadioField = props => {
             />
             <span>{item}</span>
           </label>
-        </Fragment>)}
+        </Fragment>
+      ))}
     </Fragment>
   );
 };
