@@ -1,12 +1,9 @@
-
 $input-border-color: #677a8e;
 $input-bg-color: #677a8e;
 $input-hover-color: #eaf0f7;
 $white: #fff;
 
-
 .radio-group {
-
   > div {
     flex: 1 0 auto;
     display: flex;
@@ -25,9 +22,13 @@ $white: #fff;
     font-weight: 500;
     text-transform: capitalize;
 
-    &:hover > span { background-color: $input-hover-color; }
+    &:hover > span {
+      background-color: $input-hover-color;
+    }
 
-    + label { margin-left: 41px; }
+    + label {
+      margin-left: 41px;
+    }
 
     input:checked + span {
       background-color: $input-bg-color;
@@ -35,7 +36,7 @@ $white: #fff;
       color: $white;
     }
 
-    input[type=radio] {
+    input[type="radio"] {
       position: absolute;
       left: -9999px;
       margin: 0;
