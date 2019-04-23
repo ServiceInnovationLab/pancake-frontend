@@ -3,12 +3,12 @@ import React from 'react';
 const languages = [
   {
     abbr: 'en',
-    name: 'English'
+    name: 'English',
   },
   {
     abbr: 'mi',
-    name: 'Māori'
-  }
+    name: 'Māori',
+  },
 ];
 
 const LanguageToggle = props => {
@@ -36,7 +36,8 @@ const LangBtn = props => {
     <a
       onClick={props.handler}
       className={props.state === props.langAbbr ? 'btn active' : 'btn'}
-    >{props.langName}
+    >
+      {props.langName}
     </a>
   );
 };

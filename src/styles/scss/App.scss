@@ -1,7 +1,7 @@
-@import './variables';
+@import "./variables";
 
 body {
-  font-family: 'Fira Sans', sans-serif;
+  font-family: "Fira Sans", sans-serif;
 }
 
 .container {
@@ -52,19 +52,21 @@ h3 {
   font-size: 21px;
 }
 
-* { line-height: 1.4em; }
+* {
+  line-height: 1.4em;
+}
 // rules
 
-hr { margin: 60px 0;}
-
+hr {
+  margin: 60px 0;
+}
 
 // forms
 
 // buttons
 
 .btn,
-button
-{
+button {
   display: inline-block;
   border: 1px solid $grey;
   color: $deep-grey1;
@@ -77,11 +79,13 @@ button
   text-decoration: none;
   text-align: center;
 
-  @media(min-width: 426px) {
+  @media (min-width: 426px) {
     min-width: auto;
   }
 
-  &:hover {  cursor: pointer; }
+  &:hover {
+    cursor: pointer;
+  }
 
   &.active {
     background-color: $grey;
@@ -104,7 +108,7 @@ button
 }
 
 input {
-  font-family: 'Fira Sans', sans-serif;
+  font-family: "Fira Sans", sans-serif;
   font-size: 16px;
   display: inline-block;
   border: 2px solid transparent;
@@ -113,9 +117,9 @@ input {
   position: relative;
   box-sizing: border-box;
   margin-bottom: 25px;
-  &[type=text],
-  &[type=number],
-  &[type=search] {
+  &[type="text"],
+  &[type="number"],
+  &[type="search"] {
     border: 1px solid $grey;
     padding-top: 0;
     padding-bottom: 0;
@@ -151,9 +155,7 @@ h4 {
   margin-bottom: 25px;
 }
 
-
 // arrow-boxes
-
 
 .arrow-box {
   padding: 30px 50px;
@@ -193,9 +195,13 @@ h4 {
     }
 
     p,
-    span { font-size: 24px; }
+    span {
+      font-size: 24px;
+    }
 
-    span { font-weight: 700; }
+    span {
+      font-weight: 700;
+    }
   }
 
   > label {
@@ -218,7 +224,6 @@ h4 {
   }
 }
 
-
 .aria-hidden {
   border: 0;
   clip: rect(0 0 0 0);
@@ -234,7 +239,7 @@ h4 {
 body {
   color: $deep-grey1;
   margin: 0;
-  font-family: 'Fira Sans', sans-serif;
+  font-family: "Fira Sans", sans-serif;
 }
 
 main {
@@ -312,8 +317,12 @@ ul {
   background-color: $accordian-bg;
   padding: 10px 55px 10px 20px;
   position: relative;
-  span { font-weight: normal; }
-  &:hover { cursor: pointer; }
+  span {
+    font-weight: normal;
+  }
+  &:hover {
+    cursor: pointer;
+  }
   &::after {
     font-family: FontAwesome;
     font-size: 21px;
@@ -332,7 +341,9 @@ ul {
   background-color: $accordian-bg;
   margin-top: 0;
   padding: 8px 20px 20px;
-  > p:first-child { margin-top: 10px; }
+  > p:first-child {
+    margin-top: 10px;
+  }
   p {
     font-size: 17px;
   }
@@ -350,7 +361,9 @@ canvas {
   }
 }
 
-.Select-value { padding-top: 5px; }
+.Select-value {
+  padding-top: 5px;
+}
 
 .Select-control {
   margin: 10px 0 0;
@@ -361,7 +374,9 @@ canvas {
   display: none !important;
 }
 
-.select-results { font-size: 24px; }
+.select-results {
+  font-size: 24px;
+}
 
 .autocomplete-form {
   text-align: center;
@@ -420,8 +435,8 @@ canvas {
   width: 70%;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
@@ -622,7 +637,7 @@ a {
       }
     }
 
-    &[type=checkbox]:checked + span::after {
+    &[type="checkbox"]:checked + span::after {
       content: "";
       position: absolute;
       left: 12px;
