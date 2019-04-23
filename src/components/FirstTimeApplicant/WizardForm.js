@@ -12,19 +12,21 @@ class WizardForm extends Component {
     this.state = {
       page: 1,
       council_name: '...',
-      council_id: 0
+      council_id: 0,
     };
     this.fetchCouncil();
   }
 
   fetchCouncil() {
     let council = getUrlVars().council;
-    if (! council) { council = 'TCC'; }
+    if (!council) {
+      council = 'TCC';
+    }
     axios
       .get(`${config.API_ORIGIN}/api/v1/councils/${council}`)
       .then(res => {
-        this.setState({council_name: res.data.data.attributes.name});
-        this.setState({council_id: res.data.data.id});
+        this.setState({ council_name: res.data.data.attributes.name });
+        this.setState({ council_id: res.data.data.id });
       })
       .catch(err => console.log('error fetching council info', err));
     return {};
@@ -41,36 +43,38 @@ class WizardForm extends Component {
   render() {
     const { onSubmit } = this.props;
     const { page } = this.state;
-    return (<div>
-      {page === 1 && (
-        <WizardFormFirstPage
-          onSubmit={this.nextPage}
-          council_name={this.state.council_name}
-          council_id={this.state.council_id}
-        />
-      )}
-      {page === 2 && (
-        <WizardFormSecondPage
-          previousPage={this.previousPage}
-          council_name={this.state.council_name}
-          council_id={this.state.council_id}
-          onSubmit={onSubmit}
-        />
-      )}
-
-    </div>
+    return (
+      <div>
+        {page === 1 && (
+          <WizardFormFirstPage
+            onSubmit={this.nextPage}
+            council_name={this.state.council_name}
+            council_id={this.state.council_id}
+          />
+        )}
+        {page === 2 && (
+          <WizardFormSecondPage
+            previousPage={this.previousPage}
+            council_name={this.state.council_name}
+            council_id={this.state.council_id}
+            onSubmit={onSubmit}
+          />
+        )}
+      </div>
     );
   }
 }
 
-
 function getUrlVars() {
   let vars = {};
-  window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(_m, key, value) {
+  window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(
+    _m,
+    key,
+    value,
+  ) {
     vars[key] = value;
   });
   return vars;
 }
-
 
 export default WizardForm;
