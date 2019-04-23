@@ -14,28 +14,29 @@ import Footer from './components/Footer';
 import config from './config';
 import './styles/App.css';
 
-const store = createStore(combineReducers({
-  reducers,
-  form: formReducer
-// }), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-}), applyMiddleware(thunk));
+const store = createStore(
+  combineReducers({
+    reducers,
+    form: formReducer,
+    // }), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+  }),
+  applyMiddleware(thunk),
+);
 
 class App extends React.Component {
-  render(){
+  render() {
     return (
       <HashRouter>
         <div>
           <Header />
-          { config.SHOW_HOLDING_PATH ?
-            <main>
+          <main>
+            {config.SHOW_HOLDING_PATH ? (
               <Route path="/" component={HoldingPage} />
-            </main>
-            :
-            <main>
+            ) : (
               <Route exact path="/" component={WizardForm} />
-              <Route path="/:id" component={Sign}/>
-            </main>
-          }
+            )}
+            <Route path="/:id" component={Sign} />
+          </main>
           <Footer />
         </div>
       </HashRouter>
@@ -43,4 +44,9 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root'),
+);

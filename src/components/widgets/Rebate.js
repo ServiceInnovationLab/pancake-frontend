@@ -15,24 +15,24 @@ class Rebate extends React.Component {
         persons: {
           Tahi: {
             salary: {
-              2019: nextProps.income
+              2019: nextProps.income,
             },
             dependants: {
-              2019: nextProps.dependants
-            }
-          }
+              2019: nextProps.dependants,
+            },
+          },
         },
         properties: {
           property_1: {
             owners: ['Tahi'],
             rates: {
-              2019: nextProps.rates_bill
+              2019: nextProps.rates_bill,
             },
             rates_rebate: {
-              2019: null
-            }
-          }
-        }
+              2019: null,
+            },
+          },
+        },
       };
 
       axios
@@ -43,12 +43,18 @@ class Rebate extends React.Component {
         })
         .catch(err => err);
     } else {
-      this.setState({ minimum_income_for_no_rebate: null, maximum_income_for_full_rebate: null });
+      this.setState({
+        minimum_income_for_no_rebate: null,
+        maximum_income_for_full_rebate: null,
+      });
     }
   }
 
   formatDollars(number) {
-    return number.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return number
+      .toFixed(2)
+      .toString()
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
 
   render() {

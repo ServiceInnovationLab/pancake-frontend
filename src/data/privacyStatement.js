@@ -22,9 +22,9 @@ const privacyStatement = {
 
       <p>We keep your information for 7 years at which point we securely destroy it by securely erasing all digital forms and securely destroying all physical information.</p>
 
-      <p>You have the right to ask for a copy of any personal information we hold about you or your partner, and to ask for it to be corrected if you think it is wrong. If you’d like to ask for a copy of your information, or to have it corrected, please contact us at <a href="mailto:support@ratesrebates.govt.nz">support@ratesrebates.govt.nz</a>.</p>`
-    }
-  }
+      <p>You have the right to ask for a copy of any personal information we hold about you or your partner, and to ask for it to be corrected if you think it is wrong. If you’d like to ask for a copy of your information, or to have it corrected, please contact us at <a href="mailto:support@ratesrebates.govt.nz">support@ratesrebates.govt.nz</a>.</p>`,
+    },
+  },
 };
 
 export default privacyStatement;
